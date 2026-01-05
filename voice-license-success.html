@@ -322,26 +322,24 @@
       <h1 class="success-title">Thank You!</h1>
       <p class="success-message">Your voice control license is ready.</p>
       <p class="email-confirmation" id="emailConfirmation" style="display: none; color: #666; font-size: 0.95em; margin-bottom: 20px;">
-        A confirmation email with your license key has been sent to your email address.
+        A confirmation email has been sent to your email address.
       </p>
 
-      <div class="license-key-display">
-        <div class="license-key-label">Your License Key</div>
-        <div class="license-key-value" id="licenseKeyValue">------</div>
-      </div>
-
-      <button class="copy-button" id="copyBtn">Copy License Key</button>
-
-      <div class="instructions">
+      <div class="instructions" style="margin-top: 0; margin-bottom: 30px;">
         <h3>Activate Voice Control</h3>
         <ol>
-          <li>Open <strong>Dashie Lite</strong> on your device</li>
-          <li>Swipe from the left edge to open the sidebar</li>
-          <li>Toggle <strong>"Voice Commands"</strong> ON</li>
-          <li>Tap <strong>"Enter Key"</strong> in the dialog</li>
-          <li>Enter your 6-character license key: <strong id="keyInline">------</strong></li>
-          <li>Tap <strong>"Activate"</strong></li>
+          <li>Return to <strong>Dashie Lite</strong> on your device</li>
+          <li>Tap <strong>"Reload App"</strong> in the purchase dialog</li>
+          <li>Say <strong>"Hey Dashie"</strong> to start using voice control!</li>
         </ol>
+      </div>
+
+      <div class="license-key-display">
+        <div class="license-key-label">Your License Key (for manual activation)</div>
+        <div class="license-key-value" id="licenseKeyValue">------</div>
+        <p style="color: #888; font-size: 0.85em; margin-top: 12px;">
+          Only needed if automatic activation doesn't work
+        </p>
       </div>
 
       <div class="support-link">
@@ -407,8 +405,6 @@
     const successBox = document.getElementById('successBox');
     const errorBox = document.getElementById('errorBox');
     const licenseKeyValue = document.getElementById('licenseKeyValue');
-    const keyInline = document.getElementById('keyInline');
-    const copyBtn = document.getElementById('copyBtn');
     const errorMessage = document.getElementById('errorMessage');
 
     // Verify the checkout session
@@ -449,7 +445,6 @@
       loadingState.style.display = 'none';
       successBox.classList.add('show');
       licenseKeyValue.textContent = licenseKey;
-      keyInline.textContent = licenseKey;
       // Show email confirmation message (Stripe collects email during checkout)
       document.getElementById('emailConfirmation').style.display = 'block';
     }
@@ -460,16 +455,6 @@
       errorMessage.textContent = message;
     }
 
-    // Copy button
-    copyBtn.addEventListener('click', function() {
-      const key = licenseKeyValue.textContent;
-      navigator.clipboard.writeText(key).then(() => {
-        copyBtn.textContent = 'Copied!';
-        setTimeout(() => {
-          copyBtn.textContent = 'Copy License Key';
-        }, 2000);
-      });
-    });
   </script>
 
   <!-- Analytics -->
