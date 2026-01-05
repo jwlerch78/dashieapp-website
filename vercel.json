@@ -1,4 +1,11 @@
 {
+  "redirects": [
+    {
+      "source": "/login",
+      "destination": "https://app.dashieapp.com/login",
+      "permanent": true
+    }
+  ],
   "rewrites": [
     { "source": "/beta-signup", "destination": "/beta-signup.html" },
     { "source": "/dashie-lite", "destination": "/dashie-lite.html" },
