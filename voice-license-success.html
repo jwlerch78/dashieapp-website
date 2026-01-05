@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Purchase Complete - Dashie Lite Voice License</title>
+  <link rel="icon" type="image/png" href="./artwork/Dashie_Logo_Orange_Transparent.png">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      line-height: 1.6;
+      background: #ffffff;
+      color: #424242;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Navigation Bar */
+    .nav-bar {
+      background: #f8f9fa;
+      padding: 0 40px;
+      border-bottom: 1px solid #e0e0e0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      padding: 10px 0;
+    }
+
+    .logo {
+      height: 50px;
+      width: auto;
+    }
+
+    /* Main Content */
+    .main-content {
+      flex: 1;
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 60px 40px;
+      text-align: center;
+    }
+
+    /* Loading State */
+    .loading-state {
+      padding: 60px 0;
+    }
+
+    .loading-spinner-large {
+      width: 60px;
+      height: 60px;
+      border: 4px solid #f0f0f0;
+      border-top-color: #ffaa00;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      margin: 0 auto 20px auto;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    .loading-text {
+      color: #666;
+      font-size: 1.1em;
+    }
+
+    /* Success State */
+    .success-box {
+      display: none;
+      background: #fff8e6;
+      border: 2px solid #ffaa00;
+      border-radius: 16px;
+      padding: 40px;
+    }
+
+    .success-box.show {
+      display: block;
+    }
+
+    .success-icon {
+      width: 80px;
+      height: 80px;
+      background: #ffaa00;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 24px auto;
+    }
+
+    .success-icon svg {
+      width: 48px;
+      height: 48px;
+      stroke: white;
+      stroke-width: 3;
+      fill: none;
+    }
+
+    .success-title {
+      font-size: 2em;
+      color: #ffaa00;
+      margin-bottom: 10px;
+    }
+
+    .success-message {
+      color: #666;
+      font-size: 1.1em;
+      margin-bottom: 30px;
+    }
+
+    .license-key-display {
+      background: #fff;
+      border: 3px solid #ffaa00;
+      border-radius: 12px;
+      padding: 30px;
+      margin-bottom: 24px;
+    }
+
+    .license-key-label {
+      font-size: 1em;
+      color: #666;
+      margin-bottom: 12px;
+    }
+
+    .license-key-value {
+      font-size: 3em;
+      font-family: 'Monaco', 'Consolas', monospace;
+      font-weight: 700;
+      color: #e69500;
+      letter-spacing: 10px;
+    }
+
+    .copy-button {
+      background: #ffaa00;
+      color: white;
+      border: none;
+      padding: 14px 32px;
+      border-radius: 8px;
+      font-size: 1.1em;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .copy-button:hover {
+      background: #ffbb22;
+      transform: translateY(-1px);
+    }
+
+    .instructions {
+      margin-top: 40px;
+      padding: 30px;
+      background: #fff;
+      border-radius: 12px;
+      text-align: left;
+    }
+
+    .instructions h3 {
+      font-size: 1.2em;
+      color: #424242;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .instructions ol {
+      color: #555;
+      padding-left: 24px;
+    }
+
+    .instructions li {
+      margin-bottom: 12px;
+      line-height: 1.5;
+    }
+
+    .instructions li strong {
+      color: #e69500;
+    }
+
+    /* Error State */
+    .error-box {
+      display: none;
+      background: #ffebee;
+      border: 2px solid #f44336;
+      border-radius: 16px;
+      padding: 40px;
+    }
+
+    .error-box.show {
+      display: block;
+    }
+
+    .error-icon {
+      width: 80px;
+      height: 80px;
+      background: #f44336;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 24px auto;
+    }
+
+    .error-icon svg {
+      width: 48px;
+      height: 48px;
+      stroke: white;
+      stroke-width: 3;
+      fill: none;
+    }
+
+    .error-title {
+      font-size: 1.8em;
+      color: #c62828;
+      margin-bottom: 10px;
+    }
+
+    .error-message {
+      color: #666;
+      margin-bottom: 20px;
+    }
+
+    .btn-retry {
+      background: #ffaa00;
+      color: white;
+      border: none;
+      padding: 14px 32px;
+      border-radius: 8px;
+      font-size: 1.1em;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+
+    .btn-retry:hover {
+      background: #ffbb22;
+    }
+
+    /* Support Link */
+    .support-link {
+      margin-top: 30px;
+      color: #999;
+      font-size: 0.95em;
+    }
+
+    .support-link a {
+      color: #ffaa00;
+      text-decoration: none;
+    }
+
+    .support-link a:hover {
+      text-decoration: underline;
+    }
+
+    /* Footer */
+    .footer {
+      padding: 30px 40px;
+      text-align: center;
+      border-top: 1px solid #e0e0e0;
+      color: #999;
+    }
+
+    /* Mobile */
+    @media (max-width: 768px) {
+      .main-content {
+        padding: 40px 20px;
+      }
+
+      .success-box, .error-box {
+        padding: 30px 20px;
+      }
+
+      .license-key-value {
+        font-size: 2em;
+        letter-spacing: 6px;
+      }
+
+      .instructions {
+        padding: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation Bar -->
+  <nav class="nav-bar">
+    <div class="logo-container">
+      <a href="/"><img src="./artwork/Dashie_Full_Logo_Orange_Transparent.png" alt="Dashie" class="logo"></a>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <!-- Loading State -->
+    <div class="loading-state" id="loadingState">
+      <div class="loading-spinner-large"></div>
+      <p class="loading-text">Verifying your purchase...</p>
+    </div>
+
+    <!-- Success State -->
+    <div class="success-box" id="successBox">
+      <div class="success-icon">
+        <svg viewBox="0 0 24 24">
+          <polyline points="20 6 9 17 4 12"></polyline>
+        </svg>
+      </div>
+      <h1 class="success-title">Thank You!</h1>
+      <p class="success-message">Your voice control license is ready.</p>
+      <p class="email-confirmation" id="emailConfirmation" style="display: none; color: #666; font-size: 0.95em; margin-bottom: 20px;">
+        A confirmation email with your license key has been sent to your email address.
+      </p>
+
+      <div class="license-key-display">
+        <div class="license-key-label">Your License Key</div>
+        <div class="license-key-value" id="licenseKeyValue">------</div>
+      </div>
+
+      <button class="copy-button" id="copyBtn">Copy License Key</button>
+
+      <div class="instructions">
+        <h3>Activate Voice Control</h3>
+        <ol>
+          <li>Open <strong>Dashie Lite</strong> on your device</li>
+          <li>Swipe from the left edge to open the sidebar</li>
+          <li>Toggle <strong>"Voice Commands"</strong> ON</li>
+          <li>Tap <strong>"Enter Key"</strong> in the dialog</li>
+          <li>Enter your 6-character license key: <strong id="keyInline">------</strong></li>
+          <li>Tap <strong>"Activate"</strong></li>
+        </ol>
+      </div>
+
+      <div class="support-link">
+        Need help? Contact <a href="mailto:support@dashieapp.com">support@dashieapp.com</a>
+      </div>
+    </div>
+
+    <!-- Error State -->
+    <div class="error-box" id="errorBox">
+      <div class="error-icon">
+        <svg viewBox="0 0 24 24">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </div>
+      <h1 class="error-title">Verification Failed</h1>
+      <p class="error-message" id="errorMessage">We couldn't verify your purchase. Please try again or contact support.</p>
+
+      <a href="/voice-license" class="btn-retry">Try Again</a>
+
+      <div class="support-link">
+        If you were charged, please contact <a href="mailto:support@dashieapp.com">support@dashieapp.com</a> with your receipt.
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>&copy; 2025 Dashie. All rights reserved.</p>
+  </footer>
+
+  <script>
+    // Environment-based Supabase configuration (matches auth-config.js logic)
+    const SUPABASE_ENVIRONMENTS = {
+      production: {
+        url: 'https://cseaywxcvnxcsypaqaid.supabase.co',
+        anonKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNzZWF5d3hjdm54Y3N5cGFxYWlkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTc2MDIxOTEsImV4cCI6MjA3MzE3ODE5MX0.Wnd7XELrtPIDKeTcHVw7dl3awn3BlI0z9ADKPgSfHhA'
+      },
+      development: {
+        url: 'https://cwglbtosingboqepsmjk.supabase.co',
+        anonKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImN3Z2xidG9zaW5nYm9xZXBzbWprIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTc2NDY4NjYsImV4cCI6MjA3MzIyMjg2Nn0.VCP5DSfAwwZMjtPl33bhsixSiu_lHsM6n42FMJRP3YA'
+      }
+    };
+
+    function getSupabaseConfig() {
+      const host = window.location.hostname;
+      // Use dev database for: dev.dashieapp.com, local.dashieapp.com, localhost
+      if (host.includes('dev.') || host.includes('local.') || host === 'localhost' || host.startsWith('127.0.0.1')) {
+        console.log('🔧 Using STAGING Supabase (dev environment)');
+        return SUPABASE_ENVIRONMENTS.development;
+      }
+      console.log('🚀 Using PRODUCTION Supabase');
+      return SUPABASE_ENVIRONMENTS.production;
+    }
+
+    const SUPABASE_CONFIG = getSupabaseConfig();
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const sessionId = urlParams.get('session_id');
+    const deviceId = urlParams.get('device');
+
+    const loadingState = document.getElementById('loadingState');
+    const successBox = document.getElementById('successBox');
+    const errorBox = document.getElementById('errorBox');
+    const licenseKeyValue = document.getElementById('licenseKeyValue');
+    const keyInline = document.getElementById('keyInline');
+    const copyBtn = document.getElementById('copyBtn');
+    const errorMessage = document.getElementById('errorMessage');
+
+    // Verify the checkout session
+    if (sessionId && deviceId) {
+      verifyCheckout();
+    } else {
+      showError('Missing session information. Please try purchasing again.');
+    }
+
+    async function verifyCheckout() {
+      try {
+        const response = await fetch(`${SUPABASE_CONFIG.url}/functions/v1/verify-lite-checkout`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${SUPABASE_CONFIG.anonKey}`
+          },
+          body: JSON.stringify({
+            session_id: sessionId,
+            device_id: deviceId
+          })
+        });
+
+        const data = await response.json();
+
+        if (data.success && data.license_key) {
+          showSuccess(data.license_key);
+        } else {
+          showError(data.error || 'Failed to verify purchase.');
+        }
+      } catch (error) {
+        console.error('Verification error:', error);
+        showError('Network error. Please check your connection.');
+      }
+    }
+
+    function showSuccess(licenseKey) {
+      loadingState.style.display = 'none';
+      successBox.classList.add('show');
+      licenseKeyValue.textContent = licenseKey;
+      keyInline.textContent = licenseKey;
+      // Show email confirmation message (Stripe collects email during checkout)
+      document.getElementById('emailConfirmation').style.display = 'block';
+    }
+
+    function showError(message) {
+      loadingState.style.display = 'none';
+      errorBox.classList.add('show');
+      errorMessage.textContent = message;
+    }
+
+    // Copy button
+    copyBtn.addEventListener('click', function() {
+      const key = licenseKeyValue.textContent;
+      navigator.clipboard.writeText(key).then(() => {
+        copyBtn.textContent = 'Copied!';
+        setTimeout(() => {
+          copyBtn.textContent = 'Copy License Key';
+        }, 2000);
+      });
+    });
+  </script>
+
+  <!-- Analytics -->
+  <script type="module" src="/js/analytics/website-analytics.js"></script>
+</body>
+</html>

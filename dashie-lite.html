@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashie Lite for Home Assistant</title>
+  <link rel="icon" type="image/png" href="./artwork/Dashie_Logo_Orange_Transparent.png">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      line-height: 1.6;
+      background: #ffffff;
+      color: #424242;
+      min-height: 100vh;
+    }
+
+    /* Hero Section */
+    .hero {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 60px 40px 40px 40px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: linear-gradient(135deg, #18bcf2 0%, #0d8bc2 100%);
+      color: white;
+      padding: 8px 20px;
+      border-radius: 20px;
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 30px;
+    }
+
+    .hero-badge img {
+      width: 24px;
+      height: 24px;
+      filter: brightness(0) invert(1);
+    }
+
+    .hero-logo {
+      max-width: 400px;
+      width: 100%;
+      height: auto;
+      margin-bottom: 20px;
+      display: block;
+    }
+
+    .hero .tagline {
+      font-size: 1.4em;
+      color: #666;
+      margin-bottom: 20px;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .hero .description {
+      font-size: 1.1em;
+      color: #555;
+      max-width: 650px;
+      margin: 0 auto 30px auto;
+      line-height: 1.7;
+    }
+
+    .beta-badge {
+      display: inline-block;
+      background: #ffaa00;
+      color: #000;
+      font-size: 0.9em;
+      font-weight: 600;
+      padding: 6px 16px;
+      border-radius: 6px;
+      margin-bottom: 30px;
+    }
+
+    /* Download Section */
+    .download-section {
+      max-width: 700px;
+      margin: 0 auto;
+      padding: 0 40px 60px 40px;
+      text-align: center;
+    }
+
+    .download-box {
+      background: #f9f9f9;
+      border: 2px solid #ffaa00;
+      border-radius: 16px;
+      padding: 40px;
+    }
+
+    .download-box h2 {
+      font-size: 1.8em;
+      color: #424242;
+      margin-bottom: 15px;
+    }
+
+    .download-box p {
+      color: #666;
+      margin-bottom: 25px;
+    }
+
+    .btn-download {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: #ffaa00;
+      color: #ffffff;
+      padding: 16px 40px;
+      border: none;
+      border-radius: 8px;
+      font-size: 1.1em;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+      text-decoration: none;
+    }
+
+    .btn-download:hover {
+      background: #ffbb22;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(255, 170, 0, 0.4);
+    }
+
+    .btn-download svg {
+      width: 24px;
+      height: 24px;
+      stroke: currentColor;
+      stroke-width: 2;
+      fill: none;
+    }
+
+    /* Pricing callout */
+    .pricing-info {
+      margin-top: 30px;
+      padding-top: 25px;
+      border-top: 1px solid #e0e0e0;
+    }
+
+    .pricing-info h3 {
+      font-size: 1.2em;
+      color: #424242;
+      margin-bottom: 10px;
+    }
+
+    .pricing-info p {
+      color: #666;
+      font-size: 1em;
+      margin-bottom: 0;
+    }
+
+    .pricing-info .price {
+      color: #18bcf2;
+      font-weight: 700;
+      font-size: 1.1em;
+    }
+
+    /* Features preview */
+    .features-preview {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 40px;
+      background: #fafafa;
+    }
+
+    .features-preview h2 {
+      text-align: center;
+      font-size: 2em;
+      margin-bottom: 40px;
+      color: #424242;
+    }
+
+    .feature-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+    }
+
+    .feature-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 15px;
+    }
+
+    .feature-icon {
+      width: 40px;
+      height: 40px;
+      background: #18bcf2;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .feature-icon svg {
+      width: 24px;
+      height: 24px;
+      stroke: white;
+      stroke-width: 2;
+      fill: none;
+    }
+
+    .feature-icon.upgrade {
+      background: #ffaa00;
+    }
+
+    .feature-text h3 {
+      font-size: 1.1em;
+      color: #424242;
+      margin-bottom: 5px;
+    }
+
+    .feature-text p {
+      font-size: 0.95em;
+      color: #666;
+    }
+
+    .feature-text .upgrade-tag {
+      display: inline-block;
+      background: #ffaa00;
+      color: #000;
+      font-size: 0.7em;
+      font-weight: 600;
+      padding: 2px 8px;
+      border-radius: 4px;
+      margin-left: 8px;
+      vertical-align: middle;
+    }
+
+    /* Footer */
+    .footer {
+      max-width: 900px;
+      margin: 60px auto 0;
+      padding: 40px;
+      text-align: center;
+      border-top: 1px solid #e0e0e0;
+      color: #999999;
+    }
+
+    .footer-links {
+      margin-top: 20px;
+    }
+
+    .footer-links a {
+      color: #666666;
+      text-decoration: none;
+      margin: 0 15px;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover {
+      color: #ffaa00;
+    }
+
+    /* Mobile Responsive */
+    @media (max-width: 768px) {
+      .hero {
+        padding: 40px 20px 30px 20px;
+      }
+
+      .hero-logo {
+        max-width: 280px;
+      }
+
+      .hero .tagline {
+        font-size: 1.1em;
+      }
+
+      .hero .description {
+        font-size: 1em;
+      }
+
+      .download-section {
+        padding: 0 20px 40px 20px;
+      }
+
+      .download-box {
+        padding: 30px 20px;
+      }
+
+      .features-preview {
+        padding: 40px 20px;
+      }
+
+      .feature-list {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Shared Header/Navigation -->
+  <script src="/components/header.js"></script>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <img src="./artwork/Dashie-lite-Logo-Orange-Gray-Transparent.png" alt="Dashie Lite" class="hero-logo">
+
+    <div class="hero-badge">
+      <img src="./artwork/icon-homeassistant-blue.svg" alt="Home Assistant">
+      For Home Assistant
+    </div>
+
+    <p class="tagline">
+      A free alternative to Fully Kiosk for hosting your dashboards on Android devices. Voice enable it for an even smarter smart home.
+    </p>
+
+    <p class="description">
+      Dashie Lite was designed for easy hosting of Home Assistant dashboards on Android devices.
+      Get your smart home dashboard up and running in minutes with a clean, purpose-built kiosk experience.
+      Add voice activation and say "Hey Dashie" to control your devices.
+    </p>
+
+    <div class="beta-badge">Now in Beta</div>
+  </section>
+
+  <!-- Features preview -->
+  <section class="features-preview">
+    <h2>What's Included</h2>
+    <div class="feature-list">
+      <div class="feature-item">
+        <div class="feature-icon">
+          <svg viewBox="0 0 24 24">
+            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+            <polyline points="9 22 9 12 15 12 15 22"/>
+          </svg>
+        </div>
+        <div class="feature-text">
+          <h3>Home Assistant Integration</h3>
+          <p>Connect directly to your Home Assistant instance and display any dashboard</p>
+        </div>
+      </div>
+
+      <div class="feature-item">
+        <div class="feature-icon">
+          <svg viewBox="0 0 24 24">
+            <rect x="2" y="3" width="20" height="14" rx="2"/>
+            <line x1="8" y1="21" x2="16" y2="21"/>
+            <line x1="12" y1="17" x2="12" y2="21"/>
+          </svg>
+        </div>
+        <div class="feature-text">
+          <h3>Kiosk Mode</h3>
+          <p>Full-screen dashboard display perfect for wall-mounted tablets</p>
+        </div>
+      </div>
+
+      <div class="feature-item">
+        <div class="feature-icon">
+          <svg viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="10"/>
+            <line x1="12" y1="8" x2="12" y2="12"/>
+            <line x1="12" y1="16" x2="12.01" y2="16"/>
+          </svg>
+        </div>
+        <div class="feature-text">
+          <h3>Free to Use</h3>
+          <p>Core functionality is completely free with no subscriptions</p>
+        </div>
+      </div>
+
+      <div class="feature-item">
+        <div class="feature-icon upgrade">
+          <svg viewBox="0 0 24 24">
+            <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z" />
+            <path d="M19 10v2a7 7 0 0 1-14 0v-2M12 19v4M8 23h8" />
+          </svg>
+        </div>
+        <div class="feature-text">
+          <h3>Voice Control <span class="upgrade-tag">Upgrade</span></h3>
+          <p>"Hey Dashie" wake word with AI-powered natural language commands</p>
+        </div>
+      </div>
+
+      <div class="feature-item">
+        <div class="feature-icon">
+          <svg viewBox="0 0 24 24">
+            <rect x="3" y="11" width="18" height="11" rx="2"/>
+            <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+          </svg>
+        </div>
+        <div class="feature-text">
+          <h3>Privacy First</h3>
+          <p>Your data stays in your home - no cloud dependency</p>
+        </div>
+      </div>
+
+      <div class="feature-item">
+        <div class="feature-icon">
+          <svg viewBox="0 0 24 24">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+          </svg>
+        </div>
+        <div class="feature-text">
+          <h3>Screen Management</h3>
+          <p>Auto screen on/off, brightness control, and motion detection support</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Download Section -->
+  <section class="download-section">
+    <div class="download-box">
+      <h2>Get Started</h2>
+      <p>Download the APK and start using Dashie Lite on your Android device today.</p>
+      <a href="/assets/downloads/dashie-lite-latest.apk" class="btn-download">
+        <svg viewBox="0 0 24 24">
+          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+          <polyline points="7 10 12 15 17 10"/>
+          <line x1="12" y1="15" x2="12" y2="3"/>
+        </svg>
+        Download APK
+      </a>
+
+      <div class="tutorial-links" style="margin-top: 20px; text-align: center;">
+        <p style="color: #666; margin-bottom: 10px; font-size: 14px;">Getting Started Guides:</p>
+        <a href="/guides/dashie-lite-features" style="color: #ffaa00; margin: 0 12px; font-size: 14px;">Features Overview</a>
+        <span style="color: #ccc;">|</span>
+        <a href="/guides/voice-control-setup" style="color: #ffaa00; margin: 0 12px; font-size: 14px;">Voice Control Setup</a>
+        <span style="color: #ccc;">|</span>
+        <a href="/guides/fire-tablet-sideload" style="color: #ffaa00; margin: 0 12px; font-size: 14px;">Fire Tablet Sideloading</a>
+      </div>
+
+      <div class="pricing-info">
+        <h3>Want Voice Control?</h3>
+        <p>
+          Upgrade to enable integrated voice control using <strong>"Hey Dashie"</strong> as the wake word.
+          Control your smart home with natural voice commands.
+          <br><br>
+          <span class="price">$12 one-time purchase</span>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>&copy; 2026 Dashie LLC. All rights reserved.</p>
+    <div class="footer-links">
+      <a href="/privacy-policy.html">Privacy Policy</a>
+      <span class="separator">|</span>
+      <a href="/terms-of-service.html">Terms of Service</a>
+    </div>
+  </footer>
+
+  <!-- Analytics -->
+  <script type="module" src="/js/analytics/website-analytics.js"></script>
+</body>
+</html>

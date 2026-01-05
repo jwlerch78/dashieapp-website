@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashie Lite Complete Guide - Dashie</title>
+  <link rel="icon" type="image/png" href="../../artwork/Dashie_Logo_Orange_Transparent.png">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      line-height: 1.6;
+      background: #ffffff;
+      color: #424242;
+      min-height: 100vh;
+    }
+
+    /* Navigation Bar (combined header) */
+    .nav-bar {
+      background: #f8f9fa;
+      padding: 0 40px;
+      border-bottom: 1px solid #e0e0e0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    .nav-bar-left {
+      display: flex;
+      align-items: center;
+      gap: 0;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      padding-right: 20px;
+    }
+
+    .logo {
+      height: 50px;
+      width: auto;
+    }
+
+    .nav-bar ul {
+      display: flex;
+      list-style: none;
+      gap: 0;
+    }
+
+    .nav-bar li a {
+      display: block;
+      padding: 14px 20px;
+      color: #555;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      transition: all 0.2s;
+      border-bottom: 3px solid transparent;
+    }
+
+    .nav-bar li a:hover {
+      color: #ffaa00;
+      background: rgba(255, 170, 0, 0.05);
+    }
+
+    .nav-bar li a.active {
+      color: #ffaa00;
+      border-bottom-color: #ffaa00;
+    }
+
+    .nav-bar li a .beta-tag {
+      display: inline-block;
+      background: #18bcf2;
+      color: white;
+      font-size: 10px;
+      font-weight: 600;
+      padding: 2px 6px;
+      border-radius: 3px;
+      margin-left: 6px;
+      vertical-align: middle;
+    }
+
+    .nav-bar li a .early-access-tag {
+      display: inline-block;
+      background: #ffaa00;
+      color: white;
+      font-size: 10px;
+      font-weight: 600;
+      padding: 2px 6px;
+      border-radius: 3px;
+      margin-left: 6px;
+      vertical-align: middle;
+    }
+
+    .nav-bar-right {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .btn-login {
+      background: #ffaa00;
+      color: #ffffff;
+      padding: 8px 20px;
+      border: none;
+      border-radius: 6px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .btn-login:hover {
+      background: #ffbb22;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(255, 170, 0, 0.3);
+    }
+
+    .btn-signup {
+      background: transparent;
+      color: #ffaa00;
+      padding: 8px 20px;
+      border: 2px solid #ffaa00;
+      border-radius: 6px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .btn-signup:hover {
+      background: #ffaa00;
+      color: #ffffff;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(255, 170, 0, 0.3);
+    }
+
+    /* Breadcrumb */
+    .breadcrumb {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px 40px 0 40px;
+    }
+
+    .breadcrumb a {
+      color: #666;
+      text-decoration: none;
+      font-size: 14px;
+    }
+
+    .breadcrumb a:hover {
+      color: #ffaa00;
+    }
+
+    .breadcrumb span {
+      color: #999;
+      margin: 0 8px;
+    }
+
+    /* Article */
+    .article {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 30px 40px 60px 40px;
+    }
+
+    .article-header {
+      margin-bottom: 40px;
+    }
+
+    .article-tag {
+      display: inline-block;
+      background: #18bcf2;
+      color: white;
+      font-size: 12px;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 4px;
+      margin-bottom: 15px;
+    }
+
+    .article h1 {
+      font-size: 2.2em;
+      color: #424242;
+      margin-bottom: 15px;
+      line-height: 1.3;
+    }
+
+    .article-meta {
+      color: #888;
+      font-size: 14px;
+    }
+
+    .article-content h2 {
+      font-size: 1.5em;
+      color: #424242;
+      margin: 40px 0 20px 0;
+      padding-bottom: 10px;
+      border-bottom: 2px solid #ffaa00;
+    }
+
+    .article-content h3 {
+      font-size: 1.2em;
+      color: #424242;
+      margin: 30px 0 15px 0;
+    }
+
+    .article-content p {
+      margin-bottom: 20px;
+      color: #555;
+    }
+
+    .article-content ul,
+    .article-content ol {
+      margin-bottom: 20px;
+      padding-left: 30px;
+    }
+
+    .article-content li {
+      margin-bottom: 10px;
+      color: #555;
+    }
+
+    .article-content a {
+      color: #ffaa00;
+      text-decoration: none;
+    }
+
+    .article-content a:hover {
+      text-decoration: underline;
+    }
+
+    /* Inline code */
+    code {
+      background: #f4f4f4;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Fira Mono', 'Droid Sans Mono', monospace;
+      font-size: 0.9em;
+      color: #d63384;
+    }
+
+    /* Info boxes */
+    .info-box {
+      padding: 20px;
+      border-radius: 8px;
+      margin: 20px 0;
+    }
+
+    .info-box.warning {
+      background: #fff3cd;
+      border-left: 4px solid #ffc107;
+    }
+
+    .info-box.tip {
+      background: #d1ecf1;
+      border-left: 4px solid #17a2b8;
+    }
+
+    .info-box.important {
+      background: #f8d7da;
+      border-left: 4px solid #dc3545;
+    }
+
+    .info-box h4 {
+      margin-bottom: 10px;
+      color: #424242;
+    }
+
+    .info-box p {
+      margin: 0;
+      color: #555;
+    }
+
+    /* Feature cards */
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      margin: 30px 0;
+    }
+
+    .feature-card {
+      background: #f9f9f9;
+      border-radius: 12px;
+      padding: 25px;
+    }
+
+    .feature-card h4 {
+      font-size: 1.1em;
+      color: #424242;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .feature-card h4 .icon {
+      width: 32px;
+      height: 32px;
+      background: #ffaa00;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .feature-card h4 .icon svg {
+      width: 18px;
+      height: 18px;
+      stroke: white;
+      stroke-width: 2;
+      fill: none;
+    }
+
+    .feature-card p {
+      margin: 0;
+      font-size: 0.95em;
+      color: #666;
+    }
+
+    /* Sidebar diagram */
+    .sidebar-diagram {
+      background: #f9f9f9;
+      border-radius: 12px;
+      padding: 30px;
+      margin: 30px 0;
+    }
+
+    .sidebar-preview {
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+    }
+
+    .sidebar-mock {
+      width: 80px;
+      background: #333;
+      border-radius: 8px;
+      padding: 15px 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      align-items: center;
+      flex-shrink: 0;
+    }
+
+    .sidebar-mock .icon {
+      width: 40px;
+      height: 40px;
+      background: #555;
+      border-radius: 8px;
+    }
+
+    .sidebar-mock .icon.active {
+      background: #ffaa00;
+    }
+
+    .sidebar-description {
+      flex: 1;
+    }
+
+    .sidebar-description h4 {
+      margin-bottom: 10px;
+      color: #424242;
+    }
+
+    .sidebar-description ul {
+      padding-left: 20px;
+      margin: 0;
+    }
+
+    .sidebar-description li {
+      margin-bottom: 8px;
+      color: #555;
+      font-size: 0.95em;
+    }
+
+    /* Settings table */
+    .settings-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+    }
+
+    .settings-table th,
+    .settings-table td {
+      padding: 12px 15px;
+      text-align: left;
+      border-bottom: 1px solid #e0e0e0;
+    }
+
+    .settings-table th {
+      background: #f9f9f9;
+      font-weight: 600;
+      color: #424242;
+    }
+
+    .settings-table td {
+      color: #555;
+    }
+
+    .settings-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    /* Footer */
+    .footer {
+      max-width: 800px;
+      margin: 60px auto 0;
+      padding: 40px;
+      text-align: center;
+      border-top: 1px solid #e0e0e0;
+      color: #999999;
+    }
+
+    .footer-links {
+      margin-top: 20px;
+    }
+
+    .footer-links a {
+      color: #666666;
+      text-decoration: none;
+      margin: 0 15px;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover {
+      color: #ffaa00;
+    }
+
+    /* Table of contents */
+    .toc {
+      background: #f9f9f9;
+      border-radius: 12px;
+      padding: 25px;
+      margin: 30px 0;
+    }
+
+    .toc h3,
+    .toc-content h3 {
+      margin-top: 0;
+      margin-bottom: 15px;
+      color: #424242;
+    }
+
+    .toc ul,
+    .toc-content ul {
+      margin: 0;
+      padding-left: 25px;
+    }
+
+    .toc li {
+      margin-bottom: 8px;
+    }
+
+    .toc a {
+      color: #555;
+      text-decoration: none;
+    }
+
+    .toc a:hover {
+      color: #ffaa00;
+    }
+
+    /* TOC with image inside */
+    .toc-with-image {
+      display: flex;
+      gap: 25px;
+      align-items: flex-start;
+    }
+
+    .toc-with-image .toc-content {
+      flex: 1;
+    }
+
+    .toc-with-image .toc-image {
+      flex: 0 0 auto;
+    }
+
+    .toc-with-image .toc-image img {
+      height: 280px;
+      width: auto;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Full-width screenshot image in content */
+    .screenshot-image {
+      margin: 25px 0;
+    }
+
+    .screenshot-image img {
+      width: 100%;
+      height: auto;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    /* Sidebar section with image */
+    .sidebar-section {
+      display: flex;
+      gap: 25px;
+      align-items: center;
+      margin: 30px 0;
+    }
+
+    .sidebar-section-content {
+      flex: 3;
+    }
+
+    .sidebar-section-content h3 {
+      margin-top: 0;
+    }
+
+    .sidebar-section-image {
+      flex: 1;
+    }
+
+    .sidebar-section-image img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Mobile Responsive */
+    @media (max-width: 768px) {
+      .nav-bar {
+        padding: 10px 15px;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+
+      .nav-bar-left {
+        width: 100%;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+
+      .logo-container {
+        padding-right: 0;
+      }
+
+      .logo {
+        height: 40px;
+      }
+
+      .nav-bar ul {
+        width: 100%;
+        overflow-x: auto;
+        gap: 0;
+      }
+
+      .nav-bar li a {
+        padding: 10px 12px;
+        font-size: 13px;
+        white-space: nowrap;
+      }
+
+      .nav-bar-right {
+        position: absolute;
+        right: 15px;
+        top: 10px;
+      }
+
+      .btn-login, .btn-signup {
+        padding: 6px 14px;
+        font-size: 13px;
+      }
+
+      .breadcrumb,
+      .article {
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+
+      .article h1 {
+        font-size: 1.6em;
+      }
+
+      .sidebar-preview {
+        flex-direction: column;
+      }
+
+      .sidebar-mock {
+        flex-direction: row;
+        width: 100%;
+        justify-content: center;
+      }
+
+      .settings-table {
+        font-size: 0.9em;
+      }
+
+      .settings-table th,
+      .settings-table td {
+        padding: 10px;
+      }
+
+      .toc-with-image {
+        flex-direction: column;
+      }
+
+      .toc-with-image .toc-image {
+        order: -1;
+        text-align: center;
+        width: 100%;
+      }
+
+      .toc-with-image .toc-image img {
+        height: 200px;
+        width: auto;
+      }
+
+      .sidebar-section {
+        flex-direction: column;
+      }
+
+      .sidebar-section-image {
+        order: -1;
+        text-align: center;
+      }
+
+      .sidebar-section-image img {
+        max-width: 200px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation Bar -->
+  <nav class="nav-bar">
+    <div class="nav-bar-left">
+      <div class="logo-container">
+        <a href="/"><img src="../../artwork/Dashie_Full_Logo_Orange_Transparent.png" alt="Dashie" class="logo"></a>
+      </div>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/beta-signup">Dashie <span class="early-access-tag">Early Access</span></a></li>
+        <li><a href="/dashie-lite">Dashie Lite <span class="beta-tag">Beta</span></a></li>
+        <li><a href="/guides/" class="active">How To Guides</a></li>
+        <li><a href="/contact">Contact Us</a></li>
+      </ul>
+    </div>
+    <div class="nav-bar-right">
+      <a href="https://app.dashieapp.com/login" class="btn-login">Sign In</a>
+      <a href="/beta-signup" class="btn-signup">Sign Up</a>
+    </div>
+  </nav>
+
+  <!-- Breadcrumb -->
+  <div class="breadcrumb">
+    <a href="/guides/">How To Guides</a>
+    <span>/</span>
+    <a href="#">Dashie Lite Guide</a>
+  </div>
+
+  <!-- Article -->
+  <article class="article">
+    <header class="article-header">
+      <span class="article-tag">Dashie Lite</span>
+      <h1>Dashie Lite Complete Guide</h1>
+      <p class="article-meta">Last updated: January 2025</p>
+    </header>
+
+    <div class="article-content">
+      <p>
+        Dashie Lite is a free, lightweight Android app designed for hosting Home Assistant dashboards.
+        It provides a clean, full-screen experience with helpful extras like a sidebar for quick access,
+        customizable settings, and optional voice control with the "Hey Dashie" wake word.
+      </p>
+
+      <div class="toc">
+        <div class="toc-with-image">
+          <div class="toc-content">
+            <h3>In This Guide</h3>
+            <ul>
+              <li><a href="#getting-started">Getting Started</a></li>
+              <li><a href="#sidebar">Using the Sidebar</a></li>
+              <li><a href="#voice-control">Voice Control (Upgrade)</a></li>
+              <li><a href="#tips">Tips & Tricks</a></li>
+            </ul>
+          </div>
+          <div class="toc-image">
+            <img src="/website-assets/Dashie-lite-1.png" alt="Dashie Lite landing page">
+          </div>
+        </div>
+      </div>
+
+      <h2 id="getting-started">Getting Started</h2>
+
+      <p>
+        The first step to setting up Home Assistant on Dashie Lite is to configure your URL. There are 2 options to do this:
+      </p>
+
+      <ol>
+        <li><strong>Enter the URL for your dashboard</strong> including parameters to hide unwanted items</li>
+        <li><strong>Autobuild URL:</strong> Dashie Lite looks for your HA instance on the local network. If it doesn't find it, enter your HA base URL manually, the dashboard name, and select which items you'd like to hide (such as the sidebar, search, and assistant).</li>
+      </ol>
+
+      <div class="screenshot-image">
+        <img src="/website-assets/Dashie-lite-2.png" alt="Dashie Lite URL configuration screen">
+      </div>
+
+      <p>
+        After that, click "Launch Dashboard" and you'll be taken to a Home Assistant Login screen.
+        Note, this is not the native login screen on Fire tablets since the animations on that page interfere with the Fire Tablet's keypad.
+      </p>
+
+      <p>
+        Once logged in, your Home Assistant dashboard will display full-screen.
+        Swipe from the left edge to reveal the sidebar.
+      </p>
+
+      <h2 id="sidebar">Using the Sidebar</h2>
+
+      <p>
+        The sidebar provides quick access to essential features without leaving your dashboard.
+        Swipe from the left edge of the screen to reveal it.
+      </p>
+
+      <div class="sidebar-section">
+        <div class="sidebar-section-content">
+          <h3>Audio</h3>
+          <p>
+            If Voice is enabled, this section allows you to set the volume for HA's responses, mute them, or mute your microphone.
+          </p>
+        </div>
+        <div class="sidebar-section-image">
+          <img src="/website-assets/dashie-lite-audio.png" alt="Dashie Lite audio settings">
+        </div>
+      </div>
+
+      <div class="sidebar-section">
+        <div class="sidebar-section-content">
+          <h3>Voice</h3>
+          <p>
+            You can enable voice control here to send voice commands to HA using "Hey Dashie" as the wake word.
+            Responses are read aloud (unless you mute the audio) and displayed on the screen, if the display responses option is enabled.
+          </p>
+        </div>
+        <div class="sidebar-section-image">
+          <img src="/website-assets/dashie-lite-voice.png" alt="Dashie Lite voice settings">
+        </div>
+      </div>
+
+      <div class="sidebar-section">
+        <div class="sidebar-section-content">
+          <h3>Screen</h3>
+          <p>
+            Dashie Lite can be set to keep your screen on, if you disable the Fire tablet's screen saver.
+            You can set a timeout for the screen to dim. Once dim, the screen can be woken up by touching the screen or with motion detection.
+            Optimal motion detection is done with the camera, which requires camera permission.
+            If the camera is not enabled, the brightness sensor will be used.
+          </p>
+        </div>
+        <div class="sidebar-section-image">
+          <img src="/website-assets/dashie-lite-screen.png" alt="Dashie Lite screen settings">
+        </div>
+      </div>
+
+      <div class="sidebar-section">
+        <div class="sidebar-section-content">
+          <h3>System</h3>
+          <p>
+            Dashie Lite supports the Fully Kiosk API commands, which can be enabled here.
+            You can set Dashie Lite to load on boot, though the latest Fire tablets require a swipe to start.
+            There is also the option to stop the status (top) and nav (bottom) bars from being shown with a swipe.
+          </p>
+        </div>
+        <div class="sidebar-section-image">
+          <img src="/website-assets/dashie-lite-system.png" alt="Dashie Lite system settings">
+        </div>
+      </div>
+
+      <h2 id="voice-control">Voice Control (Upgrade)</h2>
+
+      <p>
+        Voice control with "Hey Dashie" wake word detection is available as a $12 upgrade.
+        Once enabled, you can control your Home Assistant devices hands-free.
+      </p>
+
+      <p>Voice control features:</p>
+      <ul>
+        <li><strong>Local wake word detection</strong> - "Hey Dashie" is processed on-device for speed</li>
+        <li><strong>Home Assistant integration</strong> - Uses HA's Assist pipeline for command processing</li>
+        <li><strong>Visual feedback</strong> - On-screen indicators show listening and processing states</li>
+      </ul>
+
+      <p>
+        For setup instructions, see our <a href="/guides/voice-control-setup">Voice Control Setup Guide</a>.
+      </p>
+
+      <h2 id="tips">Tips & Tricks</h2>
+
+      <h3>Stay Awake Setting</h3>
+      <p>
+        In Developer Options, enable "Stay Awake" to prevent screen sleep while charging.
+        This keeps your dashboard always visible when the tablet is plugged in.
+      </p>
+
+      <h3>Auto-Launch on Boot (ADB Commands)</h3>
+      <p>
+        These ADB commands allow Dashie Lite to launch automatically on boot without requiring user intervention.
+        Connect your tablet via USB and run these commands from your computer:
+      </p>
+
+      <div class="code-block">
+        <code><span class="comment"># Grant overlay permission (required for background activity starts)</span><br>
+adb shell appops set com.dashieapp.Dashie.halite SYSTEM_ALERT_WINDOW allow<br><br>
+<span class="comment"># Disable lock screen ads (Amazon Special Offers)</span><br>
+adb shell settings put global LOCKSCREEN_AD_ENABLED 0<br><br>
+<span class="comment"># Disable lock screen entirely (no swipe to unlock)</span><br>
+adb shell locksettings set-disabled true</code>
+      </div>
+
+      <div class="info-box tip">
+        <h4>Note</h4>
+        <p>
+          Even with these settings enabled, the app will not start until the Fire tablet completes its system loading process, which takes approximately 60 seconds after power on.
+        </p>
+      </div>
+
+      <h2>Need Help?</h2>
+
+      <p>
+        If you have questions or run into issues, we're here to help:
+      </p>
+      <ul>
+        <li><a href="/guides/fire-tablet-sideload">Fire Tablet Installation Guide</a></li>
+        <li><a href="/guides/voice-control-setup">Voice Control Setup Guide</a></li>
+        <li><a href="/contact">Contact Support</a></li>
+      </ul>
+    </div>
+  </article>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>&copy; 2026 Dashie LLC. All rights reserved.</p>
+    <div class="footer-links">
+      <a href="/privacy-policy.html">Privacy Policy</a>
+      <span class="separator">|</span>
+      <a href="/terms-of-service.html">Terms of Service</a>
+    </div>
+  </footer>
+
+  <!-- Analytics -->
+  <script type="module" src="/js/analytics/website-analytics.js"></script>
+</body>
+</html>

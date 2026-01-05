@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Join the Dashie Beta</title>
+  <link rel="icon" type="image/png" href="./artwork/Dashie_Logo_Orange_Transparent.png">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      line-height: 1.6;
+      background: #ffffff;
+      color: #424242;
+      min-height: 100vh;
+    }
+
+    /* Hero Section */
+    .hero {
+      max-width: 700px;
+      margin: 0 auto;
+      padding: 80px 40px 40px 40px;
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-size: 2.8em;
+      margin-bottom: 20px;
+      color: #424242;
+    }
+
+    .hero .tagline {
+      font-size: 1.3em;
+      color: #666;
+      margin-bottom: 20px;
+    }
+
+    .beta-badge {
+      display: inline-block;
+      background: #ffaa00;
+      color: #000;
+      font-size: 0.9em;
+      font-weight: 600;
+      padding: 6px 16px;
+      border-radius: 6px;
+    }
+
+    .early-access-description {
+      font-size: 1em;
+      color: #666;
+      margin-top: 20px;
+      line-height: 1.7;
+    }
+
+    .early-access-description a {
+      color: #ffaa00;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .early-access-description a:hover {
+      text-decoration: underline;
+    }
+
+    /* Signup Form Section */
+    .signup-section {
+      max-width: 500px;
+      margin: 0 auto;
+      padding: 40px;
+    }
+
+    .signup-form {
+      background: #f9f9f9;
+      border: 2px solid #ffaa00;
+      border-radius: 16px;
+      padding: 40px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: #424242;
+    }
+
+    .form-group input,
+    .form-group select {
+      width: 100%;
+      padding: 14px 16px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      font-size: 16px;
+      transition: border-color 0.2s;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus {
+      outline: none;
+      border-color: #ffaa00;
+    }
+
+    .form-group .hint {
+      font-size: 13px;
+      color: #888;
+      margin-top: 6px;
+    }
+
+    .checkbox-group {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 8px;
+    }
+
+    .checkbox-label {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: normal;
+      cursor: pointer;
+    }
+
+    .checkbox-label input[type="checkbox"] {
+      width: auto;
+      margin: 0;
+    }
+
+    .btn-submit {
+      width: 100%;
+      background: #ffaa00;
+      color: #ffffff;
+      padding: 16px 32px;
+      border: none;
+      border-radius: 8px;
+      font-size: 1.1em;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+      margin-top: 10px;
+    }
+
+    .btn-submit:hover {
+      background: #ffbb22;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(255, 170, 0, 0.4);
+    }
+
+    /* Benefits Section */
+    .benefits {
+      max-width: 700px;
+      margin: 40px auto;
+      padding: 0 40px;
+    }
+
+    .benefits h2 {
+      text-align: center;
+      font-size: 1.8em;
+      margin-bottom: 30px;
+      color: #424242;
+    }
+
+    .benefits-list {
+      display: grid;
+      gap: 20px;
+    }
+
+    .benefit-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 15px;
+      padding: 20px;
+      background: #f9f9f9;
+      border-radius: 12px;
+    }
+
+    .benefit-icon {
+      width: 40px;
+      height: 40px;
+      background: #ffaa00;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .benefit-icon svg {
+      width: 24px;
+      height: 24px;
+      stroke: white;
+      stroke-width: 2;
+      fill: none;
+    }
+
+    .benefit-text h3 {
+      font-size: 1.1em;
+      color: #424242;
+      margin-bottom: 5px;
+    }
+
+    .benefit-text p {
+      font-size: 0.95em;
+      color: #666;
+    }
+
+    /* Content placeholder */
+    .placeholder-notice {
+      max-width: 600px;
+      margin: 0 auto 40px auto;
+      padding: 20px 40px;
+      text-align: center;
+      background: #fff3cd;
+      border: 1px solid #ffc107;
+      border-radius: 8px;
+      color: #856404;
+      font-size: 14px;
+    }
+
+    /* Footer */
+    .footer {
+      max-width: 700px;
+      margin: 60px auto 0;
+      padding: 40px;
+      text-align: center;
+      border-top: 1px solid #e0e0e0;
+      color: #999999;
+    }
+
+    .footer-links {
+      margin-top: 20px;
+    }
+
+    .footer-links a {
+      color: #666666;
+      text-decoration: none;
+      margin: 0 15px;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover {
+      color: #ffaa00;
+    }
+
+    /* Mobile Responsive */
+    @media (max-width: 768px) {
+      .hero {
+        padding: 50px 20px 30px 20px;
+      }
+
+      .hero h1 {
+        font-size: 2em;
+      }
+
+      .hero .tagline {
+        font-size: 1.1em;
+      }
+
+      .signup-section {
+        padding: 20px;
+      }
+
+      .signup-form {
+        padding: 30px 20px;
+      }
+
+      .benefits {
+        padding: 0 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Shared Header/Navigation -->
+  <script src="/components/header.js"></script>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <h1>Join Dashie Early Access</h1>
+    <p class="tagline">
+      Be among the first to experience the future of family dashboards.
+    </p>
+    <div class="beta-badge">Early Access</div>
+    <p class="early-access-description">
+      Dashie's early release is for users who want to "bring your own device" and requires a Google account for login. Dashie works on Fire TV and Google TV. If you have another Android-based device we can consider it. <a href="/guides/dashie-early-access">Learn more about what's involved in signing up for early access here</a>.
+    </p>
+  </section>
+
+  <!-- Signup Form -->
+  <section class="signup-section">
+    <form class="signup-form" id="early-access-form">
+      <div class="form-group">
+        <label for="name">Your Name</label>
+        <input type="text" id="name" name="name" placeholder="John Smith" required>
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email Address</label>
+        <input type="email" id="email" name="email" placeholder="john@example.com" required>
+        <p class="hint">We'll send your early access invite here</p>
+      </div>
+
+      <div class="form-group">
+        <label for="device">What device do you intend to use for your dashboard?</label>
+        <select id="device" name="device" required>
+          <option value="">Select a device...</option>
+          <option value="fire-tv">Fire TV</option>
+          <option value="google-tv">Google TV</option>
+          <option value="other">Other (specify below)</option>
+        </select>
+      </div>
+
+      <div class="form-group" id="other-device-group" style="display: none;">
+        <label for="other-device">Please specify your device</label>
+        <input type="text" id="other-device" name="other_device" placeholder="e.g., Android tablet, Chromecast">
+      </div>
+
+      <div class="form-group">
+        <label for="has-iphone">Do you have an iPhone for our iOS app?</label>
+        <select id="has-iphone" name="has_iphone" required>
+          <option value="">Select an option...</option>
+          <option value="yes">Yes</option>
+          <option value="no">No</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="has-google">Do you have a Google account?</label>
+        <select id="has-google" name="has_google" required>
+          <option value="">Select an option...</option>
+          <option value="yes">Yes</option>
+          <option value="no">No</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>What calendars do you need support for?</label>
+        <div class="checkbox-group">
+          <label class="checkbox-label">
+            <input type="checkbox" name="calendars" value="google"> Google Calendar
+          </label>
+          <label class="checkbox-label">
+            <input type="checkbox" name="calendars" value="microsoft"> Microsoft / Outlook
+          </label>
+          <label class="checkbox-label">
+            <input type="checkbox" name="calendars" value="apple"> Apple Calendar
+          </label>
+          <label class="checkbox-label">
+            <input type="checkbox" name="calendars" value="other"> Other
+          </label>
+        </div>
+      </div>
+
+      <div class="form-group" id="other-calendar-group" style="display: none;">
+        <label for="other-calendar">Please specify other calendars</label>
+        <input type="text" id="other-calendar" name="other_calendar" placeholder="e.g., Cozi, Fantastical">
+      </div>
+
+      <div class="form-group">
+        <label for="has-home-assistant">Are you a Home Assistant user?</label>
+        <select id="has-home-assistant" name="has_home_assistant" required>
+          <option value="">Select an option...</option>
+          <option value="yes">Yes</option>
+          <option value="no">No</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="interest">What interests you most about Dashie?</label>
+        <select id="interest" name="interest">
+          <option value="">Select an option...</option>
+          <option value="family-dashboard">Family Dashboard Display</option>
+          <option value="voice-assistant">Voice Assistant & AI</option>
+          <option value="chores-rewards">Chores & Rewards System</option>
+          <option value="home-assistant">Home Assistant Integration</option>
+          <option value="all">All of the above!</option>
+        </select>
+      </div>
+
+      <button type="submit" class="btn-submit">Request Early Access</button>
+    </form>
+
+    <div id="form-success" style="display: none; text-align: center; padding: 40px;">
+      <h3 style="color: #28a745; margin-bottom: 15px;">Thank you for your interest!</h3>
+      <p style="color: #666;">We've received your early access request and will be in touch soon.</p>
+    </div>
+  </section>
+
+  <script>
+    // Show/hide other device field
+    document.getElementById('device').addEventListener('change', function() {
+      document.getElementById('other-device-group').style.display =
+        this.value === 'other' ? 'block' : 'none';
+    });
+
+    // Show/hide other calendar field
+    document.querySelectorAll('input[name="calendars"]').forEach(function(checkbox) {
+      checkbox.addEventListener('change', function() {
+        const otherChecked = document.querySelector('input[name="calendars"][value="other"]').checked;
+        document.getElementById('other-calendar-group').style.display =
+          otherChecked ? 'block' : 'none';
+      });
+    });
+
+    // Form submission
+    document.getElementById('early-access-form').addEventListener('submit', async function(e) {
+      e.preventDefault();
+
+      const formData = new FormData(this);
+      const data = {
+        name: formData.get('name'),
+        email: formData.get('email'),
+        device: formData.get('device'),
+        other_device: formData.get('other_device') || null,
+        has_iphone: formData.get('has_iphone'),
+        has_google: formData.get('has_google'),
+        calendars: formData.getAll('calendars'),
+        other_calendar: formData.get('other_calendar') || null,
+        has_home_assistant: formData.get('has_home_assistant'),
+        interest: formData.get('interest')
+      };
+
+      // Supabase anon key (public by design - safe to expose in client code)
+      const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImN3Z2xidG9zaW5nYm9xZXBzbWprIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTc2NDY4NjYsImV4cCI6MjA3MzIyMjg2Nn0.VCP5DSfAwwZMjtPl33bhsixSiu_lHsM6n42FMJRP3YA';
+
+      try {
+        const response = await fetch('https://cwglbtosingboqepsmjk.supabase.co/functions/v1/early-access-signup', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
+            'apikey': SUPABASE_ANON_KEY
+          },
+          body: JSON.stringify(data)
+        });
+
+        if (response.ok) {
+          document.getElementById('early-access-form').style.display = 'none';
+          document.getElementById('form-success').style.display = 'block';
+        } else {
+          const result = await response.json();
+          if (result.error && result.error.includes('already signed up')) {
+            alert('This email address has already signed up for early access. Check your inbox for our confirmation email, or contact us if you need help.');
+          } else {
+            alert(result.error || 'There was an error submitting your request. Please try again.');
+          }
+        }
+      } catch (error) {
+        alert('There was an error submitting your request. Please try again.');
+      }
+    });
+  </script>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>&copy; 2026 Dashie LLC. All rights reserved.</p>
+    <div class="footer-links">
+      <a href="/privacy-policy.html">Privacy Policy</a>
+      <span class="separator">|</span>
+      <a href="/terms-of-service.html">Terms of Service</a>
+    </div>
+  </footer>
+
+  <!-- Analytics -->
+  <script type="module" src="/js/analytics/website-analytics.js"></script>
+</body>
+</html>

@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Getting Started with Dashie Early Access - Dashie</title>
+  <link rel="icon" type="image/png" href="../../artwork/Dashie_Logo_Orange_Transparent.png">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      line-height: 1.6;
+      background: #ffffff;
+      color: #424242;
+      min-height: 100vh;
+    }
+
+    /* Navigation Bar (combined header) */
+    .nav-bar {
+      background: #f8f9fa;
+      padding: 0 40px;
+      border-bottom: 1px solid #e0e0e0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    .nav-bar-left {
+      display: flex;
+      align-items: center;
+      gap: 0;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      padding-right: 20px;
+    }
+
+    .logo {
+      height: 50px;
+      width: auto;
+    }
+
+    .nav-bar ul {
+      display: flex;
+      list-style: none;
+      gap: 0;
+    }
+
+    .nav-bar li a {
+      display: block;
+      padding: 14px 20px;
+      color: #555;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      transition: all 0.2s;
+      border-bottom: 3px solid transparent;
+    }
+
+    .nav-bar li a:hover {
+      color: #ffaa00;
+      background: rgba(255, 170, 0, 0.05);
+    }
+
+    .nav-bar li a.active {
+      color: #ffaa00;
+      border-bottom-color: #ffaa00;
+    }
+
+    .nav-bar li a .beta-tag {
+      display: inline-block;
+      background: #18bcf2;
+      color: white;
+      font-size: 10px;
+      font-weight: 600;
+      padding: 2px 6px;
+      border-radius: 3px;
+      margin-left: 6px;
+      vertical-align: middle;
+    }
+
+    .nav-bar li a .early-access-tag {
+      display: inline-block;
+      background: #ffaa00;
+      color: white;
+      font-size: 10px;
+      font-weight: 600;
+      padding: 2px 6px;
+      border-radius: 3px;
+      margin-left: 6px;
+      vertical-align: middle;
+    }
+
+    .nav-bar-right {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .btn-login {
+      background: #ffaa00;
+      color: #ffffff;
+      padding: 8px 20px;
+      border: none;
+      border-radius: 6px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .btn-login:hover {
+      background: #ffbb22;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(255, 170, 0, 0.3);
+    }
+
+    .btn-signup {
+      background: transparent;
+      color: #ffaa00;
+      padding: 8px 20px;
+      border: 2px solid #ffaa00;
+      border-radius: 6px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .btn-signup:hover {
+      background: #ffaa00;
+      color: #ffffff;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(255, 170, 0, 0.3);
+    }
+
+    /* Breadcrumb */
+    .breadcrumb {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px 40px 0 40px;
+    }
+
+    .breadcrumb a {
+      color: #ffaa00;
+      text-decoration: none;
+    }
+
+    .breadcrumb a:hover {
+      text-decoration: underline;
+    }
+
+    .breadcrumb span {
+      color: #999;
+      margin: 0 8px;
+    }
+
+    /* Article */
+    .article {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 30px 40px 60px 40px;
+    }
+
+    .article-header {
+      margin-bottom: 30px;
+    }
+
+    .article-tag {
+      display: inline-block;
+      background: #ffaa00;
+      color: white;
+      font-size: 12px;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 4px;
+      margin-bottom: 15px;
+    }
+
+    .article h1 {
+      font-size: 2.2em;
+      color: #424242;
+      margin-bottom: 10px;
+    }
+
+    .article-meta {
+      color: #888;
+      font-size: 14px;
+    }
+
+    .article-content {
+      font-size: 1.05em;
+    }
+
+    .article-content p {
+      margin-bottom: 20px;
+    }
+
+    .article-content a {
+      color: #ffaa00;
+      text-decoration: none;
+    }
+
+    .article-content a:hover {
+      text-decoration: underline;
+    }
+
+    /* Coming Soon Notice */
+    .coming-soon-notice {
+      background: #fff8e6;
+      border: 2px solid #ffaa00;
+      border-radius: 12px;
+      padding: 40px;
+      text-align: center;
+      margin: 40px 0;
+    }
+
+    .coming-soon-notice h2 {
+      color: #ffaa00;
+      font-size: 1.5em;
+      margin-bottom: 15px;
+    }
+
+    .coming-soon-notice p {
+      color: #666;
+      font-size: 1.1em;
+      margin-bottom: 0;
+    }
+
+    .coming-soon-notice a {
+      color: #ffaa00;
+      font-weight: 600;
+    }
+
+    /* Footer */
+    .footer {
+      max-width: 800px;
+      margin: 60px auto 0;
+      padding: 40px;
+      text-align: center;
+      border-top: 1px solid #e0e0e0;
+      color: #999999;
+    }
+
+    .footer-links {
+      margin-top: 20px;
+    }
+
+    .footer-links a {
+      color: #666666;
+      text-decoration: none;
+      margin: 0 15px;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover {
+      color: #ffaa00;
+    }
+
+    /* Mobile Responsive */
+    @media (max-width: 768px) {
+      .nav-bar {
+        padding: 10px 15px;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+
+      .nav-bar-left {
+        width: 100%;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+
+      .logo-container {
+        padding-right: 0;
+      }
+
+      .logo {
+        height: 40px;
+      }
+
+      .nav-bar ul {
+        width: 100%;
+        overflow-x: auto;
+        gap: 0;
+      }
+
+      .nav-bar li a {
+        padding: 10px 12px;
+        font-size: 13px;
+        white-space: nowrap;
+      }
+
+      .nav-bar-right {
+        position: absolute;
+        right: 15px;
+        top: 10px;
+      }
+
+      .btn-login, .btn-signup {
+        padding: 6px 14px;
+        font-size: 13px;
+      }
+
+      .breadcrumb,
+      .article {
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+
+      .article h1 {
+        font-size: 1.6em;
+      }
+
+      .coming-soon-notice {
+        padding: 30px 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation Bar -->
+  <nav class="nav-bar">
+    <div class="nav-bar-left">
+      <div class="logo-container">
+        <a href="/"><img src="../../artwork/Dashie_Full_Logo_Orange_Transparent.png" alt="Dashie" class="logo"></a>
+      </div>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/beta-signup">Dashie <span class="early-access-tag">Early Access</span></a></li>
+        <li><a href="/dashie-lite">Dashie Lite <span class="beta-tag">Beta</span></a></li>
+        <li><a href="/guides/" class="active">How To Guides</a></li>
+        <li><a href="/contact">Contact Us</a></li>
+      </ul>
+    </div>
+    <div class="nav-bar-right">
+      <a href="https://app.dashieapp.com/login" class="btn-login">Sign In</a>
+      <a href="/beta-signup" class="btn-signup">Sign Up</a>
+    </div>
+  </nav>
+
+  <!-- Breadcrumb -->
+  <div class="breadcrumb">
+    <a href="/guides/">How To Guides</a>
+    <span>/</span>
+    <a href="#">Dashie Early Access</a>
+  </div>
+
+  <!-- Article -->
+  <article class="article">
+    <header class="article-header">
+      <span class="article-tag">Dashie</span>
+      <h1>Getting Started with Dashie Early Access</h1>
+      <p class="article-meta">Coming Soon</p>
+    </header>
+
+    <div class="article-content">
+      <div class="coming-soon-notice">
+        <h2>Guide Coming Soon</h2>
+        <p>
+          This guide is currently being written. It will cover everything you need to know about signing up for Dashie Early Access, including device requirements, setup process, and what to expect.
+        </p>
+      </div>
+
+      <p>
+        In the meantime, if you're interested in joining Dashie Early Access, you can <a href="/beta-signup">sign up here</a> or <a href="/contact">contact us</a> with any questions.
+      </p>
+    </div>
+  </article>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>&copy; 2026 Dashie LLC. All rights reserved.</p>
+    <div class="footer-links">
+      <a href="/privacy-policy.html">Privacy Policy</a>
+      <span class="separator">|</span>
+      <a href="/terms-of-service.html">Terms of Service</a>
+    </div>
+  </footer>
+
+  <!-- Analytics -->
+  <script type="module" src="/js/analytics/website-analytics.js"></script>
+</body>
+</html>

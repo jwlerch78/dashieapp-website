@@ -1,0 +1,816 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Voice License - Dashie Lite</title>
+  <link rel="icon" type="image/png" href="./artwork/Dashie_Logo_Orange_Transparent.png">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      line-height: 1.6;
+      background: #ffffff;
+      color: #424242;
+      min-height: 100vh;
+    }
+
+    /* Navigation Bar */
+    .nav-bar {
+      background: #f8f9fa;
+      padding: 0 40px;
+      border-bottom: 1px solid #e0e0e0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    .nav-bar-left {
+      display: flex;
+      align-items: center;
+      gap: 0;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      padding-right: 20px;
+    }
+
+    .logo {
+      height: 50px;
+      width: auto;
+    }
+
+    .nav-bar ul {
+      display: flex;
+      list-style: none;
+      gap: 0;
+    }
+
+    .nav-bar li a {
+      display: block;
+      padding: 14px 20px;
+      color: #555;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      transition: all 0.2s;
+      border-bottom: 3px solid transparent;
+    }
+
+    .nav-bar li a:hover {
+      color: #ffaa00;
+      background: rgba(255, 170, 0, 0.05);
+    }
+
+    .nav-bar li a.active {
+      color: #ffaa00;
+      border-bottom-color: #ffaa00;
+    }
+
+    .nav-bar li a .beta-tag {
+      display: inline-block;
+      background: #18bcf2;
+      color: white;
+      font-size: 10px;
+      font-weight: 600;
+      padding: 2px 6px;
+      border-radius: 3px;
+      margin-left: 6px;
+      vertical-align: middle;
+    }
+
+    .nav-bar li a .early-access-tag {
+      display: inline-block;
+      background: #ffaa00;
+      color: white;
+      font-size: 10px;
+      font-weight: 600;
+      padding: 2px 6px;
+      border-radius: 3px;
+      margin-left: 6px;
+      vertical-align: middle;
+    }
+
+    .nav-bar-right {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .btn-login {
+      background: #ffaa00;
+      color: #ffffff;
+      padding: 8px 20px;
+      border: none;
+      border-radius: 6px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .btn-login:hover {
+      background: #ffbb22;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(255, 170, 0, 0.3);
+    }
+
+    /* Main Content */
+    .main-content {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 60px 40px;
+    }
+
+    .page-title {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .page-title h1 {
+      font-size: 2.2em;
+      color: #424242;
+      margin-bottom: 10px;
+    }
+
+    .page-title p {
+      font-size: 1.1em;
+      color: #666;
+    }
+
+    /* Purchase Box */
+    .purchase-box {
+      background: #f9f9f9;
+      border: 2px solid #ffaa00;
+      border-radius: 16px;
+      padding: 40px;
+      text-align: center;
+    }
+
+    .price-display {
+      font-size: 3em;
+      font-weight: 700;
+      color: #ffaa00;
+      margin-bottom: 5px;
+    }
+
+    .price-label {
+      color: #666;
+      font-size: 1.1em;
+      margin-bottom: 30px;
+    }
+
+    /* Device ID Section */
+    .device-id-section {
+      background: #fff;
+      border: 1px solid #e0e0e0;
+      border-radius: 8px;
+      padding: 20px;
+      margin-bottom: 30px;
+    }
+
+    .device-id-label {
+      font-size: 0.9em;
+      color: #666;
+      margin-bottom: 8px;
+    }
+
+    .device-id-input-row {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .device-id-input {
+      flex: 1;
+      font-size: 1.4em;
+      font-family: 'Monaco', 'Consolas', monospace;
+      padding: 12px 16px;
+      border: 2px solid #e0e0e0;
+      border-radius: 8px;
+      text-align: center;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      background: #fafafa;
+    }
+
+    .device-id-input:focus {
+      outline: none;
+      border-color: #ffaa00;
+      background: #fff;
+    }
+
+    .device-id-input.valid {
+      border-color: #4CAF50;
+      background: #f1f8e9;
+    }
+
+    .device-id-hint {
+      font-size: 0.85em;
+      color: #999;
+      margin-top: 10px;
+    }
+
+    /* Purchase Button */
+    .btn-purchase {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      background: #ffaa00;
+      color: #ffffff;
+      padding: 16px 48px;
+      border: none;
+      border-radius: 8px;
+      font-size: 1.2em;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+      width: 100%;
+      max-width: 300px;
+    }
+
+    .btn-purchase:hover:not(:disabled) {
+      background: #ffbb22;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(255, 170, 0, 0.4);
+    }
+
+    .btn-purchase:disabled {
+      background: #ccc;
+      cursor: not-allowed;
+    }
+
+    .btn-purchase svg {
+      width: 24px;
+      height: 24px;
+      stroke: currentColor;
+      stroke-width: 2;
+      fill: none;
+    }
+
+    /* Success State */
+    .success-box {
+      display: none;
+      background: #e8f5e9;
+      border: 2px solid #4CAF50;
+      border-radius: 16px;
+      padding: 40px;
+      text-align: center;
+    }
+
+    .success-box.show {
+      display: block;
+    }
+
+    .success-icon {
+      width: 64px;
+      height: 64px;
+      background: #4CAF50;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px auto;
+    }
+
+    .success-icon svg {
+      width: 36px;
+      height: 36px;
+      stroke: white;
+      stroke-width: 3;
+      fill: none;
+    }
+
+    .success-title {
+      font-size: 1.8em;
+      color: #2E7D32;
+      margin-bottom: 10px;
+    }
+
+    .success-message {
+      color: #666;
+      margin-bottom: 30px;
+    }
+
+    .license-key-display {
+      background: #fff;
+      border: 2px solid #4CAF50;
+      border-radius: 12px;
+      padding: 24px;
+      margin-bottom: 20px;
+    }
+
+    .license-key-label {
+      font-size: 0.9em;
+      color: #666;
+      margin-bottom: 8px;
+    }
+
+    .license-key-value {
+      font-size: 2.5em;
+      font-family: 'Monaco', 'Consolas', monospace;
+      font-weight: 700;
+      color: #2E7D32;
+      letter-spacing: 8px;
+    }
+
+    .copy-button {
+      background: #4CAF50;
+      color: white;
+      border: none;
+      padding: 10px 24px;
+      border-radius: 6px;
+      font-size: 1em;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .copy-button:hover {
+      background: #43A047;
+    }
+
+    .instructions {
+      margin-top: 30px;
+      padding-top: 20px;
+      border-top: 1px solid #c8e6c9;
+      text-align: left;
+    }
+
+    .instructions h3 {
+      font-size: 1.1em;
+      color: #424242;
+      margin-bottom: 15px;
+    }
+
+    .instructions ol {
+      color: #666;
+      padding-left: 20px;
+    }
+
+    .instructions li {
+      margin-bottom: 8px;
+    }
+
+    /* Error State */
+    .error-message {
+      display: none;
+      background: #ffebee;
+      color: #c62828;
+      padding: 12px 16px;
+      border-radius: 8px;
+      margin-top: 20px;
+      font-size: 0.95em;
+    }
+
+    .error-message.show {
+      display: block;
+    }
+
+    /* Loading State */
+    .loading-spinner {
+      display: none;
+      width: 24px;
+      height: 24px;
+      border: 3px solid #fff;
+      border-top-color: transparent;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    .btn-purchase.loading .loading-spinner {
+      display: block;
+    }
+
+    .btn-purchase.loading .btn-text {
+      display: none;
+    }
+
+    /* Info Section */
+    .info-section {
+      margin-top: 40px;
+      padding: 30px;
+      background: #fafafa;
+      border-radius: 12px;
+    }
+
+    .info-section h3 {
+      font-size: 1.2em;
+      color: #424242;
+      margin-bottom: 15px;
+    }
+
+    .info-section ul {
+      list-style: none;
+      color: #666;
+    }
+
+    .info-section li {
+      padding: 8px 0;
+      padding-left: 24px;
+      position: relative;
+    }
+
+    .info-section li::before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      color: #4CAF50;
+      font-weight: bold;
+    }
+
+    /* Support Link */
+    .support-link {
+      text-align: center;
+      margin-top: 30px;
+      color: #999;
+      font-size: 0.9em;
+    }
+
+    .support-link a {
+      color: #ffaa00;
+      text-decoration: none;
+    }
+
+    .support-link a:hover {
+      text-decoration: underline;
+    }
+
+    /* Footer */
+    .footer {
+      max-width: 600px;
+      margin: 60px auto 0;
+      padding: 40px;
+      text-align: center;
+      border-top: 1px solid #e0e0e0;
+      color: #999999;
+    }
+
+    .footer-links a {
+      color: #666666;
+      text-decoration: none;
+      margin: 0 15px;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover {
+      color: #ffaa00;
+    }
+
+    /* Mobile Responsive */
+    @media (max-width: 768px) {
+      .nav-bar {
+        padding: 10px 15px;
+        flex-wrap: wrap;
+      }
+
+      .nav-bar-left {
+        width: 100%;
+        justify-content: space-between;
+      }
+
+      .nav-bar ul {
+        display: none;
+      }
+
+      .nav-bar-right {
+        position: absolute;
+        right: 15px;
+        top: 10px;
+      }
+
+      .main-content {
+        padding: 40px 20px;
+      }
+
+      .purchase-box, .success-box {
+        padding: 30px 20px;
+      }
+
+      .price-display {
+        font-size: 2.5em;
+      }
+
+      .license-key-value {
+        font-size: 1.8em;
+        letter-spacing: 4px;
+      }
+
+      .device-id-input {
+        font-size: 1.2em;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation Bar -->
+  <nav class="nav-bar">
+    <div class="nav-bar-left">
+      <div class="logo-container">
+        <a href="/"><img src="./artwork/Dashie_Full_Logo_Orange_Transparent.png" alt="Dashie" class="logo"></a>
+      </div>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/beta-signup">Dashie <span class="early-access-tag">Early Access</span></a></li>
+        <li><a href="/dashie-lite" class="active">Dashie Lite <span class="beta-tag">Beta</span></a></li>
+        <li><a href="/guides/">How To Guides</a></li>
+        <li><a href="/contact">Contact Us</a></li>
+      </ul>
+    </div>
+    <div class="nav-bar-right">
+      <a href="/dashie-lite" class="btn-login">Back to Dashie Lite</a>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <div class="page-title">
+      <h1>Voice Control License</h1>
+      <p>Unlock voice commands for Dashie Lite</p>
+    </div>
+
+    <!-- Purchase Box (shown before purchase) -->
+    <div class="purchase-box" id="purchaseBox">
+      <div class="price-display">$12</div>
+      <div class="price-label">One-time purchase per device</div>
+
+      <div class="device-id-section">
+        <div class="device-id-label">Your Device ID</div>
+        <div class="device-id-input-row">
+          <input type="text"
+                 id="deviceIdInput"
+                 class="device-id-input"
+                 placeholder="XXXXXXXX"
+                 maxlength="8"
+                 autocomplete="off"
+                 spellcheck="false">
+        </div>
+        <div class="device-id-hint">
+          Find this in Dashie Lite: Sidebar → System → Device ID
+        </div>
+      </div>
+
+      <button class="btn-purchase" id="purchaseBtn" disabled>
+        <span class="btn-text">Purchase License</span>
+        <div class="loading-spinner"></div>
+      </button>
+
+      <div class="error-message" id="errorMessage"></div>
+    </div>
+
+    <!-- Success Box (shown after purchase) -->
+    <div class="success-box" id="successBox">
+      <div class="success-icon">
+        <svg viewBox="0 0 24 24">
+          <polyline points="20 6 9 17 4 12"></polyline>
+        </svg>
+      </div>
+      <h2 class="success-title">Purchase Complete!</h2>
+      <p class="success-message">Your license key is ready. Enter it in Dashie Lite to activate voice control.</p>
+
+      <div class="license-key-display">
+        <div class="license-key-label">Your License Key</div>
+        <div class="license-key-value" id="licenseKeyValue">------</div>
+      </div>
+
+      <button class="copy-button" id="copyBtn">Copy License Key</button>
+
+      <div class="instructions">
+        <h3>How to activate:</h3>
+        <ol>
+          <li>Open Dashie Lite on your device</li>
+          <li>Swipe from left edge to open the sidebar</li>
+          <li>Toggle "Voice Commands" ON</li>
+          <li>Tap "Enter Key" and enter your license key</li>
+          <li>Say "Hey Dashie" to start using voice commands!</li>
+        </ol>
+      </div>
+    </div>
+
+    <!-- Info Section -->
+    <div class="info-section">
+      <h3>What you get:</h3>
+      <ul>
+        <li>"Hey Dashie" wake word detection</li>
+        <li>AI-powered natural language commands</li>
+        <li>Control your Home Assistant devices by voice</li>
+        <li>Works offline after activation</li>
+        <li>Lifetime license for this device</li>
+      </ul>
+    </div>
+
+    <div class="support-link">
+      Questions? Contact us at <a href="mailto:support@dashieapp.com">support@dashieapp.com</a>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>&copy; 2025 Dashie. All rights reserved.</p>
+    <div class="footer-links">
+      <a href="/privacy-policy.html">Privacy Policy</a>
+      <span style="color: #ccc;">|</span>
+      <a href="/terms-of-service.html">Terms of Service</a>
+    </div>
+  </footer>
+
+  <script>
+    // Environment-based Supabase configuration (matches auth-config.js logic)
+    const SUPABASE_ENVIRONMENTS = {
+      production: {
+        url: 'https://cseaywxcvnxcsypaqaid.supabase.co',
+        anonKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNzZWF5d3hjdm54Y3N5cGFxYWlkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTc2MDIxOTEsImV4cCI6MjA3MzE3ODE5MX0.Wnd7XELrtPIDKeTcHVw7dl3awn3BlI0z9ADKPgSfHhA'
+      },
+      development: {
+        url: 'https://cwglbtosingboqepsmjk.supabase.co',
+        anonKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImN3Z2xidG9zaW5nYm9xZXBzbWprIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTc2NDY4NjYsImV4cCI6MjA3MzIyMjg2Nn0.VCP5DSfAwwZMjtPl33bhsixSiu_lHsM6n42FMJRP3YA'
+      }
+    };
+
+    function getSupabaseConfig() {
+      const host = window.location.hostname;
+      // Use dev database for: dev.dashieapp.com, local.dashieapp.com, localhost
+      if (host.includes('dev.') || host.includes('local.') || host === 'localhost' || host.startsWith('127.0.0.1')) {
+        console.log('🔧 Using STAGING Supabase (dev environment)');
+        return SUPABASE_ENVIRONMENTS.development;
+      }
+      console.log('🚀 Using PRODUCTION Supabase');
+      return SUPABASE_ENVIRONMENTS.production;
+    }
+
+    const SUPABASE_CONFIG = getSupabaseConfig();
+
+    // Get device ID from URL parameter
+    const urlParams = new URLSearchParams(window.location.search);
+    const deviceIdFromUrl = urlParams.get('device');
+
+    const deviceIdInput = document.getElementById('deviceIdInput');
+    const purchaseBtn = document.getElementById('purchaseBtn');
+    const errorMessage = document.getElementById('errorMessage');
+    const purchaseBox = document.getElementById('purchaseBox');
+    const successBox = document.getElementById('successBox');
+    const licenseKeyValue = document.getElementById('licenseKeyValue');
+    const copyBtn = document.getElementById('copyBtn');
+
+    // Pre-fill device ID if provided in URL
+    if (deviceIdFromUrl) {
+      deviceIdInput.value = deviceIdFromUrl.toUpperCase();
+      validateDeviceId();
+    }
+
+    // Validate device ID on input
+    deviceIdInput.addEventListener('input', function() {
+      this.value = this.value.toUpperCase().replace(/[^A-Z0-9]/g, '');
+      validateDeviceId();
+    });
+
+    function validateDeviceId() {
+      const deviceId = deviceIdInput.value;
+      const isValid = deviceId.length === 8 && /^[A-Z0-9]+$/.test(deviceId);
+
+      deviceIdInput.classList.toggle('valid', isValid);
+      purchaseBtn.disabled = !isValid;
+    }
+
+    // Purchase button click
+    purchaseBtn.addEventListener('click', async function() {
+      const deviceId = deviceIdInput.value;
+
+      if (deviceId.length !== 8) {
+        showError('Please enter a valid 8-character Device ID');
+        return;
+      }
+
+      // Show loading state
+      purchaseBtn.classList.add('loading');
+      purchaseBtn.disabled = true;
+      hideError();
+
+      try {
+        // Create Stripe checkout session
+        const response = await fetch(`${SUPABASE_CONFIG.url}/functions/v1/create-lite-checkout`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${SUPABASE_CONFIG.anonKey}`
+          },
+          body: JSON.stringify({
+            device_id: deviceId,
+            success_url: window.location.origin + '/voice-license-success?device=' + deviceId + '&session_id={CHECKOUT_SESSION_ID}',
+            cancel_url: window.location.href
+          })
+        });
+
+        const data = await response.json();
+
+        if (data.checkout_url) {
+          // Redirect to Stripe checkout
+          window.location.href = data.checkout_url;
+        } else if (data.error) {
+          showError(data.error);
+          purchaseBtn.classList.remove('loading');
+          purchaseBtn.disabled = false;
+        } else {
+          showError('Failed to create checkout session. Please try again.');
+          purchaseBtn.classList.remove('loading');
+          purchaseBtn.disabled = false;
+        }
+      } catch (error) {
+        console.error('Checkout error:', error);
+        showError('Network error. Please check your connection and try again.');
+        purchaseBtn.classList.remove('loading');
+        purchaseBtn.disabled = false;
+      }
+    });
+
+    // Copy license key
+    copyBtn.addEventListener('click', function() {
+      const key = licenseKeyValue.textContent;
+      navigator.clipboard.writeText(key).then(() => {
+        copyBtn.textContent = 'Copied!';
+        setTimeout(() => {
+          copyBtn.textContent = 'Copy License Key';
+        }, 2000);
+      });
+    });
+
+    function showError(message) {
+      errorMessage.textContent = message;
+      errorMessage.classList.add('show');
+    }
+
+    function hideError() {
+      errorMessage.classList.remove('show');
+    }
+
+    function showSuccess(licenseKey) {
+      purchaseBox.style.display = 'none';
+      successBox.classList.add('show');
+      licenseKeyValue.textContent = licenseKey;
+    }
+
+    // Check if returning from successful checkout
+    const sessionId = urlParams.get('session_id');
+    if (sessionId && deviceIdFromUrl) {
+      // Verify the session and get the license key
+      verifyCheckoutSession(sessionId, deviceIdFromUrl);
+    }
+
+    async function verifyCheckoutSession(sessionId, deviceId) {
+      purchaseBtn.classList.add('loading');
+      purchaseBtn.disabled = true;
+
+      try {
+        const response = await fetch(`${SUPABASE_CONFIG.url}/functions/v1/verify-lite-checkout`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${SUPABASE_CONFIG.anonKey}`
+          },
+          body: JSON.stringify({
+            session_id: sessionId,
+            device_id: deviceId
+          })
+        });
+
+        const data = await response.json();
+
+        if (data.success && data.license_key) {
+          showSuccess(data.license_key);
+        } else {
+          showError(data.error || 'Failed to verify purchase. Please contact support.');
+          purchaseBtn.classList.remove('loading');
+          purchaseBtn.disabled = false;
+        }
+      } catch (error) {
+        console.error('Verification error:', error);
+        showError('Failed to verify purchase. Please contact support@dashieapp.com');
+        purchaseBtn.classList.remove('loading');
+        purchaseBtn.disabled = false;
+      }
+    }
+  </script>
+
+  <!-- Analytics -->
+  <script type="module" src="/js/analytics/website-analytics.js"></script>
+</body>
+</html>
