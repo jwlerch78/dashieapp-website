@@ -386,6 +386,26 @@
         </select>
       </div>
 
+      <div class="form-group">
+        <label for="referral-source">How did you learn about Dashie?</label>
+        <select id="referral-source" name="referral_source">
+          <option value="">Select an option...</option>
+          <option value="reddit">Reddit</option>
+          <option value="google">Google/web search</option>
+          <option value="ai-chatgpt">AI: ChatGPT</option>
+          <option value="ai-claude">AI: Claude</option>
+          <option value="ai-gemini">AI: Gemini</option>
+          <option value="ai-other">AI: Other</option>
+          <option value="friend">Friend</option>
+          <option value="other">Other</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="additional-info">Any other information you'd like to share about your interest?</label>
+        <textarea id="additional-info" name="additional_info" rows="4" placeholder="Tell us more about how you plan to use Dashie, or anything else you'd like us to know..." style="width: 100%; padding: 14px 16px; border: 1px solid #ddd; border-radius: 8px; font-size: 16px; font-family: inherit; resize: vertical;"></textarea>
+      </div>
+
       <button type="submit" class="btn-submit">Request Early Access</button>
     </form>
 
@@ -426,7 +446,9 @@
         calendars: formData.getAll('calendars'),
         other_calendar: formData.get('other_calendar') || null,
         has_home_assistant: formData.get('has_home_assistant'),
-        interest: formData.get('interest')
+        interest: formData.get('interest'),
+        referral_source: formData.get('referral_source') || null,
+        additional_info: formData.get('additional_info') || null
       };
 
       // Supabase anon key (public by design - safe to expose in client code)
