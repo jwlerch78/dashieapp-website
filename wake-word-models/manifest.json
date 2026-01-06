@@ -1,0 +1,24 @@
+{
+  "manifest_version": 1,
+  "models": [
+    {
+      "id": "hey_dashie_v3.2",
+      "name": "Hey Dashie",
+      "version": "3.2",
+      "wake_phrase": "Hey Dashie",
+      "url": "https://dashieapp.com/wake-word-models/hey_dashie_v3.2.tflite",
+      "size_kb": 624,
+      "label_name": "hey_dashie",
+      "default": true
+    },
+    {
+      "id": "hey_dashie_v1.0",
+      "name": "Hey Dashie (Legacy)",
+      "version": "1.0",
+      "wake_phrase": "Hey Dashie",
+      "url": "https://dashieapp.com/wake-word-models/hey_dashie_v1.0.tflite",
+      "size_kb": 624,
+      "label_name": "hey_dashie"
+    }
+  ]
+}
