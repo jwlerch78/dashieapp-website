@@ -35,11 +35,18 @@
       color: #424242;
     }
 
+    .hero-logo-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 25px;
+    }
+
     .hero-logo {
       max-width: 300px;
       width: 100%;
       height: auto;
-      margin-bottom: 15px;
+      margin-bottom: 10px;
     }
 
     .beta-badge {
@@ -50,7 +57,6 @@
       font-weight: 600;
       padding: 4px 14px;
       border-radius: 4px;
-      margin-bottom: 25px;
     }
 
     .hero-description {
@@ -238,8 +244,10 @@
   <!-- Hero Section -->
   <section class="hero">
     <h1>Register for Dashie Lite Beta</h1>
-    <img src="./artwork/Dashie-lite-Logo-Orange-Gray-Transparent.png" alt="Dashie Lite" class="hero-logo">
-    <div class="beta-badge">Beta</div>
+    <div class="hero-logo-container">
+      <img src="./artwork/Dashie-lite-Logo-Orange-Gray-Transparent.png" alt="Dashie Lite" class="hero-logo">
+      <div class="beta-badge">Beta</div>
+    </div>
     <p class="hero-description">
       Dashie Lite replaces Fully Kiosk and seamlessly integrates with Home Assistant's voice pipeline.
       We're currently looking for beta users. Please let us know of your interest!
@@ -335,6 +343,18 @@
         <textarea id="expectations" name="expectations" rows="4" placeholder="Tell us what features or improvements matter most to you..."></textarea>
       </div>
 
+      <div class="form-group">
+        <label>Do you have time to try Dashie Lite out in the next week?</label>
+        <div class="radio-group">
+          <label class="radio-label">
+            <input type="radio" name="available_next_week" value="yes" required> Yes
+          </label>
+          <label class="radio-label">
+            <input type="radio" name="available_next_week" value="no"> No
+          </label>
+        </div>
+      </div>
+
       <button type="submit" class="btn-submit">Register for Beta Access</button>
     </form>
 
@@ -375,7 +395,8 @@
         uses_fully_api: formData.get('uses_fully_api') || null,
         voice_experience: formData.get('voice_experience'),
         voice_hardware: formData.getAll('voice_hardware'),
-        expectations: formData.get('expectations') || null
+        expectations: formData.get('expectations') || null,
+        available_next_week: formData.get('available_next_week')
       };
 
       // Supabase anon key (public by design - safe to expose in client code)
