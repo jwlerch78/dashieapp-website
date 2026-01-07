@@ -255,6 +255,30 @@
       color: #d63384;
     }
 
+    /* Code blocks */
+    .code-block {
+      background: #1e1e1e;
+      border-radius: 8px;
+      padding: 20px;
+      margin: 20px 0;
+      overflow-x: auto;
+    }
+
+    .code-block code {
+      background: transparent;
+      color: #d4d4d4;
+      padding: 0;
+      font-size: 0.85em;
+      line-height: 1.6;
+      display: block;
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+
+    .code-block .comment {
+      color: #6a9955;
+    }
+
     /* Info boxes */
     .info-box {
       padding: 20px;
@@ -695,6 +719,7 @@
               <li><a href="#getting-started">Getting Started</a></li>
               <li><a href="#sidebar">Using the Sidebar</a></li>
               <li><a href="#voice-control">Voice Control (Upgrade)</a></li>
+              <li><a href="#api">Using the API</a></li>
               <li><a href="#tips">Tips & Tricks</a></li>
             </ul>
           </div>
@@ -807,6 +832,168 @@
       <p>
         For setup instructions, see our <a href="/guides/voice-control-setup">Voice Control Setup Guide</a>.
       </p>
+
+      <h2 id="api">Using the API</h2>
+
+      <p>
+        Dashie Lite includes a Fully Kiosk-compatible REST API that runs on port <code>2323</code>.
+        This enables Home Assistant's <a href="https://www.home-assistant.io/integrations/fully_kiosk/">Fully Kiosk integration</a>
+        to control your Android device directly.
+      </p>
+
+      <h3>Enabling the API</h3>
+      <p>
+        In the sidebar under <strong>System</strong>, toggle on "Enable Fully Kiosk API".
+        You can optionally set a password for authentication. Once enabled, the API is accessible at:
+      </p>
+
+      <div class="code-block">
+        <code>http://&lt;device-ip&gt;:2323/?cmd=&lt;command&gt;&amp;password=&lt;your-password&gt;</code>
+      </div>
+
+      <h3>Connecting to Home Assistant</h3>
+      <p>
+        To add Dashie Lite to Home Assistant using the Fully Kiosk integration:
+      </p>
+      <ol>
+        <li>Go to <strong>Settings → Devices & Services → Add Integration</strong></li>
+        <li>Search for "Fully Kiosk Browser"</li>
+        <li>Enter your device's IP address</li>
+        <li>Set the port to <code>2323</code></li>
+        <li>Enter your API password (leave blank if none set)</li>
+      </ol>
+
+      <h3>Supported Commands</h3>
+      <p>
+        Dashie Lite supports the most commonly-used Fully Kiosk API commands:
+      </p>
+
+      <table class="settings-table">
+        <thead>
+          <tr>
+            <th>Command</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>deviceInfo</code></td>
+            <td>Returns device state (battery, screen, network, etc.) - polled by HA every 30-60s</td>
+          </tr>
+          <tr>
+            <td><code>screenOn</code></td>
+            <td>Turn screen on</td>
+          </tr>
+          <tr>
+            <td><code>screenOff</code></td>
+            <td>Turn screen off</td>
+          </tr>
+          <tr>
+            <td><code>setStringSetting</code></td>
+            <td>Set configuration (supports <code>screenBrightness</code> 0-255)</td>
+          </tr>
+          <tr>
+            <td><code>setAudioVolume</code></td>
+            <td>Set volume (level 0-100, stream 1-5)</td>
+          </tr>
+          <tr>
+            <td><code>textToSpeech</code></td>
+            <td>Speak text using Android TTS</td>
+          </tr>
+          <tr>
+            <td><code>stopTextToSpeech</code></td>
+            <td>Stop TTS playback</td>
+          </tr>
+          <tr>
+            <td><code>loadUrl</code></td>
+            <td>Navigate to a specific URL</td>
+          </tr>
+          <tr>
+            <td><code>loadStartUrl</code></td>
+            <td>Reload the configured start URL</td>
+          </tr>
+          <tr>
+            <td><code>restartApp</code></td>
+            <td>Restart Dashie Lite</td>
+          </tr>
+          <tr>
+            <td><code>toForeground</code></td>
+            <td>Bring app to foreground</td>
+          </tr>
+          <tr>
+            <td><code>startScreensaver</code></td>
+            <td>Dim the screen (enter screensaver mode)</td>
+          </tr>
+          <tr>
+            <td><code>stopScreensaver</code></td>
+            <td>Wake the screen (exit screensaver mode)</td>
+          </tr>
+          <tr>
+            <td><code>triggerMotion</code></td>
+            <td>Simulate motion detection (resets sleep timer)</td>
+          </tr>
+          <tr>
+            <td><code>playSound</code></td>
+            <td>Play audio from a URL</td>
+          </tr>
+          <tr>
+            <td><code>stopSound</code></td>
+            <td>Stop audio playback</td>
+          </tr>
+          <tr>
+            <td><code>getCamshot</code></td>
+            <td>Capture image from camera (returns JPEG)</td>
+          </tr>
+          <tr>
+            <td><code>startApplication</code></td>
+            <td>Launch another app by package name</td>
+          </tr>
+          <tr>
+            <td><code>setOverlayMessage</code></td>
+            <td>Show a toast/overlay message</td>
+          </tr>
+          <tr>
+            <td><code>clearCache</code></td>
+            <td>Clear WebView cache</td>
+          </tr>
+          <tr>
+            <td><code>clearWebstorage</code></td>
+            <td>Clear WebView local storage</td>
+          </tr>
+          <tr>
+            <td><code>lockKiosk</code></td>
+            <td>Lock kiosk mode (hide sidebar controls)</td>
+          </tr>
+          <tr>
+            <td><code>unlockKiosk</code></td>
+            <td>Unlock kiosk mode (show sidebar controls)</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>Example API Calls</h3>
+      <p>
+        You can test the API directly from your browser or with curl:
+      </p>
+
+      <div class="code-block">
+        <code><span class="comment"># Get device info</span><br>
+curl "http://192.168.1.100:2323/?cmd=deviceInfo&amp;type=json&amp;password=mypass"<br><br>
+<span class="comment"># Turn screen on</span><br>
+curl "http://192.168.1.100:2323/?cmd=screenOn&amp;password=mypass"<br><br>
+<span class="comment"># Set brightness to 50%</span><br>
+curl "http://192.168.1.100:2323/?cmd=setStringSetting&amp;key=screenBrightness&amp;value=128&amp;password=mypass"<br><br>
+<span class="comment"># Speak a message</span><br>
+curl "http://192.168.1.100:2323/?cmd=textToSpeech&amp;text=Hello%20world&amp;password=mypass"</code>
+      </div>
+
+      <div class="info-box tip">
+        <h4>Tip</h4>
+        <p>
+          The <code>deviceInfo</code> command returns battery level, screen state, WiFi signal, storage info, and more.
+          Home Assistant polls this automatically when using the Fully Kiosk integration.
+        </p>
+      </div>
 
       <h2 id="tips">Tips & Tricks</h2>
 
