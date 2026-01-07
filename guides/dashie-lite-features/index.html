@@ -719,8 +719,8 @@
               <li><a href="#getting-started">Getting Started</a></li>
               <li><a href="#sidebar">Using the Sidebar</a></li>
               <li><a href="#voice-control">Voice Control (Upgrade)</a></li>
-              <li><a href="#api">Using the API</a></li>
               <li><a href="#tips">Tips & Tricks</a></li>
+              <li><a href="#api">Using the API</a></li>
             </ul>
           </div>
           <div class="toc-image">
@@ -832,6 +832,36 @@
       <p>
         For setup instructions, see our <a href="/guides/voice-control-setup">Voice Control Setup Guide</a>.
       </p>
+
+      <h2 id="tips">Tips & Tricks</h2>
+
+      <h3>Stay Awake Setting</h3>
+      <p>
+        In Developer Options, enable "Stay Awake" to prevent screen sleep while charging.
+        This keeps your dashboard always visible when the tablet is plugged in.
+      </p>
+
+      <h3>Auto-Launch on Boot (ADB Commands)</h3>
+      <p>
+        These ADB commands allow Dashie Lite to launch automatically on boot without requiring user intervention.
+        Connect your tablet via USB and run these commands from your computer:
+      </p>
+
+      <div class="code-block">
+        <code><span class="comment"># Grant overlay permission (required for background activity starts)</span><br>
+adb shell appops set com.dashieapp.Dashie.halite SYSTEM_ALERT_WINDOW allow<br><br>
+<span class="comment"># Disable lock screen ads (Amazon Special Offers)</span><br>
+adb shell settings put global LOCKSCREEN_AD_ENABLED 0<br><br>
+<span class="comment"># Disable lock screen entirely (no swipe to unlock)</span><br>
+adb shell locksettings set-disabled true</code>
+      </div>
+
+      <div class="info-box tip">
+        <h4>Note</h4>
+        <p>
+          Even with these settings enabled, the app will not start until the Fire tablet completes its system loading process, which takes approximately 60 seconds after power on.
+        </p>
+      </div>
 
       <h2 id="api">Using the API</h2>
 
@@ -992,36 +1022,6 @@ curl "http://192.168.1.100:2323/?cmd=textToSpeech&amp;text=Hello%20world&amp;pas
         <p>
           The <code>deviceInfo</code> command returns battery level, screen state, WiFi signal, storage info, and more.
           Home Assistant polls this automatically when using the Fully Kiosk integration.
-        </p>
-      </div>
-
-      <h2 id="tips">Tips & Tricks</h2>
-
-      <h3>Stay Awake Setting</h3>
-      <p>
-        In Developer Options, enable "Stay Awake" to prevent screen sleep while charging.
-        This keeps your dashboard always visible when the tablet is plugged in.
-      </p>
-
-      <h3>Auto-Launch on Boot (ADB Commands)</h3>
-      <p>
-        These ADB commands allow Dashie Lite to launch automatically on boot without requiring user intervention.
-        Connect your tablet via USB and run these commands from your computer:
-      </p>
-
-      <div class="code-block">
-        <code><span class="comment"># Grant overlay permission (required for background activity starts)</span><br>
-adb shell appops set com.dashieapp.Dashie.halite SYSTEM_ALERT_WINDOW allow<br><br>
-<span class="comment"># Disable lock screen ads (Amazon Special Offers)</span><br>
-adb shell settings put global LOCKSCREEN_AD_ENABLED 0<br><br>
-<span class="comment"># Disable lock screen entirely (no swipe to unlock)</span><br>
-adb shell locksettings set-disabled true</code>
-      </div>
-
-      <div class="info-box tip">
-        <h4>Note</h4>
-        <p>
-          Even with these settings enabled, the app will not start until the Fire tablet completes its system loading process, which takes approximately 60 seconds after power on.
         </p>
       </div>
 
