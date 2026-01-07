@@ -76,15 +76,23 @@
       line-height: 1.7;
     }
 
-    .beta-badge {
+    .beta-badge-link {
       display: inline-block;
       background: #ffaa00;
       color: #000;
       font-size: 0.9em;
       font-weight: 600;
-      padding: 6px 16px;
+      padding: 10px 24px;
       border-radius: 6px;
       margin-bottom: 30px;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+
+    .beta-badge-link:hover {
+      background: #ffbb22;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(255, 170, 0, 0.3);
     }
 
     /* Download Section */
@@ -185,8 +193,18 @@
 
     .feature-list {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      grid-template-columns: repeat(2, 1fr);
       gap: 30px;
+    }
+
+    .feature-list-centered {
+      display: flex;
+      justify-content: center;
+      margin-top: 30px;
+    }
+
+    .feature-list-centered .feature-item {
+      max-width: 350px;
     }
 
     .feature-item {
@@ -299,6 +317,10 @@
       .feature-list {
         grid-template-columns: 1fr;
       }
+
+      .feature-list-centered {
+        margin-top: 20px;
+      }
     }
   </style>
 </head>
@@ -325,7 +347,7 @@
       Add voice activation and say "Hey Dashie" to control your devices.
     </p>
 
-    <div class="beta-badge">Now in Beta</div>
+    <a href="/dashie-lite-beta" class="beta-badge-link">Register for Beta</a>
   </section>
 
   <!-- Features preview -->
@@ -411,20 +433,31 @@
         </div>
       </div>
     </div>
+
+    <!-- Centered 7th feature -->
+    <div class="feature-list-centered">
+      <div class="feature-item">
+        <div class="feature-icon">
+          <svg viewBox="0 0 24 24">
+            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+            <polyline points="22,6 12,13 2,6"/>
+          </svg>
+        </div>
+        <div class="feature-text">
+          <h3>Fully Kiosk API Support</h3>
+          <p>Compatible with Home Assistant's Fully Kiosk integration: screenOn/Off, brightness, volume, TTS, loadUrl, restartApp, screensaver, motion triggers, and more</p>
+        </div>
+      </div>
+    </div>
   </section>
 
-  <!-- Download Section -->
+  <!-- Get Started Section -->
   <section class="download-section">
     <div class="download-box">
       <h2>Get Started</h2>
-      <p>Download the APK and start using Dashie Lite on your Android device today.</p>
-      <a href="/assets/downloads/dashie-lite-latest.apk" class="btn-download">
-        <svg viewBox="0 0 24 24">
-          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
-          <polyline points="7 10 12 15 17 10"/>
-          <line x1="12" y1="15" x2="12" y2="3"/>
-        </svg>
-        Download APK
+      <p>Interested in being a beta user for Dashie Lite with your Home Assistant setup?</p>
+      <a href="/dashie-lite-beta" class="btn-download">
+        Register for Beta Access
       </a>
 
       <div class="tutorial-links" style="margin-top: 20px; text-align: center;">
@@ -434,16 +467,6 @@
         <a href="/guides/voice-control-setup" style="color: #ffaa00; margin: 0 12px; font-size: 14px;">Voice Control Setup</a>
         <span style="color: #ccc;">|</span>
         <a href="/guides/fire-tablet-sideload" style="color: #ffaa00; margin: 0 12px; font-size: 14px;">Fire Tablet Sideloading</a>
-      </div>
-
-      <div class="pricing-info">
-        <h3>Want Voice Control?</h3>
-        <p>
-          Upgrade to enable integrated voice control using <strong>"Hey Dashie"</strong> as the wake word.
-          Control your smart home with natural voice commands.
-          <br><br>
-          <span class="price">$12 one-time purchase</span>
-        </p>
       </div>
     </div>
   </section>

@@ -9,6 +9,7 @@
   "rewrites": [
     { "source": "/beta-signup", "destination": "/beta-signup.html" },
     { "source": "/dashie-lite", "destination": "/dashie-lite.html" },
+    { "source": "/dashie-lite-beta", "destination": "/dashie-lite-beta.html" },
     { "source": "/voice-license", "destination": "/voice-license.html" },
     { "source": "/voice-license-success", "destination": "/voice-license-success.html" },
     { "source": "/privacy-policy", "destination": "/privacy-policy.html" },
