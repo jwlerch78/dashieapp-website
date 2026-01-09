@@ -841,10 +841,39 @@
         This keeps your dashboard always visible when the tablet is plugged in.
       </p>
 
-      <h3>Auto-Launch on Boot (ADB Commands)</h3>
+      <h3>Auto-Launch Options</h3>
       <p>
-        These ADB commands allow Dashie Lite to launch automatically on boot without requiring user intervention.
-        Connect your tablet via USB and run these commands from your computer:
+        There are two ways to make Dashie Lite launch automatically when your tablet starts:
+      </p>
+
+      <h4>Option 1: Set as Default Launcher (Recommended for Standard Android)</h4>
+      <p>
+        On most Android tablets (not Fire tablets), you can set Dashie Lite as your default home/launcher app.
+        This is the simplest approach and doesn't require any ADB commands.
+      </p>
+      <ol>
+        <li>Open your tablet's <strong>Settings</strong></li>
+        <li>Go to <strong>Apps</strong> (or "Apps & notifications")</li>
+        <li>Tap <strong>Default apps</strong> (or "Choose default apps")</li>
+        <li>Select <strong>Home app</strong> (or "Launcher")</li>
+        <li>Choose <strong>Dashie Lite</strong></li>
+      </ol>
+      <p>
+        Once set as the launcher, Dashie Lite will automatically start when the tablet boots and when you press the home button.
+      </p>
+
+      <div class="info-box tip">
+        <h4>Note about "Start on Boot" setting</h4>
+        <p>
+          If you set Dashie Lite as your default launcher, you do <strong>not</strong> need to enable the "Start on Boot" toggle in the sidebar.
+          The launcher setting takes precedence and handles auto-launch automatically.
+        </p>
+      </div>
+
+      <h4>Option 2: Fire Tablet Setup (ADB Commands Required)</h4>
+      <p>
+        Fire tablets have a locked-down launcher that can't be changed through settings.
+        Use these ADB commands to enable auto-launch. Connect your tablet via USB and run:
       </p>
 
       <div class="code-block">
@@ -856,10 +885,14 @@ adb shell settings put global LOCKSCREEN_AD_ENABLED 0<br><br>
 adb shell locksettings set-disabled true</code>
       </div>
 
+      <p>
+        After running these commands, enable <strong>"Start on Boot"</strong> in the Dashie Lite sidebar under System settings.
+      </p>
+
       <div class="info-box tip">
         <h4>Note</h4>
         <p>
-          Even with these settings enabled, the app will not start until the Fire tablet completes its system loading process, which takes approximately 60 seconds after power on.
+          Even with these settings enabled, Fire tablets require approximately 60 seconds after power on to complete their system loading process before Dashie Lite will start.
         </p>
       </div>
 
