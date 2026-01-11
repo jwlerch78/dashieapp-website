@@ -114,10 +114,17 @@
       fill: none;
     }
 
-    .version-info {
-      margin-top: 12px;
-      font-size: 0.9em;
-      color: #888;
+    .btn-download .btn-text {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      line-height: 1.3;
+    }
+
+    .btn-download .version-text {
+      font-size: 0.85em;
+      font-style: italic;
+      opacity: 0.9;
     }
 
     .tutorial-links {
@@ -232,9 +239,8 @@
           <polyline points="7 10 12 15 17 10"/>
           <line x1="12" y1="15" x2="12" y2="3"/>
         </svg>
-        Download APK
+        <span class="btn-text">Download APK<br><i class="version-text">v2.20.0B</i></span>
       </a>
-      <p class="version-info">Version 2.20.0B</p>
 
       <div class="tutorial-links">
         <p>Getting Started Guides:</p>
