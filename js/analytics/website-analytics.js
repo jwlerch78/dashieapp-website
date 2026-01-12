@@ -112,19 +112,25 @@ function attachDownloadTracking() {
   });
 }
 
-// Initialize on page load
-document.addEventListener('DOMContentLoaded', () => {
+// Initialize analytics (only once)
+let initialized = false;
+
+function initAnalytics() {
+  if (initialized) return;
+  initialized = true;
+
   // Track page view
   trackPageView();
 
   // Attach download tracking
   attachDownloadTracking();
-});
+}
 
-// Also track if page is already loaded (for dynamic script loading)
+// Initialize on page load or immediately if already loaded
 if (document.readyState === 'complete' || document.readyState === 'interactive') {
-  trackPageView();
-  attachDownloadTracking();
+  initAnalytics();
+} else {
+  document.addEventListener('DOMContentLoaded', initAnalytics);
 }
 
 // Export functions for manual use if needed
