@@ -659,11 +659,62 @@
         </p>
       </div>
 
-      <h2>Part 2: Configure the Assist Pipeline</h2>
+      <h2>Part 2: Set Up Wyoming Protocol</h2>
 
       <p>
-        Home Assistant's Assist pipeline connects speech recognition (Whisper) with your voice assistant.
-        For Dashie Lite, we need to configure the pipeline to use Whisper but skip text-to-speech (TTS) since Dashie Lite will read the response and show it on the screen.
+        Wyoming is the protocol that connects speech services (like Whisper) to Home Assistant's Assist pipeline.
+        The Whisper add-on includes Wyoming support, but you need to verify it's properly configured.
+      </p>
+
+      <div class="step">
+        <div class="step-number">1</div>
+        <div class="step-content">
+          <h4>Verify Wyoming Integration</h4>
+          <p>
+            Go to <strong>Settings → Devices & Services → Integrations</strong>.
+            Look for a <strong>Wyoming Protocol</strong> integration. If Whisper is running correctly,
+            it should have been auto-discovered.
+          </p>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-number">2</div>
+        <div class="step-content">
+          <h4>Add Wyoming Integration (if not auto-discovered)</h4>
+          <p>
+            If Wyoming isn't listed, click <strong>+ Add Integration</strong> and search for "Wyoming Protocol".
+            Enter the host as <code>core-whisper</code> (the add-on's hostname) and port <code>10300</code>.
+          </p>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-number">3</div>
+        <div class="step-content">
+          <h4>Confirm Whisper Service</h4>
+          <p>
+            Click on the Wyoming integration to see connected services.
+            You should see <strong>Whisper</strong> listed as a speech-to-text provider.
+            This confirms Wyoming is bridging Whisper to Home Assistant.
+          </p>
+        </div>
+      </div>
+
+      <div class="info-box tip">
+        <h4>What is Wyoming?</h4>
+        <p>
+          Wyoming is Home Assistant's protocol for voice services. It acts as a bridge between
+          speech-to-text engines (like Whisper), wake word detectors, and text-to-speech services.
+          Without Wyoming, Home Assistant can't communicate with these services.
+        </p>
+      </div>
+
+      <h2>Part 3: Configure the Assist Pipeline</h2>
+
+      <p>
+        Now that Wyoming is connecting Whisper to Home Assistant, we need to configure the Assist pipeline
+        to use it. We'll also skip text-to-speech (TTS) since Dashie Lite displays responses on screen.
       </p>
 
       <div class="step">
@@ -726,7 +777,7 @@
         </p>
       </div>
 
-      <h2>Part 3: Configure Dashie Lite</h2>
+      <h2>Part 4: Configure Dashie Lite</h2>
 
       <div class="step">
         <div class="step-number">1</div>
