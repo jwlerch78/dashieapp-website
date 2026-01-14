@@ -58,13 +58,13 @@
     // Get weather via IP geolocation
     async function loadWeather() {
       try {
-        // Get location from IP
-        const geo = await fetch('http://ip-api.com/json/').then(r => r.json());
-        if (geo.status !== 'success') throw new Error('Geolocation failed');
+        // Get location from IP (using HTTPS endpoint)
+        const geo = await fetch('https://ipapi.co/json/').then(r => r.json());
+        if (geo.error) throw new Error('Geolocation failed');
 
         // Get weather from Open-Meteo (free, no API key)
         const weather = await fetch(
-          `https://api.open-meteo.com/v1/forecast?latitude=${geo.lat}&longitude=${geo.lon}&current=temperature_2m,weather_code&temperature_unit=fahrenheit`
+          `https://api.open-meteo.com/v1/forecast?latitude=${geo.latitude}&longitude=${geo.longitude}&current=temperature_2m,weather_code&temperature_unit=fahrenheit`
         ).then(r => r.json());
 
         const temp = Math.round(weather.current.temperature_2m);
