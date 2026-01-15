@@ -772,7 +772,7 @@
             </div>
             <h4>Photos <span class="mode-tag">Popular</span></h4>
           </div>
-          <p>Photo slideshow with smooth transitions. Display family photos from your device's storage or connected services.</p>
+          <p>Photo slideshow with smooth transitions. Display family photos synced from your Home Assistant media library.</p>
           <p class="best-for">Best for: Family displays, digital photo frames</p>
         </div>
 
@@ -850,69 +850,122 @@
 
       <p>
         The photo slideshow mode transforms your tablet into a beautiful digital photo frame.
-        You can source photos from your device's local storage or from connected services.
+        Photos are stored in your Home Assistant media library and automatically sync to your
+        Dashie Lite devices.
       </p>
 
-      <h3>Photo Sources</h3>
-
-      <h4>Local Folder (Recommended for Getting Started)</h4>
+      <h3>Adding Photos to Home Assistant Media Library</h3>
 
       <p>
-        The simplest way to display photos is to copy them directly to your device. Dashie Lite
-        automatically creates a <code>/Pictures/Dashie/</code> folder for your photos.
+        Dashie Lite pulls photos from your Home Assistant's <code>/config/media/</code> folder.
+        This central location means you add photos once and all your devices display them automatically.
       </p>
+
+      <h4>Option 1: Using File Editor or VS Code Add-on</h4>
 
       <ol class="step-list">
         <li>
-          <strong>Connect your tablet to a computer</strong> via USB cable. Accept any prompts on the tablet to allow file transfer.
+          <strong>Install a file editor add-on</strong> if you haven't already. Go to Settings &rarr; Add-ons &rarr; Add-on Store and install "File editor" or "Studio Code Server".
         </li>
         <li>
-          <strong>Navigate to the Pictures folder</strong> on your tablet. Look for the <code>Dashie</code> subfolder (it will be created automatically when you first select Local Folder as your source).
+          <strong>Navigate to the media folder</strong> in your Home Assistant config directory. The path is <code>/config/media/</code>. If the media folder doesn't exist, create it.
         </li>
         <li>
-          <strong>Copy your photos</strong> into the Dashie folder. Supported formats include JPG, PNG, WEBP, and GIF.
-        </li>
-        <li>
-          <strong>Open Dashie Lite settings</strong> &rarr; Screen &rarr; Screensaver Mode &rarr; Photos.
-        </li>
-        <li>
-          <strong>Select "Local Folder"</strong> as your photo source. You can use the default location or choose a different folder.
+          <strong>Upload your photos</strong> using the file editor's upload function. You can organize photos into subfolders if desired (e.g., <code>/config/media/family/</code>, <code>/config/media/vacation/</code>).
         </li>
       </ol>
 
-      <div class="info-box tip">
-        <h4>Tip: Works Offline</h4>
-        <p>
-          Local photos work completely offline with no internet connection required. Great for
-          tablets in areas with spotty WiFi or for privacy-conscious setups.
-        </p>
-      </div>
-
-      <h4>Home Assistant Media Library</h4>
+      <h4>Option 2: Using Samba Share Add-on</h4>
 
       <p>
-        If you run Home Assistant, you can store photos in HA's media library and have all your
-        Dashie Lite devices pull from the same central source.
+        For easier bulk uploads, set up the Samba share add-on to access your HA folders from your computer.
       </p>
 
       <ol class="step-list">
         <li>
-          <strong>Add photos to Home Assistant</strong> by placing them in your <code>/config/media/</code> folder. You can create subfolders to organize by album or date.
+          <strong>Install the Samba share add-on</strong> from Settings &rarr; Add-ons &rarr; Add-on Store.
         </li>
         <li>
-          <strong>In Dashie Lite settings</strong>, select "Home Assistant Media" as your photo source.
+          <strong>Configure a username and password</strong> in the add-on configuration, then start the add-on.
         </li>
         <li>
-          <strong>Photos will sync automatically</strong> using your existing HA authentication. No additional setup required.
+          <strong>Connect from your computer</strong> using your file browser. On Windows, type <code>\\homeassistant.local</code> in File Explorer. On Mac, use Finder &rarr; Go &rarr; Connect to Server &rarr; <code>smb://homeassistant.local</code>.
+        </li>
+        <li>
+          <strong>Navigate to the media folder</strong> and drag-and-drop your photos. This is the fastest way to upload many photos at once.
+        </li>
+      </ol>
+
+      <h4>Option 3: Using SSH/SFTP</h4>
+
+      <p>
+        If you have SSH access to your Home Assistant instance, you can use SFTP to transfer files:
+      </p>
+
+      <div class="code-block">
+        <code><span class="comment"># Using sftp from command line</span>
+sftp root@homeassistant.local
+cd /config/media
+put *.jpg
+
+<span class="comment"># Or use an SFTP client like FileZilla, Cyberduck, or WinSCP</span></code>
+      </div>
+
+      <div class="info-box tip">
+        <h4>Supported Photo Formats</h4>
+        <p>
+          Dashie Lite supports JPG, JPEG, PNG, WEBP, and GIF images. For best results, use
+          landscape-oriented photos. Portrait photos will display with a blurred background.
+        </p>
+      </div>
+
+      <h3>Configuring Dashie Lite to Display Photos</h3>
+
+      <p>
+        Once you have photos in your Home Assistant media library, configure Dashie Lite to display them:
+      </p>
+
+      <ol class="step-list">
+        <li>
+          <strong>Open the Dashie Lite sidebar</strong> by swiping from the left edge of the screen.
+        </li>
+        <li>
+          <strong>Tap "Screen"</strong> to open screen settings.
+        </li>
+        <li>
+          <strong>Set Screensaver Mode to "Photos"</strong> and select "Home Assistant Media" as the source.
+        </li>
+        <li>
+          <strong>Photos will sync automatically</strong> from your HA media folder. The first sync may take a moment depending on how many photos you have.
         </li>
       </ol>
 
       <div class="info-box tip">
         <h4>Multi-Device Sync</h4>
         <p>
-          Using Home Assistant as your photo source means adding photos once and having them
-          appear on all your Dashie Lite devices automatically.
+          Add photos to Home Assistant once, and they appear on all your Dashie Lite devices
+          automatically. No need to copy files to each tablet individually.
         </p>
+      </div>
+
+      <h3>Organizing Photos with Subfolders</h3>
+
+      <p>
+        You can organize your photos into subfolders within the media directory. Dashie Lite
+        will scan all subfolders and include all photos in the slideshow.
+      </p>
+
+      <div class="code-block">
+        <code>/config/media/
+├── family/
+│   ├── birthday-2024.jpg
+│   └── summer-vacation.jpg
+├── pets/
+│   ├── max-the-dog.jpg
+│   └── whiskers.jpg
+└── holidays/
+    ├── christmas-2024.jpg
+    └── thanksgiving.jpg</code>
       </div>
 
       <h3>Slideshow Settings</h3>
