@@ -875,26 +875,59 @@
         </li>
       </ol>
 
-      <h4>Option 2: Using Samba Share Add-on</h4>
+      <h4>Option 2: Using Samba Share Add-on (Recommended)</h4>
 
       <p>
-        For easier bulk uploads, set up the Samba share add-on to access your HA folders from your computer.
+        For easier bulk uploads, set up the Samba share add-on to access your HA folders directly from your computer's file browser.
       </p>
 
       <ol class="step-list">
         <li>
-          <strong>Install the Samba share add-on</strong> from Settings &rarr; Add-ons &rarr; Add-on Store.
+          <strong>Install the Samba share add-on</strong> from Settings &rarr; Add-ons &rarr; Add-on Store. Search for "Samba share" and click Install.
         </li>
         <li>
-          <strong>Configure a username and password</strong> in the add-on configuration, then start the add-on.
+          <strong>Configure a username and password</strong> in the add-on configuration tab, then click Start.
         </li>
         <li>
-          <strong>Connect from your computer</strong> using your file browser. On Windows, type <code>\\homeassistant.local</code> in File Explorer. On Mac, use Finder &rarr; Go &rarr; Connect to Server &rarr; <code>smb://homeassistant.local</code>.
+          <strong>Connect from your computer</strong> (see instructions below for your operating system).
         </li>
         <li>
-          <strong>Navigate to the media folder</strong> and drag-and-drop your photos. This is the fastest way to upload many photos at once.
+          <strong>Navigate to the media folder</strong> and drag-and-drop your photos. Create the folder if it doesn't exist.
         </li>
       </ol>
+
+      <h5>Connecting from Mac</h5>
+      <ol>
+        <li>Open <strong>Finder</strong></li>
+        <li>Press <strong>Cmd+K</strong> (or use Go &rarr; Connect to Server)</li>
+        <li>Enter: <code>smb://homeassistant.local/config</code></li>
+        <li>Enter your Samba username and password when prompted</li>
+        <li>The folder mounts and appears in Finder. Navigate to the <code>media</code> folder.</li>
+      </ol>
+
+      <div class="info-box tip">
+        <h4>Tip: If homeassistant.local doesn't work</h4>
+        <p>
+          Try using your Home Assistant's IP address instead, e.g., <code>smb://192.168.1.100/config</code>.
+          You can find your HA's IP address in Settings &rarr; System &rarr; Network.
+        </p>
+      </div>
+
+      <h5>Connecting from Windows</h5>
+      <ol>
+        <li>Open <strong>File Explorer</strong></li>
+        <li>Type in the address bar: <code>\\homeassistant.local\config</code></li>
+        <li>Enter your Samba username and password when prompted</li>
+        <li>The folder opens. Navigate to the <code>media</code> folder.</li>
+      </ol>
+
+      <div class="info-box tip">
+        <h4>Tip: Map as a Network Drive</h4>
+        <p>
+          Right-click the media folder and select "Map network drive" to create a permanent shortcut
+          for easy access whenever you want to add photos.
+        </p>
+      </div>
 
       <h4>Option 3: Using SSH/SFTP</h4>
 
