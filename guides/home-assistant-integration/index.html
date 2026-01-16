@@ -611,9 +611,9 @@
         <h3>Prerequisites</h3>
         <ul>
           <li>Home Assistant 2023.5 or later</li>
-          <li>Dashie Lite installed on your Android device (version 2.20 or later)</li>
+          <li>Dashie Lite installed on your Android device (version 2.21.0B or later)</li>
           <li>Both Home Assistant and Dashie Lite on the same local network</li>
-          <li>Access to Home Assistant's config folder (via Samba share, SSH, or File Editor)</li>
+          <li><a href="https://hacs.xyz/" target="_blank">HACS</a> installed (recommended) or access to Home Assistant's config folder</li>
         </ul>
       </div>
 
@@ -703,18 +703,23 @@
 
       <p>
         The Dashie integration needs to be installed as a custom component in Home Assistant.
-        You'll need access to your Home Assistant config folder.
+        We recommend using HACS for the easiest installation and automatic updates.
       </p>
 
-      <h3>Option A: Using Samba Share (Recommended)</h3>
+      <h3>Option A: Using HACS (Recommended)</h3>
+
+      <p>
+        <a href="https://hacs.xyz/" target="_blank">HACS (Home Assistant Community Store)</a> makes it easy to install
+        and update custom integrations. If you don't have HACS installed yet,
+        <a href="https://hacs.xyz/docs/setup/download" target="_blank">follow the HACS installation guide</a> first.
+      </p>
 
       <div class="step">
         <div class="step-number">1</div>
         <div class="step-content">
-          <h4>Install Samba Share Addon</h4>
+          <h4>Open HACS</h4>
           <p>
-            In Home Assistant, go to <strong>Settings → Add-ons → Add-on Store</strong>.
-            Search for "Samba share" and install it.
+            In Home Assistant, click on <strong>HACS</strong> in the sidebar, then select <strong>Integrations</strong>.
           </p>
         </div>
       </div>
@@ -722,11 +727,9 @@
       <div class="step">
         <div class="step-number">2</div>
         <div class="step-content">
-          <h4>Configure Samba</h4>
+          <h4>Add Custom Repository</h4>
           <p>
-            After installation, go to the <strong>Configuration</strong> tab.
-            Set a username and password, then click <strong>Save</strong>.
-            Go to the <strong>Info</strong> tab and click <strong>Start</strong>.
+            Click the three-dot menu (⋮) in the top right corner and select <strong>Custom repositories</strong>.
           </p>
         </div>
       </div>
@@ -734,11 +737,12 @@
       <div class="step">
         <div class="step-number">3</div>
         <div class="step-content">
-          <h4>Connect from Your Computer</h4>
+          <h4>Enter Repository URL</h4>
           <p>
-            <strong>On Mac:</strong> In Finder, press <code>Cmd+K</code> and enter <code>smb://YOUR_HA_IP/config</code><br>
-            <strong>On Windows:</strong> Open File Explorer and enter <code>\\YOUR_HA_IP\config</code><br>
-            Log in with your Samba credentials.
+            In the dialog that appears:<br>
+            • <strong>Repository:</strong> <code>https://github.com/jwlerch78/dashie-ha-integration</code><br>
+            • <strong>Category:</strong> Select <strong>Integration</strong><br>
+            Click <strong>Add</strong>.
           </p>
         </div>
       </div>
@@ -746,17 +750,54 @@
       <div class="step">
         <div class="step-number">4</div>
         <div class="step-content">
-          <h4>Download the Integration</h4>
+          <h4>Install Dashie Lite</h4>
           <p>
-            Download the Dashie integration from
-            <a href="https://github.com/dashieapp/dashie-ha-integration" target="_blank">GitHub</a>.
-            Click the green "Code" button and select "Download ZIP".
+            Close the custom repositories dialog. Click <strong>+ Explore & Download Repositories</strong>.
+            Search for "Dashie Lite" and click on it. Click <strong>Download</strong> in the bottom right.
           </p>
         </div>
       </div>
 
       <div class="step">
         <div class="step-number">5</div>
+        <div class="step-content">
+          <h4>Restart Home Assistant</h4>
+          <p>
+            Go to <strong>Settings → System → Restart</strong> and click <strong>Restart</strong>.
+            Wait for Home Assistant to come back online.
+          </p>
+        </div>
+      </div>
+
+      <div class="info-box tip">
+        <h4>Future Updates</h4>
+        <p>
+          Once installed via HACS, you'll receive notifications when updates are available.
+          Just click "Update" in HACS to get the latest features and fixes.
+        </p>
+      </div>
+
+      <h3>Option B: Manual Installation</h3>
+
+      <p>
+        If you prefer not to use HACS, you can install the integration manually.
+        You'll need access to your Home Assistant config folder via Samba share, SSH, or the File Editor add-on.
+      </p>
+
+      <div class="step">
+        <div class="step-number">1</div>
+        <div class="step-content">
+          <h4>Download the Integration</h4>
+          <p>
+            Download the Dashie integration from
+            <a href="https://github.com/jwlerch78/dashie-ha-integration" target="_blank">GitHub</a>.
+            Click the green "Code" button and select "Download ZIP".
+          </p>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-number">2</div>
         <div class="step-content">
           <h4>Copy to Home Assistant</h4>
           <p>
@@ -768,7 +809,7 @@
       </div>
 
       <div class="step">
-        <div class="step-number">6</div>
+        <div class="step-number">3</div>
         <div class="step-content">
           <h4>Restart Home Assistant</h4>
           <p>
@@ -778,12 +819,13 @@
         </div>
       </div>
 
-      <h3>Option B: Using HACS (Coming Soon)</h3>
-
-      <p>
-        We're working on adding the Dashie integration to HACS (Home Assistant Community Store)
-        for easier installation. Check back soon!
-      </p>
+      <div class="info-box warning">
+        <h4>Manual Updates</h4>
+        <p>
+          With manual installation, you'll need to check GitHub periodically for updates
+          and repeat this process to get new versions. We recommend HACS for easier maintenance.
+        </p>
+      </div>
 
       <h2>Part 3: Add Your Dashie Device</h2>
 
