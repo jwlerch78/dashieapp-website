@@ -601,9 +601,10 @@
       <div class="info-box tip">
         <h4>What You Can Do</h4>
         <p>
-          Control screen brightness and power, lock/unlock the device, monitor battery level,
-          trigger screen refresh, and build automations based on device state - like dimming the screen at night
-          or waking it when motion is detected.
+          Control screen brightness and power, toggle dark mode, start photo screensavers,
+          stream the camera to HA, use text-to-speech for announcements, lock/unlock the device,
+          monitor battery and sensors, and build automations - like dimming at night,
+          announcing doorbells, or enabling the camera when you leave home.
         </p>
       </div>
 
@@ -888,9 +889,91 @@
       <h2>Available Entities</h2>
 
       <p>
-        Once your device is added, Home Assistant creates several entities you can use
-        in dashboards, automations, and scripts:
+        Once your device is added, Home Assistant creates a comprehensive set of entities you can use
+        in dashboards, automations, and scripts. These are organized into Controls (things you can change)
+        and Sensors (things you can monitor).
       </p>
+
+      <h3>Controls</h3>
+
+      <table class="entity-table">
+        <thead>
+          <tr>
+            <th>Entity</th>
+            <th>Type</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>number.dashie_brightness</code></td>
+            <td>Number</td>
+            <td>Set screen brightness (0-100)</td>
+          </tr>
+          <tr>
+            <td><code>number.dashie_volume</code></td>
+            <td>Number</td>
+            <td>Set audio volume (0-100)</td>
+          </tr>
+          <tr>
+            <td><code>switch.dashie_screen</code></td>
+            <td>Switch</td>
+            <td>Turn screen on/off</td>
+          </tr>
+          <tr>
+            <td><code>switch.dashie_dark_mode</code></td>
+            <td>Switch</td>
+            <td>Toggle system dark mode</td>
+          </tr>
+          <tr>
+            <td><code>switch.dashie_lock</code></td>
+            <td>Switch</td>
+            <td>Lock/unlock kiosk mode (hides settings)</td>
+          </tr>
+          <tr>
+            <td><code>switch.dashie_screensaver</code></td>
+            <td>Switch</td>
+            <td>Start/stop the screensaver</td>
+          </tr>
+          <tr>
+            <td><code>select.dashie_screensaver_mode</code></td>
+            <td>Select</td>
+            <td>Screensaver type: Photos, Dim, Black, or URL</td>
+          </tr>
+          <tr>
+            <td><code>text.dashie_photo_folder</code></td>
+            <td>Text</td>
+            <td>HA Media folder for screensaver photos</td>
+          </tr>
+          <tr>
+            <td><code>text.dashie_load_url</code></td>
+            <td>Text</td>
+            <td>Load a custom URL in the WebView</td>
+          </tr>
+          <tr>
+            <td><code>text.dashie_lock_pin</code></td>
+            <td>Text</td>
+            <td>Set a 4-digit unlock PIN</td>
+          </tr>
+          <tr>
+            <td><code>button.dashie_bring_to_foreground</code></td>
+            <td>Button</td>
+            <td>Bring app to foreground</td>
+          </tr>
+          <tr>
+            <td><code>button.dashie_reload_dashboard</code></td>
+            <td>Button</td>
+            <td>Refresh the dashboard</td>
+          </tr>
+          <tr>
+            <td><code>button.dashie_restart_app</code></td>
+            <td>Button</td>
+            <td>Restart the Dashie Lite app</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>Sensors</h3>
 
       <table class="entity-table">
         <thead>
@@ -907,42 +990,237 @@
             <td>Battery level (0-100%)</td>
           </tr>
           <tr>
-            <td><code>sensor.dashie_brightness</code></td>
+            <td><code>sensor.dashie_ambient_light</code></td>
             <td>Sensor</td>
-            <td>Current screen brightness (0-100%)</td>
+            <td>Light sensor reading in lux</td>
           </tr>
           <tr>
-            <td><code>sensor.dashie_memory</code></td>
+            <td><code>sensor.dashie_wifi_signal</code></td>
             <td>Sensor</td>
-            <td>Available memory in MB</td>
+            <td>WiFi signal strength (0-100%)</td>
           </tr>
           <tr>
-            <td><code>switch.dashie_screen</code></td>
-            <td>Switch</td>
-            <td>Turn screen on/off</td>
+            <td><code>sensor.dashie_storage_free</code></td>
+            <td>Sensor</td>
+            <td>Available storage space</td>
           </tr>
           <tr>
-            <td><code>switch.dashie_kiosk_lock</code></td>
-            <td>Switch</td>
-            <td>Lock/unlock kiosk mode</td>
+            <td><code>sensor.dashie_current_page</code></td>
+            <td>Sensor</td>
+            <td>Currently displayed URL</td>
           </tr>
           <tr>
-            <td><code>button.dashie_reload</code></td>
-            <td>Button</td>
-            <td>Refresh the dashboard</td>
+            <td><code>binary_sensor.dashie_plugged_in</code></td>
+            <td>Binary Sensor</td>
+            <td>Whether device is charging</td>
           </tr>
           <tr>
-            <td><code>button.dashie_foreground</code></td>
-            <td>Button</td>
-            <td>Bring app to foreground</td>
+            <td><code>binary_sensor.dashie_screensaver_active</code></td>
+            <td>Binary Sensor</td>
+            <td>Whether screensaver is running</td>
           </tr>
           <tr>
-            <td><code>number.dashie_brightness</code></td>
-            <td>Number</td>
-            <td>Set screen brightness (0-100)</td>
+            <td><code>binary_sensor.dashie_pin_set</code></td>
+            <td>Binary Sensor</td>
+            <td>Whether unlock PIN is configured</td>
+          </tr>
+          <tr>
+            <td><code>binary_sensor.dashie_camera_streaming</code></td>
+            <td>Binary Sensor</td>
+            <td>Whether RTSP camera stream is active</td>
           </tr>
         </tbody>
       </table>
+
+      <h2>RTSP Camera Streaming</h2>
+
+      <p>
+        Dashie Lite can stream video from your device's front camera as an RTSP feed, turning your tablet
+        into a security camera or video intercom. This works great for monitoring a room or as a doorbell
+        camera integration.
+      </p>
+
+      <div class="info-box tip">
+        <h4>Use Cases</h4>
+        <p>
+          Use the camera stream to check in on pets, monitor a baby's room, see who's at the door,
+          or add a video feed to your Home Assistant dashboard. The stream can be viewed in any
+          RTSP-compatible player or added directly to HA as a camera entity.
+        </p>
+      </div>
+
+      <h3>Enabling Camera Streaming</h3>
+
+      <div class="step">
+        <div class="step-number">1</div>
+        <div class="step-content">
+          <h4>Enable in Sidebar</h4>
+          <p>
+            On your Dashie Lite device, open the sidebar and find the <strong>CAMERA</strong> section.
+            Toggle <strong>Enable RTSP Stream</strong> to ON.
+          </p>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-number">2</div>
+        <div class="step-content">
+          <h4>Configure Stream Settings</h4>
+          <p>
+            Adjust the resolution, FPS, and bitrate based on your needs:<br>
+            • <strong>Resolution:</strong> 480p (default), 720p, or 1080p<br>
+            • <strong>FPS:</strong> 15-30 frames per second<br>
+            • <strong>Bitrate:</strong> 1-5 Mbps (higher = better quality, more bandwidth)
+          </p>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-number">3</div>
+        <div class="step-content">
+          <h4>Note the Stream URL</h4>
+          <p>
+            The sidebar will show your RTSP stream URL, typically:<br>
+            <code>rtsp://DEVICE_IP:8554/camera</code><br>
+            You'll use this URL to add the camera to Home Assistant.
+          </p>
+        </div>
+      </div>
+
+      <h3>Adding to Home Assistant</h3>
+
+      <p>Add the camera stream to Home Assistant using the Generic Camera integration:</p>
+
+      <div class="step">
+        <div class="step-number">1</div>
+        <div class="step-content">
+          <h4>Add Generic Camera</h4>
+          <p>
+            Go to <strong>Settings → Devices & Services → Add Integration</strong> and search for
+            <strong>Generic Camera</strong>.
+          </p>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-number">2</div>
+        <div class="step-content">
+          <h4>Configure Stream URL</h4>
+          <p>
+            Enter the RTSP stream URL from your Dashie Lite device:<br>
+            • <strong>Stream Source:</strong> <code>rtsp://192.168.x.x:8554/camera</code><br>
+            • <strong>Still Image URL:</strong> Leave blank (or use the camshot API endpoint)<br>
+            Give it a friendly name like "Kitchen Dashie Camera".
+          </p>
+        </div>
+      </div>
+
+      <div class="info-box warning">
+        <h4>Performance Note</h4>
+        <p>
+          Running the camera stream uses additional battery and processing power. For wall-mounted
+          tablets that are always plugged in, this isn't a concern. For battery-powered devices,
+          consider only enabling the stream when needed via automation.
+        </p>
+      </div>
+
+      <h3>Camera API Commands</h3>
+
+      <p>You can also control the camera stream via the REST API or Home Assistant services:</p>
+
+      <table class="entity-table">
+        <thead>
+          <tr>
+            <th>Command</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>startRtspStream</code></td>
+            <td>Start the RTSP camera stream</td>
+          </tr>
+          <tr>
+            <td><code>stopRtspStream</code></td>
+            <td>Stop the RTSP camera stream</td>
+          </tr>
+          <tr>
+            <td><code>getRtspStatus</code></td>
+            <td>Get stream status, URL, and connected client count</td>
+          </tr>
+          <tr>
+            <td><code>getCamshot</code></td>
+            <td>Capture a single JPEG image from the camera</td>
+          </tr>
+          <tr>
+            <td><code>setRtspResolution</code></td>
+            <td>Set resolution (width/height) - requires stream restart</td>
+          </tr>
+          <tr>
+            <td><code>setRtspFps</code></td>
+            <td>Set frame rate (10-30) - requires stream restart</td>
+          </tr>
+          <tr>
+            <td><code>setRtspBitrate</code></td>
+            <td>Set bitrate in bps - requires stream restart</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2>Services</h2>
+
+      <p>
+        Beyond entities, Dashie Lite exposes several services you can call from automations
+        and scripts for text-to-speech, audio playback, and on-screen notifications.
+      </p>
+
+      <h3>Text-to-Speech</h3>
+
+      <p>Make your Dashie Lite device speak announcements using Android's built-in TTS engine:</p>
+
+      <div class="code-block"><code><span class="key">service</span>: <span class="string">rest_command.dashie_tts</span>
+<span class="key">data</span>:
+  <span class="key">text</span>: <span class="string">"Dinner is ready!"</span></code></div>
+
+      <p>
+        To set this up, add a REST command to your <code>configuration.yaml</code>:
+      </p>
+
+      <div class="code-block"><code><span class="key">rest_command</span>:
+  <span class="key">dashie_tts</span>:
+    <span class="key">url</span>: <span class="string">"http://DEVICE_IP:2323/?cmd=textToSpeech&text={{ text }}&password=YOUR_PASSWORD"</span>
+    <span class="key">method</span>: <span class="string">GET</span>
+  <span class="key">dashie_stop_tts</span>:
+    <span class="key">url</span>: <span class="string">"http://DEVICE_IP:2323/?cmd=stopTextToSpeech&password=YOUR_PASSWORD"</span>
+    <span class="key">method</span>: <span class="string">GET</span></code></div>
+
+      <h3>Audio Playback</h3>
+
+      <p>Play audio files or streams through the device speakers:</p>
+
+      <div class="code-block"><code><span class="key">rest_command</span>:
+  <span class="key">dashie_play_sound</span>:
+    <span class="key">url</span>: <span class="string">"http://DEVICE_IP:2323/?cmd=playSound&url={{ url }}&password=YOUR_PASSWORD"</span>
+    <span class="key">method</span>: <span class="string">GET</span>
+  <span class="key">dashie_stop_sound</span>:
+    <span class="key">url</span>: <span class="string">"http://DEVICE_IP:2323/?cmd=stopSound&password=YOUR_PASSWORD"</span>
+    <span class="key">method</span>: <span class="string">GET</span></code></div>
+
+      <h3>On-Screen Messages</h3>
+
+      <p>Display toast notifications on the device screen:</p>
+
+      <div class="code-block"><code><span class="key">rest_command</span>:
+  <span class="key">dashie_message</span>:
+    <span class="key">url</span>: <span class="string">"http://DEVICE_IP:2323/?cmd=setOverlayMessage&text={{ text }}&duration={{ duration | default(3000) }}&password=YOUR_PASSWORD"</span>
+    <span class="key">method</span>: <span class="string">GET</span></code></div>
+
+      <p>Then call it in automations:</p>
+
+      <div class="code-block"><code><span class="key">service</span>: <span class="string">rest_command.dashie_message</span>
+<span class="key">data</span>:
+  <span class="key">text</span>: <span class="string">"Front door opened"</span>
+  <span class="key">duration</span>: <span class="string">5000</span></code></div>
 
       <h2>Example Automations</h2>
 
@@ -988,6 +1266,99 @@
   - <span class="key">service</span>: <span class="string">switch.turn_on</span>
     <span class="key">target</span>:
       <span class="key">entity_id</span>: <span class="string">switch.dashie_screen</span></code></div>
+
+      <h3>Start Screensaver at Night</h3>
+
+      <p>Automatically start the photo screensaver in the evening:</p>
+
+      <div class="code-block"><code><span class="key">alias</span>: <span class="string">"Dashie - Photo Screensaver at Night"</span>
+<span class="key">trigger</span>:
+  - <span class="key">platform</span>: <span class="string">time</span>
+    <span class="key">at</span>: <span class="string">"21:00:00"</span>
+<span class="key">action</span>:
+  - <span class="key">service</span>: <span class="string">select.select_option</span>
+    <span class="key">target</span>:
+      <span class="key">entity_id</span>: <span class="string">select.dashie_screensaver_mode</span>
+    <span class="key">data</span>:
+      <span class="key">option</span>: <span class="string">"photos"</span>
+  - <span class="key">service</span>: <span class="string">switch.turn_on</span>
+    <span class="key">target</span>:
+      <span class="key">entity_id</span>: <span class="string">switch.dashie_screensaver</span></code></div>
+
+      <h3>Announce Doorbell</h3>
+
+      <p>Use TTS to announce when someone rings the doorbell:</p>
+
+      <div class="code-block"><code><span class="key">alias</span>: <span class="string">"Dashie - Doorbell Announcement"</span>
+<span class="key">trigger</span>:
+  - <span class="key">platform</span>: <span class="string">state</span>
+    <span class="key">entity_id</span>: <span class="string">binary_sensor.front_door_doorbell</span>
+    <span class="key">to</span>: <span class="string">"on"</span>
+<span class="key">action</span>:
+  - <span class="key">service</span>: <span class="string">rest_command.dashie_tts</span>
+    <span class="key">data</span>:
+      <span class="key">text</span>: <span class="string">"Someone is at the front door"</span></code></div>
+
+      <h3>Auto-Adjust Brightness by Ambient Light</h3>
+
+      <p>Automatically adjust screen brightness based on room lighting:</p>
+
+      <div class="code-block"><code><span class="key">alias</span>: <span class="string">"Dashie - Auto Brightness"</span>
+<span class="key">trigger</span>:
+  - <span class="key">platform</span>: <span class="string">state</span>
+    <span class="key">entity_id</span>: <span class="string">sensor.dashie_ambient_light</span>
+<span class="key">action</span>:
+  - <span class="key">service</span>: <span class="string">number.set_value</span>
+    <span class="key">target</span>:
+      <span class="key">entity_id</span>: <span class="string">number.dashie_brightness</span>
+    <span class="key">data</span>:
+      <span class="key">value</span>: <span class="string">"{{ [[states('sensor.dashie_ambient_light') | int / 10, 100] | min, 20] | max }}"</span></code></div>
+
+      <h3>Enable Camera When Away</h3>
+
+      <p>Start the RTSP camera stream when everyone leaves home for security monitoring:</p>
+
+      <div class="code-block"><code><span class="key">alias</span>: <span class="string">"Dashie - Camera On When Away"</span>
+<span class="key">trigger</span>:
+  - <span class="key">platform</span>: <span class="string">state</span>
+    <span class="key">entity_id</span>: <span class="string">zone.home</span>
+    <span class="key">to</span>: <span class="string">"0"</span>
+<span class="key">action</span>:
+  - <span class="key">service</span>: <span class="string">rest_command.dashie_start_camera</span>
+<span class="key">mode</span>: <span class="string">single</span></code></div>
+
+      <div class="info-box tip">
+        <h4>REST Command for Camera</h4>
+        <p>
+          Add this to your <code>configuration.yaml</code> for the camera automation above:
+        </p>
+      </div>
+
+      <div class="code-block"><code><span class="key">rest_command</span>:
+  <span class="key">dashie_start_camera</span>:
+    <span class="key">url</span>: <span class="string">"http://DEVICE_IP:2323/?cmd=startRtspStream&password=YOUR_PASSWORD"</span>
+    <span class="key">method</span>: <span class="string">GET</span>
+  <span class="key">dashie_stop_camera</span>:
+    <span class="key">url</span>: <span class="string">"http://DEVICE_IP:2323/?cmd=stopRtspStream&password=YOUR_PASSWORD"</span>
+    <span class="key">method</span>: <span class="string">GET</span></code></div>
+
+      <h3>Low Battery Alert</h3>
+
+      <p>Get notified when the Dashie device battery is running low:</p>
+
+      <div class="code-block"><code><span class="key">alias</span>: <span class="string">"Dashie - Low Battery Alert"</span>
+<span class="key">trigger</span>:
+  - <span class="key">platform</span>: <span class="string">numeric_state</span>
+    <span class="key">entity_id</span>: <span class="string">sensor.dashie_battery</span>
+    <span class="key">below</span>: <span class="string">20</span>
+<span class="key">condition</span>:
+  - <span class="key">condition</span>: <span class="string">state</span>
+    <span class="key">entity_id</span>: <span class="string">binary_sensor.dashie_plugged_in</span>
+    <span class="key">state</span>: <span class="string">"off"</span>
+<span class="key">action</span>:
+  - <span class="key">service</span>: <span class="string">notify.mobile_app</span>
+    <span class="key">data</span>:
+      <span class="key">message</span>: <span class="string">"Dashie battery is at {{ states('sensor.dashie_battery') }}% - please plug it in"</span></code></div>
 
       <h2>Troubleshooting</h2>
 

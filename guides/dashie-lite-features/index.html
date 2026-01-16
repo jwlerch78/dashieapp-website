@@ -737,7 +737,7 @@
 
       <ol>
         <li><strong>Enter the URL for your dashboard</strong> including parameters to hide unwanted items</li>
-        <li><strong>Autobuild URL:</strong> Dashie Lite looks for your HA instance on the local network. If it doesn't find it, enter your HA base URL manually, the dashboard name, and select which items you'd like to hide (such as the sidebar, search, and assistant).</li>
+        <li><strong>Autobuild URL:</strong> Dashie Lite looks for your HA instance on the local network. If it finds it you can just add the name of your dashboard (the one in the url with a "-" in it) and save & load. If it doesn't find it, enter your HA base URL manually.</li>
       </ol>
 
       <div class="screenshot-image">
@@ -745,7 +745,7 @@
       </div>
 
       <p>
-        After that, click "Launch Dashboard" and you'll be taken to a Home Assistant Login screen.
+        After that you'll be taken to a Home Assistant Login screen.
         Note, this is not the native login screen on Fire tablets since the animations on that page interfere with the Fire Tablet's keypad.
       </p>
 
@@ -760,6 +760,19 @@
         The sidebar provides quick access to essential features without leaving your dashboard.
         Swipe from the left edge of the screen to reveal it.
       </p>
+
+      <div class="sidebar-section">
+        <div class="sidebar-section-content">
+          <h3>Home Assistant</h3>
+          <p>
+            This section is where you set your HA dashboard URL and choose whether to hide the sidebar and tabs on the top of the screen.
+            You can also enable the API here, which is compatible with Fully Kiosk's API.
+          </p>
+        </div>
+        <div class="sidebar-section-image">
+          <img src="/website-assets/dashie-lite-ha.png" alt="Dashie Lite Home Assistant settings">
+        </div>
+      </div>
 
       <div class="sidebar-section">
         <div class="sidebar-section-content">
@@ -778,7 +791,7 @@
           <h3>Voice</h3>
           <p>
             You can enable voice control here to send voice commands to HA using "Hey Dashie" as the wake word.
-            Responses are read aloud (unless you mute the audio) and displayed on the screen, if the display responses option is enabled.
+            You can choose to have responses read aloud, shown on screen, both, or have no response.
           </p>
         </div>
         <div class="sidebar-section-image">
@@ -788,16 +801,17 @@
 
       <div class="sidebar-section">
         <div class="sidebar-section-content">
-          <h3>Screen</h3>
+          <h3>Display</h3>
           <p>
             Dashie Lite can be set to keep your screen on, if you disable the Fire tablet's screen saver.
-            You can set a timeout for the screen to dim. Once dim, the screen can be woken up by touching the screen or with motion detection.
+            You can set a timeout for the screensaver, which can be set to dim, black, use the photos in your HA my media folder, pull up a URL, or use a 3rd party app such as Immich or PixFolio.
+            The screen can be woken up by touching the screen or with motion detection.
             Optimal motion detection is done with the camera, which requires camera permission.
-            If the camera is not enabled, the brightness sensor will be used.
+            If the camera is not enabled, the brightness sensor can be used.
           </p>
         </div>
         <div class="sidebar-section-image">
-          <img src="/website-assets/dashie-lite-screen.png" alt="Dashie Lite screen settings">
+          <img src="/website-assets/dashie-lite-screen.png" alt="Dashie Lite display settings">
         </div>
       </div>
 
@@ -805,9 +819,9 @@
         <div class="sidebar-section-content">
           <h3>System</h3>
           <p>
-            Dashie Lite supports the Fully Kiosk API commands, which can be enabled here.
+            You can lock Dashie Lite to prevent app exit. It can optionally be PIN protected to unlock the dashboard.
             You can set Dashie Lite to load on boot, though the latest Fire tablets require a swipe to start.
-            There is also the option to stop the status (top) and nav (bottom) bars from being shown with a swipe.
+            There are also performance settings, such as a keep-alive ping to prevent your Android OS from shutting down the communication channel with your tablet.
           </p>
         </div>
         <div class="sidebar-section-image">
@@ -841,26 +855,35 @@
         This keeps your dashboard always visible when the tablet is plugged in.
       </p>
 
-      <h3>Lock to App (Kiosk Mode)</h3>
+      <h3>Lock App (Kiosk Mode)</h3>
       <p>
-        The <strong>"Lock to App"</strong> toggle in the sidebar enables full kiosk lockdown mode:
+        The <strong>"Lock App"</strong> toggle in the sidebar enables full kiosk lockdown mode:
       </p>
       <ul>
         <li>Hides the navigation bar and status bar for a clean, full-screen display</li>
+        <li>Prevents the power button and volume buttons from exposing the settings menu</li>
         <li>Blocks the notification shade from being pulled down (prevents access to Quick Settings)</li>
         <li>Keeps users focused on your Home Assistant dashboard</li>
       </ul>
       <p>
-        When you first enable this setting, Android will show a confirmation dialog asking you to allow
+        On most tablets, when you first enable this setting, Android will show a confirmation dialog asking you to allow
         screen pinning. Once confirmed, the feature works automatically on future toggles.
       </p>
 
       <div class="info-box tip">
-        <h4>Exiting Lock to App Mode</h4>
+        <h4>Exiting Lock App Mode</h4>
         <p>
-          To exit, open the Dashie Lite sidebar and toggle off "Lock to App". If you get stuck,
+          To exit, open the Dashie Lite sidebar and click "Unlock App". If you get stuck,
           hold the <strong>Back</strong> and <strong>Recent Apps</strong> buttons simultaneously
           for a few seconds to exit screen pinning.
+        </p>
+      </div>
+
+      <div class="info-box tip">
+        <h4>PIN Recovery</h4>
+        <p>
+          If you forget your PIN, you are able to set a recovery email address that can send it to you.
+          If you do not enter a recovery address then the PIN can be reset with a long press on the Dashie Lite logo in the sidebar (5 seconds).
         </p>
       </div>
 
@@ -922,14 +945,14 @@ adb shell locksettings set-disabled true</code>
       <h2 id="api">Using the API</h2>
 
       <p>
-        Dashie Lite includes a Fully Kiosk-compatible REST API that runs on port <code>2323</code>.
-        This enables Home Assistant's <a href="https://www.home-assistant.io/integrations/fully_kiosk/">Fully Kiosk integration</a>
-        to control your Android device directly.
+        Dashie Lite includes a REST API that runs on port <code>2323</code>.
+        It is compatible with Fully Kiosk's integration, but supports more functionality including the brightness settings, PIN control, and RTSP video streaming.
+        A Dashie HACS integration will be available soon.
       </p>
 
       <h3>Enabling the API</h3>
       <p>
-        In the sidebar under <strong>System</strong>, toggle on "Enable Fully Kiosk API".
+        In the sidebar under <strong>Home Assistant</strong>, toggle on "Enable API".
         You can optionally set a password for authentication. Once enabled, the API is accessible at:
       </p>
 
@@ -939,7 +962,7 @@ adb shell locksettings set-disabled true</code>
 
       <h3>Connecting to Home Assistant</h3>
       <p>
-        To add Dashie Lite to Home Assistant using the Fully Kiosk integration:
+        To add Dashie Lite to Home Assistant using the Fully Kiosk integration, until Dashie's Integration is available:
       </p>
       <ol>
         <li>Go to <strong>Settings → Devices & Services → Add Integration</strong></li>
