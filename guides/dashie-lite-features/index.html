@@ -999,7 +999,11 @@ adb shell locksettings set-disabled true</code>
           </tr>
           <tr>
             <td><code>setStringSetting</code></td>
-            <td>Set configuration (supports <code>screenBrightness</code> 0-255)</td>
+            <td>Set configuration (supports <code>screenBrightness</code> 0-255, <code>startUrl</code>)</td>
+          </tr>
+          <tr>
+            <td><code>setBooleanSetting</code>*</td>
+            <td>Set boolean configuration values</td>
           </tr>
           <tr>
             <td><code>setAudioVolume</code></td>
@@ -1038,6 +1042,14 @@ adb shell locksettings set-disabled true</code>
             <td>Wake the screen (exit screensaver mode)</td>
           </tr>
           <tr>
+            <td><code>setScreensaverMode</code>*</td>
+            <td>Set screensaver type: dim, black, url, photos, or app</td>
+          </tr>
+          <tr>
+            <td><code>setHaMediaFolder</code>*</td>
+            <td>Set Home Assistant media folder path for photo screensaver</td>
+          </tr>
+          <tr>
             <td><code>triggerMotion</code></td>
             <td>Simulate motion detection (resets sleep timer)</td>
           </tr>
@@ -1054,6 +1066,34 @@ adb shell locksettings set-disabled true</code>
             <td>Capture image from camera (returns JPEG)</td>
           </tr>
           <tr>
+            <td><code>startRtspStream</code>*</td>
+            <td>Start RTSP camera stream on port 8554</td>
+          </tr>
+          <tr>
+            <td><code>stopRtspStream</code>*</td>
+            <td>Stop RTSP camera stream</td>
+          </tr>
+          <tr>
+            <td><code>getRtspStatus</code>*</td>
+            <td>Get RTSP stream status (running, resolution, clients)</td>
+          </tr>
+          <tr>
+            <td><code>getRtspConfig</code>*</td>
+            <td>Get RTSP configuration settings</td>
+          </tr>
+          <tr>
+            <td><code>setRtspResolution</code>*</td>
+            <td>Set RTSP resolution (e.g., 1280x720)</td>
+          </tr>
+          <tr>
+            <td><code>setRtspFps</code>*</td>
+            <td>Set RTSP frame rate (1-30)</td>
+          </tr>
+          <tr>
+            <td><code>setRtspBitrate</code>*</td>
+            <td>Set RTSP bitrate in bps</td>
+          </tr>
+          <tr>
             <td><code>startApplication</code></td>
             <td>Launch another app by package name</td>
           </tr>
@@ -1062,12 +1102,24 @@ adb shell locksettings set-disabled true</code>
             <td>Show a toast/overlay message</td>
           </tr>
           <tr>
-            <td><code>clearCache</code></td>
-            <td>Clear WebView cache</td>
+            <td><code>setDarkMode</code>*</td>
+            <td>Enable/disable dark mode (true/false)</td>
           </tr>
           <tr>
-            <td><code>clearWebstorage</code></td>
-            <td>Clear WebView local storage</td>
+            <td><code>getDarkMode</code>*</td>
+            <td>Get current dark mode state</td>
+          </tr>
+          <tr>
+            <td><code>setPin</code>*</td>
+            <td>Set PIN for kiosk lock</td>
+          </tr>
+          <tr>
+            <td><code>clearPin</code>*</td>
+            <td>Remove PIN protection</td>
+          </tr>
+          <tr>
+            <td><code>getPinStatus</code>*</td>
+            <td>Check if PIN is configured</td>
           </tr>
           <tr>
             <td><code>lockKiosk</code></td>
@@ -1077,8 +1129,17 @@ adb shell locksettings set-disabled true</code>
             <td><code>unlockKiosk</code></td>
             <td>Unlock kiosk mode (show sidebar controls)</td>
           </tr>
+          <tr>
+            <td><code>clearCache</code></td>
+            <td>Clear WebView cache</td>
+          </tr>
+          <tr>
+            <td><code>clearWebstorage</code></td>
+            <td>Clear WebView local storage</td>
+          </tr>
         </tbody>
       </table>
+      <p class="footnote">* Not supported by Fully Kiosk's integration</p>
 
       <h3>Example API Calls</h3>
       <p>
