@@ -721,6 +721,7 @@
               <li><a href="#voice-control">Voice Control (Upgrade)</a></li>
               <li><a href="#tips">Tips & Tricks</a></li>
               <li><a href="#api">Using the API</a></li>
+              <li><a href="#config-keys">Configuration Keys Reference</a></li>
             </ul>
           </div>
           <div class="toc-image">
@@ -1003,11 +1004,11 @@ adb shell locksettings set-disabled true</code>
           </tr>
           <tr>
             <td><code>setStringSetting</code></td>
-            <td>Set configuration (supports <code>screenBrightness</code> 0-255, <code>startUrl</code>)</td>
+            <td>Set configuration (supports <code>screenBrightness</code> 0-255, <code>startUrl</code>, <code>motionWakeMode</code>, <code>textScaling</code> 50-200%)</td>
           </tr>
           <tr>
             <td><code>setBooleanSetting</code>*</td>
-            <td>Set boolean configuration values</td>
+            <td>Set boolean configuration (supports <code>hideSidebar</code>, <code>hideHeader</code>, <code>keepScreenOn</code>, <code>startOnBoot</code>, <code>autoBrightness</code>, <code>rtspEnabled</code>, <code>rtspSoftwareEncoding</code>)</td>
           </tr>
           <tr>
             <td><code>setAudioVolume</code></td>
@@ -1047,7 +1048,11 @@ adb shell locksettings set-disabled true</code>
           </tr>
           <tr>
             <td><code>setScreensaverMode</code>*</td>
-            <td>Set screensaver type: dim, black, url, photos, or app</td>
+            <td>Set screensaver type: dim, black, url, or photos</td>
+          </tr>
+          <tr>
+            <td><code>setPhotoSource</code>*</td>
+            <td>Set photo source: ha_media, local, google, or immich</td>
           </tr>
           <tr>
             <td><code>setHaMediaFolder</code>*</td>
@@ -1157,6 +1162,16 @@ curl "http://192.168.1.100:2323/?cmd=deviceInfo&amp;type=json&amp;password=mypas
 curl "http://192.168.1.100:2323/?cmd=screenOn&amp;password=mypass"<br><br>
 <span class="comment"># Set brightness to 50%</span><br>
 curl "http://192.168.1.100:2323/?cmd=setStringSetting&amp;key=screenBrightness&amp;value=128&amp;password=mypass"<br><br>
+<span class="comment"># Enable auto-brightness</span><br>
+curl "http://192.168.1.100:2323/?cmd=setBooleanSetting&amp;key=autoBrightness&amp;value=true&amp;password=mypass"<br><br>
+<span class="comment"># Set motion wake mode to camera</span><br>
+curl "http://192.168.1.100:2323/?cmd=setStringSetting&amp;key=motionWakeMode&amp;value=camera&amp;password=mypass"<br><br>
+<span class="comment"># Set WebView text scaling to 125%</span><br>
+curl "http://192.168.1.100:2323/?cmd=setStringSetting&amp;key=textScaling&amp;value=125&amp;password=mypass"<br><br>
+<span class="comment"># Set screensaver to photos mode</span><br>
+curl "http://192.168.1.100:2323/?cmd=setScreensaverMode&amp;mode=photos&amp;password=mypass"<br><br>
+<span class="comment"># Set photo source to Immich</span><br>
+curl "http://192.168.1.100:2323/?cmd=setPhotoSource&amp;source=immich&amp;password=mypass"<br><br>
 <span class="comment"># Speak a message</span><br>
 curl "http://192.168.1.100:2323/?cmd=textToSpeech&amp;text=Hello%20world&amp;password=mypass"</code>
       </div>
@@ -1168,6 +1183,81 @@ curl "http://192.168.1.100:2323/?cmd=textToSpeech&amp;text=Hello%20world&amp;pas
           Home Assistant polls this automatically when using the Fully Kiosk integration.
         </p>
       </div>
+
+      <h3 id="config-keys">Configuration Keys Reference</h3>
+
+      <p><strong>setStringSetting keys:</strong></p>
+      <table class="settings-table">
+        <thead>
+          <tr>
+            <th>Key</th>
+            <th>Values</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>screenBrightness</code></td>
+            <td>0-255</td>
+            <td>Screen brightness level</td>
+          </tr>
+          <tr>
+            <td><code>startUrl</code></td>
+            <td>URL string</td>
+            <td>Dashboard URL to load on start</td>
+          </tr>
+          <tr>
+            <td><code>motionWakeMode</code></td>
+            <td>disabled, brightness, camera</td>
+            <td>How motion detection wakes screen</td>
+          </tr>
+          <tr>
+            <td><code>textScaling</code></td>
+            <td>50-200</td>
+            <td>WebView zoom percentage</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p><strong>setBooleanSetting keys:</strong></p>
+      <table class="settings-table">
+        <thead>
+          <tr>
+            <th>Key</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>hideSidebar</code></td>
+            <td>Hide the Home Assistant sidebar</td>
+          </tr>
+          <tr>
+            <td><code>hideHeader</code></td>
+            <td>Hide the Home Assistant header/tabs</td>
+          </tr>
+          <tr>
+            <td><code>keepScreenOn</code></td>
+            <td>Keep screen on while app is active</td>
+          </tr>
+          <tr>
+            <td><code>startOnBoot</code></td>
+            <td>Auto-start app on device boot</td>
+          </tr>
+          <tr>
+            <td><code>autoBrightness</code></td>
+            <td>Enable auto brightness based on light sensor</td>
+          </tr>
+          <tr>
+            <td><code>rtspEnabled</code></td>
+            <td>Enable RTSP camera streaming</td>
+          </tr>
+          <tr>
+            <td><code>rtspSoftwareEncoding</code></td>
+            <td>Use software encoding for RTSP (slower but more compatible)</td>
+          </tr>
+        </tbody>
+      </table>
 
       <h2>Need Help?</h2>
 
