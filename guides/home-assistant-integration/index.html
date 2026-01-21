@@ -589,7 +589,7 @@
     <header class="article-header">
       <span class="article-tag">Dashie Lite</span>
       <h1>Controlling Dashie Lite from Home Assistant</h1>
-      <p class="article-meta">Last updated: January 2026</p>
+      <p class="article-meta">Last updated: January 2026 • Integration v1.0.0</p>
     </header>
 
     <div class="article-content">
@@ -894,81 +894,163 @@
         and Sensors (things you can monitor).
       </p>
 
-      <h3>Controls</h3>
+      <h3>Switches</h3>
 
       <table class="entity-table">
         <thead>
           <tr>
             <th>Entity</th>
-            <th>Type</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>switch.dashie_screen</code></td>
+            <td>Turn screen on/off</td>
+          </tr>
+          <tr>
+            <td><code>switch.dashie_screensaver</code></td>
+            <td>Start/stop the screensaver</td>
+          </tr>
+          <tr>
+            <td><code>switch.dashie_lock</code></td>
+            <td>Lock/unlock kiosk mode (hides settings)</td>
+          </tr>
+          <tr>
+            <td><code>switch.dashie_dark_mode</code></td>
+            <td>Toggle system dark mode</td>
+          </tr>
+          <tr>
+            <td><code>switch.dashie_hide_sidebar</code></td>
+            <td>Hide/show the sidebar menu</td>
+          </tr>
+          <tr>
+            <td><code>switch.dashie_hide_tabs</code></td>
+            <td>Hide/show the header tabs</td>
+          </tr>
+          <tr>
+            <td><code>switch.dashie_keep_screen_on</code></td>
+            <td>Prevent screen from turning off</td>
+          </tr>
+          <tr>
+            <td><code>switch.dashie_auto_brightness</code></td>
+            <td>Enable automatic brightness adjustment</td>
+          </tr>
+          <tr>
+            <td><code>switch.dashie_start_on_boot</code></td>
+            <td>Launch app when device boots</td>
+          </tr>
+          <tr>
+            <td><code>switch.dashie_rtsp_stream</code></td>
+            <td>Enable/disable RTSP camera stream</td>
+          </tr>
+          <tr>
+            <td><code>switch.dashie_software_encoding</code></td>
+            <td>Use software encoding for RTSP (vs hardware)</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>Numbers</h3>
+
+      <table class="entity-table">
+        <thead>
+          <tr>
+            <th>Entity</th>
             <th>Description</th>
           </tr>
         </thead>
         <tbody>
           <tr>
             <td><code>number.dashie_brightness</code></td>
-            <td>Number</td>
-            <td>Set screen brightness (0-100)</td>
+            <td>Set screen brightness (0-255)</td>
           </tr>
           <tr>
             <td><code>number.dashie_volume</code></td>
-            <td>Number</td>
             <td>Set audio volume (0-100)</td>
           </tr>
           <tr>
-            <td><code>switch.dashie_screen</code></td>
-            <td>Switch</td>
-            <td>Turn screen on/off</td>
+            <td><code>number.dashie_zoom</code></td>
+            <td>WebView text/zoom scaling (50-200%)</td>
           </tr>
+        </tbody>
+      </table>
+
+      <h3>Selects</h3>
+
+      <table class="entity-table">
+        <thead>
           <tr>
-            <td><code>switch.dashie_dark_mode</code></td>
-            <td>Switch</td>
-            <td>Toggle system dark mode</td>
+            <th>Entity</th>
+            <th>Description</th>
           </tr>
-          <tr>
-            <td><code>switch.dashie_lock</code></td>
-            <td>Switch</td>
-            <td>Lock/unlock kiosk mode (hides settings)</td>
-          </tr>
-          <tr>
-            <td><code>switch.dashie_screensaver</code></td>
-            <td>Switch</td>
-            <td>Start/stop the screensaver</td>
-          </tr>
+        </thead>
+        <tbody>
           <tr>
             <td><code>select.dashie_screensaver_mode</code></td>
-            <td>Select</td>
             <td>Screensaver type: Dim, Black, URL, Photos, or App</td>
           </tr>
           <tr>
-            <td><code>text.dashie_photo_folder</code></td>
-            <td>Text</td>
+            <td><code>select.dashie_photo_folder</code></td>
             <td>HA Media folder for screensaver photos</td>
           </tr>
           <tr>
-            <td><code>text.dashie_load_url</code></td>
-            <td>Text</td>
-            <td>Load a custom URL in the WebView</td>
+            <td><code>select.dashie_motion_wake_mode</code></td>
+            <td>Motion detection mode: Disabled, Brightness Sensor, or Camera</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>Text Inputs</h3>
+
+      <table class="entity-table">
+        <thead>
+          <tr>
+            <th>Entity</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>text.dashie_dashboard_url</code></td>
+            <td>Set the Home Assistant dashboard URL</td>
           </tr>
           <tr>
-            <td><code>text.dashie_lock_pin</code></td>
-            <td>Text</td>
+            <td><code>text.dashie_pin</code></td>
             <td>Set a 4-digit unlock PIN</td>
           </tr>
+        </tbody>
+      </table>
+
+      <h3>Buttons</h3>
+
+      <table class="entity-table">
+        <thead>
           <tr>
-            <td><code>button.dashie_bring_to_foreground</code></td>
-            <td>Button</td>
-            <td>Bring app to foreground</td>
+            <th>Entity</th>
+            <th>Description</th>
           </tr>
+        </thead>
+        <tbody>
           <tr>
-            <td><code>button.dashie_reload_dashboard</code></td>
-            <td>Button</td>
+            <td><code>button.dashie_reload</code></td>
             <td>Refresh the dashboard</td>
           </tr>
           <tr>
-            <td><code>button.dashie_restart_app</code></td>
-            <td>Button</td>
+            <td><code>button.dashie_foreground</code></td>
+            <td>Bring app to foreground</td>
+          </tr>
+          <tr>
+            <td><code>button.dashie_restart</code></td>
             <td>Restart the Dashie Lite app</td>
+          </tr>
+          <tr>
+            <td><code>button.dashie_clear_cache</code></td>
+            <td>Clear the WebView cache</td>
+          </tr>
+          <tr>
+            <td><code>button.dashie_clear_storage</code></td>
+            <td>Clear WebView local storage</td>
           </tr>
         </tbody>
       </table>
@@ -979,55 +1061,78 @@
         <thead>
           <tr>
             <th>Entity</th>
-            <th>Type</th>
             <th>Description</th>
           </tr>
         </thead>
         <tbody>
           <tr>
             <td><code>sensor.dashie_battery</code></td>
-            <td>Sensor</td>
             <td>Battery level (0-100%)</td>
           </tr>
           <tr>
             <td><code>sensor.dashie_ambient_light</code></td>
-            <td>Sensor</td>
             <td>Light sensor reading in lux</td>
           </tr>
           <tr>
             <td><code>sensor.dashie_wifi_signal</code></td>
-            <td>Sensor</td>
             <td>WiFi signal strength (0-100%)</td>
           </tr>
           <tr>
             <td><code>sensor.dashie_storage_free</code></td>
-            <td>Sensor</td>
             <td>Available storage space</td>
           </tr>
           <tr>
             <td><code>sensor.dashie_current_page</code></td>
-            <td>Sensor</td>
             <td>Currently displayed URL</td>
           </tr>
           <tr>
+            <td><code>sensor.dashie_device_id</code></td>
+            <td>Unique device identifier</td>
+          </tr>
+          <tr>
+            <td><code>sensor.dashie_android_version</code></td>
+            <td>Android OS version</td>
+          </tr>
+          <tr>
+            <td><code>sensor.dashie_app_version</code></td>
+            <td>Dashie Lite app version</td>
+          </tr>
+          <tr>
+            <td><code>sensor.dashie_camera_frame_rate</code></td>
+            <td>RTSP stream frame rate</td>
+          </tr>
+          <tr>
+            <td><code>sensor.dashie_camera_resolution</code></td>
+            <td>RTSP stream resolution</td>
+          </tr>
+          <tr>
+            <td><code>sensor.dashie_camera_stream_url</code></td>
+            <td>RTSP stream URL when active</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>Binary Sensors</h3>
+
+      <table class="entity-table">
+        <thead>
+          <tr>
+            <th>Entity</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
             <td><code>binary_sensor.dashie_plugged_in</code></td>
-            <td>Binary Sensor</td>
             <td>Whether device is charging</td>
           </tr>
           <tr>
             <td><code>binary_sensor.dashie_screensaver_active</code></td>
-            <td>Binary Sensor</td>
             <td>Whether screensaver is running</td>
           </tr>
           <tr>
             <td><code>binary_sensor.dashie_pin_set</code></td>
-            <td>Binary Sensor</td>
             <td>Whether unlock PIN is configured</td>
-          </tr>
-          <tr>
-            <td><code>binary_sensor.dashie_camera_streaming</code></td>
-            <td>Binary Sensor</td>
-            <td>Whether RTSP camera stream is active</td>
           </tr>
         </tbody>
       </table>
