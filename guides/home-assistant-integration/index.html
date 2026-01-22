@@ -728,7 +728,7 @@
       <p>
         <a href="https://hacs.xyz/" target="_blank">HACS (Home Assistant Community Store)</a> makes it easy to install
         and update custom integrations. If you don't have HACS installed yet,
-        <a href="https://hacs.xyz/docs/setup/download" target="_blank">follow the HACS installation guide</a> first.
+        <a href="https://hacs.xyz/docs/use/" target="_blank">follow the HACS installation guide</a> first.
       </p>
 
       <div class="step">
@@ -1510,6 +1510,15 @@
         <li>The integration polls every 30 seconds by default</li>
         <li>Check Home Assistant logs for any API errors</li>
         <li>Verify the device is still responding to API requests</li>
+      </ul>
+
+      <h3>Device added but no entities appear</h3>
+      <ul>
+        <li><strong>Most common cause:</strong> The API is not enabled on the device. Go to the Dashie Lite sidebar → HOME ASSISTANT section → Toggle <strong>Enable API</strong> to ON</li>
+        <li>Test the API by opening <code>http://DEVICE_IP:2323/?cmd=deviceInfo&amp;type=json</code> in a browser - you should see JSON data</li>
+        <li>If the API test fails, try restarting the Dashie Lite app</li>
+        <li>Check Home Assistant logs (Settings → System → Logs) and filter for "dashie" to see any connection errors</li>
+        <li>Try removing the device from Home Assistant and re-adding it after confirming the API is working</li>
       </ul>
 
       <div class="info-box important">
