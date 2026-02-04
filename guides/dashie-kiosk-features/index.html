@@ -1170,32 +1170,12 @@ adb shell locksettings set-disabled true</code>
             <td>Unlock kiosk mode (show sidebar controls)</td>
           </tr>
           <tr>
-            <td><code>createTimer</code>*</td>
-            <td>Create a timer (requires <code>duration</code> in seconds, optional <code>label</code>)</td>
-          </tr>
-          <tr>
-            <td><code>cancelTimer</code>*</td>
-            <td>Cancel a running timer (requires <code>id</code>)</td>
-          </tr>
-          <tr>
-            <td><code>voiceCommand</code>*</td>
-            <td>Send a voice command to HA pipeline (requires <code>text</code>)</td>
-          </tr>
-          <tr>
             <td><code>clearCache</code></td>
             <td>Clear WebView cache</td>
           </tr>
           <tr>
             <td><code>clearWebstorage</code></td>
             <td>Clear WebView local storage</td>
-          </tr>
-          <tr>
-            <td><code>triggerTestCrash</code>*</td>
-            <td>Trigger test crash for diagnostics (requires <code>type</code>: oom/jvm/native/renderer)</td>
-          </tr>
-          <tr>
-            <td><code>triggerRendererCrash</code>*</td>
-            <td>Trigger WebView renderer crash for testing</td>
           </tr>
         </tbody>
       </table>
@@ -1225,10 +1205,6 @@ curl "http://192.168.1.100:2323/?cmd=setScreensaverMode&amp;mode=photos&amp;pass
 curl "http://192.168.1.100:2323/?cmd=setPhotoSource&amp;source=immich&amp;password=mypass"<br><br>
 <span class="comment"># Speak a message</span><br>
 curl "http://192.168.1.100:2323/?cmd=textToSpeech&amp;text=Hello%20world&amp;password=mypass"<br><br>
-<span class="comment"># Create a 5-minute timer</span><br>
-curl "http://192.168.1.100:2323/?cmd=createTimer&amp;duration=300&amp;label=Pizza&amp;password=mypass"<br><br>
-<span class="comment"># Send a voice command to HA</span><br>
-curl "http://192.168.1.100:2323/?cmd=voiceCommand&amp;text=turn%20on%20the%20lights&amp;password=mypass"<br><br>
 <span class="comment"># Refresh the dashboard</span><br>
 curl "http://192.168.1.100:2323/?cmd=refreshWebView&amp;password=mypass"<br><br>
 <span class="comment"># Mute audio</span><br>
