@@ -413,7 +413,7 @@ const headerHTML = `
     <ul>
       <li><a href="/" class="${getActiveClass('/')}">Home</a></li>
       <li><a href="/beta-signup" class="${getActiveClass('/beta-signup')}">Dashie <span class="early-access-tag">Early Access</span></a></li>
-      <li><a href="/dashie-lite" class="${getActiveClass('/dashie-lite')}">Dashie Lite <span class="beta-tag">Beta</span></a></li>
+      <li><a href="/dashie-kiosk" class="${getActiveClass('/dashie-kiosk')}">Dashie Kiosk <span class="beta-tag">Beta</span></a></li>
       <li><a href="/guides/" class="${getActiveClass('/guides')}">How To Guides</a></li>
       <li><a href="/contact" class="${getActiveClass('/contact')}">Contact Us</a></li>
     </ul>
@@ -448,7 +448,7 @@ const headerHTML = `
   <ul>
     <li><a href="/" class="${getActiveClass('/')}">Home</a></li>
     <li><a href="/beta-signup" class="${getActiveClass('/beta-signup')}">Dashie Early Access</a></li>
-    <li><a href="/dashie-lite" class="${getActiveClass('/dashie-lite')}">Dashie Lite</a></li>
+    <li><a href="/dashie-kiosk" class="${getActiveClass('/dashie-kiosk')}">Dashie Kiosk</a></li>
     <li><a href="/guides/" class="${getActiveClass('/guides')}">How To Guides</a></li>
     <li><a href="/contact" class="${getActiveClass('/contact')}">Contact Us</a></li>
   </ul>
