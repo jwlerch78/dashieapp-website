@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Register for Dashie Kiosk Beta</title>
+  <title>Register for Dashie Beta</title>
   <link rel="icon" type="image/png" href="./artwork/Dashie_Kiosk_Logo.png">
 
   <style>
@@ -243,13 +243,13 @@
 
   <!-- Hero Section -->
   <section class="hero">
-    <h1>Register for Dashie Kiosk Beta</h1>
+    <h1>Register for Dashie Beta</h1>
     <div class="hero-logo-container">
-      <img src="./artwork/Dashie_Kiosk_Logo.png" alt="Dashie Kiosk" class="hero-logo">
+      <img src="./artwork/Dashie_Kiosk_Logo.png" alt="Dashie" class="hero-logo">
       <div class="beta-badge">Beta</div>
     </div>
     <p class="hero-description">
-      Dashie Kiosk replaces Fully Kiosk and seamlessly integrates with Home Assistant's voice pipeline.
+      Dashie replaces Fully Kiosk and seamlessly integrates with Home Assistant's voice pipeline.
       We're currently looking for beta users. Please let us know of your interest!
     </p>
   </section>
@@ -339,12 +339,12 @@
       </div>
 
       <div class="form-group">
-        <label for="expectations">What are you hoping Dashie Kiosk will do differently from your current setup?</label>
+        <label for="expectations">What are you hoping Dashie will do differently from your current setup?</label>
         <textarea id="expectations" name="expectations" rows="4" placeholder="Tell us what features or improvements matter most to you..."></textarea>
       </div>
 
       <div class="form-group">
-        <label>Do you have time to try Dashie Kiosk out in the next week?</label>
+        <label>Do you have time to try Dashie out in the next week?</label>
         <div class="radio-group">
           <label class="radio-label">
             <input type="radio" name="available_next_week" value="yes" required> Yes
@@ -419,7 +419,7 @@
         } else {
           const result = await response.json();
           if (result.error && result.error.includes('already registered')) {
-            alert('This email address has already registered for Dashie Kiosk beta. Check your inbox for our confirmation email, or contact us if you need help.');
+            alert('This email address has already registered for Dashie beta. Check your inbox for our confirmation email, or contact us if you need help.');
           } else {
             alert(result.error || 'There was an error submitting your request. Please try again.');
           }

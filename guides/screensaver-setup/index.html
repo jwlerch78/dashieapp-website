@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Screensaver Setup Guide - Dashie Kiosk</title>
+  <title>Screensaver Setup Guide - Dashie</title>
   <link rel="icon" type="image/png" href="../../artwork/Dashie_Logo_Orange_Transparent.png">
 
   <style>
@@ -674,14 +674,14 @@
   <!-- Article -->
   <article class="article">
     <header class="article-header">
-      <span class="article-tag">Dashie Kiosk</span>
+      <span class="article-tag">Dashie</span>
       <h1>Setting Up Your Screensaver</h1>
       <p class="article-meta">Last updated: January 2025</p>
     </header>
 
     <div class="article-content">
       <p>
-        Dashie Kiosk includes a flexible screensaver system designed to protect your screen, save power,
+        Dashie includes a flexible screensaver system designed to protect your screen, save power,
         and optionally display beautiful photos. This guide covers all available screensaver modes,
         how to set up a photo slideshow, and how to use third-party screensaver apps.
       </p>
@@ -701,7 +701,7 @@
       <h2 id="modes">Screensaver Modes</h2>
 
       <p>
-        Dashie Kiosk offers five screensaver modes to fit different needs. Access these settings by
+        Dashie offers five screensaver modes to fit different needs. Access these settings by
         swiping from the left edge to open the sidebar, then tap <strong>Screen</strong>.
       </p>
 
@@ -851,13 +851,13 @@
       <p>
         The photo slideshow mode transforms your tablet into a beautiful digital photo frame.
         Photos are stored in your Home Assistant media library and automatically sync to your
-        Dashie Kiosk devices.
+        Dashie devices.
       </p>
 
       <h3>Adding Photos to Home Assistant Media Library</h3>
 
       <p>
-        Dashie Kiosk pulls photos from your Home Assistant's <code>/config/media/</code> folder.
+        Dashie pulls photos from your Home Assistant's <code>/config/media/</code> folder.
         This central location means you add photos once and all your devices display them automatically.
       </p>
 
@@ -936,20 +936,20 @@
       <div class="info-box tip">
         <h4>Supported Photo Formats</h4>
         <p>
-          Dashie Kiosk supports JPG, JPEG, PNG, WEBP, and GIF images. For best results, use
+          Dashie supports JPG, JPEG, PNG, WEBP, and GIF images. For best results, use
           landscape-oriented photos. Portrait photos will display with a blurred background.
         </p>
       </div>
 
-      <h3>Configuring Dashie Kiosk to Display Photos</h3>
+      <h3>Configuring Dashie to Display Photos</h3>
 
       <p>
-        Once you have photos in your Home Assistant media library, configure Dashie Kiosk to display them:
+        Once you have photos in your Home Assistant media library, configure Dashie to display them:
       </p>
 
       <ol class="step-list">
         <li>
-          <strong>Open the Dashie Kiosk sidebar</strong> by swiping from the left edge of the screen.
+          <strong>Open the Dashie sidebar</strong> by swiping from the left edge of the screen.
         </li>
         <li>
           <strong>Tap "Screen"</strong> to open screen settings.
@@ -965,7 +965,7 @@
       <div class="info-box tip">
         <h4>Multi-Device Sync</h4>
         <p>
-          Add photos to Home Assistant once, and they appear on all your Dashie Kiosk devices
+          Add photos to Home Assistant once, and they appear on all your Dashie devices
           automatically. No need to copy files to each tablet individually.
         </p>
       </div>
@@ -973,7 +973,7 @@
       <h3>Organizing Photos with Subfolders</h3>
 
       <p>
-        You can organize your photos into subfolders within the media directory. Dashie Kiosk
+        You can organize your photos into subfolders within the media directory. Dashie
         will scan all subfolders and include all photos in the slideshow.
       </p>
 
@@ -1034,7 +1034,7 @@
       <h2 id="third-party">Using Third-Party Apps</h2>
 
       <p>
-        Dashie Kiosk can launch any Android app as your screensaver. This is especially useful if
+        Dashie can launch any Android app as your screensaver. This is especially useful if
         you already have a favorite screensaver app like <strong>ImmichFrame</strong> for displaying
         photos from an Immich server.
       </p>
@@ -1049,7 +1049,7 @@
           <strong>Configure the app</strong> according to its own setup instructions (connect to your photo server, set display preferences, etc.).
         </li>
         <li>
-          <strong>Open Dashie Kiosk settings</strong> &rarr; Screen &rarr; Screensaver Mode &rarr; App.
+          <strong>Open Dashie settings</strong> &rarr; Screen &rarr; Screensaver Mode &rarr; App.
         </li>
         <li>
           <strong>Tap "Select App"</strong> and choose your screensaver app from the list of installed apps.
@@ -1059,14 +1059,14 @@
       <h3>How It Works</h3>
 
       <p>
-        When the screensaver timeout is reached, Dashie Kiosk launches your selected app in the foreground.
+        When the screensaver timeout is reached, Dashie launches your selected app in the foreground.
         The app runs normally with full touch interaction.
       </p>
 
       <div class="info-box tip">
         <h4>Voice Wake from Any App</h4>
         <p>
-          Unlike other kiosk solutions, Dashie Kiosk's "Hey Dashie" voice wake works even when a
+          Unlike other kiosk solutions, Dashie's "Hey Dashie" voice wake works even when a
           third-party app is running. Just say "Hey Dashie" to return to your Home Assistant dashboard
           at any time.
         </p>
@@ -1105,7 +1105,7 @@
       <h2 id="motion-wake">Motion Wake Settings</h2>
 
       <p>
-        Dashie Kiosk can automatically wake the screen when it detects motion, making it convenient
+        Dashie can automatically wake the screen when it detects motion, making it convenient
         for wall-mounted displays. You can choose between camera-based detection (recommended) or
         brightness sensor detection.
       </p>
@@ -1162,7 +1162,7 @@
       <h2 id="api-control">Controlling via Home Assistant</h2>
 
       <p>
-        If you've enabled the Fully Kiosk API in Dashie Kiosk, you can control the screensaver
+        If you've enabled the Fully Kiosk API in Dashie, you can control the screensaver
         remotely through Home Assistant automations.
       </p>
 
@@ -1202,7 +1202,7 @@ rest_command:
       </div>
 
       <p>
-        For full API documentation, see the <a href="/guides/dashie-kiosk-features#api">Dashie Kiosk Complete Guide</a>.
+        For full API documentation, see the <a href="/guides/dashie-kiosk-features#api">Dashie Complete Guide</a>.
       </p>
 
       <h2>Need Help?</h2>
@@ -1211,7 +1211,7 @@ rest_command:
         If you have questions or run into issues with screensaver setup:
       </p>
       <ul>
-        <li><a href="/guides/dashie-kiosk-features">Dashie Kiosk Complete Guide</a></li>
+        <li><a href="/guides/dashie-kiosk-features">Dashie Complete Guide</a></li>
         <li><a href="/guides/fire-tablet-sideload">Fire Tablet Installation Guide</a></li>
         <li><a href="/contact">Contact Support</a></li>
       </ul>

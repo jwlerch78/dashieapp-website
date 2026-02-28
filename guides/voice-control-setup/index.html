@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Setting Up Voice Control in Home Assistant for Dashie Kiosk - Dashie</title>
+  <title>Setting Up Voice Control in Home Assistant for Dashie - Dashie</title>
   <link rel="icon" type="image/png" href="../../artwork/Dashie_Logo_Orange_Transparent.png">
 
   <style>
@@ -549,22 +549,22 @@
   <!-- Article -->
   <article class="article">
     <header class="article-header">
-      <span class="article-tag">Dashie Kiosk</span>
-      <h1>Setting Up Voice Control in Home Assistant for Dashie Kiosk</h1>
+      <span class="article-tag">Dashie</span>
+      <h1>Setting Up Voice Control in Home Assistant for Dashie</h1>
       <p class="article-meta">Last updated: January 2025</p>
     </header>
 
     <div class="article-content">
       <p>
-        Dashie Kiosk supports voice control through Home Assistant's Assist pipeline, using "Hey Dashie" as the wake word.
-        This guide walks you through setting up Whisper for speech recognition and configuring Dashie Kiosk to work with your Home Assistant voice assistant.
+        Dashie supports voice control through Home Assistant's Assist pipeline, using "Hey Dashie" as the wake word.
+        This guide walks you through setting up Whisper for speech recognition and configuring Dashie to work with your Home Assistant voice assistant.
       </p>
 
       <div class="info-box tip">
         <h4>Voice Control Upgrade</h4>
         <p>
           Voice control with "Hey Dashie" wake word detection is available as an upgrade for $14.99.
-          The base Dashie Kiosk app is free and includes all dashboard features.
+          The base Dashie app is free and includes all dashboard features.
         </p>
       </div>
 
@@ -572,7 +572,7 @@
         <h3>Prerequisites</h3>
         <ul>
           <li>Home Assistant 2023.5 or later with Assist pipeline</li>
-          <li>Dashie Kiosk installed on your Android device</li>
+          <li>Dashie installed on your Android device</li>
           <li>Whisper add-on or external Whisper server for speech-to-text</li>
           <li>Microphone access on your Android device</li>
         </ul>
@@ -585,13 +585,13 @@
         <div class="architecture-flow">
           <div class="architecture-box highlight">"Hey Dashie"<br><small>Wake Word</small></div>
           <span class="architecture-arrow">→</span>
-          <div class="architecture-box">Dashie Kiosk<br><small>Records Audio</small></div>
+          <div class="architecture-box">Dashie<br><small>Records Audio</small></div>
           <span class="architecture-arrow">→</span>
           <div class="architecture-box">Whisper<br><small>Speech-to-Text</small></div>
           <span class="architecture-arrow">→</span>
           <div class="architecture-box">Home Assistant<br><small>Process Command</small></div>
         </div>
-        <p><small>Dashie Kiosk handles wake word detection locally on the device. Audio is sent to Home Assistant only after the wake word is detected.</small></p>
+        <p><small>Dashie handles wake word detection locally on the device. Audio is sent to Home Assistant only after the wake word is detected.</small></p>
       </div>
 
       <h2>Part 1: Install Whisper in Home Assistant</h2>
@@ -714,7 +714,7 @@
 
       <p>
         Now that Wyoming is connecting Whisper to Home Assistant, we need to configure the Assist pipeline
-        to use it. We'll also skip text-to-speech (TTS) since Dashie Kiosk displays responses on screen.
+        to use it. We'll also skip text-to-speech (TTS) since Dashie displays responses on screen.
       </p>
 
       <div class="step">
@@ -754,7 +754,7 @@
           <h4>Set Text-to-Speech to None</h4>
           <p>
             Under <strong>Text-to-speech</strong>, select <strong>None</strong>.
-            Dashie Kiosk displays responses visually, so TTS is not needed and would slow down the response.
+            Dashie displays responses visually, so TTS is not needed and would slow down the response.
           </p>
         </div>
       </div>
@@ -772,19 +772,19 @@
       <div class="info-box important">
         <h4>Important: Set TTS to "None"</h4>
         <p>
-          Setting Text-to-speech to "None" is crucial for Dashie Kiosk. Since responses are displayed on screen,
-          TTS would only add unnecessary delay and audio output. Dashie Kiosk handles response display natively.
+          Setting Text-to-speech to "None" is crucial for Dashie. Since responses are displayed on screen,
+          TTS would only add unnecessary delay and audio output. Dashie handles response display natively.
         </p>
       </div>
 
-      <h2>Part 4: Configure Dashie Kiosk</h2>
+      <h2>Part 4: Configure Dashie</h2>
 
       <div class="step">
         <div class="step-number">1</div>
         <div class="step-content">
-          <h4>Open Dashie Kiosk Settings</h4>
+          <h4>Open Dashie Settings</h4>
           <p>
-            In Dashie Kiosk, tap the gear icon in the sidebar to open Settings.
+            In Dashie, tap the gear icon in the sidebar to open Settings.
           </p>
         </div>
       </div>
@@ -854,8 +854,8 @@
 
       <h3>Wake word not detected</h3>
       <ul>
-        <li>Ensure microphone permissions are granted to Dashie Kiosk</li>
-        <li>Check that voice control is enabled in Dashie Kiosk settings</li>
+        <li>Ensure microphone permissions are granted to Dashie</li>
+        <li>Check that voice control is enabled in Dashie settings</li>
         <li>Speak clearly and at a normal volume</li>
         <li>Make sure the device isn't muted</li>
       </ul>
@@ -878,9 +878,9 @@
 
       <h3>No response displayed</h3>
       <ul>
-        <li>Verify the Assist pipeline is selected in Dashie Kiosk</li>
+        <li>Verify the Assist pipeline is selected in Dashie</li>
         <li>Check that Home Assistant URL is correctly configured</li>
-        <li>Look for errors in the Dashie Kiosk logs</li>
+        <li>Look for errors in the Dashie logs</li>
       </ul>
 
       <div class="info-box important">

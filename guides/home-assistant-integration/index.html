@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Home Assistant Integration for Dashie Kiosk - Dashie</title>
+  <title>Home Assistant Integration for Dashie - Dashie</title>
   <link rel="icon" type="image/png" href="../../artwork/Dashie_Logo_Orange_Transparent.png">
 
   <style>
@@ -599,14 +599,14 @@
   <!-- Article -->
   <article class="article">
     <header class="article-header">
-      <span class="article-tag">Dashie Kiosk</span>
-      <h1>Controlling Dashie Kiosk from Home Assistant</h1>
+      <span class="article-tag">Dashie</span>
+      <h1>Controlling Dashie from Home Assistant</h1>
       <p class="article-meta">Last updated: January 2026 • Integration v1.0.0</p>
     </header>
 
     <div class="article-content">
       <p>
-        The Dashie integration for Home Assistant lets you monitor and control your Dashie Kiosk devices directly from HA.
+        The Dashie integration for Home Assistant lets you monitor and control your Dashie devices directly from HA.
         You can adjust brightness, turn the screen on/off, lock the device, and more - all from your Home Assistant dashboard or automations.
       </p>
 
@@ -628,8 +628,8 @@
         <h3>Prerequisites</h3>
         <ul>
           <li>Home Assistant 2023.5 or later</li>
-          <li>Dashie Kiosk installed on your Android device (version 2.21.0B or later)</li>
-          <li>Both Home Assistant and Dashie Kiosk on the same local network</li>
+          <li>Dashie installed on your Android device (version 2.21.0B or later)</li>
+          <li>Both Home Assistant and Dashie on the same local network</li>
           <li><a href="https://hacs.xyz/" target="_blank">HACS</a> installed (recommended) or access to Home Assistant's config folder</li>
         </ul>
       </div>
@@ -637,21 +637,21 @@
       <h2>How It Works</h2>
 
       <div class="architecture">
-        <p>The integration communicates directly with your Dashie Kiosk device:</p>
+        <p>The integration communicates directly with your Dashie device:</p>
         <div class="architecture-flow">
           <div class="architecture-box highlight">Home Assistant<br><small>Dashie Integration</small></div>
           <span class="architecture-arrow">↔</span>
           <div class="architecture-box">REST API<br><small>Port 2323</small></div>
           <span class="architecture-arrow">↔</span>
-          <div class="architecture-box">Dashie Kiosk<br><small>Android Device</small></div>
+          <div class="architecture-box">Dashie<br><small>Android Device</small></div>
         </div>
-        <p><small>Dashie Kiosk runs a local REST API that Home Assistant polls for status and uses to send commands.</small></p>
+        <p><small>Dashie runs a local REST API that Home Assistant polls for status and uses to send commands.</small></p>
       </div>
 
-      <h2>Part 1: Enable the API on Dashie Kiosk</h2>
+      <h2>Part 1: Enable the API on Dashie</h2>
 
       <p>
-        First, you need to enable the REST API on your Dashie Kiosk device. This API allows Home Assistant
+        First, you need to enable the REST API on your Dashie device. This API allows Home Assistant
         to communicate with your device.
       </p>
 
@@ -660,7 +660,7 @@
         <div class="step-content">
           <h4>Open the Sidebar</h4>
           <p>
-            On your Dashie Kiosk device, swipe from the left edge of the screen or tap the menu icon
+            On your Dashie device, swipe from the left edge of the screen or tap the menu icon
             to open the sidebar.
           </p>
         </div>
@@ -767,10 +767,10 @@
       <div class="step">
         <div class="step-number">4</div>
         <div class="step-content">
-          <h4>Install Dashie Kiosk</h4>
+          <h4>Install Dashie</h4>
           <p>
             Close the custom repositories dialog. Click <strong>+ Explore & Download Repositories</strong>.
-            Search for "Dashie Kiosk" and click on it. Click <strong>Download</strong> in the bottom right.
+            Search for "Dashie" and click on it. Click <strong>Download</strong> in the bottom right.
           </p>
         </div>
       </div>
@@ -847,7 +847,7 @@
       <h2>Part 3: Add Your Dashie Device</h2>
 
       <p>
-        Now that the integration is installed, you can add your Dashie Kiosk device to Home Assistant.
+        Now that the integration is installed, you can add your Dashie device to Home Assistant.
       </p>
 
       <div class="step">
@@ -876,7 +876,7 @@
         <div class="step-content">
           <h4>Enter Device Details</h4>
           <p>
-            Enter your Dashie Kiosk device's IP address and port (default: 2323).
+            Enter your Dashie device's IP address and port (default: 2323).
             If you set a password, enter it as well.
           </p>
         </div>
@@ -896,7 +896,7 @@
       <div class="info-box tip">
         <h4>Auto-Discovery</h4>
         <p>
-          Dashie Kiosk broadcasts its presence on your network using SSDP. Home Assistant may
+          Dashie broadcasts its presence on your network using SSDP. Home Assistant may
           automatically discover your device and show a notification to add it. If you see this
           notification, just click "Configure" to add the device.
         </p>
@@ -1058,7 +1058,7 @@
           </tr>
           <tr>
             <td><code>button.dashie_restart</code></td>
-            <td>Restart the Dashie Kiosk app</td>
+            <td>Restart the Dashie app</td>
           </tr>
           <tr>
             <td><code>button.dashie_clear_cache</code></td>
@@ -1111,7 +1111,7 @@
           </tr>
           <tr>
             <td><code>sensor.dashie_app_version</code></td>
-            <td>Dashie Kiosk app version</td>
+            <td>Dashie app version</td>
           </tr>
           <tr>
             <td><code>sensor.dashie_camera_frame_rate</code></td>
@@ -1156,7 +1156,7 @@
       <h2>RTSP Camera Streaming</h2>
 
       <p>
-        Dashie Kiosk can stream video from your device's front camera as an RTSP feed, turning your tablet
+        Dashie can stream video from your device's front camera as an RTSP feed, turning your tablet
         into a security camera or video intercom. This works great for monitoring a room or as a doorbell
         camera integration.
       </p>
@@ -1177,7 +1177,7 @@
         <div class="step-content">
           <h4>Enable in Sidebar</h4>
           <p>
-            On your Dashie Kiosk device, open the sidebar and find the <strong>CAMERA</strong> section.
+            On your Dashie device, open the sidebar and find the <strong>CAMERA</strong> section.
             Toggle <strong>Enable RTSP Stream</strong> to ON.
           </p>
         </div>
@@ -1228,7 +1228,7 @@
         <div class="step-content">
           <h4>Configure Stream URL</h4>
           <p>
-            Enter the RTSP stream URL from your Dashie Kiosk device:<br>
+            Enter the RTSP stream URL from your Dashie device:<br>
             • <strong>Stream Source:</strong> <code>rtsp://192.168.x.x:8554/camera</code><br>
             • <strong>Still Image URL:</strong> Leave blank (or use the camshot API endpoint)<br>
             Give it a friendly name like "Kitchen Dashie Camera".
@@ -1291,13 +1291,13 @@
       <h2>Services</h2>
 
       <p>
-        Beyond entities, Dashie Kiosk exposes several services you can call from automations
+        Beyond entities, Dashie exposes several services you can call from automations
         and scripts for text-to-speech, audio playback, and on-screen notifications.
       </p>
 
       <h3>Text-to-Speech</h3>
 
-      <p>Make your Dashie Kiosk device speak announcements using Android's built-in TTS engine:</p>
+      <p>Make your Dashie device speak announcements using Android's built-in TTS engine:</p>
 
       <div class="code-block"><code><span class="key">service</span>: <span class="string">rest_command.dashie_tts</span>
 <span class="key">data</span>:
@@ -1492,7 +1492,7 @@
 
       <h3>Connection failed when adding device</h3>
       <ul>
-        <li>Verify the API is enabled on your Dashie Kiosk device</li>
+        <li>Verify the API is enabled on your Dashie device</li>
         <li>Check the IP address is correct and the device is on the same network</li>
         <li>Try accessing <code>http://DEVICE_IP:2323/?cmd=deviceInfo&amp;type=json</code> in a browser to test</li>
         <li>Make sure no firewall is blocking port 2323</li>
@@ -1500,9 +1500,9 @@
 
       <h3>Device shows as unavailable</h3>
       <ul>
-        <li>Check that Dashie Kiosk is running on the device</li>
+        <li>Check that Dashie is running on the device</li>
         <li>Verify the device hasn't changed IP address (consider setting a static IP)</li>
-        <li>Restart the Dashie Kiosk app or toggle the API off and on</li>
+        <li>Restart the Dashie app or toggle the API off and on</li>
       </ul>
 
       <h3>Entities not updating</h3>
@@ -1514,9 +1514,9 @@
 
       <h3>Device added but no entities appear</h3>
       <ul>
-        <li><strong>Most common cause:</strong> The API is not enabled on the device. Go to the Dashie Kiosk sidebar → HOME ASSISTANT section → Toggle <strong>Enable API</strong> to ON</li>
+        <li><strong>Most common cause:</strong> The API is not enabled on the device. Go to the Dashie sidebar → HOME ASSISTANT section → Toggle <strong>Enable API</strong> to ON</li>
         <li>Test the API by opening <code>http://DEVICE_IP:2323/?cmd=deviceInfo&amp;type=json</code> in a browser - you should see JSON data</li>
-        <li>If the API test fails, try restarting the Dashie Kiosk app</li>
+        <li>If the API test fails, try restarting the Dashie app</li>
         <li>Check Home Assistant logs (Settings → System → Logs) and filter for "dashie" to see any connection errors</li>
         <li>Try removing the device from Home Assistant and re-adding it after confirming the API is working</li>
       </ul>
@@ -1525,7 +1525,7 @@
         <h4>Need More Help?</h4>
         <p>
           If you're still having trouble, <a href="/contact">contact us</a> with details about your setup
-          and any error messages you're seeing. Include your Home Assistant version and Dashie Kiosk app version.
+          and any error messages you're seeing. Include your Home Assistant version and Dashie app version.
         </p>
       </div>
     </div>

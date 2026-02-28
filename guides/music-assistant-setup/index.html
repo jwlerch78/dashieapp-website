@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Setting Up Music Assistant with Dashie Kiosk - Dashie</title>
+  <title>Setting Up Music Assistant with Dashie - Dashie</title>
   <link rel="icon" type="image/png" href="../../artwork/Dashie_Logo_Orange_Transparent.png">
 
   <style>
@@ -561,22 +561,22 @@
   <!-- Article -->
   <article class="article">
     <header class="article-header">
-      <span class="article-tag">Dashie Kiosk</span>
-      <h1>Setting Up Music Assistant with Dashie Kiosk</h1>
+      <span class="article-tag">Dashie</span>
+      <h1>Setting Up Music Assistant with Dashie</h1>
       <p class="article-meta">Last updated: February 2026</p>
     </header>
 
     <div class="article-content">
       <p>
         <a href="https://music-assistant.io/" target="_blank">Music Assistant</a> is a free, open-source music library manager
-        for Home Assistant that connects all your music services in one place. With the Dashie Kiosk integration, you can use your
-        Dashie tablets as speakers for Music Assistant - play music, podcasts, and more through any Dashie Kiosk device on your network.
+        for Home Assistant that connects all your music services in one place. With the Dashie integration, you can use your
+        Dashie tablets as speakers for Music Assistant - play music, podcasts, and more through any Dashie device on your network.
       </p>
 
       <div class="info-box tip">
         <h4>What You'll Be Able to Do</h4>
         <p>
-          Stream music from Spotify, YouTube Music, local files, and other sources directly to your Dashie Kiosk tablets.
+          Stream music from Spotify, YouTube Music, local files, and other sources directly to your Dashie tablets.
           Control playback from the Music Assistant UI or Home Assistant automations, and use voice commands to request songs.
         </p>
       </div>
@@ -585,7 +585,7 @@
         <h3>Prerequisites</h3>
         <ul>
           <li>Home Assistant 2023.5 or later</li>
-          <li>Dashie Kiosk installed on your Android device (version 2.21.0B or later)</li>
+          <li>Dashie installed on your Android device (version 2.21.0B or later)</li>
           <li>The <a href="https://dashieapp.com/guides/home-assistant-integration">Dashie Home Assistant Integration</a> installed and configured</li>
           <li><a href="https://hacs.xyz/" target="_blank">HACS</a> installed in Home Assistant</li>
         </ul>
@@ -594,7 +594,7 @@
       <div class="info-box important">
         <h4>Required: Dashie Integration</h4>
         <p>
-          This guide requires the Dashie Home Assistant integration to be set up first. The integration exposes your Dashie Kiosk
+          This guide requires the Dashie Home Assistant integration to be set up first. The integration exposes your Dashie
           as a MediaPlayer entity in Home Assistant, which Music Assistant uses to stream audio to your tablet.
           If you haven't set it up yet, follow the <a href="https://dashieapp.com/guides/home-assistant-integration">Home Assistant Integration guide</a> first.
         </p>
@@ -605,7 +605,7 @@
       <p>
         Music Assistant acts as a central hub for all your music sources. It discovers speakers on your network through
         "Player Providers." The <strong>Home Assistant MediaPlayer provider</strong> lets Music Assistant see any media_player entity
-        in Home Assistant - including your Dashie Kiosk tablets.
+        in Home Assistant - including your Dashie tablets.
       </p>
 
       <div class="architecture">
@@ -617,9 +617,9 @@
           <span class="architecture-arrow">&#8594;</span>
           <div class="architecture-box">Home Assistant<br><small>MediaPlayer Entity</small></div>
           <span class="architecture-arrow">&#8594;</span>
-          <div class="architecture-box">Dashie Kiosk<br><small>Android Tablet</small></div>
+          <div class="architecture-box">Dashie<br><small>Android Tablet</small></div>
         </div>
-        <p><small>Music Assistant discovers Dashie Kiosk through the Home Assistant MediaPlayer provider and streams audio to it.</small></p>
+        <p><small>Music Assistant discovers Dashie through the Home Assistant MediaPlayer provider and streams audio to it.</small></p>
       </div>
 
       <h2>Part 1: Install Music Assistant</h2>
@@ -729,10 +729,10 @@
         </div>
       </div>
 
-      <h2>Part 3: Add Dashie Kiosk as a Speaker</h2>
+      <h2>Part 3: Add Dashie as a Speaker</h2>
 
       <p>
-        Now for the key step - adding your Dashie Kiosk tablet as a speaker in Music Assistant using the
+        Now for the key step - adding your Dashie tablet as a speaker in Music Assistant using the
         Home Assistant MediaPlayer provider.
       </p>
 
@@ -765,7 +765,7 @@
           <h4>Select Your Tablet as a Player Entity</h4>
           <p>
             Under <strong>Generic Settings</strong>, click the dropdown for <strong>Player Entities</strong>
-            and select your Dashie Kiosk tablet. Then click <strong>Save</strong>.
+            and select your Dashie tablet. Then click <strong>Save</strong>.
             Your tablet is now a player in Music Assistant.
           </p>
           <div class="screenshot-image">
@@ -779,7 +779,7 @@
         <div class="step-content">
           <h4>Verify Your Dashie Speaker</h4>
           <p>
-            Go back to the Music Assistant settings and select <strong>Players</strong>. Your Dashie Kiosk
+            Go back to the Music Assistant settings and select <strong>Players</strong>. Your Dashie
             should now be listed as <strong>[Device Name] Speaker</strong>.
           </p>
         </div>
@@ -788,14 +788,14 @@
       <div class="info-box tip">
         <h4>Multiple Dashie Tablets</h4>
         <p>
-          If you have multiple Dashie Kiosk devices, they'll each appear as separate speakers in Music Assistant.
+          If you have multiple Dashie devices, they'll each appear as separate speakers in Music Assistant.
         </p>
       </div>
 
       <h2>Part 4: Play Music</h2>
 
       <p>
-        With everything connected, you can start playing music on your Dashie Kiosk tablet.
+        With everything connected, you can start playing music on your Dashie tablet.
       </p>
 
       <h3>From the Music Assistant UI</h3>
@@ -806,7 +806,7 @@
           <h4>Select Your Dashie Speaker</h4>
           <p>
             In the Music Assistant UI, click the speaker/player icon at the bottom of the screen.
-            Select your Dashie Kiosk device as the active player.
+            Select your Dashie device as the active player.
           </p>
         </div>
       </div>
@@ -817,7 +817,7 @@
           <h4>Browse and Play</h4>
           <p>
             Browse your library, search for music, or explore radio stations. Click play on any track, album, or playlist
-            and it will stream to your Dashie Kiosk tablet.
+            and it will stream to your Dashie tablet.
           </p>
         </div>
       </div>
@@ -845,13 +845,13 @@
       <h3>With Voice Commands</h3>
 
       <p>
-        If you have <a href="/guides/voice-control-setup">voice control set up</a> on your Dashie Kiosk,
+        If you have <a href="/guides/voice-control-setup">voice control set up</a> on your Dashie,
         you can use voice commands to control music playback through Music Assistant's Home Assistant integration.
       </p>
 
       <h2>Troubleshooting</h2>
 
-      <h3>Dashie Kiosk doesn't appear as a speaker</h3>
+      <h3>Dashie doesn't appear as a speaker</h3>
       <ul>
         <li>Make sure the <a href="https://dashieapp.com/guides/home-assistant-integration">Dashie Home Assistant integration</a> is installed and your device is online</li>
         <li>Verify your Dashie device has a <code>media_player</code> entity in Home Assistant (check <strong>Settings &rarr; Devices &amp; Services &rarr; Dashie</strong>)</li>
@@ -863,7 +863,7 @@
       <ul>
         <li>Check that the tablet volume is turned up (you can use the <code>number.dashie_volume</code> entity in Home Assistant)</li>
         <li>Make sure no other app on the tablet has taken audio focus</li>
-        <li>Verify the Dashie Kiosk app is in the foreground on the tablet</li>
+        <li>Verify the Dashie app is in the foreground on the tablet</li>
       </ul>
 
       <h3>Playback is choppy or keeps buffering</h3>
