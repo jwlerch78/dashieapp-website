@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dashie Kiosk Complete Guide - Dashie</title>
-  <link rel="icon" type="image/png" href="../../artwork/Dashie_Kiosk_Logo.png">
+  <title>Dashie - Complete Guide for Home Assistant Users</title>
+  <link rel="icon" type="image/png" href="../../artwork/Dashie_Logo_Orange_Transparent.png">
 
   <style>
     * {
@@ -81,7 +81,7 @@
 
     .nav-bar li a .beta-tag {
       display: inline-block;
-      background: #18bcf2;
+      background: #1a365d;
       color: white;
       font-size: 10px;
       font-weight: 600;
@@ -678,7 +678,7 @@
       <ul>
         <li><a href="/">Home</a></li>
         <li><a href="/beta-signup">Dashie <span class="early-access-tag">Early Access</span></a></li>
-        <li><a href="/dashie-kiosk">Dashie Kiosk <span class="beta-tag">Beta</span></a></li>
+        <li><a href="/dashie-kiosk">For Home Assistant <span class="beta-tag">Beta</span></a></li>
         <li><a href="/guides/" class="active">How To Guides</a></li>
         <li><a href="/contact">Contact Us</a></li>
       </ul>
@@ -693,22 +693,22 @@
   <div class="breadcrumb">
     <a href="/guides/">How To Guides</a>
     <span>/</span>
-    <a href="#">Dashie Kiosk Guide</a>
+    <a href="#">Complete Guide</a>
   </div>
 
   <!-- Article -->
   <article class="article">
     <header class="article-header">
-      <span class="article-tag">Dashie Kiosk</span>
-      <h1>Dashie Kiosk Complete Guide</h1>
+      <span class="article-tag">Home Assistant</span>
+      <h1>Dashie - Complete Guide for Home Assistant Users</h1>
       <p class="article-meta">Last updated: February 2026</p>
     </header>
 
     <div class="article-content">
       <p>
-        Dashie Kiosk is a free, lightweight Android app designed for hosting Home Assistant dashboards.
-        It provides a clean, full-screen experience with helpful extras like a sidebar for quick access,
-        customizable settings, and optional voice control with the "Hey Dashie" wake word.
+        Dashie is a free, lightweight Android app designed for hosting Home Assistant dashboards.
+        It provides a clean, full-screen experience with a compact sidebar for quick controls,
+        a Control Center for managing all settings, and optional voice control with the "Hey Dashie" wake word.
       </p>
 
       <div class="toc">
@@ -717,102 +717,87 @@
             <h3>In This Guide</h3>
             <ul>
               <li><a href="#getting-started">Getting Started</a></li>
-              <li><a href="#sidebar">Using the Sidebar</a></li>
+              <li><a href="#sidebar">The Sidebar</a></li>
+              <li><a href="#control-center">Control Center</a></li>
               <li><a href="#voice-control">Voice Control (Upgrade)</a></li>
+              <li><a href="#dashie-integration">Dashie Integration</a></li>
+              <li><a href="#music-assistant">Music Assistant Integration</a></li>
               <li><a href="#tips">Tips & Tricks</a></li>
               <li><a href="#api">Using the API</a></li>
-              <li><a href="#config-keys">Configuration Keys Reference</a></li>
             </ul>
           </div>
           <div class="toc-image">
-            <img src="/website-assets/Dashie-lite-1.png" alt="Dashie Kiosk landing page">
+            <img src="/website-assets/_Dashie_MainScreen.png" alt="Dashie main screen with Home Assistant dashboard">
           </div>
         </div>
       </div>
 
       <h2 id="getting-started">Getting Started</h2>
 
+      <h3>Configuring Your Home Assistant URL</h3>
       <p>
-        The first step to setting up Home Assistant on Dashie Kiosk is to configure your URL. There are 2 options to do this:
+        When you first launch Dashie, you'll configure your Home Assistant connection. There are 2 options:
       </p>
-
       <ol>
         <li><strong>Enter the URL for your dashboard</strong> including parameters to hide unwanted items</li>
-        <li><strong>Autobuild URL:</strong> Dashie Kiosk looks for your HA instance on the local network. If it finds it you can just add the name of your dashboard (the one in the url with a "-" in it) and save & load. If it doesn't find it, enter your HA base URL manually.</li>
+        <li><strong>Auto-detect:</strong> Dashie scans for your HA instance on the local network. If it finds it, just add your dashboard name (the one in the URL with a "-" in it) and tap Save & Load. If it doesn't find it, enter your HA base URL manually.</li>
       </ol>
 
       <div class="screenshot-image">
-        <img src="/website-assets/Dashie-lite-2.png" alt="Dashie Kiosk URL configuration screen">
+        <img src="/website-assets/_Dashie_ConfigureHA.png" alt="Dashie Home Assistant configuration screen">
       </div>
 
       <p>
-        After that you'll be taken to a Home Assistant Login screen.
-        Note, this is not the native login screen on Fire tablets since the animations on that page interfere with the Fire Tablet's keypad.
+        The configuration screen also includes several display and integration options:
       </p>
+      <ul>
+        <li><strong>Hide Sidebar</strong> — Removes the Home Assistant sidebar from your dashboard for a cleaner view</li>
+        <li><strong>Hide Header/Tabs</strong> — Removes the header and tab navigation for a full-screen dashboard experience</li>
+        <li><strong>Enable API</strong> — Turns on the REST API so you can control your tablet from Home Assistant (see <a href="#api">Using the API</a>)</li>
+      </ul>
 
       <p>
-        Once logged in, your Home Assistant dashboard will display full-screen.
-        Swipe from the left edge to reveal the sidebar.
+        After saving your URL, you'll be taken to a Home Assistant login screen.
+        Once logged in, your dashboard will display full-screen.
       </p>
 
-      <h2 id="sidebar">Using the Sidebar</h2>
+      <h3>Permissions</h3>
+      <p>
+        Dashie will request the following Android permissions. You can grant or skip each one and change them later in Android Settings.
+      </p>
+      <ul>
+        <li><strong>Camera</strong> — Used for motion detection wake and optional RTSP video streaming</li>
+        <li><strong>Microphone</strong> — Required for "Hey Dashie" voice control (optional feature)</li>
+        <li><strong>Notifications</strong> — Required for background services:
+          <ul>
+            <li>Keeping the REST API server running for Home Assistant integration</li>
+            <li>Dashboard recovery if Android forces an unintended closure of the app</li>
+            <li>Return-to-dashboard alerts when navigating away</li>
+          </ul>
+        </li>
+        <li><strong>Screen Brightness</strong> — Allows Dashie to control screen brightness for auto-brightness and voice commands like "dim the screen"</li>
+      </ul>
+
+      <h2 id="sidebar">The Sidebar</h2>
 
       <p>
-        The sidebar provides quick access to essential features without leaving your dashboard.
-        Swipe from the left edge of the screen to reveal it.
+        The sidebar sits along the left edge of the screen as a compact icon strip, giving you instant access to
+        essential controls without leaving your dashboard. Swipe from the left edge to reveal it, or pin it to
+        keep it visible.
       </p>
 
       <div class="sidebar-section">
         <div class="sidebar-section-content">
-          <h3>Home Assistant</h3>
-          <p>
-            This section is where you set your HA dashboard URL and choose whether to hide the sidebar and tabs on the top of the screen.
-            You can also enable the API here, which is compatible with Fully Kiosk's API.
-          </p>
+          <h3>Controls</h3>
+          <p>The sidebar provides quick access to:</p>
+          <ul>
+            <li><strong>Music</strong> — Play/pause controls and speaker selection for Music Assistant integration</li>
+            <li><strong>Audio</strong> — Volume slider and mute toggle</li>
+            <li><strong>Brightness</strong> — Quick brightness adjustment</li>
+          </ul>
         </div>
         <div class="sidebar-section-image">
-          <img src="/website-assets/dashie-lite-ha.png" alt="Dashie Kiosk Home Assistant settings">
-        </div>
-      </div>
-
-      <div class="sidebar-section">
-        <div class="sidebar-section-content">
-          <h3>Audio/Video</h3>
-          <p>
-            Control the volume and mute/unmute the microphone or enable Video streaming from your tablet to an RTSP stream or Home Assistant.
-          </p>
-        </div>
-        <div class="sidebar-section-image">
-          <img src="/website-assets/dashie-lite-audio.png" alt="Dashie Kiosk audio settings">
-        </div>
-      </div>
-
-      <div class="sidebar-section">
-        <div class="sidebar-section-content">
-          <h3>Voice</h3>
-          <p>
-            You can enable voice control here to send voice commands to HA using "Hey Dashie" as the wake word.
-            You can choose to have responses read aloud, shown on screen, both, or have no response.
-          </p>
-        </div>
-        <div class="sidebar-section-image">
-          <img src="/website-assets/dashie-lite-voice.png" alt="Dashie Kiosk voice settings">
-        </div>
-      </div>
-
-      <div class="sidebar-section">
-        <div class="sidebar-section-content">
-          <h3>Display</h3>
-          <p>
-            Dashie Kiosk can be set to keep your screen on, if you disable the tablet's screen saver.
-            You can set a timeout for the screensaver, which can be set to dim, black, use the photos in your HA my media folder, pull up a URL, or use a 3rd party app such as Immich or PixFolio.
-            The screen can be woken up by touching the screen or with motion detection.
-            Optimal motion detection is done with the camera, which requires camera permission.
-            A sleep timer can also be configured to turn the screen on or off at set times or after a timeout that's independent of the screensaver timer.
-          </p>
-        </div>
-        <div class="sidebar-section-image">
-          <img src="/website-assets/dashie-lite-screen.png" alt="Dashie Kiosk display settings">
+          <img src="/website-assets/_Dashie_Sidebar.png" alt="Dashie sidebar with controls">
         </div>
       </div>
 
@@ -820,13 +805,75 @@
         <div class="sidebar-section-content">
           <h3>Quick Functions</h3>
           <p>
-            You can lock Dashie Kiosk to prevent app exit. It can optionally be PIN protected to unlock the dashboard.
-            Sleep turns the screen off according to your sleep settings in Display.
-            Reload reloads the dashboard (not the full app).
+            Tap the menu icon at the bottom of the sidebar to open the Quick Functions popup. From here you can:
           </p>
+          <ul>
+            <li><strong>Control Center</strong> — Open the full settings and configuration interface</li>
+            <li><strong>Exit</strong> — Exit the Dashie app</li>
+            <li><strong>Reload</strong> — Reload your Home Assistant dashboard</li>
+            <li><strong>Sleep</strong> — Put the screen to sleep immediately</li>
+            <li><strong>Lock</strong> — Enable kiosk lock mode to prevent app exit</li>
+            <li><strong>Pin Sidebar</strong> — Keep the sidebar visible instead of auto-hiding</li>
+          </ul>
         </div>
         <div class="sidebar-section-image">
-          <img src="/website-assets/dashie-lite-quick-functions.png" alt="Dashie Kiosk quick functions">
+          <img src="/website-assets/_Dashie_QuickFunctions.png" alt="Dashie Quick Functions popup">
+        </div>
+      </div>
+
+      <h2 id="control-center">Control Center</h2>
+
+      <p>
+        The Control Center is your hub for all Dashie settings and configuration. Access it by tapping
+        <strong>Control Center</strong> in the Quick Functions popup on the sidebar.
+      </p>
+
+      <div class="screenshot-image">
+        <img src="/website-assets/_Dashie_Controlcenter.png" alt="Dashie Control Center overlay">
+      </div>
+
+      <div class="feature-grid">
+        <div class="feature-card">
+          <h4>
+            <div class="icon"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
+            Home Assistant
+          </h4>
+          <p>Configure your HA dashboard URL, toggle sidebar and header visibility, and enable the REST API for remote control.</p>
+        </div>
+        <div class="feature-card">
+          <h4>
+            <div class="icon"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8"/><path d="M12 17v4"/></svg></div>
+            Display & Screensaver
+          </h4>
+          <p>Set up screensaver modes (dim, black, photos, URL, or third-party app), configure sleep timers, auto-brightness, and motion detection wake settings.</p>
+        </div>
+        <div class="feature-card">
+          <h4>
+            <div class="icon"><svg viewBox="0 0 24 24"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg></div>
+            Voice & AI
+          </h4>
+          <p>Enable "Hey Dashie" wake word, choose your voice handler, configure response behavior, and manage wake word models.</p>
+        </div>
+        <div class="feature-card">
+          <h4>
+            <div class="icon"><svg viewBox="0 0 24 24"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg></div>
+            Audio & Video
+          </h4>
+          <p>Control default volume levels, configure RTSP video streaming, and set up Music Assistant speaker options.</p>
+        </div>
+        <div class="feature-card">
+          <h4>
+            <div class="icon"><svg viewBox="0 0 24 24"><rect x="2" y="6" width="16" height="12" rx="2"/><path d="M22 10v4"/><polyline points="11 9 9 12 13 12 11 15"/></svg></div>
+            Power Management
+          </h4>
+          <p>Configure charging thresholds to manage battery health on always-plugged-in tablets. See <a href="#power-management">details below</a>.</p>
+        </div>
+        <div class="feature-card">
+          <h4>
+            <div class="icon"><svg viewBox="0 0 24 24"><line x1="4" y1="21" x2="4" y2="14"/><line x1="4" y1="10" x2="4" y2="3"/><line x1="12" y1="21" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="3"/><line x1="20" y1="21" x2="20" y2="16"/><line x1="20" y1="12" x2="20" y2="3"/><line x1="1" y1="14" x2="7" y2="14"/><line x1="9" y1="8" x2="15" y2="8"/><line x1="17" y1="16" x2="23" y2="16"/></svg></div>
+            System & Advanced
+          </h4>
+          <p>Access performance settings, refresh schedules, diagnostic tools, start-on-boot configuration, and device information.</p>
         </div>
       </div>
 
@@ -846,6 +893,46 @@
 
       <p>
         For setup instructions, see our <a href="/guides/voice-control-setup">Voice Control Setup Guide</a>.
+      </p>
+
+      <h2 id="dashie-integration">Dashie Integration</h2>
+
+      <p>
+        Dashie has a custom HACS integration for Home Assistant that gives you full control over your
+        tablets from the HA dashboard. With the integration installed, you can control your tablet's
+        screen, camera, audio, screensaver, and more — all from Home Assistant automations and the
+        dashboard UI.
+      </p>
+
+      <p>
+        The integration provides entities for battery status, screen state, and brightness, and supports
+        services for all API commands. It also enables streaming your tablet's camera feed as a camera
+        entity in Home Assistant.
+      </p>
+
+      <p>
+        For installation and setup instructions, see our
+        <a href="/guides/home-assistant-integration">Dashie Integration Setup Guide</a>.
+      </p>
+
+      <h2 id="music-assistant">Music Assistant Integration</h2>
+
+      <p>
+        Dashie integrates with <a href="https://music-assistant.io/" target="_blank">Music Assistant</a>
+        to turn your tablets into speakers for whole-home audio. With Music Assistant configured,
+        you can play music on any Dashie tablet, group speakers together, and control playback
+        directly from the sidebar.
+      </p>
+
+      <p>
+        Music playback controls appear in the sidebar for quick access, and you can select which
+        speaker or speaker group to use. The Control Center provides additional options for
+        default speaker selection and Music Assistant configuration.
+      </p>
+
+      <p>
+        For setup instructions, see our
+        <a href="/guides/music-assistant-setup">Music Assistant Setup Guide</a>.
       </p>
 
       <h2 id="tips">Tips & Tricks</h2>
@@ -868,7 +955,7 @@
       <div class="info-box tip">
         <h4>Exiting Lock App Mode</h4>
         <p>
-          To exit, open the Dashie Kiosk sidebar and click "Unlock App". If you get stuck,
+          To exit, open the Dashie sidebar and click "Unlock App". If you get stuck,
           hold the <strong>Back</strong> and <strong>Recent Apps</strong> buttons simultaneously
           for a few seconds to exit screen pinning.
         </p>
@@ -878,18 +965,34 @@
         <h4>PIN Recovery</h4>
         <p>
           If you forget your PIN, you are able to set a recovery email address that can send it to you.
-          If you do not enter a recovery address then the PIN can be reset with a long press on the Dashie Kiosk logo in the sidebar (5 seconds).
+          If you do not enter a recovery address then the PIN can be reset with a long press on the Dashie logo in the sidebar (5 seconds).
         </p>
       </div>
 
+      <h3 id="power-management">Power Management</h3>
+      <p>
+        Tablets mounted as permanent dashboards are typically plugged in 24/7, which can degrade battery health
+        over time. Dashie includes built-in power management to address this without requiring Home Assistant
+        automations or smart plugs.
+      </p>
+      <p>In the Control Center under Power Management, you can:</p>
+      <ul>
+        <li><strong>Set a charge limit</strong> — Stop charging when the battery reaches a target level (e.g., 80%)</li>
+        <li><strong>Set a resume threshold</strong> — Resume charging when the battery drops below a set level (e.g., 20%)</li>
+        <li><strong>View battery health status</strong> — Monitor charging cycles and battery condition</li>
+      </ul>
+      <p>
+        This keeps your tablet's battery cycling within a healthy range automatically, extending its lifespan significantly.
+      </p>
+
       <h3>Auto-Launch Options</h3>
       <p>
-        There are two ways to make Dashie Kiosk launch automatically when your tablet starts:
+        There are two ways to make Dashie launch automatically when your tablet starts:
       </p>
 
       <h4>Option 1: Set as Default Launcher (Recommended for Standard Android)</h4>
       <p>
-        On most Android tablets (not Fire tablets), you can set Dashie Kiosk as your default home/launcher app.
+        On most Android tablets (not Fire tablets), you can set Dashie as your default home/launcher app.
         This is the simplest approach and doesn't require any ADB commands.
       </p>
       <ol>
@@ -897,16 +1000,16 @@
         <li>Go to <strong>Apps</strong> (or "Apps & notifications")</li>
         <li>Tap <strong>Default apps</strong> (or "Choose default apps")</li>
         <li>Select <strong>Home app</strong> (or "Launcher")</li>
-        <li>Choose <strong>Dashie Kiosk</strong></li>
+        <li>Choose <strong>Dashie</strong></li>
       </ol>
       <p>
-        Once set as the launcher, Dashie Kiosk will automatically start when the tablet boots and when you press the home button.
+        Once set as the launcher, Dashie will automatically start when the tablet boots and when you press the home button.
       </p>
 
       <div class="info-box tip">
         <h4>Note about "Start on Boot" setting</h4>
         <p>
-          If you set Dashie Kiosk as your default launcher, you do <strong>not</strong> need to enable the "Start on Boot" toggle in the sidebar.
+          If you set Dashie as your default launcher, you do <strong>not</strong> need to enable the "Start on Boot" toggle in the sidebar.
           The launcher setting takes precedence and handles auto-launch automatically.
         </p>
       </div>
@@ -927,13 +1030,13 @@ adb shell locksettings set-disabled true</code>
       </div>
 
       <p>
-        After running these commands, enable <strong>"Start on Boot"</strong> in the Dashie Kiosk sidebar under System settings.
+        After running these commands, enable <strong>"Start on Boot"</strong> in the Dashie sidebar under System settings.
       </p>
 
       <div class="info-box tip">
         <h4>Note</h4>
         <p>
-          Even with these settings enabled, Fire tablets require approximately 60 seconds after power on to complete their system loading process before Dashie Kiosk will start.
+          Even with these settings enabled, Fire tablets require approximately 60 seconds after power on to complete their system loading process before Dashie will start.
         </p>
       </div>
 
@@ -941,7 +1044,7 @@ adb shell locksettings set-disabled true</code>
       <p>
         In the Advanced Menu in Settings there is a section for managing device performance and diagnosing issues.
         Home Assistant dashboards often have graphical displays that accumulate memory over time, which can lead to dashboard crashes if the Webview displaying the dashboard is not refreshed periodically.
-        By default, Dashie Kiosk will refresh your dashboard at 3am each night or if your screensaver has been active for 2 hours.
+        By default, Dashie will refresh your dashboard at 3am each night or if your screensaver has been active for 2 hours.
         It will also refresh your dashboard if the RAM utilization gets too high (memory pressure refresh).
         These parameters can be adjusted here.
       </p>
@@ -949,7 +1052,7 @@ adb shell locksettings set-disabled true</code>
       <h2 id="api">Using the API</h2>
 
       <p>
-        Dashie Kiosk includes a REST API that runs on port <code>2323</code>.
+        Dashie includes a REST API that runs on port <code>2323</code>.
         It is compatible with Fully Kiosk's integration, but supports more functionality including the brightness settings, PIN control, and RTSP video streaming.
         A Dashie HACS integration will be available soon.
       </p>
@@ -966,7 +1069,7 @@ adb shell locksettings set-disabled true</code>
 
       <h3>Connecting to Home Assistant</h3>
       <p>
-        To add Dashie Kiosk to Home Assistant using the Fully Kiosk integration, until Dashie's Integration is available:
+        To add Dashie to Home Assistant using the Fully Kiosk integration, until Dashie's Integration is available:
       </p>
       <ol>
         <li>Go to <strong>Settings → Devices & Services → Add Integration</strong></li>
@@ -978,7 +1081,7 @@ adb shell locksettings set-disabled true</code>
 
       <h3>Supported Commands</h3>
       <p>
-        Dashie Kiosk supports the most commonly-used Fully Kiosk API commands:
+        Dashie supports the most commonly-used Fully Kiosk API commands:
       </p>
 
       <table class="settings-table">
@@ -1035,7 +1138,7 @@ adb shell locksettings set-disabled true</code>
           </tr>
           <tr>
             <td><code>restartApp</code></td>
-            <td>Restart Dashie Kiosk</td>
+            <td>Restart Dashie</td>
           </tr>
           <tr>
             <td><code>rebootDevice</code>*</td>

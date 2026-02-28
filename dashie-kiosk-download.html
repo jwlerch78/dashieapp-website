@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Download Dashie Kiosk Beta</title>
-  <link rel="icon" type="image/png" href="./artwork/Dashie_Kiosk_Logo.png">
+  <title>Download Dashie for Home Assistant</title>
+  <link rel="icon" type="image/png" href="./artwork/Dashie_Logo_Orange_Transparent.png">
 
   <style>
     * {
@@ -39,15 +39,30 @@
       margin-bottom: 10px;
     }
 
-    .beta-badge {
+    .hero-badges {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 25px;
+    }
+
+    .hero-badge-tag {
       display: inline-block;
-      background: #18bcf2;
-      color: white;
       font-size: 0.85em;
       font-weight: 600;
       padding: 4px 14px;
       border-radius: 4px;
-      margin-bottom: 25px;
+    }
+
+    .hero-badge-tag.ha {
+      background: #18bcf2;
+      color: white;
+    }
+
+    .hero-badge-tag.beta {
+      background: #1a365d;
+      color: white;
     }
 
     .hero .tagline {
@@ -235,8 +250,11 @@
 
   <!-- Hero Section -->
   <section class="hero">
-    <img src="./artwork/Dashie_Kiosk_Logo.png" alt="Dashie Kiosk" class="hero-logo">
-    <div class="beta-badge">Beta</div>
+    <img src="./artwork/Dashie_Full_Logo_Orange_Transparent.png" alt="Dashie" class="hero-logo">
+    <div class="hero-badges">
+      <span class="hero-badge-tag ha">For Home Assistant</span>
+      <span class="hero-badge-tag beta">Beta</span>
+    </div>
 
     <p class="tagline">
       A free alternative to Fully Kiosk for hosting your Home Assistant dashboards on Android devices.
@@ -248,7 +266,7 @@
     <div class="download-box">
       <h2>Get Started</h2>
       <p>
-        Thanks for being a beta user of Dashie Kiosk! Please enable the toggles in the Beta section of the settings menu to share helpful information that will improve the product.
+        Thanks for being a beta user of Dashie for Home Assistant! Please enable the toggles in the Beta section of the settings menu to share helpful information that will improve the product.
       </p>
       <a href="/downloads/dashie-kiosk.apk?v=2.22.8B" class="btn-download">
         <svg viewBox="0 0 24 24">
