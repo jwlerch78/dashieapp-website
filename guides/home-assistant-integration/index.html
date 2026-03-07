@@ -601,7 +601,7 @@
     <header class="article-header">
       <span class="article-tag">Dashie</span>
       <h1>Controlling Dashie from Home Assistant</h1>
-      <p class="article-meta">Last updated: January 2026 • Integration v1.0.0</p>
+      <p class="article-meta">Last updated: March 2026 • Integration v1.2.5</p>
     </header>
 
     <div class="article-content">
@@ -896,7 +896,7 @@
       <div class="info-box tip">
         <h4>Auto-Discovery</h4>
         <p>
-          Dashie broadcasts its presence on your network using SSDP. Home Assistant may
+          Dashie broadcasts its presence on your network using mDNS/Zeroconf. Home Assistant may
           automatically discover your device and show a notification to add it. If you see this
           notification, just click "Configure" to add the device.
         </p>
@@ -1065,6 +1065,10 @@
             <td>Clear the WebView cache</td>
           </tr>
           <tr>
+            <td><code>button.dashie_refresh_webview</code></td>
+            <td>Refresh the WebView</td>
+          </tr>
+          <tr>
             <td><code>button.dashie_clear_storage</code></td>
             <td>Clear WebView local storage</td>
           </tr>
@@ -1114,6 +1118,10 @@
             <td>Dashie app version</td>
           </tr>
           <tr>
+            <td><code>sensor.dashie_ram_usage</code></td>
+            <td>RAM usage percentage</td>
+          </tr>
+          <tr>
             <td><code>sensor.dashie_camera_frame_rate</code></td>
             <td>RTSP stream frame rate</td>
           </tr>
@@ -1149,6 +1157,10 @@
           <tr>
             <td><code>binary_sensor.dashie_pin_set</code></td>
             <td>Whether unlock PIN is configured</td>
+          </tr>
+          <tr>
+            <td><code>binary_sensor.dashie_device_admin</code></td>
+            <td>Whether device admin/owner is active</td>
           </tr>
         </tbody>
       </table>
