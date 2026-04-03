@@ -377,6 +377,84 @@ const headerHTML = `
     color: #555;
   }
 
+  /* Dropdown menu for nav items */
+  .nav-dropdown {
+    position: relative;
+  }
+
+  .nav-dropdown > a {
+    display: block;
+    padding: 14px 20px;
+    color: #555;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.2s;
+    border-bottom: 3px solid transparent;
+  }
+
+  .nav-dropdown > a:hover {
+    color: #ffaa00;
+    background: rgba(255, 170, 0, 0.05);
+  }
+
+  .nav-dropdown > a.active {
+    color: #ffaa00;
+    border-bottom-color: #ffaa00;
+  }
+
+  .nav-dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+    min-width: 220px;
+    padding: 8px 0;
+    z-index: 200;
+  }
+
+  .nav-dropdown:hover .nav-dropdown-menu {
+    display: block;
+  }
+
+  .nav-dropdown-menu a {
+    display: block;
+    padding: 10px 20px;
+    color: #555;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 400;
+    transition: all 0.15s;
+    white-space: nowrap;
+  }
+
+  .nav-dropdown-menu a:hover {
+    color: #ffaa00;
+    background: rgba(255, 170, 0, 0.05);
+  }
+
+  .nav-dropdown-menu .dropdown-divider {
+    height: 1px;
+    background: #e8e8e8;
+    margin: 6px 0;
+  }
+
+  /* Mobile submenu items */
+  .mobile-menu li a.mobile-sub-item {
+    padding-left: 40px;
+    font-size: 14px;
+    color: #888;
+  }
+
+  .mobile-menu li a.mobile-sub-item:hover,
+  .mobile-menu li a.mobile-sub-item.active {
+    color: #ffaa00;
+  }
+
   /* Mobile Responsive */
   @media (max-width: 768px) {
     .nav-bar {
@@ -413,7 +491,20 @@ const headerHTML = `
     <ul>
       <li><a href="/" class="${getActiveClass('/')}">Home</a></li>
       <li><a href="/beta-signup" class="${getActiveClass('/beta-signup')}">Dashie <span class="early-access-tag">Early Access</span></a></li>
-      <li><a href="/dashie-kiosk" class="${getActiveClass('/dashie-kiosk')}">For Home Assistant <span class="beta-tag">Beta</span></a></li>
+      <li class="nav-dropdown">
+        <a href="/dashie-kiosk" class="${getActiveClass('/dashie-kiosk')}">For Home Assistant <span class="beta-tag">Beta</span></a>
+        <div class="nav-dropdown-menu">
+          <a href="/dashie-kiosk">Overview</a>
+          <a href="/dashie-kiosk#screensaver">Screensaver & Photos</a>
+          <a href="/dashie-kiosk#voice-control">Voice Control</a>
+          <a href="/dashie-kiosk#lock-mode">Lock Mode</a>
+          <a href="/dashie-kiosk#music-player">Music Player</a>
+          <a href="/dashie-kiosk#battery-management">Battery Management</a>
+          <a href="/dashie-kiosk#home-assistant">Home Assistant Integration</a>
+          <div class="dropdown-divider"></div>
+          <a href="/dashie-kiosk-beta">Register for Beta</a>
+        </div>
+      </li>
       <li><a href="/guides/" class="${getActiveClass('/guides')}">How To Guides</a></li>
       <li><a href="/contact" class="${getActiveClass('/contact')}">Contact Us</a></li>
     </ul>
@@ -449,6 +540,11 @@ const headerHTML = `
     <li><a href="/" class="${getActiveClass('/')}">Home</a></li>
     <li><a href="/beta-signup" class="${getActiveClass('/beta-signup')}">Dashie Early Access</a></li>
     <li><a href="/dashie-kiosk" class="${getActiveClass('/dashie-kiosk')}">Dashie for Home Assistant</a></li>
+    <li><a href="/dashie-kiosk#screensaver" class="mobile-sub-item">Screensaver & Photos</a></li>
+    <li><a href="/dashie-kiosk#voice-control" class="mobile-sub-item">Voice Control</a></li>
+    <li><a href="/dashie-kiosk#lock-mode" class="mobile-sub-item">Lock Mode</a></li>
+    <li><a href="/dashie-kiosk#music-player" class="mobile-sub-item">Music Player</a></li>
+    <li><a href="/dashie-kiosk#battery-management" class="mobile-sub-item">Battery Management</a></li>
     <li><a href="/guides/" class="${getActiveClass('/guides')}">How To Guides</a></li>
     <li><a href="/contact" class="${getActiveClass('/contact')}">Contact Us</a></li>
   </ul>

@@ -21,135 +21,6 @@
       min-height: 100vh;
     }
 
-    /* Navigation Bar (combined header) */
-    .nav-bar {
-      background: #f8f9fa;
-      padding: 0 40px;
-      border-bottom: 1px solid #e0e0e0;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    }
-
-    .nav-bar-left {
-      display: flex;
-      align-items: center;
-      gap: 0;
-    }
-
-    .logo-container {
-      display: flex;
-      align-items: center;
-      padding-right: 20px;
-    }
-
-    .logo {
-      height: 50px;
-      width: auto;
-    }
-
-    .nav-bar ul {
-      display: flex;
-      list-style: none;
-      gap: 0;
-    }
-
-    .nav-bar li a {
-      display: block;
-      padding: 14px 20px;
-      color: #555;
-      text-decoration: none;
-      font-size: 14px;
-      font-weight: 500;
-      transition: all 0.2s;
-      border-bottom: 3px solid transparent;
-    }
-
-    .nav-bar li a:hover {
-      color: #ffaa00;
-      background: rgba(255, 170, 0, 0.05);
-    }
-
-    .nav-bar li a.active {
-      color: #ffaa00;
-      border-bottom-color: #ffaa00;
-    }
-
-    .nav-bar li a .beta-tag {
-      display: inline-block;
-      background: #1a365d;
-      color: white;
-      font-size: 10px;
-      font-weight: 600;
-      padding: 2px 6px;
-      border-radius: 3px;
-      margin-left: 6px;
-      vertical-align: middle;
-    }
-
-    .nav-bar li a .early-access-tag {
-      display: inline-block;
-      background: #ffaa00;
-      color: white;
-      font-size: 10px;
-      font-weight: 600;
-      padding: 2px 6px;
-      border-radius: 3px;
-      margin-left: 6px;
-      vertical-align: middle;
-    }
-
-    .nav-bar-right {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .btn-login {
-      background: #ffaa00;
-      color: #ffffff;
-      padding: 8px 20px;
-      border: none;
-      border-radius: 6px;
-      font-size: 14px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.2s;
-      text-decoration: none;
-      display: inline-block;
-    }
-
-    .btn-login:hover {
-      background: #ffbb22;
-      transform: translateY(-1px);
-      box-shadow: 0 4px 12px rgba(255, 170, 0, 0.3);
-    }
-
-    .btn-signup {
-      background: transparent;
-      color: #ffaa00;
-      padding: 8px 20px;
-      border: 2px solid #ffaa00;
-      border-radius: 6px;
-      font-size: 14px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.2s;
-      text-decoration: none;
-      display: inline-block;
-    }
-
-    .btn-signup:hover {
-      background: #ffaa00;
-      color: #ffffff;
-      transform: translateY(-1px);
-      box-shadow: 0 4px 12px rgba(255, 170, 0, 0.3);
-    }
-
     /* Breadcrumb */
     .breadcrumb {
       max-width: 800px;
@@ -245,40 +116,6 @@
       text-decoration: underline;
     }
 
-    /* Code blocks */
-    .code-block {
-      background: #1e1e1e;
-      border-radius: 8px;
-      padding: 20px;
-      margin: 20px 0;
-      overflow-x: auto;
-    }
-
-    .code-block code {
-      color: #d4d4d4;
-      font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Fira Mono', 'Droid Sans Mono', monospace;
-      font-size: 14px;
-      line-height: 1.5;
-      white-space: pre;
-      background: transparent;
-    }
-
-    .code-block .comment {
-      color: #6a9955;
-    }
-
-    .code-block .key {
-      color: #9cdcfe;
-    }
-
-    .code-block .string {
-      color: #ce9178;
-    }
-
-    .code-block .keyword {
-      color: #569cd6;
-    }
-
     /* Inline code */
     code {
       background: #f4f4f4;
@@ -289,16 +126,23 @@
       color: #d63384;
     }
 
-    /* Full-width screenshot image in content */
-    .screenshot-image {
-      margin: 25px 0;
+    /* Hero screenshot */
+    .hero-screenshot {
+      margin: 30px 0;
+      text-align: center;
     }
 
-    .screenshot-image img {
-      width: 100%;
-      height: auto;
+    .hero-screenshot img {
+      max-width: 100%;
       border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+    }
+
+    .hero-screenshot figcaption {
+      margin-top: 12px;
+      font-size: 0.9em;
+      color: #888;
+      font-style: italic;
     }
 
     /* Info boxes */
@@ -453,50 +297,6 @@
 
     /* Mobile Responsive */
     @media (max-width: 768px) {
-      .nav-bar {
-        padding: 10px 15px;
-        flex-wrap: wrap;
-        gap: 10px;
-      }
-
-      .nav-bar-left {
-        width: 100%;
-        justify-content: space-between;
-        flex-wrap: wrap;
-        gap: 10px;
-      }
-
-      .logo-container {
-        padding-right: 0;
-      }
-
-      .logo {
-        height: 40px;
-      }
-
-      .nav-bar ul {
-        width: 100%;
-        overflow-x: auto;
-        gap: 0;
-      }
-
-      .nav-bar li a {
-        padding: 10px 12px;
-        font-size: 13px;
-        white-space: nowrap;
-      }
-
-      .nav-bar-right {
-        position: absolute;
-        right: 15px;
-        top: 10px;
-      }
-
-      .btn-login, .btn-signup {
-        padding: 6px 14px;
-        font-size: 13px;
-      }
-
       .breadcrumb,
       .article {
         padding-left: 20px;
@@ -512,14 +312,6 @@
         gap: 15px;
       }
 
-      .code-block {
-        padding: 15px;
-      }
-
-      .code-block code {
-        font-size: 12px;
-      }
-
       .architecture-flow {
         flex-direction: column;
       }
@@ -531,25 +323,8 @@
   </style>
 </head>
 <body>
-  <!-- Navigation Bar -->
-  <nav class="nav-bar">
-    <div class="nav-bar-left">
-      <div class="logo-container">
-        <a href="/"><img src="../../artwork/Dashie_Full_Logo_Orange_Transparent.png" alt="Dashie" class="logo"></a>
-      </div>
-      <ul>
-        <li><a href="/">Home</a></li>
-        <li><a href="/beta-signup">Dashie <span class="early-access-tag">Early Access</span></a></li>
-        <li><a href="/dashie-kiosk">For Home Assistant <span class="beta-tag">Beta</span></a></li>
-        <li><a href="/guides/" class="active">How To Guides</a></li>
-        <li><a href="/contact">Contact Us</a></li>
-      </ul>
-    </div>
-    <div class="nav-bar-right">
-      <a href="https://app.dashieapp.com/login" class="btn-login">Sign In</a>
-      <a href="/beta-signup" class="btn-signup">Sign Up</a>
-    </div>
-  </nav>
+  <!-- Shared Header/Navigation -->
+  <script src="/components/header.js"></script>
 
   <!-- Breadcrumb -->
   <div class="breadcrumb">
@@ -561,71 +336,98 @@
   <!-- Article -->
   <article class="article">
     <header class="article-header">
-      <span class="article-tag">Dashie</span>
+      <span class="article-tag">Dashie for Home Assistant</span>
       <h1>Setting Up Music Assistant with Dashie</h1>
-      <p class="article-meta">Last updated: February 2026</p>
+      <p class="article-meta">Last updated: April 2026</p>
     </header>
 
     <div class="article-content">
       <p>
         <a href="https://music-assistant.io/" target="_blank">Music Assistant</a> is a free, open-source music library manager
-        for Home Assistant that connects all your music services in one place. With the Dashie integration, you can use your
-        Dashie tablets as speakers for Music Assistant - play music, podcasts, and more through any Dashie device on your network.
+        for Home Assistant that connects all your music services in one place. With Dashie's built-in Sendspin speaker support,
+        your Dashie tablets automatically appear as speakers in Music Assistant — no extra integration or login required.
+      </p>
+
+      <figure class="hero-screenshot">
+        <img src="/artwork/dashie-music-recents.png" alt="Dashie full-screen music player showing recents, albums, and playback controls">
+        <figcaption>Dashie's full-screen music player with browsing, playback controls, and speaker selection</figcaption>
+      </figure>
+
+      <h2>About the Dashie Music Player</h2>
+
+      <p>
+        Dashie's music player is opened from the sidebar in one of two forms: <strong>pop-up player</strong> or <strong>full screen</strong>.
+        These float over your HA dashboard and give you control over your music regardless of what dashboard page you're on.
+        The player can also be minimized to a small bar that you can reposition over your dashboard in an unobtrusive place.
+      </p>
+
+      <p>
+        Within the players you have access to switching Music Assistant profiles and can select music from albums, artists,
+        playlists, recent music, or search for music. You can also control the speakers throughout your house.
+      </p>
+
+      <p>
+        Dashie's player uses the <strong>Sendspin protocol</strong>, so it can synchronize with other Sendspin players and your
+        tablet is automatically discovered as a speaker/player within Music Assistant.
       </p>
 
       <div class="info-box tip">
         <h4>What You'll Be Able to Do</h4>
         <p>
           Stream music from Spotify, YouTube Music, local files, and other sources directly to your Dashie tablets.
-          Control playback from the Music Assistant UI or Home Assistant automations, and use voice commands to request songs.
+          Group multiple Dashie devices for synchronized multi-room audio. Control playback from the native on-screen
+          music player, the Music Assistant UI, Home Assistant automations, or voice commands.
         </p>
       </div>
 
       <div class="requirements">
         <h3>Prerequisites</h3>
         <ul>
-          <li>Home Assistant 2023.5 or later</li>
-          <li>Dashie installed on your Android device (version 2.21.0B or later)</li>
-          <li>The <a href="https://dashieapp.com/guides/home-assistant-integration">Dashie Home Assistant Integration</a> installed and configured</li>
-          <li><a href="https://hacs.xyz/" target="_blank">HACS</a> installed in Home Assistant</li>
+          <li>Home Assistant with the Music Assistant add-on (version 2.7 or later)</li>
+          <li>Dashie installed on your Android device (version 2.3 or later)</li>
+          <li>Your Dashie tablet and Music Assistant server on the same local network</li>
         </ul>
       </div>
 
-      <div class="info-box important">
-        <h4>Required: Dashie Integration</h4>
+      <div class="info-box tip">
+        <h4>No HA Integration Required</h4>
         <p>
-          This guide requires the Dashie Home Assistant integration to be set up first. The integration exposes your Dashie
-          as a MediaPlayer entity in Home Assistant, which Music Assistant uses to stream audio to your tablet.
-          If you haven't set it up yet, follow the <a href="https://dashieapp.com/guides/home-assistant-integration">Home Assistant Integration guide</a> first.
+          Unlike the previous setup method, the Sendspin approach does not require the Dashie Home Assistant integration
+          or a Music Assistant login. Your Dashie tablet connects directly to Music Assistant's Sendspin server
+          and registers itself as a speaker automatically.
         </p>
       </div>
 
       <h2>How It Works</h2>
 
       <p>
-        Music Assistant acts as a central hub for all your music sources. It discovers speakers on your network through
-        "Player Providers." The <strong>Home Assistant MediaPlayer provider</strong> lets Music Assistant see any media_player entity
-        in Home Assistant - including your Dashie tablets.
+        Dashie uses the <strong>Sendspin protocol</strong> — Music Assistant's native multi-room audio protocol (built-in since MA 2.7).
+        When you enable the music player in Dashie, it connects to Music Assistant's Sendspin server over a WebSocket and
+        registers as a speaker. Music Assistant then streams synchronized audio directly to your tablet alongside metadata
+        like track info, album art, and playback state.
       </p>
 
       <div class="architecture">
-        <p>Audio flows from Music Assistant through Home Assistant to your Dashie tablet:</p>
+        <p>Audio flows directly from Music Assistant to your Dashie tablet via Sendspin:</p>
         <div class="architecture-flow">
           <div class="architecture-box">Music Sources<br><small>Spotify, YT Music, etc.</small></div>
           <span class="architecture-arrow">&#8594;</span>
-          <div class="architecture-box highlight">Music Assistant<br><small>HA Add-on</small></div>
+          <div class="architecture-box highlight">Music Assistant<br><small>Sendspin Server</small></div>
           <span class="architecture-arrow">&#8594;</span>
-          <div class="architecture-box">Home Assistant<br><small>MediaPlayer Entity</small></div>
-          <span class="architecture-arrow">&#8594;</span>
-          <div class="architecture-box">Dashie<br><small>Android Tablet</small></div>
+          <div class="architecture-box">Dashie Tablets<br><small>Sendspin Speakers</small></div>
         </div>
-        <p><small>Music Assistant discovers Dashie through the Home Assistant MediaPlayer provider and streams audio to it.</small></p>
+        <p><small>Sendspin provides synchronized audio, metadata, playback state, and volume control over a single WebSocket connection.</small></p>
       </div>
+
+      <p>
+        Because Sendspin is Music Assistant's native speaker protocol, your Dashie tablets can be grouped with other Sendspin-compatible
+        speakers including Chromecast (via Sendspin Bridge), AirPlay devices, and other Dashie tablets for synchronized multi-room playback.
+      </p>
 
       <h2>Part 1: Install Music Assistant</h2>
 
       <p>
-        Music Assistant runs as a Home Assistant add-on. It runs as a separate service managed by Home Assistant.
+        Music Assistant runs as a Home Assistant add-on. If you already have it installed, skip to Part 2.
       </p>
 
       <div class="step">
@@ -677,19 +479,10 @@
         </div>
       </div>
 
-      <div class="info-box tip">
-        <h4>First-Time Setup</h4>
-        <p>
-          After installing, you can open the Music Assistant UI by clicking <strong>Open Web UI</strong> on the add-on page,
-          or by finding it in the Home Assistant sidebar. The first launch will walk you through connecting your music
-          services (Spotify, YouTube Music, local files, etc.).
-        </p>
-      </div>
-
       <h2>Part 2: Add Your Music Sources</h2>
 
       <p>
-        Before adding speakers, connect at least one music source so you have something to play.
+        Before setting up speakers, connect at least one music source so you have something to play.
         Open the Music Assistant UI from the Home Assistant sidebar.
       </p>
 
@@ -709,10 +502,10 @@
           <h4>Add a Music Provider</h4>
           <p>
             Click <strong>Add Music Provider</strong> and choose from the available options:<br>
-            &bull; <strong>Spotify</strong> - Requires Spotify Premium<br>
-            &bull; <strong>YouTube Music</strong> - Free or Premium<br>
-            &bull; <strong>Local Files (Filesystem)</strong> - Music files on your HA server<br>
-            &bull; <strong>Radio Browser</strong> - Free internet radio stations<br>
+            &bull; <strong>Spotify</strong> — Requires Spotify Premium<br>
+            &bull; <strong>YouTube Music</strong> — Free or Premium<br>
+            &bull; <strong>Local Files (Filesystem)</strong> — Music files on your HA server<br>
+            &bull; <strong>Radio Browser</strong> — Free internet radio stations<br>
             &bull; And many more
           </p>
         </div>
@@ -729,19 +522,38 @@
         </div>
       </div>
 
-      <h2>Part 3: Add Dashie as a Speaker</h2>
+      <h2>Part 3: Setting Up Music Profiles</h2>
 
       <p>
-        Now for the key step - adding your Dashie tablet as a speaker in Music Assistant using the
-        Home Assistant MediaPlayer provider.
+        Music Assistant supports multiple user profiles, each with their own music provider connections. This is useful for families
+        where each person has their own Spotify or YouTube Music account — each person gets their own library, recommendations,
+        and playback history.
+      </p>
+
+      <h3>Creating Profiles</h3>
+
+      <p>
+        In Music Assistant, go to <strong>Settings &rarr; Users</strong> to create a profile for each family member. Each profile
+        can have its own set of music providers linked to it.
+      </p>
+
+      <h3>Adding Per-Person Music Providers</h3>
+
+      <p>
+        For each profile, you'll add that person's music provider (e.g., their Spotify account) and filter their access to only
+        that provider. This ensures that when they use the Dashie music player, they see their own library and playlists.
       </p>
 
       <div class="step">
         <div class="step-number">1</div>
         <div class="step-content">
-          <h4>Open Providers</h4>
+          <h4>Add a Music Provider for the Profile</h4>
           <p>
-            In the Music Assistant UI, go to <strong>Settings &rarr; Providers</strong>.
+            Go to <strong>Settings &rarr; Music Providers &rarr; Add Music Provider</strong>. Select the provider type
+            (e.g., Spotify) and authenticate with that person's account credentials.
+          </p>
+          <p>
+            Give it a descriptive name like "John's Spotify" so you can identify it later.
           </p>
         </div>
       </div>
@@ -749,38 +561,85 @@
       <div class="step">
         <div class="step-number">2</div>
         <div class="step-content">
-          <h4>Open the Home Assistant MediaPlayer Provider</h4>
+          <h4>Assign the Provider to a Profile</h4>
           <p>
-            In the Providers list, click on <strong>Home Assistant MediaPlayers</strong> to open its settings.
+            After adding the provider, go to <strong>Settings &rarr; Users</strong>, select the profile, and configure which
+            music providers that profile has access to. Filter it so each person only sees their own provider.
           </p>
-          <div class="screenshot-image">
-            <img src="../../artwork/MusicAssistantProviderSelection.png" alt="Music Assistant Providers list showing Home Assistant MediaPlayers">
-          </div>
+        </div>
+      </div>
+
+      <div class="info-box warning">
+        <h4>Watch Out for Auto-Authentication</h4>
+        <p>
+          When adding multiple members' music providers in the same browser session, the provider's OAuth flow may auto-authenticate
+          using the previously logged-in account. To avoid this, <strong>use an incognito/private browser window</strong> when
+          adding each person's provider, or log out of the provider (e.g., Spotify) between each setup.
+        </p>
+      </div>
+
+      <div class="step">
+        <div class="step-number">3</div>
+        <div class="step-content">
+          <h4>Switch Profiles in Dashie</h4>
+          <p>
+            In the Dashie music player, tap the profile name at the top of the player to switch between family members.
+            Each person's library, playlists, and recommendations will load when their profile is selected.
+          </p>
+        </div>
+      </div>
+
+      <h2>Part 4: Enable the Music Player in Dashie</h2>
+
+
+      <p>
+        This is where Dashie's Sendspin integration makes things simple. Just enable the music player setting
+        and your tablet automatically registers as a speaker in Music Assistant.
+      </p>
+
+      <div class="step">
+        <div class="step-number">1</div>
+        <div class="step-content">
+          <h4>Open Dashie Settings</h4>
+          <p>
+            On your Dashie tablet, open the sidebar and tap the <strong>Settings</strong> gear icon.
+          </p>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-number">2</div>
+        <div class="step-content">
+          <h4>Enter the Music Assistant Server Address</h4>
+          <p>
+            Under the <strong>Music</strong> section, enter your Music Assistant server address. This is typically
+            your Home Assistant IP address with port <code>8095</code> — for example, <code>192.168.1.100:8095</code>.
+          </p>
         </div>
       </div>
 
       <div class="step">
         <div class="step-number">3</div>
         <div class="step-content">
-          <h4>Select Your Tablet as a Player Entity</h4>
+          <h4>Enable the Music Player</h4>
           <p>
-            Under <strong>Generic Settings</strong>, click the dropdown for <strong>Player Entities</strong>
-            and select your Dashie tablet. Then click <strong>Save</strong>.
-            Your tablet is now a player in Music Assistant.
+            Toggle <strong>Show Music Player</strong> to on. Dashie will prompt you to restart — tap <strong>Restart</strong>.
           </p>
-          <div class="screenshot-image">
-            <img src="../../artwork/MusicAssistantMediaPlayers.png" alt="Home Assistant MediaPlayers settings showing Player Entities dropdown">
-          </div>
+          <p>
+            After restarting, Dashie connects to Music Assistant's Sendspin server and registers itself as a speaker.
+            You should see your tablet appear in Music Assistant's player list within a few seconds.
+          </p>
         </div>
       </div>
 
       <div class="step">
         <div class="step-number">4</div>
         <div class="step-content">
-          <h4>Verify Your Dashie Speaker</h4>
+          <h4>Verify in Music Assistant</h4>
           <p>
-            Go back to the Music Assistant settings and select <strong>Players</strong>. Your Dashie
-            should now be listed as <strong>[Device Name] Speaker</strong>.
+            Open the Music Assistant UI and go to <strong>Settings &rarr; Players</strong>.
+            Your Dashie tablet should now appear in the player list. You can rename it here if the default
+            device name isn't descriptive enough.
           </p>
         </div>
       </div>
@@ -788,14 +647,32 @@
       <div class="info-box tip">
         <h4>Multiple Dashie Tablets</h4>
         <p>
-          If you have multiple Dashie devices, they'll each appear as separate speakers in Music Assistant.
+          Each Dashie device registers as its own Sendspin speaker. Enable the music player on each tablet
+          and they'll all appear as separate speakers that can be grouped for synchronized multi-room playback.
         </p>
       </div>
 
-      <h2>Part 4: Play Music</h2>
+      <h2>Part 5: Play Music</h2>
 
       <p>
-        With everything connected, you can start playing music on your Dashie tablet.
+        With the music player enabled, you can control playback in several ways.
+      </p>
+
+      <h3>From the Dashie Music Player</h3>
+
+      <p>
+        When music starts playing on your Dashie speaker, the native music player card appears on screen with:
+      </p>
+      <ul>
+        <li>Album art, track title, and artist</li>
+        <li>Play/pause, next, and previous controls</li>
+        <li>Volume slider</li>
+        <li>Speaker group drawer — tap the speaker name to see all available speakers, check/uncheck to add or remove them from the group</li>
+        <li>Recently played strip — scroll through and tap to replay</li>
+      </ul>
+
+      <p>
+        The player can be dragged to any position on screen, minimized to a small pill, or expanded to a full-screen view.
       </p>
 
       <h3>From the Music Assistant UI</h3>
@@ -822,62 +699,59 @@
         </div>
       </div>
 
-      <h3>From Home Assistant Automations</h3>
-
-      <p>
-        You can also trigger music playback through Home Assistant automations and scripts using the Music Assistant services.
-      </p>
-
-      <div class="code-block"><code><span class="comment"># Play a specific playlist on your Dashie tablet</span>
-<span class="key">service</span>: <span class="string">mass.play_media</span>
-<span class="key">data</span>:
-  <span class="key">media_id</span>: <span class="string">"My Playlist"</span>
-  <span class="key">media_type</span>: <span class="string">playlist</span>
-  <span class="key">entity_id</span>: <span class="string">media_player.dashie_kitchen</span></code></div>
-
-      <div class="code-block"><code><span class="comment"># Play a radio station</span>
-<span class="key">service</span>: <span class="string">mass.play_media</span>
-<span class="key">data</span>:
-  <span class="key">media_id</span>: <span class="string">"BBC Radio 1"</span>
-  <span class="key">media_type</span>: <span class="string">radio</span>
-  <span class="key">entity_id</span>: <span class="string">media_player.dashie_kitchen</span></code></div>
-
       <h3>With Voice Commands</h3>
 
       <p>
-        If you have <a href="/guides/voice-control-setup">voice control set up</a> on your Dashie,
-        you can use voice commands to control music playback through Music Assistant's Home Assistant integration.
+        If you have <a href="/guides/voice-control-setup">voice control set up</a> on your Dashie, say
+        "Hey Dashie, play some jazz" or "Hey Dashie, play Taylor Swift" to start music. You can also use
+        voice commands for playback control: "pause", "next song", "volume up", etc.
+      </p>
+
+      <h3>Speaker Groups</h3>
+
+      <p>
+        To play music across multiple rooms simultaneously, tap the speaker name on the music player card
+        to open the speaker group drawer. Check the speakers you want to include — audio will be
+        synchronized across all grouped speakers. Each speaker has its own volume slider so you can
+        balance the levels per room.
       </p>
 
       <h2>Troubleshooting</h2>
 
-      <h3>Dashie doesn't appear as a speaker</h3>
+      <h3>Dashie doesn't appear as a speaker in Music Assistant</h3>
       <ul>
-        <li>Make sure the <a href="https://dashieapp.com/guides/home-assistant-integration">Dashie Home Assistant integration</a> is installed and your device is online</li>
-        <li>Verify your Dashie device has a <code>media_player</code> entity in Home Assistant (check <strong>Settings &rarr; Devices &amp; Services &rarr; Dashie</strong>)</li>
-        <li>Ensure the Home Assistant MediaPlayer provider is added and enabled in Music Assistant settings</li>
-        <li>Try restarting Music Assistant from the add-on page</li>
+        <li>Verify the Music Assistant server address is correct in Dashie settings (IP:port, e.g. <code>192.168.1.100:8095</code>)</li>
+        <li>Make sure your Dashie tablet and Music Assistant server are on the same local network</li>
+        <li>Check that Music Assistant version 2.7 or later is installed (Sendspin is built-in since 2.7)</li>
+        <li>Try toggling the music player off and on again in Dashie settings, then restart</li>
+        <li>Check the Music Assistant logs for Sendspin connection errors</li>
       </ul>
 
       <h3>Music plays but no sound from the tablet</h3>
       <ul>
-        <li>Check that the tablet volume is turned up (you can use the <code>number.dashie_volume</code> entity in Home Assistant)</li>
+        <li>Check that the tablet volume is turned up (use the volume slider in the music player card or the device's physical buttons)</li>
         <li>Make sure no other app on the tablet has taken audio focus</li>
-        <li>Verify the Dashie app is in the foreground on the tablet</li>
+        <li>Verify the Dashie app is running (the Sendspin service runs as a foreground service while the app is open)</li>
       </ul>
 
-      <h3>Playback is choppy or keeps buffering</h3>
+      <h3>Audio is out of sync between grouped speakers</h3>
       <ul>
-        <li>Check your WiFi signal strength on the tablet (<code>sensor.dashie_wifi_signal</code> in HA)</li>
-        <li>Move the tablet closer to your WiFi access point or consider a mesh network</li>
-        <li>Reduce the stream quality in Music Assistant player settings if available</li>
+        <li>Different devices have different hardware audio latencies. This usually improves after a pause/resume cycle</li>
+        <li>Ensure all devices are on a stable WiFi connection — high latency or packet loss will affect sync</li>
+        <li>In Music Assistant's player settings, you can adjust per-speaker sync offsets to fine-tune alignment</li>
       </ul>
 
-      <h3>Music Assistant can't connect to music services</h3>
+      <h3>Music player card doesn't appear on screen</h3>
       <ul>
-        <li>Check that your Home Assistant instance has internet access</li>
-        <li>Re-authenticate the music provider in Music Assistant settings</li>
-        <li>Check the Music Assistant logs for specific error messages</li>
+        <li>The player card only appears when music is actively playing on your Dashie speaker</li>
+        <li>Start playback from the Music Assistant UI first, then the card should appear automatically</li>
+        <li>If you previously dismissed the player, tap the music note icon in the sidebar to bring it back</li>
+      </ul>
+
+      <h3>Stale or duplicate speaker entries in Music Assistant</h3>
+      <ul>
+        <li>During initial setup, you may see duplicate entries if the app was restarted multiple times</li>
+        <li>In the Music Assistant UI, go to <strong>Settings &rarr; Players</strong>, click the three-dot menu on the stale entry, and select <strong>Delete</strong></li>
       </ul>
 
       <div class="info-box important">
