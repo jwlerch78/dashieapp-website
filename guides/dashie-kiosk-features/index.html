@@ -730,7 +730,11 @@
               <li><a href="#voice-control">Voice Control (Upgrade)</a></li>
               <li><a href="#dashie-integration">Dashie Integration</a></li>
               <li><a href="#music-assistant">Music Assistant Integration</a></li>
-              <li><a href="#tips">Tips & Tricks</a></li>
+              <li><a href="#tips">Tips & Tricks</a>
+                <ul>
+                  <li><a href="#device-owner">Setting Up Device Owner</a></li>
+                </ul>
+              </li>
               <li><a href="#api">Using the API</a></li>
             </ul>
           </div>
@@ -977,6 +981,41 @@
         </p>
       </div>
 
+      <h3 id="device-owner">Setting Up Device Owner</h3>
+      <p>
+        For the best kiosk experience, you can set Dashie as the <strong>device owner</strong> using ADB. This is optional but provides two key benefits:
+      </p>
+      <ul>
+        <li><strong>Silent screen pinning</strong> — Eliminates the "App is pinned" notification toast that normally appears when you enable Lock App mode</li>
+        <li><strong>Remote device reboot</strong> — Enables the <code>rebootDevice</code> API command to reboot the tablet without requiring root access</li>
+      </ul>
+
+      <h4>Requirements</h4>
+      <ul>
+        <li>A computer with <a href="https://developer.android.com/tools/adb">ADB</a> installed</li>
+        <li>USB debugging enabled on the tablet</li>
+        <li><strong>No other accounts on the device</strong> — Android requires all accounts (Google, Samsung, etc.) to be removed before setting a device owner. You can re-add them afterward.</li>
+      </ul>
+
+      <h4>Setting Device Owner</h4>
+      <p>Connect your tablet via USB and run:</p>
+      <div class="code-block">
+        <code>adb shell dpm set-device-owner com.dashieapp.Dashie/.DeviceAdminReceiver</code>
+      </div>
+      <p>
+        Once set, Lock App mode will activate silently without any Android system prompts or notifications.
+      </p>
+
+      <div class="info-box tip">
+        <h4>Removing Device Owner</h4>
+        <p>
+          If you need to remove device owner status later, you can do so from Dashie's Control Center under Advanced settings, or by running:
+        </p>
+        <div class="code-block" style="margin-top: 10px;">
+          <code>adb shell dpm remove-active-admin com.dashieapp.Dashie/.DeviceAdminReceiver</code>
+        </div>
+      </div>
+
       <h3 id="power-management">Power Management</h3>
       <p>
         Tablets mounted as permanent dashboards are typically plugged in 24/7, which can degrade battery health
@@ -1150,7 +1189,7 @@ adb shell locksettings set-disabled true</code>
           </tr>
           <tr>
             <td><code>rebootDevice</code>*</td>
-            <td>Reboot the Android device</td>
+            <td>Reboot the Android device (requires <a href="#device-owner">device owner</a> — no root needed)</td>
           </tr>
           <tr>
             <td><code>toForeground</code></td>
@@ -1320,6 +1359,10 @@ curl "http://192.168.1.100:2323/?cmd=textToSpeech&amp;text=Hello%20world&amp;pas
 curl "http://192.168.1.100:2323/?cmd=refreshWebView&amp;password=mypass"<br><br>
 <span class="comment"># Mute audio</span><br>
 curl "http://192.168.1.100:2323/?cmd=muteAudio&amp;password=mypass"<br><br>
+<span class="comment"># Reboot the device (requires device owner)</span><br>
+curl "http://192.168.1.100:2323/?cmd=rebootDevice&amp;password=mypass"<br><br>
+<span class="comment"># Check motion/face detection status (included in deviceInfo)</span><br>
+curl "http://192.168.1.100:2323/?cmd=deviceInfo&amp;type=json&amp;password=mypass" | jq '.motionDetected, .faceDetected'<br><br>
 <span class="comment"># Pause/resume sound</span><br>
 curl "http://192.168.1.100:2323/?cmd=pauseSound&amp;password=mypass"<br>
 curl "http://192.168.1.100:2323/?cmd=resumeSound&amp;password=mypass"</code>
@@ -1338,7 +1381,7 @@ curl "http://192.168.1.100:2323/?cmd=resumeSound&amp;password=mypass"</code>
           <li><strong>Lock States:</strong> kioskLocked, lockAppExit, lockSettings, hasPinSet</li>
           <li><strong>Display:</strong> isDarkMode, supportsDarkMode, textScaling</li>
           <li><strong>Screensaver:</strong> screensaverMode (dim/black/url/photos), photoSource, haMediaFolder</li>
-          <li><strong>Motion Wake:</strong> motionWakeMode (disabled/brightness/camera)</li>
+          <li><strong>Motion &amp; Face:</strong> motionDetected, faceDetected, motionWakeMode (disabled/brightness/camera)</li>
           <li><strong>Settings:</strong> hideSidebar, hideHeader, keepScreenOn, startOnBoot, autoBrightness</li>
           <li><strong>RTSP:</strong> rtspEnabled, rtspSoftwareEncoding</li>
           <li><strong>URLs:</strong> currentPage, startUrl</li>
