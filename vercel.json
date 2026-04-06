@@ -5,6 +5,11 @@
       "source": "/login",
       "destination": "https://app.dashieapp.com/login",
       "permanent": true
+    },
+    {
+      "source": "/voice",
+      "destination": "/voice-license",
+      "permanent": true
     }
   ],
   "headers": [
