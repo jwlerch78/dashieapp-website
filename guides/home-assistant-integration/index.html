@@ -1014,6 +1014,10 @@
             <td><code>select.dashie_motion_wake_mode</code></td>
             <td>Motion detection mode: Disabled, Brightness Sensor, or Camera</td>
           </tr>
+          <tr>
+            <td><code>select.dashie_screen_off_behavior</code></td>
+            <td>Screen off method: Black Overlay (fast wake, keeps connections alive) or Power Off Screen (real hardware off)</td>
+          </tr>
         </tbody>
       </table>
 
@@ -1355,6 +1359,26 @@
   <span class="key">text</span>: <span class="string">"Front door opened"</span>
   <span class="key">duration</span>: <span class="string">5000</span></code></div>
 
+      <h3>Screen Off Method (REST API)</h3>
+
+      <p>
+        You can also control the screen off method directly via REST commands. This is useful
+        if you want a single automation call that both changes the method <em>and</em> turns off the screen:
+      </p>
+
+      <div class="code-block"><code><span class="key">rest_command</span>:
+  <span class="comment"># Change the default screen off method (persists across calls)</span>
+  <span class="key">dashie_set_screen_off_method</span>:
+    <span class="key">url</span>: <span class="string">"http://DEVICE_IP:2323/?cmd=setScreenOffMethod&method={{ method }}&password=YOUR_PASSWORD"</span>
+    <span class="key">method</span>: <span class="string">GET</span>
+  <span class="comment"># Turn off with a one-time method override (doesn't change default)</span>
+  <span class="key">dashie_screen_off</span>:
+    <span class="key">url</span>: <span class="string">"http://DEVICE_IP:2323/?cmd=screenOff&method={{ method }}&password=YOUR_PASSWORD"</span>
+    <span class="key">method</span>: <span class="string">GET</span></code></div>
+
+      <p>Valid <code>method</code> values: <code>overlay</code> (Black Overlay) or <code>hardware</code> (Power Off Screen).
+         Omitting <code>method</code> from <code>screenOff</code> uses the current default.</p>
+
       <h2>Example Automations</h2>
 
       <h3>Dim Screen at Night</h3>
@@ -1399,6 +1423,41 @@
   - <span class="key">service</span>: <span class="string">switch.turn_on</span>
     <span class="key">target</span>:
       <span class="key">entity_id</span>: <span class="string">switch.dashie_screen</span></code></div>
+
+      <h3>Screen Off: Overlay by Day, Hardware Off at Night</h3>
+
+      <p>Use Black Overlay during the day for instant wake and reliable connections,
+         then switch to Power Off Screen at night to save energy. This is especially useful
+         on devices (like Xiaomi tablets) that drop WebSocket connections during hardware screen off:</p>
+
+      <div class="code-block"><code><span class="key">alias</span>: <span class="string">"Dashie - Overlay by Day, Off at Night"</span>
+<span class="key">trigger</span>:
+  - <span class="key">platform</span>: <span class="string">time</span>
+    <span class="key">at</span>: <span class="string">"07:00:00"</span>
+    <span class="key">id</span>: <span class="string">morning</span>
+  - <span class="key">platform</span>: <span class="string">time</span>
+    <span class="key">at</span>: <span class="string">"23:00:00"</span>
+    <span class="key">id</span>: <span class="string">night</span>
+<span class="key">action</span>:
+  - <span class="key">choose</span>:
+      - <span class="key">conditions</span>:
+          - <span class="key">condition</span>: <span class="string">trigger</span>
+            <span class="key">id</span>: <span class="string">morning</span>
+        <span class="key">sequence</span>:
+          - <span class="key">service</span>: <span class="string">select.select_option</span>
+            <span class="key">target</span>:
+              <span class="key">entity_id</span>: <span class="string">select.dashie_screen_off_behavior</span>
+            <span class="key">data</span>:
+              <span class="key">option</span>: <span class="string">"Black Overlay"</span>
+      - <span class="key">conditions</span>:
+          - <span class="key">condition</span>: <span class="string">trigger</span>
+            <span class="key">id</span>: <span class="string">night</span>
+        <span class="key">sequence</span>:
+          - <span class="key">service</span>: <span class="string">select.select_option</span>
+            <span class="key">target</span>:
+              <span class="key">entity_id</span>: <span class="string">select.dashie_screen_off_behavior</span>
+            <span class="key">data</span>:
+              <span class="key">option</span>: <span class="string">"Power Off Screen"</span></code></div>
 
       <h3>Start Screensaver at Night</h3>
 
