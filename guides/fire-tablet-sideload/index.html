@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>How to Sideload Dashie on a Fire Tablet - Dashie</title>
+  <title>How to Sideload Dashie on an Android Tablet - Dashie</title>
   <link rel="icon" type="image/png" href="../../artwork/Dashie_Logo_Orange_Transparent.png">
 
   <style>
@@ -494,48 +494,67 @@
   <div class="breadcrumb">
     <a href="/guides/">How To Guides</a>
     <span>/</span>
-    <a href="#">Fire Tablet Sideload</a>
+    <a href="#">Android Tablet Sideload</a>
   </div>
 
   <!-- Article -->
   <article class="article">
     <header class="article-header">
       <span class="article-tag">Dashie</span>
-      <h1>How to Sideload Dashie on a Fire Tablet</h1>
-      <p class="article-meta">Last updated: January 2025</p>
+      <h1>How to Sideload Dashie on an Android Tablet</h1>
+      <p class="article-meta">Last updated: April 2026</p>
     </header>
 
     <div class="article-content">
       <p>
-        Amazon Fire tablets are a cost-effective way to run Dashie as a dedicated Home Assistant dashboard.
-        Since Dashie isn't available on the Amazon Appstore, you'll need to sideload the APK using ADB (Android Debug Bridge).
+        Android tablets — including Amazon Fire tablets, Samsung Galaxy tablets, and budget Android tablets —
+        are a cost-effective way to run Dashie as a dedicated Home Assistant dashboard. If Dashie isn't available
+        through your tablet's app store (or you want the latest version), you can sideload the APK using ADB
+        (Android Debug Bridge).
       </p>
 
       <div class="requirements">
         <h3>What You'll Need</h3>
         <ul>
-          <li>Amazon Fire tablet (any model running Fire OS 5 or later)</li>
+          <li>An Android tablet (Fire OS 5+, Android 7+, or similar)</li>
           <li>Computer (Windows, Mac, or Linux)</li>
           <li>USB data cable (not a charge-only cable)</li>
           <li>Dashie APK file (download from <a href="/dashie-kiosk">dashie-lite page</a>)</li>
         </ul>
       </div>
 
-      <h2>Part 1: Enable Developer Options on Fire Tablet</h2>
+      <h2>Part 1: Enable Developer Options</h2>
+
+      <p>
+        On most Android tablets, you unlock Developer Options by tapping the <strong>Serial Number</strong>
+        (or <strong>Build Number</strong>) field 7 times in Settings. The exact menu path varies slightly by manufacturer.
+      </p>
+
+      <div class="info-box tip">
+        <h4>Amazon Fire Tablets</h4>
+        <p>
+          On Fire OS, the Serial Number lives under <strong>Settings → Device Options</strong>
+          (or just "Device" on older Fire OS versions). On most other Android tablets, look under
+          <strong>Settings → About Tablet</strong> instead.
+        </p>
+      </div>
 
       <div class="step">
         <div class="step-number">1</div>
         <div class="step-content">
           <h4>Open Settings</h4>
-          <p>Swipe down from the top of your Fire tablet screen and tap the gear icon, or find Settings in your app drawer.</p>
+          <p>Swipe down from the top of the screen and tap the gear icon, or find Settings in your app drawer.</p>
         </div>
       </div>
 
       <div class="step">
         <div class="step-number">2</div>
         <div class="step-content">
-          <h4>Find Device Options</h4>
-          <p>Scroll down and tap on <strong>Device Options</strong> (or "Device" on older Fire OS versions).</p>
+          <h4>Find Device Info</h4>
+          <p>
+            On Fire tablets, tap <strong>Device Options</strong>. On stock Android (Samsung, Google, etc.),
+            tap <strong>About Tablet</strong> or <strong>About Phone</strong>.
+          </p>
         </div>
       </div>
 
@@ -544,8 +563,9 @@
         <div class="step-content">
           <h4>Tap Serial Number 7 Times</h4>
           <p>
-            Find the <strong>Serial Number</strong> field and tap on it 7 times rapidly.
-            You'll see a toast message saying "You are now a developer!" or "Developer Options enabled."
+            Find the <strong>Serial Number</strong> field (called <strong>Build Number</strong> on some Android
+            tablets) and tap it 7 times rapidly. You'll see a toast message saying "You are now a developer!"
+            or "Developer Options enabled."
           </p>
         </div>
       </div>
@@ -555,8 +575,9 @@
         <div class="step-content">
           <h4>Enable ADB Debugging</h4>
           <p>
-            Go back to Device Options. You'll now see a new <strong>Developer Options</strong> menu.
-            Tap on it and enable <strong>ADB debugging</strong> (also called "USB debugging").
+            Go back to the previous menu. You'll now see a new <strong>Developer Options</strong> entry.
+            Tap it and enable <strong>ADB debugging</strong> (called <strong>USB debugging</strong> on most
+            non-Fire Android tablets).
           </p>
         </div>
       </div>
@@ -593,7 +614,7 @@
         <div class="step-content">
           <h4>Connect Your Tablet</h4>
           <p>
-            Connect your Fire tablet to your computer using a USB data cable.
+            Connect your tablet to your computer using a USB data cable.
             A dialog may appear on the tablet asking to "Allow USB debugging" - tap <strong>OK</strong> or <strong>Always allow</strong>.
           </p>
         </div>
@@ -660,14 +681,14 @@
 
       <h3>App crashes on launch</h3>
       <ul>
-        <li>Ensure your Fire tablet is running Fire OS 5 or later</li>
+        <li>Ensure your tablet is running Fire OS 5+ or Android 7+</li>
         <li>Try restarting the tablet</li>
       </ul>
 
       <div class="info-box important">
         <h4>Need More Help?</h4>
         <p>
-          If you're still having trouble, <a href="/contact">contact us</a> with details about your Fire tablet model and the error you're seeing.
+          If you're still having trouble, <a href="/contact">contact us</a> with details about your tablet make, model, and the error you're seeing.
         </p>
       </div>
     </div>
