@@ -177,7 +177,9 @@
     <ul>
       <li><strong>Profile Information (<code>profile</code> scope):</strong> Your full name, profile picture, and any other personal information you've made publicly available on your Google account. This is used for authentication and personalization within the dashboard.</li>
       <li><strong>Email Address (<code>email</code> scope):</strong> Your primary Google account email address for account identification and authentication.</li>
-      <li><strong>Google Calendar Data (<code>https://www.googleapis.com/auth/calendar.readonly</code> scope - Read-Only):</strong> We access calendar events from any calendar you can access through your Google Calendar, including your personal calendar and shared calendars. This includes event details such as title, time, location, description, and attendees. We also can see the email addresses of contacts or groups you share calendars with (as part of event attendee information). This data is used solely to display your schedule on the family dashboard.</li>
+      <li><strong>Google Calendar Data (Read) (<code>https://www.googleapis.com/auth/calendar.readonly</code> scope):</strong> We access calendar events from any calendar you can access through your Google Calendar, including your personal calendar and shared calendars. This includes event details such as title, time, location, description, and attendees. We also can see the email addresses of contacts or groups you share calendars with (as part of event attendee information). This data is used solely to display your schedule on the family dashboard.</li>
+      <li><strong>Google Calendar Events (Write) (<code>https://www.googleapis.com/auth/calendar.events</code> scope):</strong> We create, modify, and delete calendar events on your behalf, but only in response to actions you take in the Dashie app (for example, adding a chore due date to your calendar, or editing/deleting an event you've created from Dashie). This scope does not grant access to calendar settings, ACLs, or calendar list management.</li>
+      <li><strong>Google Drive — App-Created Files Only (<code>https://www.googleapis.com/auth/drive.file</code> scope):</strong> We can read and write only files that Dashie itself creates or that you explicitly open with Dashie (for example, photos you upload to the "Dashie Photos" folder for display on the dashboard). This scope does <strong>not</strong> grant Dashie access to any other files in your Google Drive — we cannot see, list, or access pre-existing documents, photos, or other content in your Drive.</li>
     </ul>
 
     <h2>How We Use Your Information</h2>
@@ -204,7 +206,8 @@
     <h2>Data Retention and Deletion</h2>
     <p>We retain your data only as long as necessary to provide our services:</p>
     <ul>
-      <li><strong>Calendar Data:</strong> We do not permanently store your calendar events. Data is retrieved directly from Google Calendar API on-demand. Cached calendar data is automatically purged when no longer needed.</li>
+      <li><strong>Calendar Data:</strong> We do not permanently store your calendar events on our servers. Data is retrieved directly from Google Calendar API on-demand. Cached calendar data is automatically purged when no longer needed. Events you create or modify through Dashie are written directly to your Google Calendar — we do not retain a separate copy.</li>
+      <li><strong>Drive Files:</strong> Photos and other files uploaded through Dashie to the "Dashie Photos" folder are stored in your Google Drive, not on our servers. Dashie may temporarily cache thumbnails or metadata to improve dashboard performance, and these caches are purged when no longer needed.</li>
       <li><strong>User Preferences:</strong> Dashboard settings (theme, widget configurations, family name, location) are stored indefinitely while your account is active.</li>
       <li><strong>Authentication Tokens:</strong> OAuth refresh tokens are stored securely and retained until you revoke access or delete your account.</li>
       <li><strong>Account Deletion:</strong> You may delete your account at any time through the Account settings in the app, or by emailing <a href="mailto:jwlerch@gmail.com">jwlerch@gmail.com</a>. Upon deletion:
@@ -251,11 +254,13 @@
     <h2>OAuth Scopes Requested</h2>
     <p>Dashie requests the following Google OAuth scopes. We only request access to data necessary for dashboard functionality:</p>
     <ul>
-      <li><code>profile</code> - Basic profile information (name, profile picture)</li>
-      <li><code>email</code> - Your email address for account identification</li>
-      <li><code>https://www.googleapis.com/auth/calendar.readonly</code> - Read-only access to your Google Calendar events</li>
+      <li><code>profile</code> — Basic profile information (name, profile picture)</li>
+      <li><code>email</code> — Your email address for account identification</li>
+      <li><code>https://www.googleapis.com/auth/calendar.readonly</code> — Read access to your Google Calendar events</li>
+      <li><code>https://www.googleapis.com/auth/calendar.events</code> — Create, modify, and delete calendar events in response to your actions in Dashie. This is narrower than the full <code>calendar</code> scope and does not allow Dashie to manage your calendar list, sharing, or settings.</li>
+      <li><code>https://www.googleapis.com/auth/drive.file</code> — Read and write access <strong>only</strong> to files Dashie itself creates or files you explicitly open with Dashie (for example, photos uploaded to the "Dashie Photos" folder). Dashie cannot see or access any other files in your Google Drive.</li>
     </ul>
-    <p>All scopes are <strong>read-only</strong>. Dashie cannot modify, delete, or create calendar events.</p>
+    <p>When you add a secondary calendar account through Settings, Dashie requests only the calendar scopes (<code>profile</code>, <code>email</code>, <code>calendar.readonly</code>, <code>calendar.events</code>) for that account, and does not request Drive access.</p>
 
     <h2>Children's Privacy</h2>
     <p>Dashie is designed for families but is not directed at children under 13. We do not knowingly collect personal information from children under 13 without parental consent. If you believe a child under 13 has provided us with personal information, please contact us immediately at <a href="mailto:jwlerch@gmail.com">jwlerch@gmail.com</a>.</p>
