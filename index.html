@@ -80,6 +80,49 @@
       border-bottom-color: #ffaa00;
     }
 
+    /* About dropdown */
+    .nav-bar li.has-dropdown {
+      position: relative;
+    }
+
+    .nav-bar li.has-dropdown > a::after {
+      content: "▾";
+      margin-left: 6px;
+      font-size: 11px;
+      vertical-align: middle;
+    }
+
+    .nav-bar li.has-dropdown .dropdown-menu {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: #ffffff;
+      border: 1px solid #e0e0e0;
+      border-radius: 6px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      min-width: 200px;
+      padding: 6px 0;
+      list-style: none;
+      z-index: 100;
+    }
+
+    .nav-bar li.has-dropdown:hover .dropdown-menu,
+    .nav-bar li.has-dropdown:focus-within .dropdown-menu {
+      display: block;
+    }
+
+    .nav-bar li.has-dropdown .dropdown-menu li a {
+      padding: 10px 18px;
+      border-bottom: none;
+      font-size: 14px;
+      white-space: nowrap;
+    }
+
+    .nav-bar li.has-dropdown .dropdown-menu li a:hover {
+      background: rgba(255, 170, 0, 0.08);
+    }
+
     .nav-bar li a .beta-tag {
       display: inline-block;
       background: #1a365d;
@@ -946,6 +989,13 @@
         <li><a href="/beta-signup">Dashie <span class="early-access-tag">Early Access</span></a></li>
         <li><a href="/dashie-kiosk">For Home Assistant <span class="beta-tag">Beta</span></a></li>
         <li><a href="/guides/">How To Guides</a></li>
+        <li class="has-dropdown">
+          <a href="#" onclick="event.preventDefault();">About</a>
+          <ul class="dropdown-menu">
+            <li><a href="https://dashieapp.com/privacy-policy.html">Privacy Policy</a></li>
+            <li><a href="https://dashieapp.com/terms-of-service.html">Terms of Service</a></li>
+          </ul>
+        </li>
         <li><a href="/contact">Contact Us</a></li>
       </ul>
     </div>
@@ -983,6 +1033,8 @@
       <li><a href="/beta-signup">Dashie Early Access</a></li>
       <li><a href="/dashie-kiosk">For Home Assistant</a></li>
       <li><a href="/guides/">How To Guides</a></li>
+      <li><a href="https://dashieapp.com/privacy-policy.html">Privacy Policy</a></li>
+      <li><a href="https://dashieapp.com/terms-of-service.html">Terms of Service</a></li>
       <li><a href="/contact">Contact Us</a></li>
     </ul>
     <div class="mobile-menu-buttons">
