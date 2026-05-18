@@ -564,7 +564,7 @@ const headerHTML = `
     <p>Dashie is in limited release and your account must be registered through our early access process.</p>
     <div class="signin-modal-buttons">
       <a href="/beta-signup" class="btn-primary">Register for Early Access</a>
-      <a href="/login" class="btn-secondary">Continue to Sign In</a>
+      <a href="https://app.dashieapp.com/login" id="signin-continue-link" class="btn-secondary">Continue to Sign In</a>
       <button class="btn-cancel" onclick="window.dashieHeader.hideSigninModal(event)">Cancel</button>
     </div>
   </div>
@@ -598,6 +598,15 @@ window.dashieHeader = {
     const mobileMenu = document.getElementById('mobile-menu');
     if (mobileMenu && mobileMenu.classList.contains('active')) {
       this.toggleMobileMenu();
+    }
+    // Desktop browsers go to the management console (/hub); phones go
+    // straight to the app itself (/login → mobile app experience).
+    var continueLink = document.getElementById('signin-continue-link');
+    if (continueLink) {
+      var isMobile = /Mobi|Android|iPhone|iPod/i.test(navigator.userAgent);
+      continueLink.href = isMobile
+        ? 'https://app.dashieapp.com/login'
+        : 'https://app.dashieapp.com/hub';
     }
     document.getElementById('signin-modal-overlay').classList.add('active');
     document.body.style.overflow = 'hidden';
