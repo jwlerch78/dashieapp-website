@@ -23,28 +23,6 @@
       flex-direction: column;
     }
 
-    /* Navigation Bar */
-    .nav-bar {
-      background: #f8f9fa;
-      padding: 0 40px;
-      border-bottom: 1px solid #e0e0e0;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    }
-
-    .logo-container {
-      display: flex;
-      align-items: center;
-      padding: 10px 0;
-    }
-
-    .logo {
-      height: 50px;
-      width: auto;
-    }
-
     /* Main Content */
     .main-content {
       flex: 1;
@@ -297,12 +275,8 @@
   </style>
 </head>
 <body>
-  <!-- Navigation Bar -->
-  <nav class="nav-bar">
-    <div class="logo-container">
-      <a href="/"><img src="./artwork/Dashie_Full_Logo_Orange_Transparent.png" alt="Dashie" class="logo"></a>
-    </div>
-  </nav>
+  <!-- Shared Header/Navigation -->
+  <script src="/components/header.js"></script>
 
   <!-- Main Content -->
   <main class="main-content">
