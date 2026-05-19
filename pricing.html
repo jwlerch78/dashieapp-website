@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pricing - Dashie</title>
+  <link rel="icon" type="image/png" href="/artwork/Dashie_Logo_Orange_Transparent.png">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      line-height: 1.6;
+      background: #ffffff;
+      color: #424242;
+      min-height: 100vh;
+    }
+
+    /* Hero */
+    .hero {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 60px 40px 20px;
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-size: 2.4em;
+      margin-bottom: 12px;
+      color: #424242;
+    }
+
+    .hero .tagline {
+      font-size: 1.15em;
+      color: #666;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* Family tier cards */
+    .tiers-section {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 30px 40px 20px;
+    }
+
+    .tiers-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+
+    .tier-card {
+      position: relative;
+      background: #ffffff;
+      border: 2px solid #e0e0e0;
+      border-radius: 16px;
+      padding: 32px 28px;
+      display: flex;
+      flex-direction: column;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+
+    .tier-card.featured {
+      border-color: #ffaa00;
+    }
+
+    .tier-card.coming-soon {
+      opacity: 0.7;
+      background: #f9f9f9;
+    }
+
+    .tier-coming-soon-badge {
+      display: inline-block;
+      align-self: flex-start;
+      background: #1a365d;
+      color: #ffffff;
+      font-size: 0.72em;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 4px;
+      margin-bottom: 14px;
+    }
+
+    .tier-name {
+      font-size: 1.5em;
+      font-weight: 700;
+      color: #424242;
+      margin-bottom: 4px;
+    }
+
+    .tier-lead {
+      color: #666;
+      font-size: 0.95em;
+      margin-bottom: 18px;
+    }
+
+    .tier-price {
+      font-size: 2.2em;
+      font-weight: 700;
+      color: #424242;
+      margin-bottom: 4px;
+      line-height: 1;
+    }
+
+    .tier-price .unit {
+      font-size: 0.45em;
+      font-weight: 500;
+      color: #666;
+    }
+
+    .tier-price-annual {
+      font-size: 0.9em;
+      color: #666;
+      margin-bottom: 20px;
+    }
+
+    .tier-price-annual .save {
+      color: #ffaa00;
+      font-weight: 600;
+    }
+
+    .tier-features {
+      list-style: none;
+      margin: 0 0 24px 0;
+      padding: 0;
+      flex-grow: 1;
+    }
+
+    .tier-features li {
+      padding: 9px 0;
+      color: #555;
+      font-size: 0.95em;
+      border-bottom: 1px solid #f0f0f0;
+    }
+
+    .tier-features li:last-child {
+      border-bottom: none;
+    }
+
+    .tier-features li::before {
+      content: "\2713";
+      color: #ffaa00;
+      font-weight: 700;
+      margin-right: 10px;
+    }
+
+    .tier-card.coming-soon .tier-features li::before {
+      color: #999;
+    }
+
+    .tier-cta {
+      display: block;
+      text-align: center;
+      background: #ffaa00;
+      color: #ffffff;
+      padding: 14px 24px;
+      border-radius: 8px;
+      font-size: 1em;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+
+    .tier-cta:hover {
+      background: #ffbb22;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(255, 170, 0, 0.4);
+    }
+
+    .tier-beta-note {
+      margin-top: 10px;
+      font-size: 0.82em;
+      color: #999;
+      text-align: center;
+    }
+
+    /* HA divider */
+    .ha-divider {
+      max-width: 900px;
+      margin: 40px auto 0;
+      padding: 0 40px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      color: #999;
+      font-size: 0.95em;
+    }
+
+    .ha-divider::before,
+    .ha-divider::after {
+      content: "";
+      flex: 1;
+      height: 1px;
+      background: #e0e0e0;
+    }
+
+    /* HA section */
+    .ha-section {
+      max-width: 900px;
+      margin: 24px auto 0;
+      padding: 0 40px 40px;
+    }
+
+    .ha-card {
+      background: #f4f9fc;
+      border: 2px solid #b6dff5;
+      border-radius: 16px;
+      padding: 36px 32px;
+    }
+
+    .ha-card-header {
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+      margin-bottom: 6px;
+      flex-wrap: wrap;
+    }
+
+    .ha-card-title {
+      font-size: 1.5em;
+      font-weight: 700;
+      color: #424242;
+    }
+
+    .ha-free-badge {
+      display: inline-block;
+      background: #18bcf2;
+      color: #ffffff;
+      font-size: 0.78em;
+      font-weight: 700;
+      padding: 4px 12px;
+      border-radius: 4px;
+      letter-spacing: 0.5px;
+    }
+
+    .ha-card-lead {
+      color: #555;
+      font-size: 1em;
+      margin-bottom: 18px;
+    }
+
+    .ha-features {
+      list-style: none;
+      margin: 0 0 24px 0;
+      padding: 0;
+      columns: 2;
+      column-gap: 32px;
+    }
+
+    .ha-features li {
+      padding: 6px 0;
+      color: #555;
+      font-size: 0.95em;
+      break-inside: avoid;
+    }
+
+    .ha-features li::before {
+      content: "\2713";
+      color: #18bcf2;
+      font-weight: 700;
+      margin-right: 10px;
+    }
+
+    .ha-features a {
+      color: #ffaa00;
+      text-decoration: none;
+    }
+
+    .ha-features a:hover {
+      text-decoration: underline;
+    }
+
+    .ha-cta-row {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    .ha-cta {
+      display: inline-block;
+      background: #ffaa00;
+      color: #ffffff;
+      padding: 14px 28px;
+      border-radius: 8px;
+      font-size: 1em;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+
+    .ha-cta:hover {
+      background: #ffbb22;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(255, 170, 0, 0.4);
+    }
+
+    .ha-footnote {
+      font-size: 0.82em;
+      color: #666;
+    }
+
+    .ha-footnote a {
+      color: #ffaa00;
+      text-decoration: none;
+    }
+
+    .ha-footnote a:hover {
+      text-decoration: underline;
+    }
+
+    /* Footer */
+    .footer {
+      max-width: 700px;
+      margin: 60px auto 0;
+      padding: 40px;
+      text-align: center;
+      border-top: 1px solid #e0e0e0;
+      color: #999999;
+    }
+
+    .footer-links {
+      margin-top: 20px;
+    }
+
+    .footer-links a {
+      color: #666666;
+      text-decoration: none;
+      margin: 0 15px;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover {
+      color: #ffaa00;
+    }
+
+    /* Mobile */
+    @media (max-width: 720px) {
+      .hero {
+        padding: 40px 20px 10px;
+      }
+
+      .hero h1 {
+        font-size: 1.9em;
+      }
+
+      .tiers-section,
+      .ha-section,
+      .ha-divider {
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+
+      .tiers-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .ha-features {
+        columns: 1;
+      }
+
+      .ha-card {
+        padding: 28px 22px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Shared Header/Navigation -->
+  <script src="/components/header.js"></script>
+
+  <!-- Hero -->
+  <section class="hero">
+    <h1>Pricing</h1>
+    <p class="tagline">
+      Simple plans for every family.
+    </p>
+  </section>
+
+  <!-- Family tiers -->
+  <section class="tiers-section">
+    <div class="tiers-grid">
+
+      <!-- Dashie Core -->
+      <div class="tier-card featured">
+        <h2 class="tier-name">Dashie Core</h2>
+        <p class="tier-lead">Plug &amp; Play dashboard</p>
+        <div class="tier-price">$2.99 <span class="unit">/ month</span></div>
+        <div class="tier-price-annual">or $29.99 / year <span class="save">&mdash; save 16%</span></div>
+        <ul class="tier-features">
+          <li>Calendar (Google, Microsoft, Apple)</li>
+          <li>Photos</li>
+          <li>Weather</li>
+          <li>Sleep / Wake</li>
+        </ul>
+        <a href="/beta-signup" class="tier-cta">Register for Beta</a>
+        <div class="tier-beta-note">Free during the family beta &mdash; full pricing kicks in at launch.</div>
+      </div>
+
+      <!-- Dashie Plus -->
+      <div class="tier-card coming-soon">
+        <span class="tier-coming-soon-badge">Coming Soon</span>
+        <h2 class="tier-name">Dashie Plus</h2>
+        <p class="tier-lead">Advanced family features</p>
+        <ul class="tier-features">
+          <li>Chores &amp; Rewards</li>
+          <li>Location tracking</li>
+          <li>AI-powered Voice Assistant</li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- HA divider -->
+  <div class="ha-divider">Home Assistant user?</div>
+
+  <!-- HA section -->
+  <section class="ha-section">
+    <div class="ha-card">
+      <div class="ha-card-header">
+        <h2 class="ha-card-title">Dashie for Home Assistant</h2>
+        <span class="ha-free-badge">FREE</span>
+      </div>
+      <p class="ha-card-lead">
+        Kiosk display of your Home Assistant dashboard, plus:
+      </p>
+      <ul class="ha-features">
+        <li>Screensaver &amp; Photos</li>
+        <li>Motion or face wake</li>
+        <li>Video Streaming</li>
+        <li>Music Assistant Player</li>
+        <li>Voice Assistant integration<sup>*</sup></li>
+        <li><a href="/dashie-kiosk">Much more &rsaquo;</a></li>
+      </ul>
+      <div class="ha-cta-row">
+        <a href="/get-dashie" class="ha-cta">Get Dashie for HA</a>
+        <span class="ha-footnote">
+          <sup>*</sup> One-time <a href="/voice-license">voice license</a> required for voice assistant.
+        </span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>&copy; 2026 Dashie LLC. All rights reserved.</p>
+    <div class="footer-links">
+      <a href="/privacy-policy.html">Privacy Policy</a>
+      <span class="separator">|</span>
+      <a href="/terms-of-service.html">Terms of Service</a>
+    </div>
+  </footer>
+
+  <!-- Analytics -->
+  <script type="module" src="/js/analytics/website-analytics.js"></script>
+</body>
+</html>
