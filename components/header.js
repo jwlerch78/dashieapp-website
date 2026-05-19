@@ -522,8 +522,6 @@ const headerHTML = `
           <a href="/dashie-kiosk#music-player">Music Player</a>
           <a href="/dashie-kiosk#battery-management">Battery Management</a>
           <a href="/dashie-kiosk#home-assistant">Home Assistant Integration</a>
-          <div class="dropdown-divider"></div>
-          <a href="/dashie-kiosk-beta">Register for Beta</a>
         </div>
       </li>
       <li><a href="/pricing" class="${getActiveClass('/pricing')}">Pricing</a></li>
