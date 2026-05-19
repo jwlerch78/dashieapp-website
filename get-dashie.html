@@ -57,23 +57,29 @@
       gap: 24px;
     }
 
-    .channel-cell {
-      display: flex;
-      flex-direction: column;
-    }
-
     .channel-card {
+      position: relative;
       background: #f9f9f9;
       border: 2px solid #e0e0e0;
       border-radius: 16px;
       padding: 32px 28px;
       display: flex;
       flex-direction: column;
-      flex-grow: 1;
       text-align: center;
-      text-decoration: none;
-      color: inherit;
       transition: border-color 0.2s, transform 0.2s;
+    }
+
+    /* Stretched link: the title link covers the whole card */
+    .card-link {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .card-link::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: 16px;
     }
 
     .channel-card:hover {
@@ -114,6 +120,8 @@
     }
 
     .sideload-help {
+      position: relative;
+      z-index: 1;
       display: inline-block;
       margin-top: 14px;
       font-size: 0.85em;
@@ -230,45 +238,39 @@
     <div class="channels-grid">
 
       <!-- Google Play -->
-      <div class="channel-cell">
-        <a class="channel-card" href="https://play.google.com/store/apps/details?id=com.dashieapp.Dashie"
-           target="_blank" rel="noopener">
-          <div class="channel-icon">
-            <img class="store-badge" src="/artwork/badge-google-play.png" alt="Get it on Google Play">
-          </div>
-          <h2>Google Play</h2>
-          <p>
-            The easiest way to install on most Android phones and tablets.
-          </p>
-        </a>
+      <div class="channel-card">
+        <div class="channel-icon">
+          <img class="store-badge" src="/artwork/badge-google-play.png" alt="Get it on Google Play">
+        </div>
+        <h2><a class="card-link" href="https://play.google.com/store/apps/details?id=com.dashieapp.Dashie"
+               target="_blank" rel="noopener">Google Play</a></h2>
+        <p>
+          The easiest way to install on most Android phones and tablets.
+        </p>
       </div>
 
       <!-- Amazon Appstore -->
-      <div class="channel-cell">
-        <a class="channel-card" href="https://www.amazon.com/gp/mas/dl/android?p=com.dashieapp.Dashie"
-           target="_blank" rel="noopener">
-          <div class="channel-icon">
-            <img class="store-badge" src="/artwork/badge-amazon-appstore.png" alt="Available at Amazon Appstore">
-          </div>
-          <h2>Amazon Appstore</h2>
-          <p>
-            For Amazon Fire tablets and Fire TV devices.
-          </p>
-        </a>
+      <div class="channel-card">
+        <div class="channel-icon">
+          <img class="store-badge" src="/artwork/badge-amazon-appstore.png" alt="Available at Amazon Appstore">
+        </div>
+        <h2><a class="card-link" href="https://www.amazon.com/gp/mas/dl/android?p=com.dashieapp.Dashie"
+               target="_blank" rel="noopener">Amazon Appstore</a></h2>
+        <p>
+          For Amazon Fire tablets and Fire TV devices.
+        </p>
       </div>
 
       <!-- Sideload -->
-      <div class="channel-cell">
-        <a class="channel-card" href="/downloads/Dashie-sideload.apk">
-          <div class="channel-icon">
-            <img class="apk-icon" src="/artwork/icon-download.svg" alt="">
-          </div>
-          <h2>Sideload (Direct APK)</h2>
-          <p>
-            Install the APK directly &mdash; for kiosk hardware or devices without
-            a supported app store.
-          </p>
-        </a>
+      <div class="channel-card">
+        <div class="channel-icon">
+          <img class="apk-icon" src="/artwork/icon-download.svg" alt="">
+        </div>
+        <h2><a class="card-link" href="/downloads/Dashie-sideload.apk">Sideload (Direct APK)</a></h2>
+        <p>
+          Install the APK directly &mdash; for kiosk hardware or devices without
+          a supported app store.
+        </p>
         <a href="/guides/fire-tablet-sideload" class="sideload-help">How to sideload an APK &rsaquo;</a>
       </div>
 
