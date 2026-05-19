@@ -32,13 +32,6 @@
       align-items: center;
     }
 
-    .hero-logo {
-      max-width: 280px;
-      width: 100%;
-      height: auto;
-      margin-bottom: 18px;
-    }
-
     .hero h1 {
       font-size: 2.2em;
       color: #424242;
@@ -81,8 +74,22 @@
     }
 
     .channel-icon {
-      font-size: 2.4em;
-      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 56px;
+      margin-bottom: 16px;
+    }
+
+    .store-badge {
+      height: 100%;
+      width: auto;
+      max-width: 100%;
+    }
+
+    .apk-icon {
+      height: 52px;
+      width: auto;
     }
 
     .channel-card h2 {
@@ -121,19 +128,16 @@
       box-shadow: 0 8px 24px rgba(255, 170, 0, 0.4);
     }
 
-    .btn-channel svg {
-      width: 20px;
-      height: 20px;
-      stroke: currentColor;
-      stroke-width: 2;
-      fill: none;
-      flex-shrink: 0;
+    .sideload-help {
+      display: inline-block;
+      margin-top: 14px;
+      font-size: 0.85em;
+      color: #ffaa00;
+      text-decoration: none;
     }
 
-    .channel-note {
-      margin-top: 14px;
-      font-size: 0.8em;
-      color: #999;
+    .sideload-help:hover {
+      text-decoration: underline;
     }
 
     /* Beta callout */
@@ -164,36 +168,6 @@
 
     .beta-callout-inner a:hover {
       text-decoration: underline;
-    }
-
-    /* Tutorial links */
-    .tutorial-links {
-      max-width: 1000px;
-      margin: 36px auto 0;
-      padding: 28px 40px 0 40px;
-      border-top: 1px solid #e0e0e0;
-      text-align: center;
-    }
-
-    .tutorial-links p {
-      color: #666;
-      margin-bottom: 10px;
-      font-size: 14px;
-    }
-
-    .tutorial-links a {
-      color: #ffaa00;
-      margin: 0 12px;
-      font-size: 14px;
-      text-decoration: none;
-    }
-
-    .tutorial-links a:hover {
-      text-decoration: underline;
-    }
-
-    .tutorial-links .separator {
-      color: #ccc;
     }
 
     /* Footer */
@@ -233,10 +207,6 @@
         padding: 40px 20px 10px 20px;
       }
 
-      .hero-logo {
-        max-width: 220px;
-      }
-
       .hero h1 {
         font-size: 1.7em;
       }
@@ -249,19 +219,9 @@
         padding: 24px 20px 10px 20px;
       }
 
-      .beta-callout,
-      .tutorial-links {
+      .beta-callout {
         padding-left: 20px;
         padding-right: 20px;
-      }
-
-      .tutorial-links a {
-        display: block;
-        margin: 8px 0;
-      }
-
-      .tutorial-links .separator {
-        display: none;
       }
     }
   </style>
@@ -272,7 +232,6 @@
 
   <!-- Hero Section -->
   <section class="hero">
-    <img src="/artwork/Dashie_Full_Logo_Orange_Transparent.png" alt="Dashie" class="hero-logo">
     <h1>Get Dashie</h1>
     <p class="tagline">
       Dashie runs on Android &mdash; tablets, Amazon Fire devices, and TV boxes.
@@ -287,51 +246,48 @@
 
       <!-- Google Play -->
       <div class="channel-card">
-        <div class="channel-icon">&#9654;&#65039;</div>
+        <div class="channel-icon">
+          <img class="store-badge" src="/artwork/badge-google-play.png" alt="Get it on Google Play">
+        </div>
         <h2>Google Play</h2>
         <p>
           The easiest way to install on most Android phones and tablets.
-          Updates roll out automatically through the Play Store.
         </p>
         <a href="https://play.google.com/store/apps/details?id=com.dashieapp.Dashie"
            class="btn-channel" target="_blank" rel="noopener">
           Get it on Google Play
         </a>
-        <div class="channel-note">Auto-updates via the Play Store track</div>
       </div>
 
       <!-- Amazon Appstore -->
       <div class="channel-card">
-        <div class="channel-icon">&#128226;</div>
+        <div class="channel-icon">
+          <img class="store-badge" src="/artwork/badge-amazon-appstore.png" alt="Available at Amazon Appstore">
+        </div>
         <h2>Amazon Appstore</h2>
         <p>
-          For Amazon Fire tablets and Fire TV devices. Updates roll out
-          automatically through the Amazon Appstore.
+          For Amazon Fire tablets and Fire TV devices.
         </p>
         <a href="https://www.amazon.com/gp/mas/dl/android?p=com.dashieapp.Dashie"
            class="btn-channel" target="_blank" rel="noopener">
           Available at Amazon
         </a>
-        <div class="channel-note">Auto-updates via the Amazon Appstore track</div>
       </div>
 
       <!-- Sideload -->
       <div class="channel-card">
-        <div class="channel-icon">&#128229;</div>
+        <div class="channel-icon">
+          <img class="apk-icon" src="/artwork/icon-download.svg" alt="">
+        </div>
         <h2>Sideload (Direct APK)</h2>
         <p>
           Install the APK directly &mdash; for kiosk hardware or devices without
-          a supported app store. Dashie updates itself automatically once installed.
+          a supported app store.
         </p>
         <a href="/downloads/Dashie-sideload.apk" class="btn-channel">
-          <svg viewBox="0 0 24 24">
-            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
-            <polyline points="7 10 12 15 17 10"/>
-            <line x1="12" y1="15" x2="12" y2="3"/>
-          </svg>
           Download APK
         </a>
-        <div class="channel-note">Auto-updates by checking for new releases</div>
+        <a href="/guides/fire-tablet-sideload" class="sideload-help">How to sideload an APK &rsaquo;</a>
       </div>
 
     </div>
@@ -343,20 +299,8 @@
       <strong>Want early access to new features?</strong>
       Dashie has a beta track that gets updates before everyone else.
       Beta opt-in links are sent by email &mdash;
-      <a href="/beta-signup">register to receive them</a>.
+      <a href="/beta-signup">register for beta release access here!</a>
     </div>
-  </section>
-
-  <!-- Tutorial Links -->
-  <section class="tutorial-links">
-    <p>Getting Started Guides:</p>
-    <a href="/guides/dashie-kiosk-features">Features Overview</a>
-    <span class="separator">|</span>
-    <a href="/guides/voice-control-setup">Voice Control Setup</a>
-    <span class="separator">|</span>
-    <a href="/guides/fire-tablet-sideload">Android Tablet Sideloading</a>
-    <span class="separator">|</span>
-    <a href="/guides/home-assistant-integration">Dashie HACS Integration</a>
   </section>
 
   <!-- Footer -->
