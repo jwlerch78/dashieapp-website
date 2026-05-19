@@ -538,7 +538,6 @@ const headerHTML = `
   </div>
   <div class="nav-bar-right">
     <a href="#" class="btn-login" onclick="window.dashieHeader.showSigninModal(event)">Sign In</a>
-    <a href="/beta-signup" class="btn-signup">Sign Up</a>
   </div>
   <button class="hamburger-btn" onclick="window.dashieHeader.toggleMobileMenu()">
     <svg viewBox="0 0 24 24" fill="none">
@@ -580,7 +579,6 @@ const headerHTML = `
   </ul>
   <div class="mobile-menu-buttons">
     <a href="#" class="btn-login" onclick="window.dashieHeader.showSigninModal(event)">Sign In</a>
-    <a href="/beta-signup" class="btn-signup">Sign Up</a>
   </div>
 </div>
 
@@ -589,11 +587,11 @@ const headerHTML = `
   <div class="signin-modal" onclick="event.stopPropagation()">
     <div style="text-align: center; margin-bottom: 20px; display: flex; flex-direction: column; align-items: center;">
       <img src="/artwork/Dashie_Full_Logo_Orange_Transparent.png" alt="Dashie" style="height: 70px; margin-bottom: 10px;">
-      <div style="background: #ffaa00; color: white; font-size: 10px; font-weight: 600; padding: 3px 10px; border-radius: 4px;">Early Access</div>
+      <div style="background: #1a365d; color: white; font-size: 10px; font-weight: 600; padding: 3px 10px; border-radius: 4px;">Beta</div>
     </div>
-    <p>Dashie is in limited release and your account must be registered through our early access process.</p>
+    <p>Dashie is in limited release and your account must be registered through our beta program.</p>
     <div class="signin-modal-buttons">
-      <a href="/beta-signup" class="btn-primary">Register for Early Access</a>
+      <a href="/beta-signup" class="btn-primary">Register for Beta</a>
       <a href="https://app.dashieapp.com/login" id="signin-continue-link" class="btn-secondary">Continue to Sign In</a>
       <button class="btn-cancel" onclick="window.dashieHeader.hideSigninModal(event)">Cancel</button>
     </div>
