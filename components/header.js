@@ -511,7 +511,6 @@ const headerHTML = `
       <a href="/"><img src="/artwork/Dashie_Full_Logo_Orange_Transparent.png" alt="Dashie" class="logo"></a>
     </div>
     <ul>
-      <li><a href="/beta-signup" class="${getActiveClass('/beta-signup')}">For Families <span class="beta-tag">Beta</span></a></li>
       <li class="nav-dropdown">
         <a href="/dashie-kiosk" class="${getActiveClass('/dashie-kiosk')}">For Home Assistant</a>
         <div class="nav-dropdown-menu">
@@ -524,7 +523,7 @@ const headerHTML = `
           <a href="/dashie-kiosk#home-assistant">Home Assistant Integration</a>
         </div>
       </li>
-      <li><a href="/pricing" class="${getActiveClass('/pricing')}">Pricing</a></li>
+      <li><a href="/get-dashie" class="${getActiveClass('/get-dashie')}">Get Dashie</a></li>
       <li><a href="/guides/" class="${getActiveClass('/guides')}">How to Guides</a></li>
       <li class="nav-dropdown">
         <a href="#" onclick="event.preventDefault();">About <span class="nav-caret">&#9662;</span></a>
@@ -563,14 +562,13 @@ const headerHTML = `
     </button>
   </div>
   <ul>
-    <li><a href="/beta-signup" class="${getActiveClass('/beta-signup')}">For Families</a></li>
     <li><a href="/dashie-kiosk" class="${getActiveClass('/dashie-kiosk')}">For Home Assistant</a></li>
     <li><a href="/dashie-kiosk#screensaver" class="mobile-sub-item">Screensaver & Photos</a></li>
     <li><a href="/dashie-kiosk#voice-control" class="mobile-sub-item">Voice Control</a></li>
     <li><a href="/dashie-kiosk#lock-mode" class="mobile-sub-item">Lock Mode</a></li>
     <li><a href="/dashie-kiosk#music-player" class="mobile-sub-item">Music Player</a></li>
     <li><a href="/dashie-kiosk#battery-management" class="mobile-sub-item">Battery Management</a></li>
-    <li><a href="/pricing" class="${getActiveClass('/pricing')}">Pricing</a></li>
+    <li><a href="/get-dashie" class="${getActiveClass('/get-dashie')}">Get Dashie</a></li>
     <li><a href="/guides/" class="${getActiveClass('/guides')}">How to Guides</a></li>
     <li><a href="#" onclick="event.preventDefault();" class="mobile-menu-label">About</a></li>
     <li><a href="/privacy-policy.html" class="mobile-sub-item">Privacy Policy</a></li>

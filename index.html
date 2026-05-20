@@ -179,16 +179,34 @@
       font-weight: 500;
     }
 
-    .carousel-caption .coming-soon {
+    .coming-soon,
+    .beta {
       display: inline-block;
-      background: #ffaa00;
-      color: #000;
       font-size: 0.7em;
       font-weight: 600;
       padding: 2px 8px;
       border-radius: 3px;
       margin-left: 8px;
       vertical-align: middle;
+    }
+
+    .coming-soon {
+      background: #ffaa00;
+      color: #000;
+    }
+
+    .beta {
+      background: #1a365d;
+      color: #fff;
+    }
+
+    .cta h2 a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .cta h2 a:hover {
+      color: #ffaa00;
     }
 
     .carousel-nav {
@@ -560,7 +578,7 @@
   <section class="hero">
     <h1>Meet Dashie</h1>
     <p class="tagline" id="hero-tagline">Family smarter.</p>
-    <p class="hero-description">Display your family calendars and photos using Google or Amazon Fire TV on any screen and leverage the power of AI with voice control. <a href="/beta-signup">Sign up for early access today!</a></p>
+    <p class="hero-description">Display your family calendars and photos using Google or Amazon Fire TV on any screen and leverage the power of AI with voice control. <a href="/get-dashie">Join Dashie early access today!</a></p>
   </section>
 
   <!-- Carousel Section -->
@@ -571,7 +589,7 @@
         <!-- Slide 1: Everything your family needs -->
         <div class="carousel-slide">
           <div class="carousel-caption">
-            <h3>Smarter Family Organization</h3>
+            <h3>Smarter Family Organization <span class="beta">Beta</span></h3>
             <p>Calendar, photos, chores, and daily information together in one voice-controllable, AI-powered display.</p>
           </div>
           <img src="./website-assets/dashie-web-xmas-home.png" alt="Dashie Dashboard">
@@ -580,7 +598,7 @@
         <!-- Slide 2: AI-powered questions -->
         <div class="carousel-slide">
           <div class="carousel-caption">
-            <h3>"When's our next soccer game?"</h3>
+            <h3>"When's our next soccer game?" <span class="coming-soon">Coming Soon</span></h3>
             <p>Dashie's AI-powered engine knows your family's schedule and answers questions naturally.</p>
           </div>
           <img src="./website-assets/dashie-web-ai-event.png" alt="Dashie AI Voice Assistant">
@@ -589,7 +607,7 @@
         <!-- Slide 3: Smarter chores -->
         <div class="carousel-slide">
           <div class="carousel-caption">
-            <h3>Smarter chores management</h3>
+            <h3>Smarter chores management <span class="beta">Beta</span></h3>
             <p>Assign chores to individuals or make them available for anyone to complete to earn rewards.</p>
           </div>
           <img src="./website-assets/dashie-web-chores.png" alt="Dashie Chores Management">
@@ -608,7 +626,7 @@
         <div class="carousel-slide">
           <div class="carousel-caption">
             <h3>Smarter homes with Home Assistant</h3>
-            <p>Dashie integrates with Home Assistant to truly bring your smart home together into one central, AI-powered interface. <span class="coming-soon">Coming Soon</span></p>
+            <p>Dashie integrates with Home Assistant to truly bring your smart home together into one central, AI-powered interface.</p>
           </div>
           <img src="./website-assets/dashie-web-HA.png" alt="Dashie Home Assistant Integration">
         </div>
@@ -793,7 +811,7 @@
           <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
           <circle cx="12" cy="10" r="3" />
         </svg>
-        <h3>Location Sharing</h3>
+        <h3>Location Sharing <span class="coming-soon">Coming Soon</span></h3>
         <p>Know where your family members are with real-time GPS location sharing and arrival notifications.</p>
       </div>
 
@@ -810,9 +828,9 @@
 
   <!-- CTA Section -->
   <section class="cta">
-    <h2>Join Dashie Early Access</h2>
+    <h2><a href="/get-dashie">Join Dashie Early Access</a></h2>
     <p>Be among the first to experience the future of family organization.</p>
-    <a href="/beta-signup" class="btn-cta">Sign Up for Early Access</a>
+    <a href="/get-dashie" class="btn-cta">Get Dashie</a>
   </section>
 
   <!-- Footer -->
