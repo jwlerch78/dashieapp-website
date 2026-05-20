@@ -25,7 +25,7 @@
     .hero {
       max-width: 900px;
       margin: 0 auto;
-      padding: 60px 40px 40px 40px;
+      padding: 60px 40px 30px 40px;
       text-align: center;
     }
 
@@ -40,11 +40,19 @@
       color: #666;
     }
 
-    /* Guides Grid */
+    /* Guides Section */
     .guides-section {
-      max-width: 900px;
+      max-width: 1000px;
       margin: 0 auto;
-      padding: 40px;
+      padding: 20px 40px 40px 40px;
+    }
+
+    .section-header {
+      font-size: 1.5em;
+      color: #424242;
+      margin-bottom: 18px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid #f0f0f0;
     }
 
     .guides-grid {
@@ -71,6 +79,17 @@
       box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
     }
 
+    .guide-card.coming-soon {
+      opacity: 0.65;
+      cursor: default;
+    }
+
+    .guide-card.coming-soon:hover {
+      border-color: #e0e0e0;
+      transform: none;
+      box-shadow: none;
+    }
+
     .guide-icon {
       width: 60px;
       height: 60px;
@@ -90,9 +109,8 @@
       fill: none;
     }
 
-    .guide-icon img {
-      width: 32px;
-      height: 32px;
+    .guide-card.coming-soon .guide-icon {
+      background: #aaa;
     }
 
     .guide-card h3 {
@@ -107,88 +125,19 @@
       margin-bottom: 0;
     }
 
-    .guide-tag {
+    .coming-soon-tag {
       position: absolute;
       top: 15px;
       right: 15px;
       display: inline-block;
-      background: #e0e0e0;
-      color: #555;
-      font-size: 12px;
-      font-weight: 500;
+      background: #1a365d;
+      color: #fff;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.3px;
+      text-transform: uppercase;
       padding: 4px 10px;
       border-radius: 4px;
-    }
-
-    .guide-tag.dashie-lite {
-      background: #18bcf2;
-      color: white;
-    }
-
-    .guide-tag.dashie {
-      background: #ffaa00;
-      color: white;
-    }
-
-    /* Coming Soon Section */
-    .coming-soon {
-      max-width: 900px;
-      margin: 40px auto;
-      padding: 0 40px;
-    }
-
-    .coming-soon h2 {
-      font-size: 1.5em;
-      color: #424242;
-      margin-bottom: 20px;
-      text-align: center;
-    }
-
-    .coming-soon-list {
-      background: #f9f9f9;
-      border-radius: 12px;
-      padding: 30px;
-    }
-
-    .coming-soon-item {
-      display: flex;
-      align-items: center;
-      gap: 15px;
-      padding: 15px 0;
-      border-bottom: 1px solid #e0e0e0;
-    }
-
-    .coming-soon-item:last-child {
-      border-bottom: none;
-    }
-
-    .coming-soon-item .icon {
-      width: 40px;
-      height: 40px;
-      background: #e0e0e0;
-      border-radius: 8px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-    }
-
-    .coming-soon-item .icon svg {
-      width: 20px;
-      height: 20px;
-      stroke: #888;
-      stroke-width: 2;
-      fill: none;
-    }
-
-    .coming-soon-item h4 {
-      font-size: 1em;
-      color: #666;
-    }
-
-    .coming-soon-item span {
-      font-size: 0.85em;
-      color: #999;
     }
 
     /* Footer */
@@ -219,7 +168,7 @@
     /* Mobile Responsive */
     @media (max-width: 768px) {
       .hero {
-        padding: 40px 20px 30px 20px;
+        padding: 40px 20px 20px 20px;
       }
 
       .hero h1 {
@@ -227,11 +176,7 @@
       }
 
       .guides-section {
-        padding: 20px;
-      }
-
-      .coming-soon {
-        padding: 0 20px;
+        padding: 16px 20px 30px 20px;
       }
     }
   </style>
@@ -248,12 +193,13 @@
     </p>
   </section>
 
-  <!-- Guides Grid -->
+  <!-- For Home Assistant Users -->
   <section class="guides-section">
+    <h2 class="section-header">For Home Assistant Users</h2>
     <div class="guides-grid">
-      <!-- Android Tablet Sideload Guide -->
+
+      <!-- Sideload -->
       <a href="/guides/fire-tablet-sideload" class="guide-card">
-        <span class="guide-tag dashie-lite">Home Assistant</span>
         <div class="guide-icon">
           <svg viewBox="0 0 24 24">
             <rect x="5" y="2" width="14" height="20" rx="2" ry="2"/>
@@ -264,9 +210,8 @@
         <p>Enable developer mode and install Dashie on Amazon Fire, Samsung, or any Android tablet using ADB.</p>
       </a>
 
-      <!-- Voice Control Setup Guide -->
+      <!-- Voice Control -->
       <a href="/guides/voice-control-setup" class="guide-card">
-        <span class="guide-tag dashie-lite">Home Assistant</span>
         <div class="guide-icon">
           <svg viewBox="0 0 24 24">
             <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/>
@@ -279,9 +224,8 @@
         <p>Configure Whisper for speech recognition and set up "Hey Dashie" wake word detection with Home Assistant.</p>
       </a>
 
-      <!-- Dashie Features Guide -->
+      <!-- Dashie Kiosk Features -->
       <a href="/guides/dashie-kiosk-features" class="guide-card">
-        <span class="guide-tag dashie-lite">Home Assistant</span>
         <div class="guide-icon">
           <svg viewBox="0 0 24 24">
             <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
@@ -292,9 +236,8 @@
         <p>A comprehensive overview of all Dashie features including the sidebar, Control Center, settings, and customization options.</p>
       </a>
 
-      <!-- Screensaver Setup Guide -->
+      <!-- Screensaver Setup -->
       <a href="/guides/screensaver-setup" class="guide-card">
-        <span class="guide-tag dashie-lite">Home Assistant</span>
         <div class="guide-icon">
           <svg viewBox="0 0 24 24">
             <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
@@ -306,9 +249,8 @@
         <p>Configure screensaver modes, set up photo slideshows from local folders or Home Assistant, and use third-party apps like ImmichFrame.</p>
       </a>
 
-      <!-- Photos Setup Guide -->
+      <!-- Photos Setup -->
       <a href="/guides/photos-setup" class="guide-card">
-        <span class="guide-tag dashie-lite">Home Assistant</span>
         <div class="guide-icon">
           <svg viewBox="0 0 24 24">
             <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
@@ -320,9 +262,8 @@
         <p>Connect Immich, Unsplash, or your Home Assistant media folder to display a beautiful photo slideshow on your Dashie display.</p>
       </a>
 
-      <!-- Home Assistant Integration Guide -->
+      <!-- Home Assistant Integration -->
       <a href="/guides/home-assistant-integration" class="guide-card">
-        <span class="guide-tag dashie-lite">Home Assistant</span>
         <div class="guide-icon">
           <svg viewBox="0 0 24 24">
             <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
@@ -333,9 +274,8 @@
         <p>Install the HACS integration to control your tablet, stream its camera feed, set up a photo screensaver feed, and more for your Dashie tablets.</p>
       </a>
 
-      <!-- Music Assistant Setup Guide -->
+      <!-- Music Assistant -->
       <a href="/guides/music-assistant-setup" class="guide-card">
-        <span class="guide-tag dashie-lite">Home Assistant</span>
         <div class="guide-icon">
           <svg viewBox="0 0 24 24">
             <path d="M9 18V5l12-2v13"/>
@@ -347,9 +287,16 @@
         <p>Install Music Assistant, connect your music services, and use your Dashie tablets as speakers for whole-home audio.</p>
       </a>
 
-      <!-- Dashie Early Access Guide (Placeholder) -->
+    </div>
+  </section>
+
+  <!-- For Dashie Users -->
+  <section class="guides-section">
+    <h2 class="section-header">For Dashie Users</h2>
+    <div class="guides-grid">
+
+      <!-- Dashie Early Access -->
       <a href="/guides/dashie-early-access" class="guide-card">
-        <span class="guide-tag dashie">Dashie</span>
         <div class="guide-icon">
           <svg viewBox="0 0 24 24">
             <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
@@ -361,15 +308,11 @@
         <h3>Getting Started with Dashie Early Access</h3>
         <p>Learn what's involved in signing up for Dashie Early Access, including device requirements, setup process, and what to expect.</p>
       </a>
-    </div>
-  </section>
 
-  <!-- Coming Soon -->
-  <section class="coming-soon">
-    <h2>More Guides Coming Soon</h2>
-    <div class="coming-soon-list">
-      <div class="coming-soon-item">
-        <div class="icon">
+      <!-- Family Calendars (coming soon) -->
+      <div class="guide-card coming-soon">
+        <span class="coming-soon-tag">Coming Soon</span>
+        <div class="guide-icon">
           <svg viewBox="0 0 24 24">
             <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
             <line x1="16" y1="2" x2="16" y2="6"/>
@@ -377,13 +320,14 @@
             <line x1="3" y1="10" x2="21" y2="10"/>
           </svg>
         </div>
-        <div>
-          <h4>Setting Up Family Calendars</h4>
-          <span>Connect Google Calendar to your Dashie dashboard</span>
-        </div>
+        <h3>Setting Up Family Calendars</h3>
+        <p>Connect Google Calendar (and Microsoft and Apple) to your Dashie dashboard so everyone's schedule is in one place.</p>
       </div>
-      <div class="coming-soon-item">
-        <div class="icon">
+
+      <!-- Family Members (coming soon) -->
+      <div class="guide-card coming-soon">
+        <span class="coming-soon-tag">Coming Soon</span>
+        <div class="guide-icon">
           <svg viewBox="0 0 24 24">
             <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
             <circle cx="9" cy="7" r="4"/>
@@ -391,23 +335,23 @@
             <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
           </svg>
         </div>
-        <div>
-          <h4>Managing Family Members</h4>
-          <span>Add family members and configure profiles</span>
-        </div>
+        <h3>Managing Family Members</h3>
+        <p>Add family members, assign colors, and configure profiles so calendars, chores, and rewards know who is who.</p>
       </div>
-      <div class="coming-soon-item">
-        <div class="icon">
+
+      <!-- Chores and Rewards (coming soon) -->
+      <div class="guide-card coming-soon">
+        <span class="coming-soon-tag">Coming Soon</span>
+        <div class="guide-icon">
           <svg viewBox="0 0 24 24">
             <polyline points="9 11 12 14 22 4"/>
             <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/>
           </svg>
         </div>
-        <div>
-          <h4>Creating Chores and Rewards</h4>
-          <span>Set up a chore system with points and rewards</span>
-        </div>
+        <h3>Creating Chores and Rewards</h3>
+        <p>Set up a chore system with points and rewards to keep everyone on task and motivated.</p>
       </div>
+
     </div>
   </section>
 
