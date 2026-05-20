@@ -126,10 +126,10 @@
     .btn-download-beta {
       display: block;
       text-align: center;
-      background: transparent;
-      color: #1a365d;
-      border: 2px solid #1a365d;
-      padding: 8px 16px;
+      background: #1a365d;
+      color: #ffffff;
+      border: none;
+      padding: 10px 18px;
       border-radius: 8px;
       font-size: 0.85em;
       font-weight: 600;
@@ -139,29 +139,37 @@
     }
 
     .btn-download-beta:hover {
-      background: #1a365d;
-      color: #ffffff;
+      background: #2a4670;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(26, 54, 93, 0.4);
     }
 
-    /* Quick Start Guides */
+    /* Quick Start Guides (callout) */
     .quick-start-guides {
       max-width: 1000px;
-      margin: 36px auto 0;
-      padding: 28px 40px 0 40px;
-      border-top: 1px solid #e0e0e0;
+      margin: 30px auto 0;
+      padding: 0 40px;
+    }
+
+    .quick-start-guides-inner {
+      background: #fff8e6;
+      border: 1px solid #ffd591;
+      border-radius: 12px;
+      padding: 26px 28px;
       text-align: center;
     }
 
     .quick-start-guides h2 {
-      color: #424242;
-      font-size: 1.25em;
-      margin-bottom: 12px;
+      color: #b07000;
+      font-size: 1.3em;
+      margin-bottom: 14px;
     }
 
     .quick-start-guides a {
       color: #ffaa00;
       margin: 0 12px;
-      font-size: 14px;
+      font-size: 15px;
+      font-weight: 600;
       text-decoration: none;
     }
 
@@ -170,7 +178,7 @@
     }
 
     .quick-start-guides .separator {
-      color: #ccc;
+      color: #e6b370;
     }
 
     /* Beta callout */
@@ -356,14 +364,16 @@
 
   <!-- Quick Start Guides -->
   <section class="quick-start-guides">
-    <h2>Quick Start Guides</h2>
-    <a href="/guides/dashie-kiosk-features">Features Overview</a>
-    <span class="separator">|</span>
-    <a href="/guides/voice-control-setup">Voice Control Setup</a>
-    <span class="separator">|</span>
-    <a href="/guides/fire-tablet-sideload">Android Tablet Sideloading</a>
-    <span class="separator">|</span>
-    <a href="/guides/home-assistant-integration">Dashie HACS Integration</a>
+    <div class="quick-start-guides-inner">
+      <h2>Quick Start Guides</h2>
+      <a href="/guides/dashie-early-access">Getting Started with Dashie</a>
+      <span class="separator">|</span>
+      <a href="/guides/fire-tablet-sideload">Android Sideloading</a>
+      <span class="separator">|</span>
+      <a href="/guides/smart-tv-setup">Setting Up Dashie on Your Smart TV</a>
+      <span class="separator">|</span>
+      <a href="/guides/dashie-kiosk-features">Complete Guide to Home Assistant</a>
+    </div>
   </section>
 
   <!-- Footer -->
