@@ -1,9 +1,9 @@
 {
-  "versionCode": 133,
-  "versionName": "1.1.6",
+  "versionCode": 135,
+  "versionName": "1.1.8",
   "apkUrl": "https://dashieapp.com/downloads/Dashie-sideload-staging.apk",
-  "sha256": "5e3decd89ebb973e11e08c05d41f9ec9227c5be71769aba20808a6a9a67957df",
+  "sha256": "5f366369fe09872e0210c7362105256e8b86ceb861cb6af669c12319cbe125d1",
   "notify": true,
-  "title": "What's new in 1.1.6",
-  "description": "• Per-release notify flag for silent updates\n• Larger update modal with release notes\n• Target version shown in Control Center card\n• Persistent download-failure indicator (red dot)"
+  "title": "Update install UX polish",
+  "description": "• New 'Installing update' state on Control Center card\n• Toast confirms when the system install prompt is about to appear\n• Guards against re-triggering download while install is in flight"
 }
