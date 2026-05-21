@@ -140,6 +140,23 @@
       border-radius: 4px;
     }
 
+    /* Audience badge in card top-right (e.g., 'Home Assistant') */
+    .guide-tag {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 4px;
+    }
+
+    .guide-tag.ha {
+      background: #18bcf2;
+      color: #ffffff;
+    }
+
     /* Footer */
     .footer {
       max-width: 900px;
@@ -237,9 +254,8 @@
         <p>Connect Google, Microsoft, and Apple calendars so everyone's schedule lands in one place on your dashboard.</p>
       </a>
 
-      <!-- Family Members (coming soon) -->
-      <div class="guide-card coming-soon">
-        <span class="coming-soon-tag">Coming Soon</span>
+      <!-- Family Management -->
+      <a href="/guides/family-management" class="guide-card">
         <div class="guide-icon">
           <svg viewBox="0 0 24 24">
             <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
@@ -248,11 +264,11 @@
             <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
           </svg>
         </div>
-        <h3>Managing Family Members</h3>
-        <p>Add family members, assign colors, and configure profiles so calendars, chores, and rewards know who is who.</p>
-      </div>
+        <h3>Family Management</h3>
+        <p>Add family members, assign colors, and configure profiles so the rest of Dashie knows who is who.</p>
+      </a>
 
-      <!-- Chores and Rewards -->
+      <!-- Chores and Rewards — hidden until the feature ships; uncomment to re-enable
       <a href="/guides/chores-rewards-setup" class="guide-card">
         <div class="guide-icon">
           <svg viewBox="0 0 24 24">
@@ -263,6 +279,7 @@
         <h3>Setting Up Chores &amp; Rewards</h3>
         <p>Set up a chore system with points and rewards to keep everyone on task and motivated.</p>
       </a>
+      -->
 
     </div>
   </section>
@@ -274,6 +291,7 @@
 
       <!-- Complete Guide for Home Assistant Users -->
       <a href="/guides/dashie-kiosk-features" class="guide-card">
+        <span class="guide-tag ha">Home Assistant</span>
         <div class="guide-icon">
           <svg viewBox="0 0 24 24">
             <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
@@ -286,6 +304,7 @@
 
       <!-- Sideload -->
       <a href="/guides/fire-tablet-sideload" class="guide-card">
+        <span class="guide-tag ha">Home Assistant</span>
         <div class="guide-icon">
           <svg viewBox="0 0 24 24">
             <rect x="5" y="2" width="14" height="20" rx="2" ry="2"/>
@@ -298,6 +317,7 @@
 
       <!-- Voice Control -->
       <a href="/guides/voice-control-setup" class="guide-card">
+        <span class="guide-tag ha">Home Assistant</span>
         <div class="guide-icon">
           <svg viewBox="0 0 24 24">
             <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/>
@@ -312,6 +332,7 @@
 
       <!-- Screensaver Setup -->
       <a href="/guides/screensaver-setup" class="guide-card">
+        <span class="guide-tag ha">Home Assistant</span>
         <div class="guide-icon">
           <svg viewBox="0 0 24 24">
             <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
@@ -325,6 +346,7 @@
 
       <!-- Photos Setup -->
       <a href="/guides/photos-setup" class="guide-card">
+        <span class="guide-tag ha">Home Assistant</span>
         <div class="guide-icon">
           <svg viewBox="0 0 24 24">
             <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
@@ -338,6 +360,7 @@
 
       <!-- Home Assistant Integration -->
       <a href="/guides/home-assistant-integration" class="guide-card">
+        <span class="guide-tag ha">Home Assistant</span>
         <div class="guide-icon">
           <svg viewBox="0 0 24 24">
             <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
@@ -350,6 +373,7 @@
 
       <!-- Music Assistant -->
       <a href="/guides/music-assistant-setup" class="guide-card">
+        <span class="guide-tag ha">Home Assistant</span>
         <div class="guide-icon">
           <svg viewBox="0 0 24 24">
             <path d="M9 18V5l12-2v13"/>

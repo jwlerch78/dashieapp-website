@@ -13,6 +13,10 @@
       box-sizing: border-box;
     }
 
+    html {
+      scroll-padding-top: 80px;
+    }
+
     body {
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
       line-height: 1.6;
@@ -75,17 +79,19 @@
       font-size: 14px;
     }
 
+    /* Article content */
     .article-content {
       font-size: 1.05em;
     }
 
     .article-content p {
-      margin-bottom: 20px;
+      margin-bottom: 18px;
     }
 
     .article-content a {
       color: #ffaa00;
       text-decoration: none;
+      font-weight: 600;
     }
 
     .article-content a:hover {
@@ -93,13 +99,22 @@
     }
 
     .article-content h2 {
-      font-size: 1.4em;
+      font-size: 1.6em;
       color: #424242;
-      margin: 30px 0 12px 0;
+      margin: 40px 0 14px 0;
+      padding-bottom: 8px;
+      border-bottom: 2px solid #f0f0f0;
     }
 
-    .article-content ul {
-      margin: 0 0 20px 24px;
+    .article-content h3 {
+      font-size: 1.2em;
+      color: #424242;
+      margin: 24px 0 8px 0;
+    }
+
+    .article-content ul,
+    .article-content ol {
+      margin: 0 0 20px 26px;
       color: #555;
     }
 
@@ -107,31 +122,98 @@
       margin-bottom: 8px;
     }
 
-    /* Coming Soon Notice */
-    .coming-soon-notice {
-      background: #fff8e6;
-      border: 2px solid #ffaa00;
-      border-radius: 12px;
-      padding: 40px;
-      text-align: center;
-      margin: 40px 0;
+    .article-content strong {
+      color: #424242;
     }
 
-    .coming-soon-notice h2 {
-      color: #ffaa00;
-      font-size: 1.5em;
-      margin-bottom: 15px;
+    /* Compatibility table */
+    .compat-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 12px 0 24px;
+      font-size: 0.95em;
     }
 
-    .coming-soon-notice p {
-      color: #666;
-      font-size: 1.1em;
-      margin-bottom: 0;
+    .compat-table th,
+    .compat-table td {
+      padding: 10px 14px;
+      border: 1px solid #e0e0e0;
+      text-align: left;
+      vertical-align: middle;
     }
 
-    .coming-soon-notice a {
-      color: #ffaa00;
+    .compat-table th {
+      background: #f9f9f9;
       font-weight: 600;
+      color: #424242;
+    }
+
+    .compat-table .yes {
+      color: #4caf50;
+      font-weight: 700;
+    }
+
+    .compat-table .no {
+      color: #c0c0c0;
+      font-weight: 700;
+    }
+
+    /* Setup-step blocks */
+    .setup-step {
+      background: #fafafa;
+      border-left: 4px solid #ffaa00;
+      border-radius: 6px;
+      padding: 16px 22px;
+      margin: 14px 0;
+    }
+
+    .setup-step h3 {
+      margin-top: 0;
+      margin-bottom: 6px;
+    }
+
+    .setup-step p {
+      margin-bottom: 0;
+      color: #555;
+    }
+
+    /* Step with an image to the right */
+    .setup-step-row {
+      display: flex;
+      gap: 22px;
+      align-items: flex-start;
+    }
+
+    .setup-step-text {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .setup-step-media {
+      flex: 0 0 320px;
+    }
+
+    .setup-step-media img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+      border: 1px solid #e0e0e0;
+    }
+
+    /* Info callout */
+    .info-callout {
+      background: #f4f7fb;
+      border: 1px solid #d6e2f0;
+      border-radius: 10px;
+      padding: 16px 20px;
+      margin: 18px 0;
+      color: #555;
+      font-size: 0.95em;
+    }
+
+    .info-callout strong {
+      color: #1a365d;
     }
 
     /* Footer */
@@ -171,8 +253,31 @@
         font-size: 1.6em;
       }
 
-      .coming-soon-notice {
-        padding: 30px 20px;
+      .article-content h2 {
+        font-size: 1.35em;
+      }
+
+      .compat-table {
+        font-size: 0.85em;
+      }
+
+      .compat-table th,
+      .compat-table td {
+        padding: 8px 10px;
+      }
+
+      .setup-step {
+        padding: 16px 18px;
+      }
+
+      .setup-step-row {
+        flex-direction: column;
+        gap: 14px;
+      }
+
+      .setup-step-media {
+        flex: 0 0 auto;
+        max-width: 100%;
       }
     }
   </style>
@@ -193,29 +298,170 @@
     <header class="article-header">
       <span class="article-tag">Dashie</span>
       <h1>Setting Up Dashie on Your Smart TV</h1>
-      <p class="article-meta">Coming Soon</p>
+      <p class="article-meta">Last updated: May 2026</p>
     </header>
 
     <div class="article-content">
-      <div class="coming-soon-notice">
-        <h2>Guide Coming Soon</h2>
+
+      <p>
+        Dashie runs great on the big screen. If your TV is built on Android, you
+        can install Dashie like any other app and turn that screen into a
+        family dashboard whenever the TV isn't being used for shows or games.
+      </p>
+
+      <!-- Which TVs work -->
+      <h2 id="compatibility">Which TVs work</h2>
+      <p>
+        Dashie is an Android app, so any TV built on Android works. Here's the
+        current picture:
+      </p>
+
+      <table class="compat-table">
+        <thead>
+          <tr>
+            <th>Smart TV Platform</th>
+            <th>Supported</th>
+            <th>How to install</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Google TV / Chromecast with Google TV</td>
+            <td class="yes">Yes</td>
+            <td>Google Play Store</td>
+          </tr>
+          <tr>
+            <td>Amazon Fire TV</td>
+            <td class="yes">Yes</td>
+            <td>Amazon Appstore</td>
+          </tr>
+          <tr>
+            <td>Android TV (built into many smart TVs)</td>
+            <td class="yes">Yes</td>
+            <td>Google Play Store or sideload</td>
+          </tr>
+          <tr>
+            <td>Apple TV</td>
+            <td class="no">No</td>
+            <td>&mdash;</td>
+          </tr>
+          <tr>
+            <td>Roku</td>
+            <td class="no">No</td>
+            <td>&mdash;</td>
+          </tr>
+          <tr>
+            <td>Samsung Tizen / LG webOS</td>
+            <td class="no">No</td>
+            <td>&mdash;</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>
+        Not sure what your TV runs on? The remote and on-screen UI are usually a
+        dead giveaway: a Google Assistant button and Play Store icons point to
+        Google / Android TV; an Alexa button and the Fire-orange home screen
+        point to Fire TV. If you see Roku's purple grid or Apple's tvOS, Dashie
+        isn't supported on that TV today &mdash; a Google TV or Fire TV stick
+        plugged into HDMI is the easiest workaround.
+      </p>
+
+      <!-- Installing -->
+      <h2 id="install">Installing Dashie</h2>
+
+      <div class="setup-step">
+        <h3>Google TV / Android TV</h3>
         <p>
-          This guide is currently being written. It will walk you through installing Dashie on your Google TV, Fire TV, or other Android-based smart TV, and getting the most out of the big-screen experience.
+          Open the <strong>Google Play Store</strong> on your TV, search for
+          <em>Dashie</em>, and install. Updates roll out automatically through
+          the Play Store.
         </p>
       </div>
 
-      <h2>What this guide will cover</h2>
-      <ul>
-        <li>Which smart TVs Dashie supports today (Google TV, Amazon Fire TV, Android TV)</li>
-        <li>Installing Dashie from the Google Play Store or Amazon Appstore</li>
-        <li>Sideloading the APK when a store isn't available</li>
-        <li>Signing in and pairing your TV with the rest of the family</li>
-        <li>Remote-friendly navigation tips and recommended settings</li>
-      </ul>
+      <div class="setup-step">
+        <h3>Amazon Fire TV</h3>
+        <p>
+          Open the <strong>Amazon Appstore</strong> on your Fire TV, search for
+          <em>Dashie</em>, and install. Updates roll out automatically through
+          the Amazon Appstore.
+        </p>
+      </div>
 
+      <div class="setup-step">
+        <h3>Sideloading (Android TVs without the right store)</h3>
+        <p>
+          Some Android TVs ship without the Google Play Store. In that case,
+          install Dashie's APK directly. The full step-by-step is in the
+          <a href="/guides/fire-tablet-sideload">Android Sideloading guide</a>
+          &mdash; the same steps work on a TV with ADB enabled.
+        </p>
+      </div>
+
+      <!-- Signing in -->
+      <h2 id="sign-in">Signing in</h2>
       <p>
-        In the meantime, <a href="/get-dashie">download Dashie</a> and you'll be most of the way there, or <a href="/contact">contact us</a> if you'd like a hand getting set up.
+        On first launch, Dashie shows a sign-in screen with a QR code. You
+        don't need to type anything on the TV &mdash; just scan the QR code
+        with your phone (or visit the URL it shows and enter the short pairing
+        code) and sign in with Google there. The TV will pair within a few
+        seconds and start syncing your calendars, photos, family, and settings.
       </p>
+
+      <div class="setup-step">
+        <div class="setup-step-row">
+          <div class="setup-step-text">
+            <h3>QR pairing flow</h3>
+            <p>
+              The pairing code expires after ~8 minutes. If it expires before
+              you scan, cancel and Dashie will issue a new one. Once paired,
+              you won't see this screen again on this TV &mdash; you stay
+              signed in unless you explicitly sign out.
+            </p>
+          </div>
+          <div class="setup-step-media">
+            <img src="/website-assets/guide-getting-started-qr-login.png"
+                 alt="Dashie sign-in screen showing a QR code, the fallback URL app.dashieapp.com/auth, and a pairing code to enter on a phone">
+          </div>
+        </div>
+      </div>
+
+      <!-- Tips -->
+      <h2 id="tips">Tips for the big-screen experience</h2>
+
+      <h3>Remote-friendly navigation</h3>
+      <p>
+        Dashie's layout is designed for D-pad navigation. Use the arrow keys
+        to move between widgets, the center button to select, and the Back
+        button to step out. The OK / Enter button opens a focused widget in
+        full-screen mode (great for the calendar or photos).
+      </p>
+
+      <h3>When to launch Dashie</h3>
+      <p>
+        A common pattern is to leave Dashie running and use the TV's
+        input-switch button to flip back to your normal content. On Google TV
+        and Fire TV you can also set Dashie to launch when the TV wakes from
+        sleep, so the dashboard is the first thing your family sees in the
+        morning.
+      </p>
+
+      <h3>Voice control</h3>
+      <p>
+        On TVs with a microphone remote (Google TV, Fire TV) you can use the
+        platform's built-in voice search to "Open Dashie" without navigating
+        through the launcher.
+      </p>
+
+      <div class="info-callout">
+        <strong>Looking for the kiosk-style setup?</strong>
+        If you want Dashie to take over an Android TV as a permanent dashboard
+        (lock task mode, no other apps), see the
+        <a href="/guides/dashie-kiosk-features">Complete Guide for Home Assistant Users</a>
+        &mdash; the kiosk features were originally built for the HA crowd but
+        work the same on any Android TV.
+      </div>
+
     </div>
   </article>
 
