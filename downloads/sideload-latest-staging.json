@@ -2,6 +2,8 @@
   "versionCode": 133,
   "versionName": "1.1.6",
   "apkUrl": "https://dashieapp.com/downloads/Dashie-sideload-staging.apk",
-  "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
-  "notify": false
+  "sha256": "5e3decd89ebb973e11e08c05d41f9ec9227c5be71769aba20808a6a9a67957df",
+  "notify": true,
+  "title": "What's new in 1.1.6",
+  "description": "• Per-release notify flag for silent updates\n• Larger update modal with release notes\n• Target version shown in Control Center card\n• Persistent download-failure indicator (red dot)"
 }
