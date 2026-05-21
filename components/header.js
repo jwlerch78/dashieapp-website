@@ -536,7 +536,8 @@ const headerHTML = `
     </ul>
   </div>
   <div class="nav-bar-right">
-    <a href="#" class="btn-login" onclick="window.dashieHeader.showSigninModal(event)">Sign In</a>
+    <a href="https://app.dashieapp.com/subscribe.html?source=marketing" class="btn-login">Subscribe</a>
+    <a href="#" class="btn-signup" onclick="window.dashieHeader.showSigninModal(event)">Sign In</a>
   </div>
   <button class="hamburger-btn" onclick="window.dashieHeader.toggleMobileMenu()">
     <svg viewBox="0 0 24 24" fill="none">
@@ -576,7 +577,8 @@ const headerHTML = `
     <li><a href="/contact" class="mobile-sub-item ${getActiveClass('/contact')}">Contact Us</a></li>
   </ul>
   <div class="mobile-menu-buttons">
-    <a href="#" class="btn-login" onclick="window.dashieHeader.showSigninModal(event)">Sign In</a>
+    <a href="https://app.dashieapp.com/subscribe.html?source=marketing" class="btn-login">Subscribe</a>
+    <a href="#" class="btn-signup" onclick="window.dashieHeader.showSigninModal(event)">Sign In</a>
   </div>
 </div>
 
