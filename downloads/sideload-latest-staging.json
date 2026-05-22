@@ -1,9 +1,9 @@
 {
-  "versionCode": 136,
-  "versionName": "1.1.9",
+  "versionCode": 139,
+  "versionName": "1.0.1",
   "apkUrl": "https://dashieapp.com/downloads/Dashie-sideload-staging.apk",
-  "sha256": "eb1ddc937b8ef101f643453c9e9cd4c45619a8e9ce56124f96a2cb1da631c7ea",
+  "sha256": "ce964f001f3907020002be577cf00495a883cadeead5b1a10c0a0c1aaed9be30",
   "notify": true,
-  "title": "Update install UX polish + D.84 fix",
-  "description": "• New 'Installing update' state on Control Center card\n• Toast confirms when the system install prompt is about to appear\n• Guards against re-triggering download while install is in flight\n• D.84: BACK button now falls through on TV auth pages"
+  "title": "What's new in 1.0.1",
+  "description": "• Photo uploader / subscribe URLs now point at the right host\n• Native theme picker adds a Blue option\n• Trial offer can be opted out of from CC\n• Immich account picker scrim + sign-out + re-auth\n• Dashboard zoom syncs through the JS settings pipeline\n• HA back-button user-opt-in toggle\n• D.79 / D.80 / D.84 fixes"
 }
