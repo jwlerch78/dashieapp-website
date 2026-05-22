@@ -1,4 +1,7 @@
 {
-  "versionCode": 131,
-  "versionName": "1.1.4"
+  "versionCode": 146,
+  "versionName": "1.0.7",
+  "notify": true,
+  "title": "What's new in 1.0.7",
+  "description": "• In-app update flow polish: cancelling Play's consent dialog now properly resets state instead of leaving the status banner stuck\n• Play update modal now shows version + release notes (was generic before)\n• Behind the scenes: various theme and widget fixes from this session"
 }
