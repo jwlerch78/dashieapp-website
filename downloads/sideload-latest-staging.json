@@ -1,9 +1,9 @@
 {
-  "versionCode": 141,
-  "versionName": "1.0.2",
+  "versionCode": 143,
+  "versionName": "1.0.4",
   "apkUrl": "https://dashieapp.com/downloads/Dashie-sideload-staging.apk",
-  "sha256": "bb755cd50d64e4dd1a62bb5b95e8c652d90456e7fc773a326eb8e82ac038da26",
+  "sha256": "46668d0a8d7db7a14f263a1dcfe98d5c09f75f7f1402b00dce5d37f6aa82ee65",
   "notify": true,
-  "title": "What's new in 1.0.2",
-  "description": "• Update flow: redundant toasts removed (banners cover the same UX)\n• Status banner gets a Dismiss pill + d-pad focus on TV\n• Status text drops the trailing ellipsis (spinner already says \"in progress\")\n• NativeThemeManager: add missing getBgSecondaryOr (unblocks staging build)"
+  "title": "What's new in 1.0.4",
+  "description": "• 'Check for Updates' from Settings no longer pops the banner — the Control Center card is the only surface (the user is already in the UI)\n• Automatic poll banner behavior unchanged"
 }
