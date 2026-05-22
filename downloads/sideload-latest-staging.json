@@ -1,9 +1,9 @@
 {
-  "versionCode": 139,
-  "versionName": "1.0.1",
+  "versionCode": 141,
+  "versionName": "1.0.2",
   "apkUrl": "https://dashieapp.com/downloads/Dashie-sideload-staging.apk",
-  "sha256": "ce964f001f3907020002be577cf00495a883cadeead5b1a10c0a0c1aaed9be30",
+  "sha256": "bb755cd50d64e4dd1a62bb5b95e8c652d90456e7fc773a326eb8e82ac038da26",
   "notify": true,
-  "title": "What's new in 1.0.1",
-  "description": "• Photo uploader / subscribe URLs now point at the right host\n• Native theme picker adds a Blue option\n• Trial offer can be opted out of from CC\n• Immich account picker scrim + sign-out + re-auth\n• Dashboard zoom syncs through the JS settings pipeline\n• HA back-button user-opt-in toggle\n• D.79 / D.80 / D.84 fixes"
+  "title": "What's new in 1.0.2",
+  "description": "• Update flow: redundant toasts removed (banners cover the same UX)\n• Status banner gets a Dismiss pill + d-pad focus on TV\n• Status text drops the trailing ellipsis (spinner already says \"in progress\")\n• NativeThemeManager: add missing getBgSecondaryOr (unblocks staging build)"
 }
