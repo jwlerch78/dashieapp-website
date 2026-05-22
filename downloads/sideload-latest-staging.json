@@ -1,9 +1,9 @@
 {
-  "versionCode": 135,
-  "versionName": "1.1.8",
+  "versionCode": 136,
+  "versionName": "1.1.9",
   "apkUrl": "https://dashieapp.com/downloads/Dashie-sideload-staging.apk",
-  "sha256": "5f366369fe09872e0210c7362105256e8b86ceb861cb6af669c12319cbe125d1",
+  "sha256": "eb1ddc937b8ef101f643453c9e9cd4c45619a8e9ce56124f96a2cb1da631c7ea",
   "notify": true,
-  "title": "Update install UX polish",
-  "description": "• New 'Installing update' state on Control Center card\n• Toast confirms when the system install prompt is about to appear\n• Guards against re-triggering download while install is in flight"
+  "title": "Update install UX polish + D.84 fix",
+  "description": "• New 'Installing update' state on Control Center card\n• Toast confirms when the system install prompt is about to appear\n• Guards against re-triggering download while install is in flight\n• D.84: BACK button now falls through on TV auth pages"
 }
