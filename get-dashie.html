@@ -38,6 +38,19 @@
       margin-bottom: 12px;
     }
 
+    .hero-beta-badge {
+      display: inline-block;
+      background: #1a365d;
+      color: #ffffff;
+      font-size: 0.78em;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 5px 14px;
+      border-radius: 4px;
+      margin-bottom: 16px;
+    }
+
     .hero .tagline {
       font-size: 1.15em;
       color: #666;
@@ -129,12 +142,16 @@
       background: #1a365d;
       color: #ffffff;
       border: none;
-      padding: 10px 18px;
+      padding: 12px 20px;
       border-radius: 8px;
-      font-size: 0.85em;
+      font-size: 0.95em;
       font-weight: 600;
       text-decoration: none;
       transition: all 0.2s;
+    }
+
+    /* Gap only applies when the standard button above is also visible. */
+    .btn-download + .btn-download-beta {
       margin-top: 10px;
     }
 
@@ -288,6 +305,7 @@
   <!-- Hero Section -->
   <section class="hero">
     <h1>Get Dashie</h1>
+    <span class="hero-beta-badge">Beta</span>
     <p class="tagline">
       Dashie runs on Android &mdash; tablets, Amazon Fire devices, and TV boxes.
       Choose the install method that fits your device. Whichever you pick, Dashie
@@ -319,10 +337,12 @@
         <p>
           The easiest way to install on most Android devices and Google TVs.
         </p>
+        <!-- Standard release button hidden during beta; uncomment to re-enable
         <a href="https://play.google.com/store/apps/details?id=com.dashieapp.Dashie"
-           class="btn-download" target="_blank" rel="noopener">Download (v1.1.0)</a>
+           class="btn-download" target="_blank" rel="noopener">Download (v1.0.0)</a>
+        -->
         <a href="https://play.google.com/apps/testing/com.dashieapp.Dashie"
-           class="btn-download-beta" target="_blank" rel="noopener">Download Beta Release (v1.2.0)</a>
+           class="btn-download-beta" target="_blank" rel="noopener">Download Beta Release (v1.0.0)</a>
       </div>
 
       <!-- Amazon Appstore — hidden until the Amazon listing goes live; uncomment to re-enable
@@ -337,16 +357,16 @@
           For Amazon Fire tablets and Fire TV devices.
         </p>
         <a href="https://www.amazon.com/gp/mas/dl/android?p=com.dashieapp.Dashie"
-           class="btn-download" target="_blank" rel="noopener">Download (v1.1.0)</a>
+           class="btn-download" target="_blank" rel="noopener">Download (v1.0.0)</a>
         <a href="https://www.amazon.com/gp/mas/dl/android?p=com.dashieapp.Dashie"
-           class="btn-download-beta" target="_blank" rel="noopener">Download Beta Release (v1.2.0)</a>
+           class="btn-download-beta" target="_blank" rel="noopener">Download Beta Release (v1.0.0)</a>
       </div>
       -->
 
       <!-- Sideload -->
       <div class="channel-card">
         <div class="channel-icon">
-          <a href="/downloads/Dashie-sideload.apk">
+          <a href="/downloads/Dashie-sideload-beta.apk">
             <img class="apk-icon" src="/artwork/icon-download.svg" alt="">
           </a>
         </div>
@@ -355,8 +375,10 @@
           Install the APK directly &mdash; for kiosk hardware or devices without
           a supported app store.
         </p>
-        <a href="/downloads/Dashie-sideload.apk" class="btn-download">Download (v1.1.0)</a>
-        <a href="/downloads/Dashie-sideload-beta.apk" class="btn-download-beta">Download Beta Release (v1.2.0)</a>
+        <!-- Standard release button hidden during beta; uncomment to re-enable
+        <a href="/downloads/Dashie-sideload.apk" class="btn-download">Download (v1.0.0)</a>
+        -->
+        <a href="/downloads/Dashie-sideload-beta.apk" class="btn-download-beta">Download Beta Release (v1.0.0)</a>
       </div>
 
     </div>
