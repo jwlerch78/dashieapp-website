@@ -511,6 +511,7 @@ const headerHTML = `
       <a href="/"><img src="/artwork/Dashie_Full_Logo_Orange_Transparent.png" alt="Dashie" class="logo"></a>
     </div>
     <ul>
+      <li><a href="/for-families" class="${getActiveClass('/for-families')}">For Families</a></li>
       <li class="nav-dropdown">
         <a href="/dashie-kiosk" class="${getActiveClass('/dashie-kiosk')}">For Home Assistant</a>
         <div class="nav-dropdown-menu">
@@ -523,8 +524,9 @@ const headerHTML = `
           <a href="/dashie-kiosk#home-assistant">Home Assistant Integration</a>
         </div>
       </li>
-      <li><a href="/get-dashie" class="${getActiveClass('/get-dashie')}">Get Dashie</a></li>
+      <li><a href="/get-dashie" class="${getActiveClass('/get-dashie')}">Get Dashie <span class="beta-tag">Beta</span></a></li>
       <li><a href="/guides/" class="${getActiveClass('/guides')}">How to Guides</a></li>
+      <li><a href="/pricing" class="${getActiveClass('/pricing')}">Pricing</a></li>
       <li class="nav-dropdown">
         <a href="#" onclick="event.preventDefault();">About <span class="nav-caret">&#9662;</span></a>
         <div class="nav-dropdown-menu">
@@ -535,10 +537,12 @@ const headerHTML = `
       </li>
     </ul>
   </div>
+  <!-- Subscribe + Sign In hidden until those flows are ready; uncomment to re-enable
   <div class="nav-bar-right">
     <a href="https://app.dashieapp.com/subscribe.html?source=marketing" class="btn-login">Subscribe</a>
     <a href="#" class="btn-signup" onclick="window.dashieHeader.showSigninModal(event)">Sign In</a>
   </div>
+  -->
   <button class="hamburger-btn" onclick="window.dashieHeader.toggleMobileMenu()">
     <svg viewBox="0 0 24 24" fill="none">
       <line x1="3" y1="6" x2="21" y2="6"/>
@@ -563,6 +567,7 @@ const headerHTML = `
     </button>
   </div>
   <ul>
+    <li><a href="/for-families" class="${getActiveClass('/for-families')}">For Families</a></li>
     <li><a href="/dashie-kiosk" class="${getActiveClass('/dashie-kiosk')}">For Home Assistant</a></li>
     <li><a href="/dashie-kiosk#screensaver" class="mobile-sub-item">Screensaver & Photos</a></li>
     <li><a href="/dashie-kiosk#voice-control" class="mobile-sub-item">Voice Control</a></li>
@@ -571,15 +576,18 @@ const headerHTML = `
     <li><a href="/dashie-kiosk#battery-management" class="mobile-sub-item">Battery Management</a></li>
     <li><a href="/get-dashie" class="${getActiveClass('/get-dashie')}">Get Dashie</a></li>
     <li><a href="/guides/" class="${getActiveClass('/guides')}">How to Guides</a></li>
+    <li><a href="/pricing" class="${getActiveClass('/pricing')}">Pricing</a></li>
     <li><a href="#" onclick="event.preventDefault();" class="mobile-menu-label">About</a></li>
     <li><a href="/privacy-policy.html" class="mobile-sub-item">Privacy Policy</a></li>
     <li><a href="/terms-of-service.html" class="mobile-sub-item">Terms of Service</a></li>
     <li><a href="/contact" class="mobile-sub-item ${getActiveClass('/contact')}">Contact Us</a></li>
   </ul>
+  <!-- Subscribe + Sign In hidden until those flows are ready; uncomment to re-enable
   <div class="mobile-menu-buttons">
     <a href="https://app.dashieapp.com/subscribe.html?source=marketing" class="btn-login">Subscribe</a>
     <a href="#" class="btn-signup" onclick="window.dashieHeader.showSigninModal(event)">Sign In</a>
   </div>
+  -->
 </div>
 
 <!-- Sign-in Modal -->
