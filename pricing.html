@@ -82,7 +82,8 @@
 
     /* Top-of-card badges (Coming Soon, FREE) */
     .tier-coming-soon-badge,
-    .tier-free-badge {
+    .tier-free-badge,
+    .tier-trial-badge {
       display: inline-block;
       align-self: flex-start;
       font-size: 0.72em;
@@ -101,6 +102,42 @@
 
     .tier-free-badge {
       background: #18bcf2;
+    }
+
+    .tier-trial-badge {
+      background: #ffaa00;
+    }
+
+    /* Top-of-page CTA above the pricing tiers */
+    .start-cta {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 10px 40px 28px;
+      text-align: center;
+    }
+
+    .start-cta-heading {
+      font-size: 1.55em;
+      color: #424242;
+      margin-bottom: 18px;
+    }
+
+    .start-cta-button {
+      display: inline-block;
+      background: #ffaa00;
+      color: #ffffff;
+      padding: 14px 32px;
+      border-radius: 8px;
+      font-size: 1.05em;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+
+    .start-cta-button:hover {
+      background: #ffbb22;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(255, 170, 0, 0.4);
     }
 
     .tier-name {
@@ -164,6 +201,15 @@
       color: #ffaa00;
       font-weight: 700;
       margin-right: 10px;
+    }
+
+    /* Secondary detail line under a feature bullet (e.g. provider list) */
+    .tier-features .feature-subtext {
+      display: block;
+      padding-left: 22px;
+      margin-top: 2px;
+      font-size: 0.85em;
+      color: #888;
     }
 
     .tier-card.coming-soon .tier-features li::before {
@@ -284,17 +330,17 @@
 
       <!-- Dashie Core -->
       <div class="tier-card featured">
+        <span class="tier-trial-badge">30-day Free Trial</span>
         <h2 class="tier-name">Dashie Core</h2>
         <p class="tier-lead">Plug &amp; Play dashboard</p>
         <div class="tier-price">$2.99 <span class="unit">/ month</span></div>
         <div class="tier-price-annual">or $29.99 / year <span class="save">&mdash; save 16%</span></div>
         <ul class="tier-features">
-          <li>Calendar (Google, Microsoft, Apple)</li>
+          <li>Calendar<span class="feature-subtext">Google, Microsoft, Apple</span></li>
           <li>Photos</li>
           <li>Weather</li>
           <li>Sleep / Wake</li>
         </ul>
-        <a href="/beta-signup" class="tier-cta">Register for Beta</a>
       </div>
 
       <!-- Dashie Plus -->
@@ -302,6 +348,8 @@
         <span class="tier-coming-soon-badge">Coming Soon</span>
         <h2 class="tier-name">Dashie Plus</h2>
         <p class="tier-lead">Advanced family features</p>
+        <div class="tier-price">$5.99 <span class="unit">/ month</span></div>
+        <div class="tier-price-annual">or $59.99 / year <span class="save">&mdash; save 16%</span></div>
         <ul class="tier-features">
           <li>Chores &amp; Rewards</li>
           <li>Location tracking</li>
@@ -322,13 +370,18 @@
           <li>Voice Assistant integration<sup>*</sup></li>
           <li><a href="/dashie-kiosk">Much more &rsaquo;</a></li>
         </ul>
-        <a href="/get-dashie" class="tier-cta">Get Dashie for HA</a>
         <div class="tier-note">
           <sup>*</sup> One-time <a href="/voice-license">voice license</a> required.
         </div>
       </div>
 
     </div>
+  </section>
+
+  <!-- Bottom-of-page CTA -->
+  <section class="start-cta">
+    <h2 class="start-cta-heading">Get Started with Dashie for Free Today!</h2>
+    <a href="/get-dashie" class="start-cta-button">Get Dashie</a>
   </section>
 
   <!-- Footer -->
