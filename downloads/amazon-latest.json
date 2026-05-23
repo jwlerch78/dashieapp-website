@@ -1,4 +1,7 @@
 {
-  "versionCode": 124,
-  "versionName": "1.0.4"
+  "versionCode": 147,
+  "versionName": "1.0.8",
+  "notify": true,
+  "title": "What's new in 1.0.8",
+  "description": "• Play update modal now shows version + release notes (was generic copy before)\n• Update flow polish from this session\n• Various theme and widget fixes"
 }
