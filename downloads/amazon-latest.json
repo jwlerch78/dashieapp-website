@@ -1,7 +1,7 @@
 {
-  "versionCode": 147,
-  "versionName": "1.0.8",
+  "versionCode": 151,
+  "versionName": "1.0.0",
   "notify": true,
-  "title": "What's new in 1.0.8",
-  "description": "• Play update modal now shows version + release notes (was generic copy before)\n• Update flow polish from this session\n• Various theme and widget fixes"
+  "title": "Welcome to Dashie 1.0.0",
+  "description": "First official public release — your family dashboard with calendar, photos, weather, chores, and family sharing."
 }
