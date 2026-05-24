@@ -1,9 +1,9 @@
 {
-  "versionCode": 151,
-  "versionName": "1.0.0",
+  "versionCode": 152,
+  "versionName": "1.0.1",
   "apkUrl": "https://dashieapp.com/downloads/Dashie-sideload-beta.apk",
-  "sha256": "8052c5d9153c3bcb42b87565e5d47d2ae3d682da91738a96fa17c113550a5252",
+  "sha256": "60f72c6d64ac5768eb743851f26e05e9cbc1e5ea2d439e34fa78bc578445949c",
   "notify": true,
-  "title": "What's new in 1.0.0",
-  "description": "First official public release. Family dashboard with calendar, photos, weather, and family management."
+  "title": "What's new in 1.0.1",
+  "description": "Beta release with the latest fixes and improvements. Existing installs auto-update from the in-app banner."
 }
