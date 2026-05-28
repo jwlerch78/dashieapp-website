@@ -1,9 +1,9 @@
 {
-  "versionCode": 152,
-  "versionName": "1.0.1",
+  "versionCode": 153,
+  "versionName": "1.0.2",
   "apkUrl": "https://dashieapp.com/downloads/Dashie-sideload-beta.apk",
-  "sha256": "60f72c6d64ac5768eb743851f26e05e9cbc1e5ea2d439e34fa78bc578445949c",
+  "sha256": "46f1564262ac7ddde9b5758333b0485937cd0b5e116089cedd35ccf7110746f4",
   "notify": true,
-  "title": "What's new in 1.0.1",
-  "description": "Beta release with the latest fixes and improvements. Existing installs auto-update from the in-app banner."
+  "title": "What's new in 1.0.2",
+  "description": "\u2022 Portrait & orientation support for Dashie widget mode with a redesigned bottom bar\n\u2022 Updated music browser \u2014 drill into albums & playlists + radio support\n\u2022 Local HTTPS support for Home Assistant\n\u2022 TV-friendly set up for Fire TV & Google TV devices\n\u2022 Reliability & Bug fixes: stronger OS permissions to keep camera alive for motion wake"
 }
