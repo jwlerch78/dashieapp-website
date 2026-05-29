@@ -419,7 +419,7 @@
       </p>
 
       <figure class="hero-screenshot">
-        <img src="/artwork/dashie-kiosk-video-feed.png" alt="A Dashie dashboard showing a pool camera popup with a Video Feeds tray of camera thumbnails along the bottom">
+        <img src="/artwork/video-feeds-hero.png" alt="A Dashie family dashboard with a pool camera popup open over the calendar and a Video Feeds tray of camera thumbnails along the bottom">
         <figcaption>A camera feed open over the dashboard, with the Video Feeds tray of cameras along the bottom</figcaption>
       </figure>
 
@@ -450,7 +450,6 @@
       <div class="requirements">
         <h3>Prerequisites</h3>
         <ul>
-          <li>Dashie installed on your Android device (version 2.3 or later)</li>
           <li>The <a href="/guides/home-assistant-integration">Dashie Home Assistant integration</a> installed &mdash; this is what proxies camera streams, delivers motion triggers, and connects to Frigate</li>
           <li>At least one camera in Home Assistant, exposed as a <code>camera.*</code> entity, an RTSP URL, or a go2rtc stream</li>
           <li><strong>For recording playback:</strong> <a href="https://frigate.video/" target="_blank">Frigate</a> installed (typically as a Home Assistant add-on) with recording enabled on your cameras</li>
@@ -463,8 +462,7 @@
       <p>
         Dashie does not talk to your cameras directly. Everything flows through the <strong>Dashie Home Assistant
         integration</strong>, which acts as a smart proxy: it resolves camera entities to playable streams, watches your
-        motion sensors and pushes alerts to each tablet, and relays requests to Frigate for recordings and events. This is
-        why the integration is a hard requirement &mdash; without it, the tablet has no way to reach your cameras or Frigate.
+        motion sensors and pushes alerts to each tablet, and relays requests to Frigate for recordings and events.
       </p>
 
       <div class="architecture">
@@ -481,8 +479,7 @@
 
       <p>
         When you watch a feed, the integration first sends a lightweight stream that starts instantly, then transparently
-        upgrades a focused or maximized card to a higher-quality stream with audio. You never have to think about which
-        stream is which &mdash; Dashie picks the right one for the moment.
+        upgrades a focused or maximized card to a higher-quality stream with audio.
       </p>
 
       <h2>Part 1: Add a Video Feed</h2>
@@ -643,7 +640,7 @@
       <div class="info-box tip">
         <h4>Muting Alerts Temporarily</h4>
         <p>
-          Movie night? Tap the bell icon in the sidebar's volume popout to mute video-feed chimes without changing any
+          Tap the bell icon in the sidebar's volume popout to mute video-feed chimes without changing any
           per-feed settings. There's also an <strong>Alerts</strong> sub-screen in Video Feeds settings with a master
           enable and a volume slider for the chimes.
         </p>
