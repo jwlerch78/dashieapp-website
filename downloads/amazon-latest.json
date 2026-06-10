@@ -1,7 +1,7 @@
 {
-  "versionCode": 150,
-  "versionName": "1.0.0",
-  "notify": true,
-  "title": "Welcome to Dashie 1.0.0",
-  "description": "First official public release — your family dashboard with calendar, photos, weather, chores, and family sharing."
+  "versionCode": 160,
+  "versionName": "1.0.7",
+  "notify": false,
+  "title": "What's new in 1.0.7",
+  "description": "\u00e2\u0080\u00a2 Portrait & orientation support for Dashie widget mode with a redesigned bottom bar\n\u00e2\u0080\u00a2 Updated music browser \u00e2\u0080\u0094 drill into albums & playlists + radio support\n\u00e2\u0080\u00a2 Local HTTPS support for Home Assistant\n\u00e2\u0080\u00a2 TV-friendly set up for Fire TV & Google TV devices\n\u00e2\u0080\u00a2 Reliability & Bug fixes: stronger OS permissions to keep camera alive for motion wake"
 }
