@@ -209,6 +209,58 @@
       color: #8a5a00;
     }
 
+    /* Product cards */
+    .product-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+      margin: 18px 0 24px;
+    }
+
+    .product-card {
+      flex: 1 1 200px;
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+      background: #ffffff;
+      border: 1px solid #e0e0e0;
+      border-radius: 12px;
+      padding: 18px 16px;
+    }
+
+    .product-card img {
+      width: 100%;
+      height: 150px;
+      object-fit: contain;
+      margin-bottom: 14px;
+    }
+
+    .product-card .product-name {
+      font-size: 0.92em;
+      font-weight: 600;
+      color: #424242;
+      line-height: 1.4;
+      margin-bottom: 14px;
+      flex: 1;
+    }
+
+    .product-card .product-buy {
+      align-self: center;
+      display: inline-block;
+      background: #ffaa00;
+      color: #ffffff;
+      font-size: 0.85em;
+      font-weight: 600;
+      padding: 8px 18px;
+      border-radius: 6px;
+      text-decoration: none;
+    }
+
+    .product-card .product-buy:hover {
+      background: #e69900;
+      text-decoration: none;
+    }
+
     /* Footer */
     .footer {
       max-width: 800px;
@@ -317,6 +369,23 @@
         bootloader.
       </div>
 
+      <div class="product-grid">
+        <div class="product-card">
+          <img src="/website-assets/guide-onn-stick.png"
+               alt="onn. Google TV Full HD streaming stick with remote">
+          <div class="product-name">onn. Google TV Full HD Streaming Device</div>
+          <a class="product-buy"
+             href="https://www.walmart.com/ip/onn-Google-TV-Full-HD-Streaming-Device-New-2023/2262757145"
+             target="_blank" rel="noopener">View on Walmart</a>
+        </div>
+      </div>
+
+      <p class="article-meta" style="margin-top:-12px;">
+        Product links are examples that we've tested &mdash; not affiliate
+        links. The 4K onn. stick works too (it uses a USB-C port instead of
+        micro-USB).
+      </p>
+
       <!-- What you need -->
       <h2 id="what-you-need">What you'll need</h2>
       <ul>
@@ -329,8 +398,9 @@
           unzip it, and make sure the <code>adb</code> command is on your PATH.
         </li>
         <li>
-          <em>Optional, for voice/video:</em> a USB-C OTG adapter and a USB
-          microphone or USB webcam.
+          <em>Optional, for voice/video:</em> a powered micro-USB OTG adapter
+          and a USB webcam or microphone (see
+          <a href="#voice-video">Adding voice and video</a> below).
         </li>
       </ul>
 
@@ -486,8 +556,9 @@ adb -s &lt;id&gt; shell pm disable-user --user 0 com.onn.updatenotification
       <h2 id="voice-video">Adding voice and video (USB mic / webcam)</h2>
       <p>
         This is what makes the onn. stick especially appealing for Home
-        Assistant setups. With a <strong>USB-C OTG adapter</strong>, the stick's
-        single USB-C port can host accessories while still powered:
+        Assistant setups. With a <strong>powered OTG adapter</strong>, the
+        stick's single port (micro-USB on the Full HD model, USB-C on the 4K)
+        can host an accessory while staying powered:
       </p>
       <ul>
         <li>
@@ -506,9 +577,28 @@ adb -s &lt;id&gt; shell pm disable-user --user 0 com.onn.updatenotification
       <div class="info-callout">
         <strong>Powering tip:</strong> a microphone or camera draws more than
         the stick's port supplies on its own. Use a
-        <strong>powered OTG adapter</strong> (one with its own power input) so
-        the stick stays powered while the accessory runs. A small powered USB
-        hub works too.
+        <strong>powered OTG adapter</strong> &mdash; one with a second port for
+        power &mdash; so the stick stays powered while the accessory runs. A
+        small powered USB hub works too.
+      </div>
+
+      <div class="product-grid">
+        <div class="product-card">
+          <img src="/website-assets/guide-onn-otg.jpg"
+               alt="Micro-USB OTG adapter with a separate power input">
+          <div class="product-name">AuviPal 2-in-1 Micro USB OTG + Power Adapter</div>
+          <a class="product-buy"
+             href="https://www.amazon.com/dp/B07FY9Z9GD"
+             target="_blank" rel="noopener">View on Amazon</a>
+        </div>
+        <div class="product-card">
+          <img src="/website-assets/guide-onn-webcam.jpg"
+               alt="Anivia 1080p USB webcam with built-in microphone">
+          <div class="product-name">Anivia 1080p USB Webcam with Microphone</div>
+          <a class="product-buy"
+             href="https://www.amazon.com/dp/B07MVY1H9V"
+             target="_blank" rel="noopener">View on Amazon</a>
+        </div>
       </div>
 
       <!-- Recovery -->
