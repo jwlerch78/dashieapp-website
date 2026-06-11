@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Build a Dedicated Dashie Display from a $20 onn. Stick - Dashie</title>
+  <title>Build a Dedicated Dashie Display from a $20 onn Stick - Dashie</title>
   <link rel="icon" type="image/png" href="../../artwork/Dashie_Logo_Orange_Transparent.png">
 
   <style>
@@ -321,21 +321,21 @@
   <div class="breadcrumb">
     <a href="/guides/">How To Guides</a>
     <span>/</span>
-    <a href="#">Dedicated Dashie Display from an onn. Stick</a>
+    <a href="#">Dedicated Dashie Display from an onn Stick</a>
   </div>
 
   <!-- Article -->
   <article class="article">
     <header class="article-header">
       <span class="article-tag">Home Assistant</span>
-      <h1>Build a Dedicated Dashie Display from a $20 onn. Stick</h1>
+      <h1>Build a Dedicated Dashie Display from a $20 onn Stick</h1>
       <p class="article-meta">Last updated: June 2026</p>
     </header>
 
     <div class="article-content">
 
       <p>
-        Walmart's <strong>onn. Google TV streaming stick</strong> (the 4K or
+        Walmart's <strong>onn Google TV streaming stick</strong> (the 4K or
         Full HD model, usually $15&ndash;$25) makes a surprisingly great
         dedicated Dashie display. Plug it into any TV or monitor, follow the
         steps below, and the stick will <strong>boot straight into your Dashie
@@ -372,8 +372,8 @@
       <div class="product-grid">
         <div class="product-card">
           <img src="/website-assets/guide-onn-stick.png"
-               alt="onn. Google TV Full HD streaming stick with remote">
-          <div class="product-name">onn. Google TV Full HD Streaming Device</div>
+               alt="onn Google TV Full HD streaming stick with remote">
+          <div class="product-name">onn Google TV Full HD Streaming Device</div>
           <a class="product-buy"
              href="https://www.walmart.com/ip/onn-Google-TV-Full-HD-Streaming-Device-New-2023/2262757145"
              target="_blank" rel="noopener">View on Walmart</a>
@@ -382,15 +382,27 @@
 
       <p class="article-meta" style="margin-top:-12px;">
         Product links are examples that we've tested &mdash; not affiliate
-        links. The 4K onn. stick works too (it uses a USB-C port instead of
+        links. The 4K onn stick works too (it uses a USB-C port instead of
         micro-USB).
       </p>
+
+      <div class="warn-callout">
+        <strong>A note on horsepower.</strong> The Full HD onn stick has only
+        about <strong>1.5&nbsp;GB of RAM</strong>. That's plenty for a Dashie
+        dashboard on its own, but trying to run <em>everything</em> at once
+        &mdash; a USB camera, "Hey Dashie" voice, and a busy Home Assistant
+        dashboard &mdash; will likely overload it, causing slowdowns or reloads.
+        A device with more RAM would handle that combination better; we just
+        haven't tested specific higher-RAM models yet, so we can't recommend one
+        here. If you only need a calendar/photos/weather dashboard (with or
+        without one extra accessory), the onn stick handles it well.
+      </div>
 
       <!-- What you need -->
       <h2 id="what-you-need">What you'll need</h2>
       <ul>
-        <li>A Walmart <strong>onn. Google TV streaming stick</strong> (4K or Full HD).</li>
-        <li>A TV or monitor with an HDMI port, and WiFi.</li>
+        <li>A Walmart <strong>onn Google TV streaming stick</strong> (4K or Full HD).</li>
+        <li>A TV or monitor with an HDMI port.</li>
         <li>
           A computer (Mac, Windows, or Linux) with <strong>ADB</strong>
           installed &mdash; the Android "platform-tools". Grab it from
@@ -533,7 +545,7 @@ adb -s &lt;id&gt; install -r Dashie.apk</div>
 
       <h3>4. Disable bloat (optional, but recommended)</h3>
       <p>
-        These are validated safe on the onn. stick. Skip any line for an app
+        These are validated safe on the onn stick. Skip any line for an app
         you actually use (for example, leave out the TalkBack line if you use
         the screen reader). Repeat the command for each package:
       </p>
@@ -555,7 +567,7 @@ adb -s &lt;id&gt; shell pm disable-user --user 0 com.onn.updatenotification
       <!-- Voice / video -->
       <h2 id="voice-video">Adding voice and video (USB mic / webcam)</h2>
       <p>
-        This is what makes the onn. stick especially appealing for Home
+        This is what makes the onn stick especially appealing for Home
         Assistant setups. With a <strong>powered OTG adapter</strong>, the
         stick's single port (micro-USB on the Full HD model, USB-C on the 4K)
         can host an accessory while staying powered:

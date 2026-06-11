@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #
-# setup-onn-stick.sh — turn a Walmart onn. Google TV stick into a dedicated
+# setup-onn-stick.sh — turn a Walmart onn Google TV stick into a dedicated
 # Dashie display. Installs the self-updating Dashie app, makes Dashie the
 # home app (so the stick boots straight into your dashboard), and disables
 # the Google TV Home launcher + sponsored-content bloat.
@@ -15,7 +15,7 @@
 # ─────────────────────────────────────────────────────────────────────────
 # WHAT YOU NEED FIRST (do these on the stick + your computer)
 # ─────────────────────────────────────────────────────────────────────────
-#   1. Boot the new onn. stick and walk through Google TV setup.
+#   1. Boot the new onn stick and walk through Google TV setup.
 #      WiFi is REQUIRED. A Google account is OPTIONAL — pick "Skip" if asked.
 #   2. On the stick, enable Developer options:
 #         Settings → System → About → tap "Android TV OS build" 7 times.
@@ -39,7 +39,7 @@
 #
 # Options:
 #   --device <id>     Target a specific ADB device. Auto-detected when exactly
-#                     one onn. stick is connected.
+#                     one onn stick is connected.
 #   --apk <path>      Install a local APK instead of downloading from dashieapp.com.
 #   --dry-run         Print every command but change nothing. Use this first.
 #   --skip-install    Skip the app install; just (re-)apply the home-app +
@@ -71,7 +71,7 @@ DASHIE_HOME_ACTIVITY="com.dashieapp.Dashie/.MainActivity"
 GOOGLE_TV_HOME="com.google.android.apps.tv.launcherx"
 DASHIE_APK_URL="https://dashieapp.com/downloads/Dashie-sideload-beta.apk"
 
-# Bloat list — validated safe on the onn. Google TV stick. The Google TV Home
+# Bloat list — validated safe on the onn Google TV stick. The Google TV Home
 # launcher (com.google.android.apps.tv.launcherx) is intentionally NOT in this
 # list; it's handled separately AFTER Dashie is set as home, so the stick is
 # never left without a working launcher.
@@ -149,14 +149,14 @@ if ! command -v adb >/dev/null 2>&1; then
 fi
 
 if [[ -z "$DEVICE" ]]; then
-    # Auto-detect: look for exactly one onn. Google TV stick.
+    # Auto-detect: look for exactly one onn Google TV stick.
     # Avoiding `mapfile` because macOS ships bash 3.2.
     CANDIDATES=()
     while IFS= read -r line; do
         [[ -n "$line" ]] && CANDIDATES+=("$line")
     done < <(adb devices -l | awk '/Streaming_Device|onn_2k_gtv/ {print $1}')
     if [[ ${#CANDIDATES[@]} -eq 0 ]]; then
-        err "No onn. stick detected via ADB. Pair & connect the stick first"
+        err "No onn stick detected via ADB. Pair & connect the stick first"
         err "(see the WHAT YOU NEED FIRST section at the top of this script), then retry."
         err "Or pass --device <id> to target a specific device from 'adb devices'."
         exit 1
@@ -176,7 +176,7 @@ if [[ -z "$MODEL" ]]; then
 fi
 ok "Device: $DEVICE  ($MODEL, Android $ANDROID_VER)"
 if [[ "$MODEL" != *"Streaming Device"* ]]; then
-    warn "This doesn't look like an onn. Google TV stick. Continue anyway? [y/N]"
+    warn "This doesn't look like an onn Google TV stick. Continue anyway? [y/N]"
     read -r CONFIRM
     [[ "$CONFIRM" =~ ^[Yy]$ ]] || { info "Aborted."; exit 0; }
 fi
