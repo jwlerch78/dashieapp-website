@@ -1,8 +1,8 @@
 {
-  "versionCode": 162,
+  "versionCode": 163,
   "versionName": "1.0.8",
   "apkUrl": "https://dashieapp.com/downloads/Dashie-sideload-beta.apk",
-  "sha256": "8064669ede407e09bda8a92c28785ff64f27245ed16434f712bc036c4b9cb505",
+  "sha256": "017c7de7cc085b736907dc2cb4f2169ebc28dee67fc58990f3919eb7b13da74c",
   "notify": false,
   "title": "What's new in 1.0.8",
   "description": "• Portrait & orientation support for Dashie widget mode with a redesigned bottom bar\n• Updated music browser — drill into albums & playlists + radio support\n• Local HTTPS support for Home Assistant\n• TV-friendly set up for Fire TV & Google TV devices\n• Reliability & Bug fixes: stronger OS permissions to keep camera alive for motion wake"
