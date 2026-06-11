@@ -184,6 +184,17 @@
       margin-left: 6px;
     }
 
+    /* Hero shot */
+    .hero-shot {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: 12px;
+      border: 1px solid #e0e0e0;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+      margin: 8px 0 24px;
+    }
+
     /* Step with an image to the right */
     .setup-step-row {
       display: flex;
@@ -346,6 +357,10 @@
         more &mdash; onto a central display that everyone can see. It integrates
         seamlessly with Home Assistant for tech-savvy users.
       </p>
+
+      <img class="hero-shot" src="/website-assets/dashie-calendar.png"
+           alt="Dashie family dashboard showing calendars, photos, and weather on a shared screen">
+
       <p>
         Dashie is currently in beta release and requires a Google Account to access
         all features.
@@ -360,51 +375,16 @@
 
       <h3 id="smart-tv">On a Smart TV</h3>
       <p>
-        If your TV is built on Android, Dashie installs like any other app from the
-        store. Here's the current compatibility picture:
+        Dashie runs on Fire TV, Google TV, and other Android TV devices. You can
+        open the app alongside your normal Smart TV apps, but Dashie is most
+        commonly used as a dedicated family dashboard display &mdash; a more
+        economical alternative to a Skylight, Hearth, or similar display.
       </p>
 
-      <table class="compat-table">
-        <thead>
-          <tr>
-            <th>Smart TV Platform</th>
-            <th>Supported</th>
-            <th>How to install</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Google TV / Chromecast with Google TV</td>
-            <td class="yes">Yes</td>
-            <td>Google Play Store</td>
-          </tr>
-          <tr>
-            <td>Amazon Fire TV</td>
-            <td class="yes">Yes</td>
-            <td>Amazon Appstore</td>
-          </tr>
-          <tr>
-            <td>Android TV (built into many TVs)</td>
-            <td class="yes">Yes</td>
-            <td>Google Play Store or sideload</td>
-          </tr>
-          <tr>
-            <td>Apple TV</td>
-            <td class="no">No</td>
-            <td>&mdash;</td>
-          </tr>
-          <tr>
-            <td>Roku</td>
-            <td class="no">No</td>
-            <td>&mdash;</td>
-          </tr>
-          <tr>
-            <td>Samsung Tizen / LG webOS</td>
-            <td class="no">No</td>
-            <td>&mdash;</td>
-          </tr>
-        </tbody>
-      </table>
+      <p>
+        <em>Note &mdash; Apple TV, Roku, and other Smart TVs are currently not
+        supported.</em>
+      </p>
 
       <p>
         For step-by-step install and remote-setup tips, see

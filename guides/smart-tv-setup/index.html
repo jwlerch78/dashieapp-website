@@ -112,6 +112,12 @@
       margin: 24px 0 8px 0;
     }
 
+    .article-content h4 {
+      font-size: 1.05em;
+      color: #555;
+      margin: 18px 0 6px 0;
+    }
+
     .article-content ul,
     .article-content ol {
       margin: 0 0 20px 26px;
@@ -199,6 +205,17 @@
       height: auto;
       border-radius: 8px;
       border: 1px solid #e0e0e0;
+    }
+
+    /* Hero shot */
+    .hero-shot {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: 12px;
+      border: 1px solid #e0e0e0;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+      margin: 8px 0 24px;
     }
 
     /* Info callout */
@@ -304,67 +321,19 @@
     <div class="article-content">
 
       <p>
-        Dashie runs great on the big screen. If your TV is built on Android, you
-        can install Dashie like any other app and turn that screen into a
-        family dashboard whenever the TV isn't being used for shows or games.
+        Dashie runs on Fire TV, Google TV, and other Android TV devices in
+        addition to touch tablets. You can open the app alongside your normal
+        Smart TV apps, but Dashie is most commonly used as a dedicated family
+        dashboard display &mdash; a more economical alternative to a Skylight,
+        Hearth, or similar display.
       </p>
 
-      <!-- Which TVs work -->
-      <h2 id="compatibility">Which TVs work</h2>
-      <p>
-        Dashie is an Android app, so any TV built on Android works. Here's the
-        current picture:
-      </p>
-
-      <table class="compat-table">
-        <thead>
-          <tr>
-            <th>Smart TV Platform</th>
-            <th>Supported</th>
-            <th>How to install</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Google TV / Chromecast with Google TV</td>
-            <td class="yes">Yes</td>
-            <td>Google Play Store</td>
-          </tr>
-          <tr>
-            <td>Amazon Fire TV</td>
-            <td class="yes">Yes</td>
-            <td>Amazon Appstore</td>
-          </tr>
-          <tr>
-            <td>Android TV (built into many smart TVs)</td>
-            <td class="yes">Yes</td>
-            <td>Google Play Store or sideload</td>
-          </tr>
-          <tr>
-            <td>Apple TV</td>
-            <td class="no">No</td>
-            <td>&mdash;</td>
-          </tr>
-          <tr>
-            <td>Roku</td>
-            <td class="no">No</td>
-            <td>&mdash;</td>
-          </tr>
-          <tr>
-            <td>Samsung Tizen / LG webOS</td>
-            <td class="no">No</td>
-            <td>&mdash;</td>
-          </tr>
-        </tbody>
-      </table>
+      <img class="hero-shot" src="/website-assets/dashie-firetv-02.png"
+           alt="Dashie running as a family dashboard on a Smart TV, showing the calendar, photos, and weather widgets">
 
       <p>
-        Not sure what your TV runs on? The remote and on-screen UI are usually a
-        dead giveaway: a Google Assistant button and Play Store icons point to
-        Google / Android TV; an Alexa button and the Fire-orange home screen
-        point to Fire TV. If you see Roku's purple grid or Apple's tvOS, Dashie
-        isn't supported on that TV today &mdash; a Google TV or Fire TV stick
-        plugged into HDMI is the easiest workaround.
+        <em>Note &mdash; Apple TV, Roku, and other Smart TVs are currently not
+        supported.</em>
       </p>
 
       <!-- Installing -->
@@ -426,41 +395,76 @@
         </div>
       </div>
 
-      <!-- Tips -->
-      <h2 id="tips">Tips for the big-screen experience</h2>
+      <!-- Using Dashie -->
+      <h2 id="using">Using Dashie on your Smart TV</h2>
 
-      <h3>Remote-friendly navigation</h3>
+      <h3>Widgets</h3>
       <p>
-        Dashie's layout is designed for D-pad navigation. Use the arrow keys
-        to move between widgets, the center button to select, and the Back
-        button to step out. The OK / Enter button opens a focused widget in
-        full-screen mode (great for the calendar or photos).
+        Dashie is laid out in widgets including your Calendar, photos, and
+        weather. You can navigate between the widgets using your remote control.
       </p>
 
-      <h3>When to launch Dashie</h3>
+      <h3>Remote control</h3>
       <p>
-        A common pattern is to leave Dashie running and use the TV's
-        input-switch button to flip back to your normal content. On Google TV
-        and Fire TV you can also set Dashie to launch when the TV wakes from
-        sleep, so the dashboard is the first thing your family sees in the
-        morning.
+        Using the d-pad (arrow keys) you can highlight the sidebar / menus or
+        the widgets to interact with them. If you press select on a widget it
+        will highlight it and call up a hint menu showing you options.
       </p>
 
-      <h3>Voice control</h3>
-      <p>
-        On TVs with a microphone remote (Google TV, Fire TV) you can use the
-        platform's built-in voice search to "Open Dashie" without navigating
-        through the launcher.
-      </p>
+      <h4>Example controls</h4>
+      <ul>
+        <li>
+          <strong>Calendar:</strong> when you select the calendar you can go to
+          the next or previous week, press up or down to scroll up or down on the
+          widget, or press select again to access other options like changing the
+          number of days shown or switching into a month-view of the calendar. You
+          can also hold the select button down for 1 second to navigate between and
+          select individual days and then individual events for details.
+        </li>
+        <li>
+          <strong>Photos:</strong> when you select the photos widget you are able
+          to navigate back and forth between photos. Pressing select again gives
+          you the option to put the photos in full screen mode, upload new photos,
+          or change the photo widget settings.
+        </li>
+        <li>
+          <strong>Weather:</strong> when you select the weather widget you can
+          navigate between daily and hourly weather forecasts. Pressing select
+          again gives you the option to change the weather widget settings.
+        </li>
+      </ul>
 
-      <div class="info-callout">
-        <strong>Looking for the kiosk-style setup?</strong>
-        If you want Dashie to take over an Android TV as a permanent dashboard
-        (lock task mode, no other apps), see the
-        <a href="/guides/dashie-kiosk-features">Complete Guide for Home Assistant Users</a>
-        &mdash; the kiosk features were originally built for the HA crowd but
-        work the same on any Android TV.
+      <h3>Mobile Interface</h3>
+      <div class="setup-step-row">
+        <div class="setup-step-text">
+          <p>
+            Because typing on a TV remote is not ideal, there is a mobile site for
+            Dashie that allows you to do things like manage your photos, add and
+            update calendars, and set up your family profiles. It's available from
+            your mobile browser at
+            <a href="https://app.dashieapp.com">app.dashieapp.com</a>, and there's a
+            QR code available from the menu to take you right there.
+          </p>
+        </div>
+        <div class="setup-step-media">
+          <img src="/website-assets/guide-smart-tv-calendar-mobile.png"
+               alt="Dashie mobile site showing the calendar management screen on a phone">
+        </div>
       </div>
+
+      <h3>Control Center</h3>
+      <p>
+        You can set up other features in the control center, such as a sleep
+        timer for when you want the screen to go dark and wake up, zoom
+        preferences, time and date format, and more.
+      </p>
+
+      <h3>Support and Feedback</h3>
+      <p>
+        We are here to support you and open to your feedback. Please reach out to
+        us at <a href="mailto:support@dashieapp.com">support@dashieapp.com</a> or
+        submit an inquiry through the website and we'll get back to you quickly!
+      </p>
 
     </div>
   </article>
