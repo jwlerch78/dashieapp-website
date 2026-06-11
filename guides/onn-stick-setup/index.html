@@ -132,6 +132,46 @@
       color: #424242;
     }
 
+    /* Hero shot */
+    .hero-figure {
+      background: #fafafa;
+      border: 1px solid #eeeeee;
+      border-radius: 16px;
+      padding: 28px 24px;
+      text-align: center;
+      margin: 6px 0 26px;
+    }
+
+    .hero-figure img {
+      width: 100%;
+      max-width: 480px;
+      height: auto;
+    }
+
+    /* Setup-option headings */
+    .option-h {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .option-badge {
+      display: inline-block;
+      background: #ffaa00;
+      color: #ffffff;
+      font-size: 0.6em;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 5px;
+      white-space: nowrap;
+    }
+
+    .option-badge.bonus {
+      background: #18bcf2;
+    }
+
     /* Setup-step blocks */
     .setup-step {
       background: #fafafa;
@@ -334,69 +374,47 @@
 
     <div class="article-content">
 
-      <p>
-        Walmart's <strong>onn Google TV streaming stick</strong> (the 4K or
-        Full HD model, usually $15&ndash;$25) makes a surprisingly great
-        dedicated Dashie display. Plug it into any TV or monitor, follow the
-        steps below, and the stick will <strong>boot straight into your Dashie
-        dashboard</strong> &mdash; no Google TV home screen, no sponsored
-        content rows, no fiddling with a remote to find the app.
-      </p>
+      <!-- Hero shot -->
+      <div class="hero-figure">
+        <img src="/website-assets/guide-onn-hero.png"
+             alt="onn Google TV streaming stick with its remote">
+      </div>
 
       <p>
-        It's a favorite with Home Assistant users for two reasons:
+        Walmart's <strong>onn Google TV streaming stick</strong> (the 4K or
+        Full HD model, usually $15&ndash;$25) makes a surprisingly great Dashie
+        display. It's a favorite with Home Assistant users for two reasons:
       </p>
       <ul>
         <li>
-          <strong>It's cheap and disposable.</strong> A dedicated wall display
+          <strong>It's cheap and all-but-disposable.</strong> A dedicated wall
           or kitchen dashboard for the price of a couple coffees, versus
           hundreds for a Skylight, Hearth, or commercial panel.
         </li>
         <li>
           <strong>It takes a USB mic / webcam over OTG.</strong> Add a cheap
-          USB-C OTG adapter and the same stick can drive
+          OTG adapter and the same stick can drive
           <strong>"Hey Dashie" voice control</strong> and even
           <strong>video</strong> &mdash; turning a $20 stick + a TV into a
           voice-assistant-and-camera panel for your smart home.
         </li>
       </ul>
 
-      <div class="info-callout">
-        <strong>What this does and doesn't change.</strong> Everything below is
-        fully reversible &mdash; it disables (never permanently removes) the
-        stock launcher and bloat, and a factory reset returns the stick to
-        stock at any time. You don't need to root the device or unlock the
-        bootloader.
-      </div>
-
-      <div class="product-grid">
-        <div class="product-card">
-          <img src="/website-assets/guide-onn-stick.png"
-               alt="onn Google TV Full HD streaming stick with remote">
-          <div class="product-name">onn Google TV Full HD Streaming Device</div>
-          <a class="product-buy"
-             href="https://www.walmart.com/ip/onn-Google-TV-Full-HD-Streaming-Device-New-2023/2262757145"
-             target="_blank" rel="noopener">View on Walmart</a>
-        </div>
-      </div>
-
-      <p class="article-meta" style="margin-top:-12px;">
-        Product links are examples that we've tested &mdash; not affiliate
-        links. The 4K onn stick works too (it uses a USB-C port instead of
-        micro-USB).
+      <p>
+        There are <strong>two ways</strong> to set it up, and you can do them in
+        order &mdash; start simple, then go further whenever you're ready:
       </p>
-
-      <div class="warn-callout">
-        <strong>A note on horsepower.</strong> The Full HD onn stick has only
-        about <strong>1.5&nbsp;GB of RAM</strong>. That's plenty for a Dashie
-        dashboard on its own, but trying to run <em>everything</em> at once
-        &mdash; a USB camera, "Hey Dashie" voice, and a busy Home Assistant
-        dashboard &mdash; will likely overload it, causing slowdowns or reloads.
-        A device with more RAM would handle that combination better; we just
-        haven't tested specific higher-RAM models yet, so we can't recommend one
-        here. If you only need a calendar/photos/weather dashboard (with or
-        without one extra accessory), the onn stick handles it well.
-      </div>
+      <ul>
+        <li>
+          <strong>Option 1 &mdash; just install Dashie</strong> and open it like
+          any other app. The quickest way to get your dashboard on screen.
+        </li>
+        <li>
+          <strong>Option 2 (bonus) &mdash; make it a dedicated device</strong>
+          that boots straight into Dashie, with no Google TV home screen and no
+          sponsored-content rows. An optional extra step, not a requirement.
+        </li>
+      </ul>
 
       <!-- What you need -->
       <h2 id="what-you-need">What you'll need</h2>
@@ -404,173 +422,21 @@
         <li>A Walmart <strong>onn Google TV streaming stick</strong> (4K or Full HD).</li>
         <li>A TV or monitor with an HDMI port.</li>
         <li>
-          A computer (Mac, Windows, or Linux) with <strong>ADB</strong>
-          installed &mdash; the Android "platform-tools". Grab it from
+          <strong>For sideloading or Option 2 only:</strong> a computer (Mac,
+          Windows, or Linux) with <strong>ADB</strong> installed &mdash; the
+          Android "platform-tools". Grab it from
           <a href="https://developer.android.com/tools/releases/platform-tools" target="_blank" rel="noopener">developer.android.com</a>,
           unzip it, and make sure the <code>adb</code> command is on your PATH.
-        </li>
-        <li>
-          <em>Optional, for voice/video:</em> a powered micro-USB OTG adapter
-          and a USB webcam or microphone (see
-          <a href="#voice-video">Adding voice and video</a> below).
+          If you install from the Play Store, you don't need a computer at all.
         </li>
       </ul>
 
-      <!-- Step 1: prep the stick -->
-      <h2 id="prep">Step 1 — Prepare the stick</h2>
+      <h3>Optional &mdash; for voice &amp; video</h3>
       <p>
-        These steps happen on the stick itself, with its remote. They only need
-        to be done once.
-      </p>
-
-      <div class="setup-step">
-        <h3>1. Run through Google TV setup</h3>
-        <p>
-          Boot the new stick and complete the initial Google TV setup.
-          <strong>WiFi is required.</strong> A Google account is
-          <strong>optional</strong> &mdash; choose "Skip" if asked, since Dashie
-          doesn't need the Play Store.
-        </p>
-      </div>
-
-      <div class="setup-step">
-        <h3>2. Turn on Developer options</h3>
-        <p>
-          Go to <strong>Settings → System → About</strong> and tap
-          <strong>"Android TV OS build"</strong> seven times. You'll see a
-          "You are now a developer" message.
-        </p>
-      </div>
-
-      <div class="setup-step">
-        <h3>3. Turn on Wireless debugging</h3>
-        <p>
-          Go to <strong>Settings → System → Developer options →
-          Wireless debugging</strong> and toggle it <strong>ON</strong>. Then
-          select <strong>"Pair device with pairing code"</strong>. The stick
-          will show an <strong>IP address, a pairing port, and a 6-digit
-          code</strong> &mdash; keep this screen up for the next step.
-        </p>
-      </div>
-
-      <div class="warn-callout">
-        <strong>Heads up:</strong> Wireless debugging resets on every reboot.
-        The pairing is remembered, but you'll need to re-toggle it and
-        reconnect with ADB if you want to manage the stick again later.
-      </div>
-
-      <!-- Step 2: connect ADB -->
-      <h2 id="connect">Step 2 — Connect from your computer</h2>
-      <p>
-        Open a terminal (Terminal on Mac/Linux, PowerShell on Windows). You'll
-        use <strong>two different ports</strong>: the
-        <strong>pairing</strong> port from the dialog above, then the
-        <strong>connect</strong> port shown on the main Wireless debugging
-        screen.
-      </p>
-
-      <div class="code-block"><span class="cmt"># Pair using the pairing port + 6-digit code from the dialog</span>
-adb pair    192.168.1.50:37123   849261
-
-<span class="cmt"># Connect using the IP + the port on the main Wireless debugging screen</span>
-adb connect 192.168.1.50:42891
-
-<span class="cmt"># Confirm the stick shows up</span>
-adb devices</div>
-
-      <p>
-        When <code>adb devices</code> lists your stick, you're ready. The next
-        step does the actual setup &mdash; pick the <strong>automated</strong>
-        path (recommended) or the <strong>manual</strong> path.
-      </p>
-
-      <!-- Step 3a: automated -->
-      <h2 id="automated">Step 3 (easy) — Run the setup script</h2>
-      <p>
-        We provide a script that installs Dashie, sets it as the home app, and
-        disables the Google TV launcher and bloat &mdash; with safety checks so
-        it never leaves your stick without a working launcher. It works on
-        <strong>Mac and Linux</strong>.
-      </p>
-
-      <div class="code-block"><span class="cmt"># Download the script</span>
-curl -fsSL https://dashieapp.com/downloads/setup-onn-stick.sh -o setup-onn-stick.sh
-chmod +x setup-onn-stick.sh
-
-<span class="cmt"># Preview everything it will do — changes nothing</span>
-./setup-onn-stick.sh --dry-run
-
-<span class="cmt"># Run it for real</span>
-./setup-onn-stick.sh</div>
-
-      <p>
-        The script auto-detects the stick. If you have more than one connected,
-        pass <code>--device &lt;id&gt;</code> (the id from
-        <code>adb devices</code>). Run with <code>-h</code> to see all options,
-        including <code>--skip-install</code> to re-apply the config without
-        reinstalling.
-      </p>
-
-      <div class="info-callout">
-        <strong>Why disable the Play Store?</strong> The Dashie build this
-        script installs <strong>updates itself automatically</strong>, so it
-        doesn't need the Play Store &mdash; and disabling it keeps the stick
-        locked to a clean, single-purpose dashboard. Nothing is uninstalled;
-        every package is merely disabled and can be re-enabled later.
-      </div>
-
-      <!-- Step 3b: manual -->
-      <h2 id="manual">Step 3 (manual) — Do it by hand with ADB</h2>
-      <p>
-        Prefer to run the commands yourself, or on Windows? Here's exactly what
-        the script does. Replace <code>&lt;id&gt;</code> with your device id
-        from <code>adb devices</code> (or drop <code>-s &lt;id&gt;</code>
-        entirely if only one device is connected).
-      </p>
-
-      <h3>1. Install Dashie</h3>
-      <div class="code-block"><span class="cmt"># Download the self-updating Dashie app, then install it</span>
-curl -fsSL https://dashieapp.com/downloads/Dashie-sideload-beta.apk -o Dashie.apk
-adb -s &lt;id&gt; install -r Dashie.apk</div>
-
-      <h3>2. Make Dashie the home app</h3>
-      <div class="code-block">adb -s &lt;id&gt; shell cmd package set-home-activity com.dashieapp.Dashie/.MainActivity</div>
-
-      <h3>3. Disable the Google TV Home launcher</h3>
-      <p>
-        Do this <strong>after</strong> step 2 so the stick always has a working
-        launcher.
-      </p>
-      <div class="code-block">adb -s &lt;id&gt; shell pm disable-user --user 0 com.google.android.apps.tv.launcherx</div>
-
-      <h3>4. Disable bloat (optional, but recommended)</h3>
-      <p>
-        These are validated safe on the onn stick. Skip any line for an app
-        you actually use (for example, leave out the TalkBack line if you use
-        the screen reader). Repeat the command for each package:
-      </p>
-      <div class="code-block"><span class="cmt"># Run once per package, e.g.:</span>
-adb -s &lt;id&gt; shell pm disable-user --user 0 com.android.vending           <span class="cmt"># Play Store</span>
-adb -s &lt;id&gt; shell pm disable-user --user 0 com.google.android.youtube.tv
-adb -s &lt;id&gt; shell pm disable-user --user 0 com.netflix.ninja
-adb -s &lt;id&gt; shell pm disable-user --user 0 com.google.android.apps.tv.dreamx  <span class="cmt"># screensaver</span>
-adb -s &lt;id&gt; shell pm disable-user --user 0 com.google.android.katniss        <span class="cmt"># Assistant</span>
-adb -s &lt;id&gt; shell pm disable-user --user 0 com.google.android.play.games
-adb -s &lt;id&gt; shell pm disable-user --user 0 com.onn.updatenotification
-<span class="cmt"># ...the script's full list is in its header comments.</span></div>
-
-      <p>
-        Then unplug and replug the stick &mdash; it should boot straight into
-        Dashie.
-      </p>
-
-      <!-- Voice / video -->
-      <h2 id="voice-video">Adding voice and video (USB mic / webcam)</h2>
-      <p>
-        This is what makes the onn stick especially appealing for Home
-        Assistant setups. With a <strong>powered OTG adapter</strong>, the
-        stick's single port (micro-USB on the Full HD model, USB-C on the 4K)
-        can host an accessory while staying powered:
+        This is what makes the onn stick especially appealing for Home Assistant
+        setups. With a <strong>powered OTG adapter</strong>, the stick's single
+        port (micro-USB on the Full HD model, USB-C on the 4K) can host an
+        accessory while staying powered:
       </p>
       <ul>
         <li>
@@ -594,7 +460,16 @@ adb -s &lt;id&gt; shell pm disable-user --user 0 com.onn.updatenotification
         small powered USB hub works too.
       </div>
 
+      <h3>Gear we tested</h3>
       <div class="product-grid">
+        <div class="product-card">
+          <img src="/website-assets/guide-onn-stick.png"
+               alt="onn Google TV Full HD streaming stick with remote">
+          <div class="product-name">onn Google TV Full HD Streaming Device</div>
+          <a class="product-buy"
+             href="https://www.walmart.com/ip/onn-Google-TV-Full-HD-Streaming-Device-New-2023/2262757145"
+             target="_blank" rel="noopener">View on Walmart</a>
+        </div>
         <div class="product-card">
           <img src="/website-assets/guide-onn-otg.jpg"
                alt="Micro-USB OTG adapter with a separate power input">
@@ -612,6 +487,226 @@ adb -s &lt;id&gt; shell pm disable-user --user 0 com.onn.updatenotification
              target="_blank" rel="noopener">View on Amazon</a>
         </div>
       </div>
+
+      <p class="article-meta" style="margin-top:-12px;">
+        Product links are examples that we've tested &mdash; not affiliate
+        links. The 4K onn stick works too (it uses a USB-C port instead of
+        micro-USB).
+      </p>
+
+      <div class="warn-callout">
+        <strong>A note on horsepower.</strong> The Full HD onn stick has only
+        about <strong>1.5&nbsp;GB of RAM</strong>. That's plenty for a Dashie
+        dashboard on its own, but trying to run <em>everything</em> at once
+        &mdash; a USB camera, "Hey Dashie" voice, and a busy Home Assistant
+        dashboard &mdash; will likely overload it, causing slowdowns or reloads.
+        A device with more RAM would handle that combination better; we just
+        haven't tested specific higher-RAM models yet, so we can't recommend one
+        here. If you only need a calendar/photos/weather dashboard (with or
+        without one extra accessory), the onn stick handles it well.
+      </div>
+
+      <!-- ============ OPTION 1 ============ -->
+      <h2 id="option1" class="option-h">
+        <span class="option-badge">Option 1</span> Install Dashie
+      </h2>
+      <p>
+        The quickest path: install Dashie like any other app and open it when
+        you want your dashboard. Nothing about the stick changes &mdash; you can
+        still use Google TV normally and come back to Dashie any time.
+      </p>
+
+      <div class="setup-step">
+        <h3>Install from an app store</h3>
+        <p>
+          The onn stick runs Google TV, so open the <strong>Google Play
+          Store</strong> on the stick, search for <em>Dashie</em>, and install.
+          (On a Fire TV device, use the <strong>Amazon Appstore</strong>
+          instead.) Updates arrive automatically through the store.
+        </p>
+      </div>
+
+      <div class="setup-step">
+        <h3>Or sideload it</h3>
+        <p>
+          If your device doesn't have the right store &mdash; or you want the
+          self-updating build used in Option 2 &mdash; install the APK directly.
+          The full walkthrough is in the
+          <a href="/guides/fire-tablet-sideload">Android Sideloading guide</a>;
+          the same ADB steps work on a TV stick.
+        </p>
+      </div>
+
+      <p>
+        On first launch, Dashie shows a sign-in screen with a <strong>QR
+        code</strong> &mdash; scan it with your phone (or visit the URL it shows
+        and enter the short code) and sign in with Google there. The stick pairs
+        in a few seconds and starts syncing your calendars, photos, family, and
+        settings. <strong>That's all most people need.</strong>
+      </p>
+
+      <!-- ============ OPTION 2 ============ -->
+      <h2 id="option2" class="option-h">
+        <span class="option-badge bonus">Option 2 · Bonus</span> Make it a dedicated device
+      </h2>
+      <p>
+        Ready to turn the stick into a true appliance? This step makes Dashie the
+        <strong>home app</strong>, so the stick boots straight into your
+        dashboard &mdash; no Google TV home, no sponsored rows &mdash; and
+        disables the bloat. It's done over ADB from your computer.
+      </p>
+
+      <div class="info-callout">
+        <strong>What this does and doesn't change.</strong> It's fully
+        reversible &mdash; it disables (never permanently removes) the stock
+        launcher and bloat, and a factory reset returns the stick to stock at
+        any time. You don't need to root the device or unlock the bootloader.
+      </div>
+
+      <div class="warn-callout">
+        <strong>Already installed Dashie from the Play Store in Option 1?</strong>
+        The script below installs a <em>self-updating</em> build that doesn't
+        need the Play Store. Either uninstall the store version first, or run the
+        script with <code>--skip-install</code> to keep your installed version
+        and only apply the dedicated-device config.
+      </div>
+
+      <h3 id="prep">1. Prepare the stick</h3>
+      <p>
+        These steps happen on the stick itself, with its remote, and only need
+        to be done once.
+      </p>
+
+      <div class="setup-step">
+        <h3>Complete Google TV setup</h3>
+        <p>
+          If you haven't already, finish the initial Google TV setup.
+          <strong>WiFi is required.</strong> A Google account is
+          <strong>optional</strong> &mdash; choose "Skip" if asked, since the
+          dedicated build doesn't need the Play Store.
+        </p>
+      </div>
+
+      <div class="setup-step">
+        <h3>Turn on Developer options</h3>
+        <p>
+          Go to <strong>Settings → System → About</strong> and tap
+          <strong>"Android TV OS build"</strong> seven times. You'll see a
+          "You are now a developer" message.
+        </p>
+      </div>
+
+      <div class="setup-step">
+        <h3>Turn on Wireless debugging</h3>
+        <p>
+          Go to <strong>Settings → System → Developer options →
+          Wireless debugging</strong> and toggle it <strong>ON</strong>. Then
+          select <strong>"Pair device with pairing code"</strong>. The stick
+          will show an <strong>IP address, a pairing port, and a 6-digit
+          code</strong> &mdash; keep this screen up for the next step.
+        </p>
+      </div>
+
+      <div class="warn-callout">
+        <strong>Heads up:</strong> Wireless debugging resets on every reboot.
+        The pairing is remembered, but you'll need to re-toggle it and
+        reconnect with ADB if you want to manage the stick again later.
+      </div>
+
+      <h3 id="connect">2. Connect from your computer</h3>
+      <p>
+        Open a terminal (Terminal on Mac/Linux, PowerShell on Windows). You'll
+        use <strong>two different ports</strong>: the
+        <strong>pairing</strong> port from the dialog above, then the
+        <strong>connect</strong> port shown on the main Wireless debugging
+        screen.
+      </p>
+
+      <div class="code-block"><span class="cmt"># Pair using the pairing port + 6-digit code from the dialog</span>
+adb pair    192.168.1.50:37123   849261
+
+<span class="cmt"># Connect using the IP + the port on the main Wireless debugging screen</span>
+adb connect 192.168.1.50:42891
+
+<span class="cmt"># Confirm the stick shows up</span>
+adb devices</div>
+
+      <h3 id="automated">3. Run the setup script (easiest)</h3>
+      <p>
+        Our script installs the self-updating Dashie build, sets it as the home
+        app, and disables the Google TV launcher and bloat &mdash; with safety
+        checks so it never leaves your stick without a working launcher. It runs
+        on <strong>Mac and Linux</strong>.
+      </p>
+
+      <div class="code-block"><span class="cmt"># Download the script</span>
+curl -fsSL https://dashieapp.com/downloads/setup-onn-stick.sh -o setup-onn-stick.sh
+chmod +x setup-onn-stick.sh
+
+<span class="cmt"># Preview everything it will do — changes nothing</span>
+./setup-onn-stick.sh --dry-run
+
+<span class="cmt"># Run it for real</span>
+./setup-onn-stick.sh</div>
+
+      <p>
+        The script auto-detects the stick. If you have more than one connected,
+        pass <code>--device &lt;id&gt;</code> (the id from
+        <code>adb devices</code>). Run with <code>-h</code> to see all options,
+        including <code>--skip-install</code>.
+      </p>
+
+      <div class="info-callout">
+        <strong>Why disable the Play Store?</strong> The dedicated Dashie build
+        <strong>updates itself automatically</strong>, so it doesn't need the
+        Play Store &mdash; and disabling it keeps the stick locked to a clean,
+        single-purpose dashboard. Nothing is uninstalled; every package is merely
+        disabled and can be re-enabled later.
+      </div>
+
+      <h3 id="manual">Or do it by hand with ADB</h3>
+      <p>
+        Prefer to run the commands yourself, or on Windows? Here's exactly what
+        the script does. Replace <code>&lt;id&gt;</code> with your device id from
+        <code>adb devices</code> (or drop <code>-s &lt;id&gt;</code> entirely if
+        only one device is connected).
+      </p>
+
+      <h4>a. Install Dashie</h4>
+      <div class="code-block"><span class="cmt"># Download the self-updating Dashie app, then install it</span>
+curl -fsSL https://dashieapp.com/downloads/Dashie-sideload-beta.apk -o Dashie.apk
+adb -s &lt;id&gt; install -r Dashie.apk</div>
+
+      <h4>b. Make Dashie the home app</h4>
+      <div class="code-block">adb -s &lt;id&gt; shell cmd package set-home-activity com.dashieapp.Dashie/.MainActivity</div>
+
+      <h4>c. Disable the Google TV Home launcher</h4>
+      <p>
+        Do this <strong>after</strong> step b so the stick always has a working
+        launcher.
+      </p>
+      <div class="code-block">adb -s &lt;id&gt; shell pm disable-user --user 0 com.google.android.apps.tv.launcherx</div>
+
+      <h4>d. Disable bloat (optional, but recommended)</h4>
+      <p>
+        These are validated safe on the onn stick. Skip any line for an app you
+        actually use (for example, leave out the TalkBack line if you use the
+        screen reader). Repeat the command for each package:
+      </p>
+      <div class="code-block"><span class="cmt"># Run once per package, e.g.:</span>
+adb -s &lt;id&gt; shell pm disable-user --user 0 com.android.vending           <span class="cmt"># Play Store</span>
+adb -s &lt;id&gt; shell pm disable-user --user 0 com.google.android.youtube.tv
+adb -s &lt;id&gt; shell pm disable-user --user 0 com.netflix.ninja
+adb -s &lt;id&gt; shell pm disable-user --user 0 com.google.android.apps.tv.dreamx  <span class="cmt"># screensaver</span>
+adb -s &lt;id&gt; shell pm disable-user --user 0 com.google.android.katniss        <span class="cmt"># Assistant</span>
+adb -s &lt;id&gt; shell pm disable-user --user 0 com.google.android.play.games
+adb -s &lt;id&gt; shell pm disable-user --user 0 com.onn.updatenotification
+<span class="cmt"># ...the script's full list is in its header comments.</span></div>
+
+      <p>
+        When you're done, unplug and replug the stick &mdash; it should boot
+        straight into Dashie.
+      </p>
 
       <!-- Recovery -->
       <h2 id="recovery">If something goes wrong</h2>
