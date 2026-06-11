@@ -577,8 +577,7 @@
   <!-- Hero Section -->
   <section class="hero">
     <h1>Meet Dashie</h1>
-    <p class="tagline" id="hero-tagline">Family smarter.</p>
-    <p class="hero-description">Display your family calendars and photos using Google or Amazon Fire TV on any screen and leverage the power of AI with voice control. <a href="/get-dashie">Join Dashie early access today!</a></p>
+    <p class="hero-description">Display your family calendars and photos using your Smart TV or Android tablet. <a href="/get-dashie">Join Dashie early access today!</a></p>
   </section>
 
   <!-- Carousel Section -->
@@ -586,16 +585,34 @@
     <div class="carousel-container">
       <div class="carousel-inner">
         <div class="carousel-slides" id="carousel-slides">
-        <!-- Slide 1: Everything your family needs -->
+        <!-- Slide 1: In-home dashboard (hero) -->
         <div class="carousel-slide">
           <div class="carousel-caption">
-            <h3>Smarter Family Organization <span class="beta">Beta</span></h3>
-            <p>Calendar, photos, weather, and daily information together in one voice-controllable, AI-powered display.</p>
+            <h3>Smarter Family Organization</h3>
+            <p>Calendar, photos, weather, and daily information together in one beautiful display.</p>
           </div>
-          <img src="./website-assets/dashie-web-xmas-home.png" alt="Dashie Dashboard">
+          <img src="./website-assets/dashie-living-room.png" alt="Dashie family dashboard displayed on a screen in a living room">
         </div>
 
-        <!-- Slide 2: AI-powered questions -->
+        <!-- Slide 2: Everyone's calendars in one place -->
+        <div class="carousel-slide">
+          <div class="carousel-caption">
+            <h3>Everyone's Calendars in One Place</h3>
+            <p>Access all of your family's Google, Microsoft, and Apple Calendars in one place with customizable color coding and display options (week, month, 3-day, and more).</p>
+          </div>
+          <img src="./website-assets/dashie-web-xmas-home.png" alt="Dashie Dashboard showing the family calendar">
+        </div>
+
+        <!-- Slide 3: Home Assistant -->
+        <div class="carousel-slide">
+          <div class="carousel-caption">
+            <h3>Smarter homes with Home Assistant</h3>
+            <p>Dashie integrates with Home Assistant to truly bring your smart home together into one central interface.</p>
+          </div>
+          <img src="./website-assets/dashie-web-HA.png" alt="Dashie Home Assistant Integration">
+        </div>
+
+        <!-- Slide 4: AI-powered questions (Coming Soon) -->
         <div class="carousel-slide">
           <div class="carousel-caption">
             <h3>"When's our next soccer game?" <span class="coming-soon">Coming Soon</span></h3>
@@ -604,7 +621,7 @@
           <img src="./website-assets/dashie-web-ai-event.png" alt="Dashie AI Voice Assistant">
         </div>
 
-        <!-- Slide 3: Smarter chores -->
+        <!-- Slide 5: Smarter chores (Coming Soon) -->
         <div class="carousel-slide">
           <div class="carousel-caption">
             <h3>Smarter chores management <span class="coming-soon">Coming Soon</span></h3>
@@ -613,22 +630,13 @@
           <img src="./website-assets/dashie-web-chores.png" alt="Dashie Chores Management">
         </div>
 
-        <!-- Slide 4: Live family locations (Coming soon) -->
+        <!-- Slide 6: Live family locations (Coming Soon) -->
         <div class="carousel-slide">
           <div class="carousel-caption">
             <h3>Live family locations <span class="coming-soon">Coming Soon</span></h3>
             <p>Keep your family in sync with GPS location sharing and arrival/departure notifications.</p>
           </div>
           <img src="./website-assets/dashie-web-location.png" alt="Dashie Location Sharing">
-        </div>
-
-        <!-- Slide 5: Home Assistant (Coming soon) -->
-        <div class="carousel-slide">
-          <div class="carousel-caption">
-            <h3>Smarter homes with Home Assistant</h3>
-            <p>Dashie integrates with Home Assistant to truly bring your smart home together into one central, AI-powered interface.</p>
-          </div>
-          <img src="./website-assets/dashie-web-HA.png" alt="Dashie Home Assistant Integration">
         </div>
         </div>
       </div>
@@ -648,6 +656,7 @@
         <button class="carousel-dot" onclick="goToSlide(2)"></button>
         <button class="carousel-dot" onclick="goToSlide(3)"></button>
         <button class="carousel-dot" onclick="goToSlide(4)"></button>
+        <button class="carousel-dot" onclick="goToSlide(5)"></button>
       </div>
     </div>
   </section>
@@ -655,7 +664,7 @@
   <script>
     // Carousel functionality
     let currentSlide = 0;
-    const totalSlides = 5;
+    const totalSlides = 6;
     let autoSlideInterval = null;
 
     function updateCarousel() {
@@ -744,18 +753,17 @@
       </div>
       <div class="platform-item">
         <svg class="platform-icon" viewBox="0 0 24 24">
+          <rect x="2" y="4" width="20" height="16" rx="2" />
+          <line x1="18" y1="12" x2="18.01" y2="12" />
+        </svg>
+        Tablet
+      </div>
+      <div class="platform-item">
+        <svg class="platform-icon" viewBox="0 0 24 24">
           <rect x="5" y="2" width="14" height="20" rx="2" />
           <line x1="12" y1="18" x2="12.01" y2="18" />
         </svg>
         Mobile
-      </div>
-      <div class="platform-item">
-        <svg class="platform-icon" viewBox="0 0 24 24">
-          <rect x="2" y="3" width="20" height="14" rx="2" />
-          <line x1="8" y1="21" x2="16" y2="21" />
-          <line x1="12" y1="17" x2="12" y2="21" />
-        </svg>
-        Desktop
       </div>
     </div>
   </section>
@@ -790,7 +798,7 @@
           <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z" />
           <path d="M19 10v2a7 7 0 0 1-14 0v-2M12 19v4M8 23h8" />
         </svg>
-        <h3>Voice & AI</h3>
+        <h3>Voice & AI<br><span class="coming-soon">Coming Soon</span></h3>
         <p>Ask questions, get answers, and control your dashboard with natural voice commands powered by AI.</p>
       </div>
 
