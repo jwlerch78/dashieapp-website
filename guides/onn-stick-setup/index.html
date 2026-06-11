@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Build a Dedicated Dashie Display from a $20 onn. Stick - Dashie</title>
+  <link rel="icon" type="image/png" href="../../artwork/Dashie_Logo_Orange_Transparent.png">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-padding-top: 80px;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      line-height: 1.6;
+      background: #ffffff;
+      color: #424242;
+      min-height: 100vh;
+    }
+
+    /* Breadcrumb */
+    .breadcrumb {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px 40px 0 40px;
+    }
+
+    .breadcrumb a {
+      color: #ffaa00;
+      text-decoration: none;
+    }
+
+    .breadcrumb a:hover {
+      text-decoration: underline;
+    }
+
+    .breadcrumb span {
+      color: #999;
+      margin: 0 8px;
+    }
+
+    /* Article */
+    .article {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 30px 40px 60px 40px;
+    }
+
+    .article-header {
+      margin-bottom: 30px;
+    }
+
+    .article-tag {
+      display: inline-block;
+      background: #18bcf2;
+      color: white;
+      font-size: 12px;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 4px;
+      margin-bottom: 15px;
+    }
+
+    .article h1 {
+      font-size: 2.2em;
+      color: #424242;
+      margin-bottom: 10px;
+    }
+
+    .article-meta {
+      color: #888;
+      font-size: 14px;
+    }
+
+    /* Article content */
+    .article-content {
+      font-size: 1.05em;
+    }
+
+    .article-content p {
+      margin-bottom: 18px;
+    }
+
+    .article-content a {
+      color: #ffaa00;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .article-content a:hover {
+      text-decoration: underline;
+    }
+
+    .article-content h2 {
+      font-size: 1.6em;
+      color: #424242;
+      margin: 40px 0 14px 0;
+      padding-bottom: 8px;
+      border-bottom: 2px solid #f0f0f0;
+    }
+
+    .article-content h3 {
+      font-size: 1.2em;
+      color: #424242;
+      margin: 24px 0 8px 0;
+    }
+
+    .article-content h4 {
+      font-size: 1.05em;
+      color: #555;
+      margin: 18px 0 6px 0;
+    }
+
+    .article-content ul,
+    .article-content ol {
+      margin: 0 0 20px 26px;
+      color: #555;
+    }
+
+    .article-content li {
+      margin-bottom: 8px;
+    }
+
+    .article-content strong {
+      color: #424242;
+    }
+
+    /* Setup-step blocks */
+    .setup-step {
+      background: #fafafa;
+      border-left: 4px solid #ffaa00;
+      border-radius: 6px;
+      padding: 16px 22px;
+      margin: 14px 0;
+    }
+
+    .setup-step h3 {
+      margin-top: 0;
+      margin-bottom: 6px;
+    }
+
+    .setup-step p:last-child {
+      margin-bottom: 0;
+      color: #555;
+    }
+
+    /* Code / terminal blocks */
+    .code-block {
+      background: #1e1e2e;
+      color: #e6e6e6;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin: 14px 0;
+      font-family: 'SF Mono', Menlo, Monaco, Consolas, 'Courier New', monospace;
+      font-size: 0.88em;
+      line-height: 1.55;
+      overflow-x: auto;
+      white-space: pre;
+    }
+
+    .code-block .cmt {
+      color: #8a8aa0;
+    }
+
+    p code,
+    li code {
+      background: #f0f0f0;
+      border-radius: 4px;
+      padding: 1px 6px;
+      font-family: 'SF Mono', Menlo, Monaco, Consolas, 'Courier New', monospace;
+      font-size: 0.88em;
+      color: #b5179e;
+    }
+
+    /* Info callout */
+    .info-callout {
+      background: #f4f7fb;
+      border: 1px solid #d6e2f0;
+      border-radius: 10px;
+      padding: 16px 20px;
+      margin: 18px 0;
+      color: #555;
+      font-size: 0.95em;
+    }
+
+    .info-callout strong {
+      color: #1a365d;
+    }
+
+    /* Warning callout */
+    .warn-callout {
+      background: #fff8ec;
+      border: 1px solid #f3d6a0;
+      border-radius: 10px;
+      padding: 16px 20px;
+      margin: 18px 0;
+      color: #5c4a26;
+      font-size: 0.95em;
+    }
+
+    .warn-callout strong {
+      color: #8a5a00;
+    }
+
+    /* Footer */
+    .footer {
+      max-width: 800px;
+      margin: 60px auto 0;
+      padding: 40px;
+      text-align: center;
+      border-top: 1px solid #e0e0e0;
+      color: #999999;
+    }
+
+    .footer-links {
+      margin-top: 20px;
+    }
+
+    .footer-links a {
+      color: #666666;
+      text-decoration: none;
+      margin: 0 15px;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover {
+      color: #ffaa00;
+    }
+
+    /* Mobile Responsive */
+    @media (max-width: 768px) {
+      .breadcrumb,
+      .article {
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+
+      .article h1 {
+        font-size: 1.6em;
+      }
+
+      .article-content h2 {
+        font-size: 1.35em;
+      }
+
+      .setup-step {
+        padding: 16px 18px;
+      }
+
+      .code-block {
+        font-size: 0.8em;
+        padding: 14px 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Shared Header/Navigation -->
+  <script src="/components/header.js"></script>
+
+  <!-- Breadcrumb -->
+  <div class="breadcrumb">
+    <a href="/guides/">How To Guides</a>
+    <span>/</span>
+    <a href="#">Dedicated Dashie Display from an onn. Stick</a>
+  </div>
+
+  <!-- Article -->
+  <article class="article">
+    <header class="article-header">
+      <span class="article-tag">Home Assistant</span>
+      <h1>Build a Dedicated Dashie Display from a $20 onn. Stick</h1>
+      <p class="article-meta">Last updated: June 2026</p>
+    </header>
+
+    <div class="article-content">
+
+      <p>
+        Walmart's <strong>onn. Google TV streaming stick</strong> (the 4K or
+        Full HD model, usually $15&ndash;$25) makes a surprisingly great
+        dedicated Dashie display. Plug it into any TV or monitor, follow the
+        steps below, and the stick will <strong>boot straight into your Dashie
+        dashboard</strong> &mdash; no Google TV home screen, no sponsored
+        content rows, no fiddling with a remote to find the app.
+      </p>
+
+      <p>
+        It's a favorite with Home Assistant users for two reasons:
+      </p>
+      <ul>
+        <li>
+          <strong>It's cheap and disposable.</strong> A dedicated wall display
+          or kitchen dashboard for the price of a couple coffees, versus
+          hundreds for a Skylight, Hearth, or commercial panel.
+        </li>
+        <li>
+          <strong>It takes a USB mic / webcam over OTG.</strong> Add a cheap
+          USB-C OTG adapter and the same stick can drive
+          <strong>"Hey Dashie" voice control</strong> and even
+          <strong>video</strong> &mdash; turning a $20 stick + a TV into a
+          voice-assistant-and-camera panel for your smart home.
+        </li>
+      </ul>
+
+      <div class="info-callout">
+        <strong>What this does and doesn't change.</strong> Everything below is
+        fully reversible &mdash; it disables (never permanently removes) the
+        stock launcher and bloat, and a factory reset returns the stick to
+        stock at any time. You don't need to root the device or unlock the
+        bootloader.
+      </div>
+
+      <!-- What you need -->
+      <h2 id="what-you-need">What you'll need</h2>
+      <ul>
+        <li>A Walmart <strong>onn. Google TV streaming stick</strong> (4K or Full HD).</li>
+        <li>A TV or monitor with an HDMI port, and WiFi.</li>
+        <li>
+          A computer (Mac, Windows, or Linux) with <strong>ADB</strong>
+          installed &mdash; the Android "platform-tools". Grab it from
+          <a href="https://developer.android.com/tools/releases/platform-tools" target="_blank" rel="noopener">developer.android.com</a>,
+          unzip it, and make sure the <code>adb</code> command is on your PATH.
+        </li>
+        <li>
+          <em>Optional, for voice/video:</em> a USB-C OTG adapter and a USB
+          microphone or USB webcam.
+        </li>
+      </ul>
+
+      <!-- Step 1: prep the stick -->
+      <h2 id="prep">Step 1 — Prepare the stick</h2>
+      <p>
+        These steps happen on the stick itself, with its remote. They only need
+        to be done once.
+      </p>
+
+      <div class="setup-step">
+        <h3>1. Run through Google TV setup</h3>
+        <p>
+          Boot the new stick and complete the initial Google TV setup.
+          <strong>WiFi is required.</strong> A Google account is
+          <strong>optional</strong> &mdash; choose "Skip" if asked, since Dashie
+          doesn't need the Play Store.
+        </p>
+      </div>
+
+      <div class="setup-step">
+        <h3>2. Turn on Developer options</h3>
+        <p>
+          Go to <strong>Settings → System → About</strong> and tap
+          <strong>"Android TV OS build"</strong> seven times. You'll see a
+          "You are now a developer" message.
+        </p>
+      </div>
+
+      <div class="setup-step">
+        <h3>3. Turn on Wireless debugging</h3>
+        <p>
+          Go to <strong>Settings → System → Developer options →
+          Wireless debugging</strong> and toggle it <strong>ON</strong>. Then
+          select <strong>"Pair device with pairing code"</strong>. The stick
+          will show an <strong>IP address, a pairing port, and a 6-digit
+          code</strong> &mdash; keep this screen up for the next step.
+        </p>
+      </div>
+
+      <div class="warn-callout">
+        <strong>Heads up:</strong> Wireless debugging resets on every reboot.
+        The pairing is remembered, but you'll need to re-toggle it and
+        reconnect with ADB if you want to manage the stick again later.
+      </div>
+
+      <!-- Step 2: connect ADB -->
+      <h2 id="connect">Step 2 — Connect from your computer</h2>
+      <p>
+        Open a terminal (Terminal on Mac/Linux, PowerShell on Windows). You'll
+        use <strong>two different ports</strong>: the
+        <strong>pairing</strong> port from the dialog above, then the
+        <strong>connect</strong> port shown on the main Wireless debugging
+        screen.
+      </p>
+
+      <div class="code-block"><span class="cmt"># Pair using the pairing port + 6-digit code from the dialog</span>
+adb pair    192.168.1.50:37123   849261
+
+<span class="cmt"># Connect using the IP + the port on the main Wireless debugging screen</span>
+adb connect 192.168.1.50:42891
+
+<span class="cmt"># Confirm the stick shows up</span>
+adb devices</div>
+
+      <p>
+        When <code>adb devices</code> lists your stick, you're ready. The next
+        step does the actual setup &mdash; pick the <strong>automated</strong>
+        path (recommended) or the <strong>manual</strong> path.
+      </p>
+
+      <!-- Step 3a: automated -->
+      <h2 id="automated">Step 3 (easy) — Run the setup script</h2>
+      <p>
+        We provide a script that installs Dashie, sets it as the home app, and
+        disables the Google TV launcher and bloat &mdash; with safety checks so
+        it never leaves your stick without a working launcher. It works on
+        <strong>Mac and Linux</strong>.
+      </p>
+
+      <div class="code-block"><span class="cmt"># Download the script</span>
+curl -fsSL https://dashieapp.com/downloads/setup-onn-stick.sh -o setup-onn-stick.sh
+chmod +x setup-onn-stick.sh
+
+<span class="cmt"># Preview everything it will do — changes nothing</span>
+./setup-onn-stick.sh --dry-run
+
+<span class="cmt"># Run it for real</span>
+./setup-onn-stick.sh</div>
+
+      <p>
+        The script auto-detects the stick. If you have more than one connected,
+        pass <code>--device &lt;id&gt;</code> (the id from
+        <code>adb devices</code>). Run with <code>-h</code> to see all options,
+        including <code>--skip-install</code> to re-apply the config without
+        reinstalling.
+      </p>
+
+      <div class="info-callout">
+        <strong>Why disable the Play Store?</strong> The Dashie build this
+        script installs <strong>updates itself automatically</strong>, so it
+        doesn't need the Play Store &mdash; and disabling it keeps the stick
+        locked to a clean, single-purpose dashboard. Nothing is uninstalled;
+        every package is merely disabled and can be re-enabled later.
+      </div>
+
+      <!-- Step 3b: manual -->
+      <h2 id="manual">Step 3 (manual) — Do it by hand with ADB</h2>
+      <p>
+        Prefer to run the commands yourself, or on Windows? Here's exactly what
+        the script does. Replace <code>&lt;id&gt;</code> with your device id
+        from <code>adb devices</code> (or drop <code>-s &lt;id&gt;</code>
+        entirely if only one device is connected).
+      </p>
+
+      <h3>1. Install Dashie</h3>
+      <div class="code-block"><span class="cmt"># Download the self-updating Dashie app, then install it</span>
+curl -fsSL https://dashieapp.com/downloads/Dashie-sideload-beta.apk -o Dashie.apk
+adb -s &lt;id&gt; install -r Dashie.apk</div>
+
+      <h3>2. Make Dashie the home app</h3>
+      <div class="code-block">adb -s &lt;id&gt; shell cmd package set-home-activity com.dashieapp.Dashie/.MainActivity</div>
+
+      <h3>3. Disable the Google TV Home launcher</h3>
+      <p>
+        Do this <strong>after</strong> step 2 so the stick always has a working
+        launcher.
+      </p>
+      <div class="code-block">adb -s &lt;id&gt; shell pm disable-user --user 0 com.google.android.apps.tv.launcherx</div>
+
+      <h3>4. Disable bloat (optional, but recommended)</h3>
+      <p>
+        These are validated safe on the onn. stick. Skip any line for an app
+        you actually use (for example, leave out the TalkBack line if you use
+        the screen reader). Repeat the command for each package:
+      </p>
+      <div class="code-block"><span class="cmt"># Run once per package, e.g.:</span>
+adb -s &lt;id&gt; shell pm disable-user --user 0 com.android.vending           <span class="cmt"># Play Store</span>
+adb -s &lt;id&gt; shell pm disable-user --user 0 com.google.android.youtube.tv
+adb -s &lt;id&gt; shell pm disable-user --user 0 com.netflix.ninja
+adb -s &lt;id&gt; shell pm disable-user --user 0 com.google.android.apps.tv.dreamx  <span class="cmt"># screensaver</span>
+adb -s &lt;id&gt; shell pm disable-user --user 0 com.google.android.katniss        <span class="cmt"># Assistant</span>
+adb -s &lt;id&gt; shell pm disable-user --user 0 com.google.android.play.games
+adb -s &lt;id&gt; shell pm disable-user --user 0 com.onn.updatenotification
+<span class="cmt"># ...the script's full list is in its header comments.</span></div>
+
+      <p>
+        Then unplug and replug the stick &mdash; it should boot straight into
+        Dashie.
+      </p>
+
+      <!-- Voice / video -->
+      <h2 id="voice-video">Adding voice and video (USB mic / webcam)</h2>
+      <p>
+        This is what makes the onn. stick especially appealing for Home
+        Assistant setups. With a <strong>USB-C OTG adapter</strong>, the stick's
+        single USB-C port can host accessories while still powered:
+      </p>
+      <ul>
+        <li>
+          <strong>USB microphone</strong> &mdash; enables Dashie's
+          <strong>"Hey Dashie" wake word</strong> and voice control. Pair it
+          with Home Assistant's voice pipeline (Whisper for speech-to-text) for
+          a hands-free dashboard. See the
+          <a href="/guides/voice-control-setup">Voice Control guide</a> for the
+          Home Assistant side.
+        </li>
+        <li>
+          <strong>USB webcam</strong> &mdash; lets the same panel double as a
+          camera, so a kitchen or hallway display can pull double duty.
+        </li>
+      </ul>
+      <div class="info-callout">
+        <strong>Powering tip:</strong> a microphone or camera draws more than
+        the stick's port supplies on its own. Use a
+        <strong>powered OTG adapter</strong> (one with its own power input) so
+        the stick stays powered while the accessory runs. A small powered USB
+        hub works too.
+      </div>
+
+      <!-- Recovery -->
+      <h2 id="recovery">If something goes wrong</h2>
+      <p>
+        Every change here is reversible &mdash; the stick is never permanently
+        altered.
+      </p>
+      <ul>
+        <li>
+          <strong>Get back to system Settings on the stick:</strong> hold the
+          <strong>BACK</strong> button for ~2 seconds anywhere in Dashie. This
+          works even when Dashie is the launcher &mdash; it's your escape hatch
+          to change WiFi or reach any Android setting.
+        </li>
+        <li>
+          <strong>Restore the Google TV launcher:</strong>
+          <div class="code-block">adb -s &lt;id&gt; shell pm enable com.google.android.apps.tv.launcherx</div>
+        </li>
+        <li>
+          <strong>Re-enable any disabled app:</strong>
+          <div class="code-block">adb -s &lt;id&gt; shell pm enable &lt;package-name&gt;</div>
+        </li>
+        <li>
+          <strong>Start completely over:</strong> a factory reset from the
+          stick's Settings returns it to stock.
+        </li>
+      </ul>
+
+      <!-- Support -->
+      <h2 id="support">Support and feedback</h2>
+      <p>
+        We're here to help and we love hearing how people are using Dashie.
+        Reach out at
+        <a href="mailto:support@dashieapp.com">support@dashieapp.com</a> or
+        through the website and we'll get back to you quickly.
+      </p>
+
+    </div>
+  </article>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>&copy; 2026 Dashie LLC. All rights reserved.</p>
+    <div class="footer-links">
+      <a href="/privacy-policy.html">Privacy Policy</a>
+      <span class="separator">|</span>
+      <a href="/terms-of-service.html">Terms of Service</a>
+    </div>
+  </footer>
+
+  <!-- Analytics -->
+  <script type="module" src="/js/analytics/website-analytics.js"></script>
+</body>
+</html>
