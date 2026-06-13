@@ -1,9 +1,9 @@
 {
-  "versionCode": 164,
+  "versionCode": 165,
   "versionName": "1.0.9",
   "apkUrl": "https://dashieapp.com/downloads/Dashie-sideload-beta.apk",
-  "sha256": "5222be33aaa7dc323ace19caa39886e1ba95b891493f908cae30f199f358410f",
+  "sha256": "ae837087f538a064b5505c7f7f3660da741407a915ba3e785802ee9992d1a021",
   "notify": false,
   "title": "What's new in 1.0.9",
-  "description": "• Voice catalog refresh — updated AI model picker\n• Timer improvements — half-hour parsing fix, characterization tests\n• Carries v1.0.8 reliability fixes: full-bleed Android TV banner, faketouch declaration, multi-signal TV detection on sign-in, webview retry on main-frame HTTP error"
+  "description": "• SSL: trust self-signed certs for your configured Home Assistant host (not just LAN IPs)\n• Voice catalog refresh — updated AI model picker\n• Timer improvements — half-hour parsing fix, characterization tests\n• Carries v1.0.8 reliability fixes: full-bleed Android TV banner, faketouch declaration, multi-signal TV detection on sign-in, webview retry on main-frame HTTP error"
 }
