@@ -1,9 +1,9 @@
 {
-  "versionCode": 165,
-  "versionName": "1.0.9",
+  "versionCode": 166,
+  "versionName": "1.0.10",
   "apkUrl": "https://dashieapp.com/downloads/Dashie-sideload-beta.apk",
-  "sha256": "ae837087f538a064b5505c7f7f3660da741407a915ba3e785802ee9992d1a021",
+  "sha256": "8230dba22e0fa360319f8370fb478f7e4d9b69e08cfa47453f54afb9e97dbf8d",
   "notify": false,
-  "title": "What's new in 1.0.9",
-  "description": "• SSL: trust self-signed certs for your configured Home Assistant host (not just LAN IPs)\n• Voice catalog refresh — updated AI model picker\n• Timer improvements — half-hour parsing fix, characterization tests\n• Carries v1.0.8 reliability fixes: full-bleed Android TV banner, faketouch declaration, multi-signal TV detection on sign-in, webview retry on main-frame HTTP error"
+  "title": "What's new in 1.0.10",
+  "description": "• Language preference — local TTS now follows the new general Language setting\n• Voice — refreshed model catalog (gemini-2.5-flash + cloud default), faster TTS language switching\n• Widget zoom — timer / voice / video feeds / music player now scale with widget_zoom\n• SSL — self-signed cert trust extended to OkHttp (OAuth token exchange)\n• Carries v1.0.9 fixes: SSL self-signed-cert for configured HA host, voice catalog refresh, half-hour timer parse"
 }
