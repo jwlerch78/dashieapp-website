@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Turn an Echo Show 5 into a Dashie Display with LineageOS - Dashie</title>
+  <title>Turn an Echo Show 5 into an HA display with voice &amp; music using LineageOS - Dashie</title>
   <link rel="icon" type="image/png" href="../../artwork/Dashie_Logo_Orange_Transparent.png">
 
   <style>
@@ -316,7 +316,7 @@
   <article class="article">
     <header class="article-header">
       <span class="article-tag">Home Assistant</span>
-      <h1>Turn an Echo Show 5 into a Dashie Display with LineageOS</h1>
+      <h1>Turn an Echo Show 5 into an HA display with voice &amp; music using LineageOS</h1>
       <p class="article-meta">Last updated: June 2026</p>
     </header>
 
@@ -330,13 +330,13 @@
       </div>
 
       <p>
-        The original <strong>Amazon Echo Show 5 (2019)</strong> is a tidy little
-        5.5" touchscreen with a built-in speaker and microphone &mdash; and it
-        turns up cheap secondhand. The catch is that out of the box it runs
-        Amazon's locked-down Fire OS and only does what Alexa allows. Once you
-        replace that with <strong>LineageOS</strong>, it becomes an ordinary
-        Android device &mdash; and a genuinely great compact panel for Dashie:
-        small footprint, always-on, and a mic and speaker already built in for
+        The <strong>Amazon Echo Show 5 (2019)</strong> is a tidy little 5.5"
+        touchscreen with a great speaker and microphone &mdash; and it can be
+        found cheap secondhand. The catch is that out of the box it runs Amazon's
+        locked-down Fire OS and only does what Alexa allows. Once you replace that
+        with <strong>LineageOS</strong>, it becomes an ordinary Android device
+        &mdash; and a genuinely great compact panel for Dashie: small footprint,
+        always-on, and a mic and speaker already built in for
         <strong>"Hey Dashie" voice control</strong>.
       </p>
 
@@ -390,14 +390,6 @@
           network after LineageOS is installed.
         </li>
       </ul>
-
-      <div class="info-callout">
-        <strong>Why bother instead of buying a tablet?</strong> If you already
-        own an Echo Show 5 (or can find one cheap), this is one of the most
-        affordable ways to get a small, dedicated dashboard with a real
-        microphone and speaker on board &mdash; no extra USB mic or OTG adapter
-        needed for voice.
-      </div>
 
       <!-- ============ PART 1 ============ -->
       <h2 id="part1" class="option-h">
@@ -502,20 +494,6 @@ adb install -r Dashie.apk</div>
         current.
       </div>
 
-      <h3 id="sign-in">3. Sign in</h3>
-      <p>
-        Open Dashie. On first launch it shows a sign-in screen with a
-        <strong>QR code</strong> &mdash; scan it with your phone (or visit the URL
-        it shows and enter the short code) and sign in with Google there. The
-        device pairs in a few seconds and starts syncing your calendars, photos,
-        family, and settings.
-      </p>
-
-      <div class="hero-figure">
-        <img src="/website-assets/guide-getting-started-qr-login.png"
-             alt="Dashie QR-code sign-in screen">
-      </div>
-
       <!-- ============ Make it dedicated ============ -->
       <h2 id="dedicated" class="option-h">
         <span class="option-badge bonus">Bonus</span> Make it a dedicated display
@@ -542,6 +520,26 @@ adb install -r Dashie.apk</div>
         dashboard &mdash; calendar, photos, weather, and "Hey Dashie" voice
         &mdash; but it's not the device for a heavy, many-widget Home Assistant
         dashboard with camera feeds. Keep the layout lean and it runs smoothly.
+      </div>
+
+      <div class="warn-callout">
+        <strong>Two hardware quirks on LineageOS.</strong> A couple of things
+        don't carry over from Fire OS:
+        <ul style="margin-top:10px; margin-bottom:0;">
+          <li>
+            <strong>The front camera doesn't work.</strong> The Echo Show 5's
+            camera isn't supported under the LineageOS port, so don't plan on
+            using it for video.
+          </li>
+          <li>
+            <strong>You'll need to manage screen wake yourself.</strong> Without
+            Amazon's firmware there's no built-in proximity/presence wake, so the
+            display won't turn on and off on its own. Use a
+            <strong>sleep timer</strong> to dim or blank the screen on a schedule,
+            and/or wire up the device's <strong>ambient light sensor</strong> to
+            wake it &mdash; otherwise the panel stays on 24/7.
+          </li>
+        </ul>
       </div>
 
       <!-- Voice -->
