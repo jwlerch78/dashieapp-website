@@ -474,6 +474,69 @@
         </p>
       </div>
 
+      <h2>Fire Tablet: Stop Waking to an Ad &amp; Save Battery</h2>
+
+      <p>
+        A common frustration with Amazon Fire tablets used as dashboards: the tablet sleeps to save
+        power, but when it wakes (on touch or motion) you see an Amazon <strong>Special Offers</strong>
+        ad or the lock screen instead of your dashboard. People often work around this by never letting
+        the screen sleep — running it at brightness 1 all day — which drains the battery and adds charge
+        cycles. You don't need that workaround.
+      </p>
+
+      <h3>Step 1: Remove the lock-screen ads (ADB)</h3>
+      <p>
+        With your tablet still connected over ADB, disable Amazon's lock-screen ads and the lock screen
+        itself so nothing sits between wake and your dashboard:
+      </p>
+      <div class="code-block">
+        <code><span class="comment"># Grant overlay permission (lets Dashie appear over the lock screen on wake)</span><br>
+<span class="command">adb shell appops set com.dashieapp.Dashie SYSTEM_ALERT_WINDOW allow</span><br><br>
+<span class="comment"># Disable lock screen ads (Amazon Special Offers)</span><br>
+<span class="command">adb shell settings put global LOCKSCREEN_AD_ENABLED 0</span><br><br>
+<span class="comment"># Disable the lock screen entirely (no swipe to unlock)</span><br>
+<span class="command">adb shell locksettings set-disabled true</span></code>
+      </div>
+
+      <div class="info-box tip">
+        <h4>Why Dashie wakes straight to the dashboard</h4>
+        <p>
+          Dashie sets itself to show over the lock screen and turn the screen on when it wakes, so the
+          dashboard is what's on screen — not the launcher or an ad. The ADB commands above remove
+          Amazon's ad layer; Dashie handles being on top. (This is also why you don't need a third-party
+          kiosk browser to dodge the wake-to-ad problem.)
+        </p>
+      </div>
+
+      <h3>Step 2: Let the tablet sleep properly instead of dimming it</h3>
+      <p>
+        Once the wake-to-ad problem is gone, you can let the screen actually turn off instead of leaving
+        it on all day. Dashie has built-in sleep/wake controls under
+        <strong>Settings → Sleep / Wake</strong>:
+      </p>
+      <ul>
+        <li><strong>Sleep Mode → Schedule</strong> (e.g. off 22:00, on 07:00) or <strong>Timeout</strong> (sleep after N minutes of inactivity)</li>
+        <li><strong>Screen-Off Behavior → Power Off Screen</strong> — a true hardware screen-off that actually cuts panel draw, rather than just showing a black overlay</li>
+        <li><strong>Reduce Brightness While Asleep</strong> and <strong>Motion Wake</strong> — wake on approach without keeping the panel at full brightness</li>
+      </ul>
+      <p>
+        This saves far more power than running the screen on-but-dimmed, because the backlight is the
+        biggest draw on these tablets.
+      </p>
+
+      <div class="info-box warning">
+        <h4>About bloatware and charging</h4>
+        <p>
+          Two things to set expectations on. Fire OS <strong>protects much of its built-in
+          software</strong> (the launcher and several Amazon services), so you can only trim the edges
+          without rooting — and a factory reset re-enables it. Separately, some Fire tablets
+          <strong>negotiate USB charging poorly on a fresh power cycle</strong> (connecting at 4–5W until
+          the cable is physically replugged); that's a hardware charging-handshake quirk, not something
+          software on the tablet can reliably fix. Reducing how often the screen is fully on (above) is
+          the most effective lever you control.
+        </p>
+      </div>
+
       <h2>Troubleshooting</h2>
 
       <h3>Device not showing in <code>adb devices</code></h3>
