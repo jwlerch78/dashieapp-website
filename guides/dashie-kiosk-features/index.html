@@ -799,6 +799,7 @@
       <ul>
         <li><strong>Silent screen pinning</strong> — Eliminates the "App is pinned" notification toast that normally appears when you enable Lock App mode</li>
         <li><strong>Remote device reboot</strong> — Enables the <code>rebootDevice</code> API command to reboot the tablet without requiring root access</li>
+        <li><strong>Reliable camera motion detection with the screen off</strong> — On aggressive devices (e.g. Honor/MagicOS) that revoke camera access or kill the app while the screen is off, device owner status keeps Dashie's camera/motion service resident</li>
       </ul>
 
       <h4>Requirements</h4>
@@ -811,11 +812,19 @@
       <h4>Setting Device Owner</h4>
       <p>Connect your tablet via USB and run:</p>
       <div class="code-block">
-        <code>adb shell dpm set-device-owner com.dashieapp.Dashie/.DeviceAdminReceiver</code>
+        <code>adb shell dpm set-device-owner com.dashieapp.Dashie/com.dashieapp.Dashie.halite.DashieDeviceAdminReceiver</code>
       </div>
       <p>
         Once set, Lock App mode will activate silently without any Android system prompts or notifications.
       </p>
+      <div class="info-box tip">
+        <p>
+          <strong>Beta / sideload builds:</strong> the package name carries a suffix, so use the matching component —
+          <code>com.dashieapp.Dashie.sideload/com.dashieapp.Dashie.halite.DashieDeviceAdminReceiver</code> for sideload builds
+          (or <code>...Dashie.staging/...</code> for staging). If <code>set-device-owner</code> reports
+          "ComponentName not found," you've used the wrong package suffix for your installed build.
+        </p>
+      </div>
 
       <div class="info-box tip">
         <h4>Removing Device Owner</h4>
@@ -823,7 +832,7 @@
           If you need to remove device owner status later, you can do so from Dashie's Control Center under Advanced settings, or by running:
         </p>
         <div class="code-block" style="margin-top: 10px;">
-          <code>adb shell dpm remove-active-admin com.dashieapp.Dashie/.DeviceAdminReceiver</code>
+          <code>adb shell dpm remove-active-admin com.dashieapp.Dashie/com.dashieapp.Dashie.halite.DashieDeviceAdminReceiver</code>
         </div>
       </div>
 
