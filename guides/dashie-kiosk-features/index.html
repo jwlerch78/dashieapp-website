@@ -819,10 +819,9 @@
       </p>
       <div class="info-box tip">
         <p>
-          <strong>Beta / sideload builds:</strong> the package name carries a suffix, so use the matching component —
-          <code>com.dashieapp.Dashie.sideload/com.dashieapp.Dashie.halite.DashieDeviceAdminReceiver</code> for sideload builds
-          (or <code>...Dashie.staging/...</code> for staging). If <code>set-device-owner</code> reports
-          "ComponentName not found," you've used the wrong package suffix for your installed build.
+          <strong>Beta / sideload builds:</strong> the package name carries a <code>.sideload</code> suffix, so use the matching component —
+          <code>com.dashieapp.Dashie.sideload/com.dashieapp.Dashie.halite.DashieDeviceAdminReceiver</code>.
+          If <code>set-device-owner</code> reports "ComponentName not found," you've used the wrong package name for your installed build.
         </p>
       </div>
 
