@@ -916,6 +916,28 @@ adb shell locksettings set-disabled true</code>
         These parameters can be adjusted here.
       </p>
 
+      <h4 id="diagnostics">Sending a Diagnostic Report</h4>
+      <p>
+        If you hit an issue and we ask for details, the fastest way to help us debug is to send a diagnostic report.
+        In the Advanced Menu under <strong>Performance &amp; Diagnostics</strong>, tap <strong>Send Diagnostics</strong>
+        (or <strong>Copy</strong> to put the report on your clipboard so you can paste it into an email).
+      </p>
+      <p>The report is a single bundle that captures everything we need in one shot:</p>
+      <ul>
+        <li><strong>Device &amp; app info</strong> — model, Android version, WebView version, Dashie build</li>
+        <li><strong>Setup &amp; permissions</strong> — battery-optimization exemption, Device Owner / Device Admin status, overlay, exact-alarm, brightness (write-settings), camera and notification permissions</li>
+        <li><strong>Camera &amp; motion</strong> — RTSP streaming settings, encoder capabilities, and motion/face wake mode</li>
+        <li><strong>Display, memory, and dashboard analysis</strong></li>
+        <li><strong>Event history</strong> — the on-device log (survives restarts and reboots), so overnight issues are captured even if you send the report the next morning</li>
+      </ul>
+      <div class="info-box tip">
+        <p>
+          Diagnostic reports are used only for troubleshooting and contain no account credentials or personal dashboard data.
+          The <strong>Setup &amp; Permissions</strong> section is especially useful when diagnosing devices with aggressive
+          power management (for example HONOR/MagicOS or Xiaomi), since it tells us at a glance which keep-alive permissions are in place.
+        </p>
+      </div>
+
       <h2 id="api">Using the API</h2>
 
       <p>
