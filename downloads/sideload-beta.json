@@ -1,9 +1,9 @@
 {
-  "versionCode": 166,
-  "versionName": "1.0.10",
+  "versionCode": 167,
+  "versionName": "1.0.11",
   "apkUrl": "https://dashieapp.com/downloads/Dashie-sideload-beta.apk",
-  "sha256": "8230dba22e0fa360319f8370fb478f7e4d9b69e08cfa47453f54afb9e97dbf8d",
+  "sha256": "04f3e3c7ae65ec078d11aebd762475e66bd675c8017330d918761a10b5749736",
   "notify": false,
-  "title": "What's new in 1.0.10",
-  "description": "• Language preference — local TTS now follows the new general Language setting\n• Voice — refreshed model catalog (gemini-2.5-flash + cloud default), faster TTS language switching\n• Widget zoom — timer / voice / video feeds / music player now scale with widget_zoom\n• SSL — self-signed cert trust extended to OkHttp (OAuth token exchange)\n• Carries v1.0.9 fixes: SSL self-signed-cert for configured HA host, voice catalog refresh, half-hour timer parse"
+  "title": "What's new in 1.0.11",
+  "description": "• Voice license sharing across the household — one purchased license auto-shares with secondary devices (requires updated Dashie HA integration)\n• Device owner mode for tablets — keeps the motion-wake camera alive even when the screen is off\n• Additional bug fixes and improvements"
 }
