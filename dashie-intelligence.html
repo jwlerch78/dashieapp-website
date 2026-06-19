@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashie Intelligence&trade; &mdash; Voice & AI for Your Home</title>
+  <link rel="icon" type="image/png" href="./artwork/Dashie_Logo_Orange_Transparent.png">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-padding-top: 80px;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      line-height: 1.6;
+      background: #ffffff;
+      color: #424242;
+      min-height: 100vh;
+    }
+
+    /* Hero Section */
+    .hero {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 60px 40px 40px 40px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: linear-gradient(135deg, #7b2ff7 0%, #4a00e0 100%);
+      color: white;
+      padding: 8px 20px;
+      border-radius: 20px;
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 30px;
+    }
+
+    .hero h1 {
+      font-size: 2.6em;
+      color: #424242;
+      margin-bottom: 20px;
+      line-height: 1.2;
+    }
+
+    .hero .tagline {
+      font-size: 1.4em;
+      color: #666;
+      margin-bottom: 20px;
+      max-width: 720px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .hero .description {
+      font-size: 1.1em;
+      color: #555;
+      max-width: 680px;
+      margin: 0 auto 30px auto;
+      line-height: 1.7;
+    }
+
+    .btn-primary-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: #ffaa00;
+      color: #ffffff;
+      padding: 16px 40px;
+      border: none;
+      border-radius: 8px;
+      font-size: 1.1em;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+      text-decoration: none;
+    }
+
+    .btn-primary-cta:hover {
+      background: #ffbb22;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(255, 170, 0, 0.4);
+    }
+
+    .alpha-note {
+      margin-top: 14px;
+      font-size: 0.9em;
+      color: #888;
+    }
+
+    .alpha-note a {
+      color: #7b2ff7;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .alpha-note a:hover {
+      text-decoration: underline;
+    }
+
+    /* Lead differentiators */
+    .lead-features {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 40px;
+    }
+
+    .lead-features h2 {
+      text-align: center;
+      font-size: 2em;
+      margin-bottom: 12px;
+      color: #424242;
+    }
+
+    .lead-features > p.section-subtitle {
+      text-align: center;
+      color: #666;
+      font-size: 1.1em;
+      margin-bottom: 44px;
+      max-width: 620px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .lead-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .lead-card {
+      background: #faf8ff;
+      border: 1px solid #ece4ff;
+      border-radius: 14px;
+      padding: 28px;
+    }
+
+    .lead-card .lead-icon {
+      width: 48px;
+      height: 48px;
+      background: linear-gradient(135deg, #7b2ff7 0%, #4a00e0 100%);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 16px;
+    }
+
+    .lead-card .lead-icon svg {
+      width: 26px;
+      height: 26px;
+      stroke: white;
+      stroke-width: 2;
+      fill: none;
+    }
+
+    .lead-card h3 {
+      font-size: 1.2em;
+      color: #424242;
+      margin-bottom: 10px;
+    }
+
+    .lead-card p {
+      font-size: 0.95em;
+      color: #555;
+      line-height: 1.7;
+    }
+
+    /* Proof points */
+    .features-preview {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 40px;
+      background: #fafafa;
+    }
+
+    .features-preview h2 {
+      text-align: center;
+      font-size: 2em;
+      margin-bottom: 12px;
+      color: #424242;
+    }
+
+    .features-preview > p.section-subtitle {
+      text-align: center;
+      color: #666;
+      font-size: 1.05em;
+      margin-bottom: 40px;
+    }
+
+    .feature-list {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+    }
+
+    .feature-list-bottom {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+      margin-top: 30px;
+    }
+
+    .feature-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 15px;
+    }
+
+    .feature-icon {
+      width: 40px;
+      height: 40px;
+      background: #7b2ff7;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .feature-icon svg {
+      width: 24px;
+      height: 24px;
+      stroke: white;
+      stroke-width: 2;
+      fill: none;
+    }
+
+    .feature-text h3 {
+      font-size: 1.1em;
+      color: #424242;
+      margin-bottom: 5px;
+    }
+
+    .feature-text p {
+      font-size: 0.95em;
+      color: #666;
+    }
+
+    .roadmap-tag {
+      display: inline-block;
+      background: #e8e0ff;
+      color: #5a2ca0;
+      font-size: 0.65em;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+      padding: 2px 8px;
+      border-radius: 4px;
+      margin-left: 6px;
+      vertical-align: middle;
+    }
+
+    /* Privacy section */
+    .privacy-section {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 60px 40px 40px;
+    }
+
+    .privacy-section h2 {
+      text-align: center;
+      font-size: 2em;
+      margin-bottom: 12px;
+      color: #424242;
+    }
+
+    .privacy-section > p.section-subtitle {
+      text-align: center;
+      color: #666;
+      font-size: 1.05em;
+      margin-bottom: 40px;
+      max-width: 640px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .privacy-cols {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+
+    .privacy-card {
+      border-radius: 14px;
+      padding: 28px;
+    }
+
+    .privacy-card.local {
+      background: #effbf3;
+      border: 1px solid #c8efd6;
+    }
+
+    .privacy-card.cloud {
+      background: #fff6ea;
+      border: 1px solid #ffe3bd;
+    }
+
+    .privacy-card h3 {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 1.2em;
+      color: #424242;
+      margin-bottom: 14px;
+    }
+
+    .privacy-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .privacy-dot.green { background: #28a745; }
+    .privacy-dot.orange { background: #ffaa00; }
+
+    .privacy-card ul {
+      padding-left: 20px;
+      color: #555;
+      font-size: 0.95em;
+      line-height: 1.8;
+    }
+
+    .privacy-note {
+      max-width: 760px;
+      margin: 30px auto 0;
+      padding: 20px 24px;
+      background: #f4f4f4;
+      border-radius: 12px;
+      color: #555;
+      font-size: 0.95em;
+      text-align: center;
+    }
+
+    /* Pricing/credits strip */
+    .credits-strip {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 20px 40px 0;
+    }
+
+    .credits-box {
+      background: #f9f9f9;
+      border: 1px solid #e0e0e0;
+      border-radius: 14px;
+      padding: 30px;
+      text-align: center;
+    }
+
+    .credits-box h3 {
+      font-size: 1.3em;
+      color: #424242;
+      margin-bottom: 12px;
+    }
+
+    .credits-box p {
+      color: #666;
+      font-size: 1em;
+      max-width: 580px;
+      margin: 0 auto 8px;
+    }
+
+    /* Download / CTA Section */
+    .download-section {
+      max-width: 700px;
+      margin: 0 auto;
+      padding: 50px 40px 60px 40px;
+      text-align: center;
+    }
+
+    .download-box {
+      background: linear-gradient(135deg, #7b2ff7 0%, #4a00e0 100%);
+      border-radius: 16px;
+      padding: 44px;
+      color: white;
+    }
+
+    .download-box h2 {
+      font-size: 1.8em;
+      margin-bottom: 15px;
+    }
+
+    .download-box p {
+      margin-bottom: 25px;
+      opacity: 0.92;
+    }
+
+    .download-box .btn-primary-cta {
+      background: #ffffff;
+      color: #4a00e0;
+    }
+
+    .download-box .btn-primary-cta:hover {
+      background: #f3f0ff;
+    }
+
+    /* Footer */
+    .footer {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 40px;
+      text-align: center;
+      border-top: 1px solid #e0e0e0;
+      color: #999999;
+    }
+
+    .footer-links {
+      margin-top: 20px;
+    }
+
+    .footer-links a {
+      color: #666666;
+      text-decoration: none;
+      margin: 0 15px;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover {
+      color: #ffaa00;
+    }
+
+    /* Mobile Responsive */
+    @media (max-width: 768px) {
+      .hero {
+        padding: 40px 20px 30px 20px;
+      }
+
+      .hero h1 {
+        font-size: 2em;
+      }
+
+      .hero .tagline {
+        font-size: 1.1em;
+      }
+
+      .lead-features,
+      .features-preview,
+      .privacy-section {
+        padding: 40px 20px;
+      }
+
+      .lead-grid,
+      .feature-list,
+      .feature-list-bottom,
+      .privacy-cols {
+        grid-template-columns: 1fr;
+      }
+
+      .download-section {
+        padding: 40px 20px;
+      }
+
+      .download-box {
+        padding: 30px 24px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Shared Header/Navigation -->
+  <script src="/components/header.js"></script>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-badge">&#10022; Dashie Intelligence&trade;</div>
+
+    <h1>Voice that actually understands your home</h1>
+
+    <p class="tagline">
+      Expert-grade voice and AI for your family dashboard &mdash; the tuned result enthusiasts spend months building, out of the box.
+    </p>
+
+    <p class="description">
+      Say "Hey Dashie" and ask anything. Control your smart home, get answers from the web, check the weather and scores, and hear it all back in a voice your family picks. Run it on Dashie's cloud or on your own local model &mdash; your home's data stays yours.
+    </p>
+
+    <a href="/alpha-access" class="btn-primary-cta">Join the Alpha</a>
+    <p class="alpha-note">Dashie Intelligence is in limited alpha. <a href="/alpha-access">Request access &rarr;</a></p>
+  </section>
+
+  <!-- Lead differentiators -->
+  <section class="lead-features">
+    <h2>Why Dashie Intelligence</h2>
+    <p class="section-subtitle">Three things that set it apart from raw Home Assistant, Alexa, or Google.</p>
+
+    <div class="lead-grid">
+      <div class="lead-card">
+        <div class="lead-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+        </div>
+        <h3>Ships the tuned result</h3>
+        <p>Reliable local voice normally takes months of hand-tuning &mdash; entity curation, the prompt, model and quantization picks, wake word, routing, speech engines. Dashie delivers that work for you, plug-and-play.</p>
+      </div>
+
+      <div class="lead-card">
+        <div class="lead-icon">
+          <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        </div>
+        <h3>Adaptive context</h3>
+        <p>Dashie sends the AI only what your question needs &mdash; the relevant devices and data, not your whole house. That's faster, cheaper, and more accurate. Stock Home Assistant can't do this.</p>
+      </div>
+
+      <div class="lead-card">
+        <div class="lead-icon">
+          <svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+        </div>
+        <h3>Privacy &amp; your own model</h3>
+        <p>Keep a local LLM so home data never leaves your network &mdash; or use the cloud with queries aggregated and account-anonymized through Dashie. No Google or Amazon account, no always-on mic. No lock-in.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Proof points -->
+  <section class="features-preview">
+    <h2>What you get</h2>
+    <p class="section-subtitle">Everything below works together, on the same "Hey Dashie."</p>
+
+    <div class="feature-list">
+      <div class="feature-item">
+        <div class="feature-icon">
+          <svg viewBox="0 0 24 24"><path d="M18.36 6.64a9 9 0 1 1-12.73 0"/><line x1="12" y1="2" x2="12" y2="12"/></svg>
+        </div>
+        <div class="feature-text">
+          <h3>Local-first resilience</h3>
+          <p>Device control runs locally &mdash; your lights and scenes keep working even when the cloud is down.</p>
+        </div>
+      </div>
+
+      <div class="feature-item">
+        <div class="feature-icon">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        </div>
+        <div class="feature-text">
+          <h3>Built-in knowledge tools</h3>
+          <p>Web search, weather, sports, places, and your calendar &mdash; ready to go, no API keys to wire up.</p>
+        </div>
+      </div>
+
+      <div class="feature-item">
+        <div class="feature-icon">
+          <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <div class="feature-text">
+          <h3>Accurate by construction</h3>
+          <p>Scores and weather come from real data sources &mdash; deterministic and real-time, not scraped guesses.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="feature-list-bottom">
+      <div class="feature-item">
+        <div class="feature-icon">
+          <svg viewBox="0 0 24 24"><path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/></svg>
+        </div>
+        <div class="feature-text">
+          <h3>Premium voices &amp; personalities</h3>
+          <p>Character voices your family picks, well above the local text-to-speech ceiling.</p>
+        </div>
+      </div>
+
+      <div class="feature-item">
+        <div class="feature-icon">
+          <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        </div>
+        <div class="feature-text">
+          <h3>Better speech recognition</h3>
+          <p>Premium recognition biased to your household's names and teams &mdash; multilingual, not English-locked.</p>
+        </div>
+      </div>
+
+      <div class="feature-item">
+        <div class="feature-icon">
+          <svg viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+        </div>
+        <div class="feature-text">
+          <h3>Free &amp; instant for the common case</h3>
+          <p>Device and music commands answer locally, free and sub-second. Only open-ended questions touch paid AI.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="feature-list-bottom">
+      <div class="feature-item">
+        <div class="feature-icon">
+          <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+        </div>
+        <div class="feature-text">
+          <h3>One setup, every device</h3>
+          <p>Configure once &mdash; every tablet and satellite in your home adopts it. One login, zero per-device fuss.</p>
+        </div>
+      </div>
+
+      <div class="feature-item">
+        <div class="feature-icon">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        </div>
+        <div class="feature-text">
+          <h3>Transparent cost</h3>
+          <p>Simple credits with clear model labels (economical vs. premium) and per-device usage &mdash; no token math.</p>
+        </div>
+      </div>
+
+      <div class="feature-item">
+        <div class="feature-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2M12 19v4M8 23h8"/></svg>
+        </div>
+        <div class="feature-text">
+          <h3>Smart conversation <span class="roadmap-tag">Coming soon</span></h3>
+          <p>Ask follow-ups without re-saying the wake word, and Dashie ignores background chatter instead of looping.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Privacy -->
+  <section class="privacy-section">
+    <h2>You decide what leaves your home</h2>
+    <p class="section-subtitle">Every part of the pipeline is your choice &mdash; and Dashie tells you, in plain color, whether a choice is local or cloud.</p>
+
+    <div class="privacy-cols">
+      <div class="privacy-card local">
+        <h3><span class="privacy-dot green"></span> Local (green)</h3>
+        <ul>
+          <li>Run your own LLM &mdash; your home and device data never leaves the network</li>
+          <li>On-device speech and local text-to-speech for a fully offline stack</li>
+          <li>Device control always runs locally &mdash; works with no internet</li>
+          <li>Subscriber, near-zero ongoing cost</li>
+        </ul>
+      </div>
+
+      <div class="privacy-card cloud">
+        <h3><span class="privacy-dot orange"></span> Cloud (orange)</h3>
+        <ul>
+          <li>Premium AI models, premium speech recognition, and character voices</li>
+          <li>Web search and live data tools (sports, weather, places)</li>
+          <li>Queries aggregated and account-anonymized through Dashie</li>
+          <li>Draws on your credit balance &mdash; metered and transparent</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="privacy-note">
+      When you choose Dashie Intelligence, we show a one-time privacy summary and color-code each component. Pick a local model alongside local speech and voices and <strong>nothing but optional web lookups ever leaves your LAN</strong>.
+    </div>
+  </section>
+
+  <!-- Credits -->
+  <section class="credits-strip">
+    <div class="credits-box">
+      <h3>Simple, honest pricing</h3>
+      <p>Device and music control, local models, and local speech are free. Cloud AI, premium voices, and web search draw on a shared pool of <strong>credits</strong> &mdash; with clear "economical vs. premium" labels and per-device usage.</p>
+      <p>Top up with one-time credit packs, or subscribe for a monthly allotment. Pricing is being finalized during the alpha.</p>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="download-section">
+    <div class="download-box">
+      <h2>Be one of the first</h2>
+      <p>Dashie Intelligence is rolling out to a small, curated alpha group of existing Dashie users &mdash; with complimentary starter credits.</p>
+      <a href="/alpha-access" class="btn-primary-cta">Request Alpha Access</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>&copy; 2026 Dashie LLC. All rights reserved.</p>
+    <div class="footer-links">
+      <a href="/privacy-policy.html">Privacy Policy</a>
+      <span class="separator">|</span>
+      <a href="/terms-of-service.html">Terms of Service</a>
+    </div>
+  </footer>
+
+  <!-- Analytics -->
+  <script type="module" src="/js/analytics/website-analytics.js"></script>
+</body>
+</html>
