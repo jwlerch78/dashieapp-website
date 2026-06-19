@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Using the Dashie Console - Dashie</title>
+  <link rel="icon" type="image/png" href="../../artwork/Dashie_Logo_Orange_Transparent.png">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      line-height: 1.6;
+      background: #ffffff;
+      color: #424242;
+      min-height: 100vh;
+    }
+
+    /* Breadcrumb */
+    .breadcrumb {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px 40px 0 40px;
+    }
+
+    .breadcrumb a {
+      color: #666;
+      text-decoration: none;
+      font-size: 14px;
+    }
+
+    .breadcrumb a:hover {
+      color: #ffaa00;
+    }
+
+    .breadcrumb span {
+      color: #999;
+      margin: 0 8px;
+    }
+
+    /* Article */
+    .article {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 30px 40px 60px 40px;
+    }
+
+    .article-header {
+      margin-bottom: 40px;
+    }
+
+    .article-tag {
+      display: inline-block;
+      background: #18bcf2;
+      color: white;
+      font-size: 12px;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 4px;
+      margin-bottom: 15px;
+    }
+
+    .article h1 {
+      font-size: 2.2em;
+      color: #424242;
+      margin-bottom: 15px;
+      line-height: 1.3;
+    }
+
+    .article-meta {
+      color: #888;
+      font-size: 14px;
+    }
+
+    .article-content h2 {
+      font-size: 1.5em;
+      color: #424242;
+      margin: 40px 0 20px 0;
+      padding-bottom: 10px;
+      border-bottom: 2px solid #ffaa00;
+    }
+
+    .article-content h3 {
+      font-size: 1.2em;
+      color: #424242;
+      margin: 30px 0 15px 0;
+    }
+
+    .article-content p {
+      margin-bottom: 20px;
+      color: #555;
+    }
+
+    .article-content ul,
+    .article-content ol {
+      margin-bottom: 20px;
+      padding-left: 30px;
+    }
+
+    .article-content li {
+      margin-bottom: 10px;
+      color: #555;
+    }
+
+    .article-content a {
+      color: #ffaa00;
+      text-decoration: none;
+    }
+
+    .article-content a:hover {
+      text-decoration: underline;
+    }
+
+    /* Inline code */
+    code {
+      background: #f4f4f4;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Fira Mono', 'Droid Sans Mono', monospace;
+      font-size: 0.9em;
+      color: #d63384;
+    }
+
+    /* Full-width screenshot image in content */
+    .screenshot-image {
+      margin: 25px 0;
+    }
+
+    .screenshot-image img {
+      width: 100%;
+      height: auto;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    /* Info boxes */
+    .info-box {
+      padding: 20px;
+      border-radius: 8px;
+      margin: 20px 0;
+    }
+
+    .info-box.warning {
+      background: #fff3cd;
+      border-left: 4px solid #ffc107;
+    }
+
+    .info-box.tip {
+      background: #d1ecf1;
+      border-left: 4px solid #17a2b8;
+    }
+
+    .info-box.important {
+      background: #f8d7da;
+      border-left: 4px solid #dc3545;
+    }
+
+    .info-box h4 {
+      margin-bottom: 10px;
+      color: #424242;
+    }
+
+    .info-box p {
+      margin: 0;
+      color: #555;
+    }
+
+    /* Path-split: side-by-side comparison of the web vs HA Console paths.
+       Used in sections where the two access methods diverge enough that
+       a single description would gloss over real differences. */
+    .path-split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin: 25px 0;
+    }
+
+    .path-card {
+      background: #f9f9f9;
+      border-radius: 12px;
+      padding: 24px;
+      border-top: 4px solid transparent;
+    }
+
+    .path-card.web {
+      border-top-color: #ffaa00;
+    }
+
+    .path-card.ha {
+      border-top-color: #18bcf2;
+    }
+
+    .path-card h4 {
+      font-size: 1.05em;
+      color: #424242;
+      margin-bottom: 12px;
+    }
+
+    .path-card p {
+      font-size: 0.95em;
+      color: #555;
+      margin-bottom: 12px;
+    }
+
+    .path-card p:last-child,
+    .path-card ul:last-child {
+      margin-bottom: 0;
+    }
+
+    .path-card ul {
+      margin: 0 0 12px 0;
+      padding-left: 22px;
+    }
+
+    .path-card li {
+      font-size: 0.95em;
+      margin-bottom: 6px;
+    }
+
+    .path-tag {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 3px;
+      color: white;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-right: 8px;
+      vertical-align: middle;
+    }
+
+    .path-tag.web {
+      background: #ffaa00;
+    }
+
+    .path-tag.ha {
+      background: #18bcf2;
+    }
+
+    /* Requirements list */
+    .requirements {
+      background: #f9f9f9;
+      border-radius: 12px;
+      padding: 25px;
+      margin: 20px 0;
+    }
+
+    .requirements h3 {
+      margin-top: 0;
+      margin-bottom: 15px;
+    }
+
+    .requirements ul {
+      margin: 0;
+      padding-left: 25px;
+    }
+
+    /* See-also block at end of a section */
+    .see-also {
+      background: #fff8e6;
+      border-left: 4px solid #ffaa00;
+      padding: 16px 20px;
+      border-radius: 6px;
+      margin: 20px 0;
+    }
+
+    .see-also h4 {
+      font-size: 0.95em;
+      color: #424242;
+      margin-bottom: 8px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .see-also p {
+      margin: 0;
+      font-size: 0.95em;
+    }
+
+    /* Footer */
+    .footer {
+      max-width: 800px;
+      margin: 60px auto 0;
+      padding: 40px;
+      text-align: center;
+      border-top: 1px solid #e0e0e0;
+      color: #999999;
+    }
+
+    .footer-links {
+      margin-top: 20px;
+    }
+
+    .footer-links a {
+      color: #666666;
+      text-decoration: none;
+      margin: 0 15px;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover {
+      color: #ffaa00;
+    }
+
+    /* Mobile Responsive */
+    @media (max-width: 768px) {
+
+      .breadcrumb,
+      .article {
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+
+      .article h1 {
+        font-size: 1.6em;
+      }
+
+      .path-split {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Shared Header/Navigation -->
+  <script src="/components/header.js"></script>
+
+  <!-- Breadcrumb -->
+  <div class="breadcrumb">
+    <a href="/guides/">How To Guides</a>
+    <span>/</span>
+    <a href="#">Using the Dashie Console</a>
+  </div>
+
+  <!-- Article -->
+  <article class="article">
+    <header class="article-header">
+      <span class="article-tag">Dashie</span>
+      <h1>Using the Dashie Console</h1>
+      <p class="article-meta">Last updated: June 2026 • Console v0.1.120</p>
+    </header>
+
+    <div class="article-content">
+      <p>
+        The Dashie Console is where you manage everything about your Dashie household — your tablets, family
+        members, calendars, photo albums, AI personality, voice settings, and account. It's the same UI
+        whether you reach it on the web or from inside Home Assistant.
+      </p>
+
+      <div class="info-box tip">
+        <h4>Two ways to open the Console</h4>
+        <p>
+          <span class="path-tag web">Web</span> Visit <a href="https://dashieapp.com/console" target="_blank">dashieapp.com/console</a> in any browser. Works on every platform.<br>
+          <span class="path-tag ha">In&nbsp;HA</span> Install the Dashie Console app and open it from your HA sidebar. Adds live device metrics, history charts, and HA-side controls.
+        </p>
+      </div>
+
+      <p>
+        Most of the Console works identically across both paths. The <strong>Devices</strong> section is where
+        they meaningfully differ — the in-HA Console can talk directly to your tablets through Home Assistant
+        and surface things the web Console can't see. Family, Photos, and AI/Voice are the same either way.
+      </p>
+
+      <div class="requirements">
+        <h3>What you need</h3>
+        <ul>
+          <li>A Dashie account — sign up at <a href="https://dashieapp.com" target="_blank">dashieapp.com</a></li>
+          <li><strong>For the in-HA path:</strong> the Dashie Console app installed in Home Assistant. See <a href="/guides/home-assistant-integration">Set up Dashie in Home Assistant</a> (Part 4) for the install.</li>
+        </ul>
+      </div>
+
+      <h2>Opening the Console</h2>
+
+      <p>
+        Sign-in is the one place the two paths look visibly different. Both end at the same Console UI.
+      </p>
+
+      <div class="path-split">
+        <div class="path-card web">
+          <h4><span class="path-tag web">Web</span> dashieapp.com/console</h4>
+          <p>Open <a href="https://dashieapp.com/console" target="_blank">dashieapp.com/console</a> in a browser. Click <strong>Sign in with Google</strong> (or your account provider). You'll be sent to Google's standard sign-in and bounced back to the Console.</p>
+          <p>The session sticks in browser cookies — close the tab, open it later, you're still signed in.</p>
+        </div>
+        <div class="path-card ha">
+          <h4><span class="path-tag ha">In&nbsp;HA</span> Dashie Console app</h4>
+          <p>Click <strong>Dashie Console</strong> in your HA sidebar (or open <strong>Settings → Apps → Dashie Console → Open Web UI</strong>).</p>
+          <p>First time, you'll see an 8-character code. On your phone or laptop, open <a href="https://dashieapp.com/link" target="_blank">dashieapp.com/link</a>, sign in, enter the code, and approve. The HA Console stays signed in across HA reboots.</p>
+        </div>
+      </div>
+
+      <h2>Managing your devices</h2>
+
+      <p>
+        <strong>Devices</strong> is your fleet view — every Dashie tablet, TV, or kiosk display tied to your account.
+        Each device shows up as a card; click into one for details. The in-HA Console adds a layer of live data
+        the web Console doesn't have access to, because it can read your Home Assistant entities directly.
+      </p>
+
+      <div class="path-split">
+        <div class="path-card web">
+          <h4><span class="path-tag web">Web</span> What you can do</h4>
+          <ul>
+            <li>See every device on your account</li>
+            <li>Rename devices, set room labels</li>
+            <li>Change theme, sleep schedule, screensaver mode</li>
+            <li>Set photo album, layout mode, font/display size</li>
+            <li>Archive old devices</li>
+          </ul>
+          <p>Per-device settings sync to the device the next time it checks in with the Dashie cloud (usually within seconds while it's online).</p>
+        </div>
+        <div class="path-card ha">
+          <h4><span class="path-tag ha">In&nbsp;HA</span> Everything from web, plus:</h4>
+          <ul>
+            <li><strong>Live metrics</strong> — battery, RAM, Wi-Fi, current screenshot, refreshed every few seconds</li>
+            <li><strong>History charts</strong> — click any metric chip to see 1h / 24h / week / custom-range graphs</li>
+            <li><strong>Direct controls</strong> — turn the screen on/off, adjust brightness/volume, lock the device, toggle screensaver immediately</li>
+            <li><strong>Discovered devices</strong> — tablets running Dashie on your network that aren't yet on your account</li>
+          </ul>
+          <p>The in-HA Console reaches your tablets through the Dashie HA integration, so controls happen in real time over your local network.</p>
+        </div>
+      </div>
+
+      <div class="info-box tip">
+        <h4>Technical view toggle</h4>
+        <p>
+          In the in-HA Console, look for the <strong>Show technical details</strong> button at the top of the
+          Devices list. It flips each card between a simple summary view ("what's playing on this dashboard")
+          and a full technical view (every metric, screenshot, and control). On a fresh HA install it defaults
+          to ON; the web Console defaults to OFF.
+        </p>
+      </div>
+
+      <h2>Family members and calendars</h2>
+
+      <p>
+        The <strong>Family</strong> section is where you add the people in your household, link their Google
+        calendars, and decide whose schedule appears on each dashboard. This is identical on both paths —
+        same UI, same data, backed by your Dashie account.
+      </p>
+
+      <p>
+        For each member you can: link a Google account (for calendar sync), pick which calendars are visible
+        to Dashie, assign a color and icon, and decide which devices should display their events.
+      </p>
+
+      <div class="see-also">
+        <h4>Deep dive</h4>
+        <p>For the full walkthrough — adding members, linking Google, configuring calendar visibility per-device — see <a href="/guides/family-management">Family Management</a> and <a href="/guides/calendar-setup">Calendar Setup</a>.</p>
+      </div>
+
+      <h2>AI personality and voice</h2>
+
+      <p>
+        Under <strong>AI &amp; Voice</strong> (sometimes shown as "Dashie Intelligence" on the sidebar) you'll find
+        the settings that shape how Dashie talks back. Personality presets, custom prompts, wake word, voice
+        selection, and which AI model handles requests. Same UI on both paths.
+      </p>
+
+      <p>
+        Voice changes propagate to every device on your account: pick a new personality on the Console, and
+        the next time the tablet wakes up it'll use that personality. Wake-word changes take effect at the
+        device's next reboot or settings refresh.
+      </p>
+
+      <div class="see-also">
+        <h4>Deep dive</h4>
+        <p>See <a href="/guides/dashie-intelligence-setup">Dashie Intelligence Setup</a> for the full personality-and-voice walkthrough, plus <a href="/guides/voice-control-setup">Voice Control Setup</a> for the wake-word details.</p>
+      </div>
+
+      <h2>Photos</h2>
+
+      <p>
+        <strong>Photos</strong> lets you build albums that show up on your dashboards' photo widgets and on
+        the screensaver. Add photos by uploading from your phone or computer, or by linking a Google Photos
+        album. Same UI on both paths.
+      </p>
+
+      <p>
+        Each device picks its photo source independently — useful when one tablet shows family photos in
+        the kitchen and another shows vacation pics in the bedroom. You choose the album per-device in the
+        Devices section.
+      </p>
+
+      <div class="see-also">
+        <h4>Deep dive</h4>
+        <p>See <a href="/guides/photos-setup">Photos Setup</a> for upload, Google Photos linking, and the screensaver photo flow.</p>
+      </div>
+
+      <h2>Troubleshooting</h2>
+
+      <h3>I'm signed in on web but the in-HA Console asks me to sign in again</h3>
+      <p>
+        That's expected. The web Console uses browser cookies; the in-HA Console runs inside a separate
+        ingress-isolated session and signs in independently via the device-flow code at <code>dashieapp.com/link</code>.
+        You only need to do it once per HA install.
+      </p>
+
+      <h3>My device shows up on web but not in the in-HA Devices list</h3>
+      <p>
+        The in-HA Console only sees devices that are also registered as HA devices via the Dashie integration.
+        Make sure you've completed Parts 1–3 of the <a href="/guides/home-assistant-integration">HA setup guide</a>.
+        If the device exists in HA but isn't on your Dashie account, the in-HA Console will surface it as
+        "Discovered" with an <strong>Adopt</strong> button.
+      </p>
+
+      <h3>Changes I make on the Console don't appear on my tablet</h3>
+      <p>
+        Most settings sync within seconds while the device is online. If a setting isn't taking, check that
+        the device is awake and connected (battery icon, last-seen timestamp on the device card). Photo album
+        changes take effect at the next photo refresh interval (a few minutes by default).
+      </p>
+
+      <div class="info-box important">
+        <h4>Need more help?</h4>
+        <p>
+          If something isn't behaving as described, <a href="/contact">contact us</a> with your account email,
+          the device name, and what you were trying to do. Screenshots help.
+        </p>
+      </div>
+    </div>
+  </article>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>&copy; 2026 Dashie LLC. All rights reserved.</p>
+    <div class="footer-links">
+      <a href="/privacy-policy.html">Privacy Policy</a>
+      <span class="separator">|</span>
+      <a href="/terms-of-service.html">Terms of Service</a>
+    </div>
+  </footer>
+
+  <!-- Analytics -->
+  <script type="module" src="/js/analytics/website-analytics.js"></script>
+</body>
+</html>
