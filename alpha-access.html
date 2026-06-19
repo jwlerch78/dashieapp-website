@@ -216,13 +216,6 @@
       color: #555;
     }
 
-    .consent-box {
-      background: #fff;
-      border: 1px solid #e6e6e6;
-      border-radius: 10px;
-      padding: 18px 20px;
-      margin-top: 8px;
-    }
 
     .btn-submit {
       width: 100%;
@@ -419,62 +412,26 @@
         </div>
       </div>
 
-      <div class="form-section-label">Your Home Assistant setup</div>
-
-      <div class="form-group">
-        <label>Which of these do you already have? (check all that apply)</label>
-        <div class="checkbox-group">
-          <label class="checkbox-label">
-            <input type="checkbox" name="ha_setup" value="addon"> <span>The Dashie Console add-on installed</span>
-          </label>
-          <label class="checkbox-label">
-            <input type="checkbox" name="ha_setup" value="integration"> <span>The Dashie integration installed</span>
-          </label>
-          <label class="checkbox-label">
-            <input type="checkbox" name="ha_setup" value="hacs"> <span>HACS installed</span>
-          </label>
-          <label class="checkbox-label">
-            <input type="checkbox" name="ha_setup" value="satellites"> <span>One or more HA voice satellites</span>
-          </label>
-          <label class="checkbox-label">
-            <input type="checkbox" name="ha_setup" value="remote"> <span>Remote access (Nabu Casa / reverse proxy)</span>
-          </label>
-        </div>
-      </div>
-
       <div class="form-section-label">Your experience with Dashie voice</div>
 
       <div class="form-group">
-        <label for="experience">How do you use Dashie voice today, and what do you wish worked better?</label>
-        <textarea id="experience" name="experience" rows="4" placeholder="Tell us how you use voice now, any pain points, and what you're hoping Dashie Intelligence will solve..."></textarea>
-      </div>
-
-      <div class="form-group">
-        <label for="referral-source">How did you first find Dashie?</label>
-        <select id="referral-source" name="referral_source">
+        <label for="dashie-voice-experience">What's your experience with Dashie Voice to date?</label>
+        <select id="dashie-voice-experience" name="dashie_voice_experience">
           <option value="">Select an option...</option>
-          <option value="existing-user">I'm already a Dashie user</option>
-          <option value="reddit">Reddit</option>
-          <option value="ha-forum">Home Assistant forum</option>
-          <option value="google">Google/web search</option>
-          <option value="friend">Friend</option>
-          <option value="other">Other</option>
+          <option value="using">Currently trialing / using it</option>
+          <option value="stopped">Tried it, but stopped using it</option>
+          <option value="not-tried">Haven't tried it</option>
         </select>
       </div>
 
-      <div class="form-section-label">Consent</div>
+      <div class="form-group">
+        <label for="voice-improvements">What would make Dashie voice better (aside from the AI)?</label>
+        <textarea id="voice-improvements" name="voice_improvements" rows="4" placeholder="Pain points, missing features, anything you wish worked differently..."></textarea>
+      </div>
 
-      <div class="consent-box">
-        <div class="checkbox-group">
-          <label class="checkbox-label">
-            <input type="checkbox" name="consent_credits" required>
-            <span>I understand that cloud features (speech recognition, AI, voices, web search) draw on a shared credit balance, and that enabling <strong>household sharing</strong> lets other devices in my home use my account's credits. <em>(required)</em></span>
-          </label>
-          <label class="checkbox-label">
-            <input type="checkbox" name="consent_feedback" required>
-            <span>I'm willing to share feedback and basic usage data to help improve the product during the alpha. <em>(required)</em></span>
-          </label>
-        </div>
+      <div class="form-group">
+        <label for="additional-info">Anything else?</label>
+        <textarea id="additional-info" name="additional_info" rows="4" placeholder="(Optional) Share any other thoughts, questions, or details on your use case or interest you'd like."></textarea>
       </div>
 
       <button type="submit" class="btn-submit">Request Alpha Access</button>
@@ -506,11 +463,9 @@
         ha_ai_experience: formData.get('ha_ai_experience') || null,
         connectivity: formData.get('connectivity') || null,
         hardware: formData.get('hardware') || null,
-        ha_setup: formData.getAll('ha_setup'),
-        experience: formData.get('experience') || null,
-        referral_source: formData.get('referral_source') || null,
-        consent_credits: !!formData.get('consent_credits'),
-        consent_feedback: !!formData.get('consent_feedback')
+        dashie_voice_experience: formData.get('dashie_voice_experience') || null,
+        voice_improvements: formData.get('voice_improvements') || null,
+        additional_info: formData.get('additional_info') || null
       };
 
       // Supabase anon key (public by design - safe to expose in client code)
