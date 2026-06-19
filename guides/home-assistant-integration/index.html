@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Home Assistant Integration for Dashie - Dashie</title>
+  <title>Set up Dashie in Home Assistant - Dashie</title>
   <link rel="icon" type="image/png" href="../../artwork/Dashie_Logo_Orange_Transparent.png">
 
   <style>
@@ -404,21 +404,38 @@
   <div class="breadcrumb">
     <a href="/guides/">How To Guides</a>
     <span>/</span>
-    <a href="#">Home Assistant Integration</a>
+    <a href="#">Set up Dashie in Home Assistant</a>
   </div>
 
   <!-- Article -->
   <article class="article">
     <header class="article-header">
       <span class="article-tag">Dashie</span>
-      <h1>Controlling Dashie from Home Assistant</h1>
-      <p class="article-meta">Last updated: March 2026 • Integration v1.2.5</p>
+      <h1>Set up Dashie in Home Assistant</h1>
+      <p class="article-meta">Last updated: June 2026 • Integration v1.4.8 • Console app v0.1.120</p>
     </header>
 
     <div class="article-content">
       <p>
-        The Dashie integration for Home Assistant lets you monitor and control your Dashie devices directly from HA.
-        You can adjust brightness, turn the screen on/off, lock the device, and more - all from your Home Assistant dashboard or automations.
+        Dashie has two pieces that plug into Home Assistant. Most users want both.
+      </p>
+
+      <ul>
+        <li>
+          <strong>Dashie Integration</strong> — registers each of your Dashie tablets in HA as a device with
+          sensors and switches (battery, RAM, brightness, screen on/off, lock, camera stream, screensaver, and more).
+          This is the core piece that makes Dashie controllable from HA dashboards and automations.
+        </li>
+        <li>
+          <strong>Dashie Console app</strong> — hosts the Dashie management UI right inside HA, so you can manage
+          your family, calendars, photos, AI personality, and per-device settings without leaving HA. Optional, but
+          most users want it. (Requires Home Assistant OS or Supervised — Container/Core installs can't run apps.)
+        </li>
+      </ul>
+
+      <p>
+        This guide walks through both, in order. You can stop after Part 3 if you only want HA controls
+        and don't need the Console.
       </p>
 
       <div class="info-box tip">
@@ -437,11 +454,17 @@
 
       <div class="requirements">
         <h3>Prerequisites</h3>
+        <p><strong>For the Integration (Parts 1–3):</strong></p>
         <ul>
           <li>Home Assistant 2023.5 or later</li>
           <li>Dashie installed on your Android device (version 2.21.0B or later)</li>
           <li>Both Home Assistant and Dashie on the same local network</li>
           <li><a href="https://hacs.xyz/" target="_blank">HACS</a> installed (recommended) or access to Home Assistant's config folder</li>
+        </ul>
+        <p style="margin-top: 12px;"><strong>For the Console app (Part 4):</strong></p>
+        <ul>
+          <li>Home Assistant OS or Home Assistant Supervised (apps require Supervisor — Container and Core installs can't run apps)</li>
+          <li>A Dashie account — sign up at <a href="https://dashieapp.com" target="_blank">dashieapp.com</a></li>
         </ul>
       </div>
 
@@ -609,7 +632,7 @@
 
       <p>
         If you prefer not to use HACS, you can install the integration manually.
-        You'll need access to your Home Assistant config folder via Samba share, SSH, or the File Editor add-on.
+        You'll need access to your Home Assistant config folder via Samba share, SSH, or the File Editor app.
       </p>
 
       <div class="step">
@@ -710,6 +733,105 @@
           Dashie broadcasts its presence on your network using mDNS/Zeroconf. Home Assistant may
           automatically discover your device and show a notification to add it. If you see this
           notification, just click "Configure" to add the device.
+        </p>
+      </div>
+
+      <h2>Part 4: Install the Dashie Console App (Optional)</h2>
+
+      <p>
+        The Dashie Console app puts the full Dashie management UI inside Home Assistant.
+        From the Console you can manage your family, calendars, photos, AI personality, voice
+        settings, and per-device preferences — all without leaving HA. You'll also see live device
+        history charts (battery, RAM, Wi-Fi) and per-device control panels.
+      </p>
+
+      <div class="info-box warning">
+        <h4>Apps need Home Assistant OS or Supervised</h4>
+        <p>
+          The Console app runs as a Home Assistant app (previously called add-ons). Apps require the
+          Home Assistant Supervisor, which is included in <strong>Home Assistant OS</strong> and
+          <strong>Home Assistant Supervised</strong>. If you're running <strong>HA Container</strong> or
+          <strong>HA Core</strong>, apps aren't available — you can still use the integration above and
+          manage your Dashie account at <a href="https://dashieapp.com/console" target="_blank">dashieapp.com/console</a> in your browser.
+        </p>
+      </div>
+
+      <div class="step">
+        <div class="step-number">1</div>
+        <div class="step-content">
+          <h4>Open the App Store</h4>
+          <p>
+            In Home Assistant, go to <strong>Settings → Apps</strong> (formerly "Add-ons"). Click the
+            <strong>App Store</strong> button at the bottom right.
+          </p>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-number">2</div>
+        <div class="step-content">
+          <h4>Add the Dashie Repository</h4>
+          <p>
+            Click the three-dot menu (⋮) in the top right of the App Store and select
+            <strong>Repositories</strong>. Paste this URL:
+          </p>
+          <p><code>https://github.com/jwlerch78/dashie-ha-app</code></p>
+          <p>
+            Click <strong>Add</strong>, then close the dialog. A new "Dashie" section appears at the
+            bottom of the App Store with the Dashie Console card.
+          </p>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-number">3</div>
+        <div class="step-content">
+          <h4>Install Dashie Console</h4>
+          <p>
+            Click the <strong>Dashie Console</strong> card, then click <strong>Install</strong>.
+            The first install pulls a Node.js base image and takes 3–5 minutes on a Raspberry Pi
+            (faster on x86 hardware). The progress spinner won't show a percentage — just wait until
+            it's done.
+          </p>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-number">4</div>
+        <div class="step-content">
+          <h4>Configure and Start</h4>
+          <p>
+            Once installed, go to the <strong>Configuration</strong> tab. Confirm
+            <code>supabase_env: production</code> (the default) so the Console connects to
+            live Dashie. Save, then switch to the <strong>Info</strong> tab.
+          </p>
+          <p>
+            Toggle <strong>Show in sidebar</strong> on so you can reach the Console from HA's
+            main sidebar. Then click <strong>Start</strong>.
+          </p>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-number">5</div>
+        <div class="step-content">
+          <h4>Sign In</h4>
+          <p>
+            Click <strong>Open Web UI</strong> (or click "Dashie Console" in the HA sidebar).
+            The Console will show a sign-in screen with a short code. Open
+            <a href="https://dashieapp.com/link" target="_blank">dashieapp.com/link</a> on your phone
+            or laptop, enter the code, and approve. You're in.
+          </p>
+        </div>
+      </div>
+
+      <div class="info-box tip">
+        <h4>First-Time Console Tips</h4>
+        <p>
+          • Devices you added in Part 3 will appear in the <strong>Devices</strong> section automatically.<br>
+          • Click any device card for live metrics, history charts (battery, RAM, Wi-Fi), and per-device settings.<br>
+          • The Console auto-updates — when we ship a new version, just click <strong>Update</strong> on the
+          Dashie Console card in Settings → Apps.
         </p>
       </div>
 
