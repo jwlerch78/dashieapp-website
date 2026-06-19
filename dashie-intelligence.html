@@ -231,6 +231,9 @@
       flex-shrink: 0;
     }
 
+    .feature-icon.cloud { background: #ffaa00; }
+    .feature-icon.local { background: #28a745; }
+
     .feature-icon svg {
       width: 24px;
       height: 24px;
@@ -238,6 +241,31 @@
       stroke-width: 2;
       fill: none;
     }
+
+    /* Icon-color legend */
+    .icon-legend {
+      display: inline-flex;
+      gap: 18px;
+      margin-top: 6px;
+      font-size: 0.85em;
+      color: #777;
+    }
+
+    .icon-legend span {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+    }
+
+    .icon-legend i {
+      width: 12px;
+      height: 12px;
+      border-radius: 3px;
+      display: inline-block;
+    }
+
+    .icon-legend i.local { background: #28a745; }
+    .icon-legend i.cloud { background: #ffaa00; }
 
     .feature-text h3 {
       font-size: 1.1em;
@@ -558,7 +586,8 @@
       <div class="privacy-card cloud">
         <h3><span class="privacy-dot orange"></span> Cloud (orange)</h3>
         <ul>
-          <li>Premium AI models, premium speech recognition, and character voices</li>
+          <li>Cloud-based LLMs can be more economical than high-powered hardware for a local LLM</li>
+          <li>Advanced speech recognition and character voices</li>
           <li>Web search and live data tools (sports, weather, places)</li>
           <li>Queries aggregated and account-anonymized through Dashie</li>
           <li>Draws on your credit balance &mdash; metered and transparent</li>
@@ -574,11 +603,17 @@
   <!-- Proof points -->
   <section class="features-preview">
     <h2>What you get</h2>
-    <p class="section-subtitle">Everything below works together, on the same "Hey Dashie." Each capability is marked <span class="cap-tag local">Local</span> or <span class="cap-tag cloud">Cloud</span>.</p>
+    <p class="section-subtitle">Everything below works together, on the same "Hey Dashie."</p>
+    <div style="text-align:center;">
+      <span class="icon-legend">
+        <span><i class="local"></i> Runs locally</span>
+        <span><i class="cloud"></i> Cloud-powered</span>
+      </span>
+    </div>
 
-    <div class="feature-list">
+    <div class="feature-list" style="margin-top:36px;">
       <div class="feature-item">
-        <div class="feature-icon">
+        <div class="feature-icon local">
           <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
         </div>
         <div class="feature-text">
@@ -588,7 +623,7 @@
       </div>
 
       <div class="feature-item">
-        <div class="feature-icon">
+        <div class="feature-icon local">
           <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
         </div>
         <div class="feature-text">
@@ -598,7 +633,7 @@
       </div>
 
       <div class="feature-item">
-        <div class="feature-icon">
+        <div class="feature-icon cloud">
           <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v12M9 9h4a2 2 0 0 1 0 4H9"/></svg>
         </div>
         <div class="feature-text">
@@ -610,31 +645,31 @@
 
     <div class="feature-list-bottom">
       <div class="feature-item">
-        <div class="feature-icon">
+        <div class="feature-icon cloud">
           <svg viewBox="0 0 24 24"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2M12 19v4M8 23h8"/></svg>
         </div>
         <div class="feature-text">
-          <h3>Better speech recognition <span class="cap-tag cloud">Cloud</span></h3>
+          <h3>Better speech recognition</h3>
           <p>More capable voice recognition biased to your household's names and sports teams. Powered by Deepgram.</p>
         </div>
       </div>
 
       <div class="feature-item">
-        <div class="feature-icon">
+        <div class="feature-icon cloud">
           <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
         </div>
         <div class="feature-text">
-          <h3>Voices &amp; personalities <span class="cap-tag cloud">Cloud</span></h3>
+          <h3>Voices &amp; personalities</h3>
           <p>Santa, Pirate, Butler, Drill Sergeant, and more &mdash; character voices your family picks, with customizable personalities, well above the local text-to-speech ceiling. Powered by ElevenLabs.</p>
         </div>
       </div>
 
       <div class="feature-item">
-        <div class="feature-icon">
+        <div class="feature-icon cloud">
           <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
         </div>
         <div class="feature-text">
-          <h3>Accurate by construction <span class="cap-tag cloud">Cloud</span></h3>
+          <h3>Accurate by construction</h3>
           <p>Scores and weather come from real data sources &mdash; deterministic and real-time, not scraped guesses.</p>
         </div>
       </div>
@@ -642,27 +677,27 @@
 
     <div class="feature-list-bottom">
       <div class="feature-item">
-        <div class="feature-icon">
+        <div class="feature-icon local">
           <svg viewBox="0 0 24 24"><path d="M18.36 6.64a9 9 0 1 1-12.73 0"/><line x1="12" y1="2" x2="12" y2="12"/></svg>
         </div>
         <div class="feature-text">
-          <h3>Local-first resilience <span class="cap-tag local">Local</span></h3>
+          <h3>Local-first resilience</h3>
           <p>Device control runs locally &mdash; your lights and scenes keep working even when the cloud is down.</p>
         </div>
       </div>
 
       <div class="feature-item">
-        <div class="feature-icon">
+        <div class="feature-icon local">
           <svg viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
         </div>
         <div class="feature-text">
-          <h3>Free &amp; instant for the common case <span class="cap-tag local">Local</span></h3>
+          <h3>Free &amp; instant for the common case</h3>
           <p>Device and music commands answer locally, free and sub-second. Only open-ended questions touch paid AI.</p>
         </div>
       </div>
 
       <div class="feature-item">
-        <div class="feature-icon">
+        <div class="feature-icon local">
           <svg viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
         </div>
         <div class="feature-text">
