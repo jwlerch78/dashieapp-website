@@ -390,16 +390,12 @@
       </div>
 
       <div class="form-group">
-        <label for="current-ai">What AI are you using today with Home Assistant?</label>
-        <select id="current-ai" name="current_ai">
+        <label for="ha-ai-experience">What has been your experience with AI in Home Assistant so far?</label>
+        <select id="ha-ai-experience" name="ha_ai_experience">
           <option value="">Select an option...</option>
-          <option value="none">None / not using AI with HA yet</option>
-          <option value="ha-assist">Home Assistant Assist (built-in, no LLM)</option>
-          <option value="local">A local LLM (Ollama, llama.cpp, etc.)</option>
-          <option value="openai">OpenAI / ChatGPT</option>
-          <option value="claude">Claude (Anthropic)</option>
-          <option value="gemini">Gemini (Google)</option>
-          <option value="other">Other</option>
+          <option value="local-working">I have a local LLM working</option>
+          <option value="cloud-working">I have a cloud LLM working</option>
+          <option value="not-tried">Haven't tried it yet</option>
         </select>
       </div>
 
@@ -413,12 +409,14 @@
         </select>
       </div>
 
-      <div class="form-section-label">Your hardware (for local-LLM participants)</div>
+      <div id="hardware-section" style="display: none;">
+        <div class="form-section-label">Your hardware (for local-LLM participants)</div>
 
-      <div class="form-group">
-        <label for="hardware">If you'll run a local model, what hardware will you use?</label>
-        <input type="text" id="hardware" name="hardware" placeholder="e.g., Mac mini M4 16GB, RTX 3060 12GB, N100 mini-PC, or 'I'll use cloud'">
-        <p class="hint">Host + GPU/VRAM helps us match you to a supported model tier. Leave blank or write "cloud" if not applicable.</p>
+        <div class="form-group">
+          <label for="hardware">What hardware will you run your local model on?</label>
+          <input type="text" id="hardware" name="hardware" placeholder="e.g., Mac mini M4 16GB, RTX 3060 12GB, N100 mini-PC">
+          <p class="hint">Host + GPU/VRAM helps us match you to a supported model tier.</p>
+        </div>
       </div>
 
       <div class="form-section-label">Your Home Assistant setup</div>
@@ -489,6 +487,13 @@
   </section>
 
   <script>
+    // Show the hardware question only for local / both AI approaches
+    document.getElementById('ai-intent').addEventListener('change', function() {
+      const showHardware = this.value === 'local' || this.value === 'both';
+      document.getElementById('hardware-section').style.display = showHardware ? 'block' : 'none';
+      if (!showHardware) document.getElementById('hardware').value = '';
+    });
+
     // Form submission
     document.getElementById('alpha-access-form').addEventListener('submit', async function(e) {
       e.preventDefault();
@@ -498,7 +503,7 @@
         name: formData.get('name'),
         email: formData.get('email'),
         ai_intent: formData.get('ai_intent'),
-        current_ai: formData.get('current_ai') || null,
+        ha_ai_experience: formData.get('ha_ai_experience') || null,
         connectivity: formData.get('connectivity') || null,
         hardware: formData.get('hardware') || null,
         ha_setup: formData.getAll('ha_setup'),
