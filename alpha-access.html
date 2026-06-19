@@ -390,6 +390,20 @@
       </div>
 
       <div class="form-group">
+        <label for="current-ai">What AI are you using today with Home Assistant?</label>
+        <select id="current-ai" name="current_ai">
+          <option value="">Select an option...</option>
+          <option value="none">None / not using AI with HA yet</option>
+          <option value="ha-assist">Home Assistant Assist (built-in, no LLM)</option>
+          <option value="local">A local LLM (Ollama, llama.cpp, etc.)</option>
+          <option value="openai">OpenAI / ChatGPT</option>
+          <option value="claude">Claude (Anthropic)</option>
+          <option value="gemini">Gemini (Google)</option>
+          <option value="other">Other</option>
+        </select>
+      </div>
+
+      <div class="form-group">
         <label for="connectivity">What matters more to you?</label>
         <select id="connectivity" name="connectivity">
           <option value="">Select an option...</option>
@@ -484,6 +498,7 @@
         name: formData.get('name'),
         email: formData.get('email'),
         ai_intent: formData.get('ai_intent'),
+        current_ai: formData.get('current_ai') || null,
         connectivity: formData.get('connectivity') || null,
         hardware: formData.get('hardware') || null,
         ha_setup: formData.getAll('ha_setup'),
