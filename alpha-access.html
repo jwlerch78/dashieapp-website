@@ -313,7 +313,7 @@
     </p>
     <div class="alpha-badge">Alpha Program</div>
     <p class="hero-description">
-      We're piloting <strong>Dashie Intelligence</strong> &mdash; expert-grade voice with premium speech recognition, AI you can route to the cloud <em>or</em> your own local model, built-in tools, and personality voices. We're looking for a small, curated group of existing Dashie users to help us validate it in the real world. Participants get <strong>complimentary starter credits</strong>. <a href="/dashie-intelligence">Learn what Dashie Intelligence does &rarr;</a>
+      We're piloting <strong>Dashie Intelligence</strong> &mdash; plug-and-play AI for Home Assistant. You can route to the cloud or your own local model, built-in tools, and personality voices. We're looking for a small group of users to help us validate it in the real world. Participants get <strong>complimentary starter credits</strong>. <a href="/dashie-intelligence">Learn what Dashie Intelligence does &rarr;</a>
     </p>
   </section>
 
@@ -387,21 +387,6 @@
           <option value="both">Both &mdash; I want to compare</option>
           <option value="unsure">Not sure yet</option>
         </select>
-      </div>
-
-      <div class="form-group">
-        <label>Where do you plan to use Dashie Intelligence? (check all that apply)</label>
-        <div class="checkbox-group">
-          <label class="checkbox-label">
-            <input type="checkbox" name="surfaces" value="tablet"> <span>A logged-in Dashie tablet</span>
-          </label>
-          <label class="checkbox-label">
-            <input type="checkbox" name="surfaces" value="kiosk"> <span>An anonymous kiosk tablet (no Dashie login, shared via the add-on)</span>
-          </label>
-          <label class="checkbox-label">
-            <input type="checkbox" name="surfaces" value="satellite"> <span>A Home Assistant voice satellite (Voice PE, ESPHome, etc.)</span>
-          </label>
-        </div>
       </div>
 
       <div class="form-group">
@@ -499,7 +484,6 @@
         name: formData.get('name'),
         email: formData.get('email'),
         ai_intent: formData.get('ai_intent'),
-        surfaces: formData.getAll('surfaces'),
         connectivity: formData.get('connectivity') || null,
         hardware: formData.get('hardware') || null,
         ha_setup: formData.getAll('ha_setup'),
