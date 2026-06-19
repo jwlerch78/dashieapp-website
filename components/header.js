@@ -101,6 +101,19 @@ const headerHTML = `
     vertical-align: middle;
   }
 
+  .nav-bar li a .alpha-tag,
+  .mobile-menu li a .alpha-tag {
+    display: inline-block;
+    background: linear-gradient(135deg, #7b2ff7 0%, #4a00e0 100%);
+    color: white;
+    font-size: 10px;
+    font-weight: 600;
+    padding: 2px 6px;
+    border-radius: 3px;
+    margin-left: 6px;
+    vertical-align: middle;
+  }
+
   .nav-bar-right {
     display: flex;
     align-items: center;
@@ -526,6 +539,7 @@ const headerHTML = `
         </div>
       </li>
       <li><a href="/get-dashie" class="${getActiveClass('/get-dashie')}">Get Dashie <span class="beta-tag">Beta</span></a></li>
+      <li><a href="/dashie-intelligence" class="${getActiveClass('/dashie-intelligence')}">Dashie Intelligence <span class="alpha-tag">Alpha</span></a></li>
       <li><a href="/guides/" class="${getActiveClass('/guides')}">How to Guides</a></li>
       <li><a href="/pricing" class="${getActiveClass('/pricing')}">Pricing</a></li>
       <li class="nav-dropdown">
@@ -577,6 +591,7 @@ const headerHTML = `
     <li><a href="/dashie-kiosk#video-streaming" class="mobile-sub-item">Video Streaming</a></li>
     <li><a href="/dashie-kiosk#battery-management" class="mobile-sub-item">Battery Management</a></li>
     <li><a href="/get-dashie" class="${getActiveClass('/get-dashie')}">Get Dashie</a></li>
+    <li><a href="/dashie-intelligence" class="${getActiveClass('/dashie-intelligence')}">Dashie Intelligence <span class="alpha-tag">Alpha</span></a></li>
     <li><a href="/guides/" class="${getActiveClass('/guides')}">How to Guides</a></li>
     <li><a href="/pricing" class="${getActiveClass('/pricing')}">Pricing</a></li>
     <li><a href="#" onclick="event.preventDefault();" class="mobile-menu-label">About</a></li>

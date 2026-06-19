@@ -369,6 +369,16 @@
         <p class="hint">The email tied to your Dashie account, if you have one &mdash; we'll use it to enable alpha access.</p>
       </div>
 
+      <div class="form-group">
+        <label for="has-google">Do you have a Google account?</label>
+        <select id="has-google" name="has_google" required>
+          <option value="">Select an option...</option>
+          <option value="yes">Yes</option>
+          <option value="no">No</option>
+        </select>
+        <p class="hint">A Google account is currently required to access the Dashie Console.</p>
+      </div>
+
       <div class="form-section-label">How you want to use it</div>
 
       <div class="form-group">
@@ -459,6 +469,7 @@
       const data = {
         name: formData.get('name'),
         email: formData.get('email'),
+        has_google: formData.get('has_google'),
         ai_intent: formData.get('ai_intent'),
         ha_ai_experience: formData.get('ha_ai_experience') || null,
         connectivity: formData.get('connectivity') || null,
