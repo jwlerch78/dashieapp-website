@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The state of local voice AI in Home Assistant — and what it really costs you - Dashie Blog</title>
+  <link rel="icon" type="image/png" href="../../artwork/Dashie_Logo_Orange_Transparent.png">
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      line-height: 1.7;
+      background: #ffffff;
+      color: #424242;
+      min-height: 100vh;
+    }
+
+    .breadcrumb {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 20px 40px 0 40px;
+    }
+
+    .breadcrumb a { color: #666; text-decoration: none; font-size: 14px; }
+    .breadcrumb a:hover { color: #ffaa00; }
+    .breadcrumb span { color: #999; margin: 0 8px; }
+
+    .article {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 30px 40px 60px 40px;
+    }
+
+    .article-header { margin-bottom: 36px; }
+
+    .article-tag {
+      display: inline-block;
+      background: linear-gradient(135deg, #7b2ff7 0%, #4a00e0 100%);
+      color: white;
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      padding: 4px 12px;
+      border-radius: 4px;
+      margin-bottom: 16px;
+    }
+
+    .article h1 {
+      font-size: 2.3em;
+      color: #424242;
+      margin-bottom: 16px;
+      line-height: 1.25;
+    }
+
+    .article-byline {
+      color: #888;
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .article-byline .dot { color: #ccc; }
+
+    .article-content h2 {
+      font-size: 1.5em;
+      color: #424242;
+      margin: 42px 0 18px 0;
+      padding-bottom: 10px;
+      border-bottom: 2px solid #ffaa00;
+    }
+
+    .article-content h3 {
+      font-size: 1.2em;
+      color: #424242;
+      margin: 30px 0 14px 0;
+    }
+
+    .article-content p { margin-bottom: 20px; color: #4a4a4a; }
+
+    .article-content ul, .article-content ol {
+      margin-bottom: 20px;
+      padding-left: 28px;
+    }
+
+    .article-content li { margin-bottom: 10px; color: #4a4a4a; }
+
+    .article-content a { color: #7b2ff7; text-decoration: none; }
+    .article-content a:hover { text-decoration: underline; }
+
+    .article-content strong { color: #333; }
+
+    .lead {
+      font-size: 1.18em;
+      color: #555;
+      margin-bottom: 28px;
+    }
+
+    blockquote {
+      border-left: 4px solid #ffaa00;
+      background: #fffaf0;
+      padding: 16px 22px;
+      margin: 24px 0;
+      border-radius: 0 8px 8px 0;
+      color: #555;
+      font-style: italic;
+    }
+
+    .callout {
+      background: #f0ebff;
+      border-left: 4px solid #7b2ff7;
+      padding: 18px 22px;
+      border-radius: 0 8px 8px 0;
+      margin: 24px 0;
+    }
+
+    .callout h4 { color: #4a00e0; margin-bottom: 8px; }
+    .callout p { margin: 0; color: #555; }
+
+    .cta-box {
+      background: linear-gradient(135deg, #7b2ff7 0%, #4a00e0 100%);
+      color: #fff;
+      border-radius: 14px;
+      padding: 32px;
+      text-align: center;
+      margin: 44px 0 0 0;
+    }
+
+    .cta-box h3 { font-size: 1.4em; margin-bottom: 10px; }
+    .cta-box p { opacity: 0.92; margin-bottom: 20px; }
+
+    .cta-box a {
+      display: inline-block;
+      background: #fff;
+      color: #4a00e0;
+      padding: 13px 30px;
+      border-radius: 8px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+
+    .cta-box a:hover { background: #f3f0ff; }
+
+    .footer {
+      max-width: 760px;
+      margin: 50px auto 0;
+      padding: 40px;
+      text-align: center;
+      border-top: 1px solid #e0e0e0;
+      color: #999999;
+    }
+
+    .footer-links { margin-top: 20px; }
+    .footer-links a { color: #666666; text-decoration: none; margin: 0 15px; }
+    .footer-links a:hover { color: #ffaa00; }
+
+    @media (max-width: 768px) {
+      .breadcrumb, .article { padding-left: 20px; padding-right: 20px; }
+      .article h1 { font-size: 1.7em; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Shared Header/Navigation -->
+  <script src="/components/header.js"></script>
+
+  <div class="breadcrumb">
+    <a href="/blog/">Dashie Blog</a>
+    <span>/</span>
+    <a href="#">The state of local voice AI in Home Assistant</a>
+  </div>
+
+  <article class="article">
+    <header class="article-header">
+      <span class="article-tag">Voice &amp; AI</span>
+      <h1>The state of local voice AI in Home Assistant &mdash; and what it really costs you</h1>
+      <div class="article-byline">
+        <span>John</span><span class="dot">&middot;</span><span>Dashie Developer</span><span class="dot">&middot;</span><span>June 2026</span><span class="dot">&middot;</span><span>9 min read</span>
+      </div>
+    </header>
+
+    <div class="article-content">
+      <p class="lead">
+        If you follow the Home Assistant community, you've seen it: people are building genuinely good, fully local voice
+        assistants. No Alexa, no Google, no always-on mic streaming to a data center. It works, it's private, and it's
+        impressive. It's also&mdash;and I say this with enormous respect for the people doing it&mdash;a <em>lot</em> of work.
+      </p>
+
+      <p>
+        We've spent the last several months living in this ecosystem while building <a href="/dashie-intelligence">Dashie
+        Intelligence</a>, and I want to give an honest account of where local voice AI in Home Assistant actually stands: what
+        it can do, what it takes to get there, and the specific problems we set out to solve. If you're an enthusiast who has
+        already done this, a lot of it will be familiar&mdash;and I hope the framing is still useful. If you're someone who has
+        looked at it and bounced off, this is for you.
+      </p>
+
+      <h2>The promise is real</h2>
+
+      <p>
+        The reason people go to the trouble is simple and good:
+      </p>
+
+      <ul>
+        <li><strong>Privacy.</strong> Your home's data&mdash;who's home, what's on, what you ask&mdash;never leaves your network.</li>
+        <li><strong>No Big Tech dependency.</strong> No vendor account, no cloud mic, no terms-of-service roulette.</li>
+        <li><strong>Resilience.</strong> When the cloud has a bad day, your lights still turn on. (More than one person started
+          down this road after a major outage left them unable to control their own house.)</li>
+      </ul>
+
+      <p>
+        And the tooling has caught up enough to make it possible. Home Assistant's Assist pipeline, the Wyoming protocol, local
+        speech engines, and the ability to wire an LLM in as a conversation agent mean that&mdash;on the right hardware&mdash;you
+        can absolutely have a capable, private voice assistant that controls your home and answers questions.
+      </p>
+
+      <h2>The reality is months of tuning</h2>
+
+      <p>
+        The best account of what it actually takes is
+        <a href="https://community.home-assistant.io/t/my-journey-to-a-reliable-and-enjoyable-locally-hosted-voice-assistant/944860" target="_blank" rel="noopener">NickM-27's "My journey to a reliable and enjoyable locally hosted voice assistant"</a>
+        &mdash;a detailed, hard-won writeup (with a public config repo) that's become a reference point for the community.
+        It's excellent. It's also, by the author's own admission, not something the average user can just follow to a finish line.
+        The 2026 roundups of local voice setups say the same thing in different words.
+      </p>
+
+      <p>
+        When you read these guides closely, a consistent list of things-you-must-get-right emerges:
+      </p>
+
+      <ul>
+        <li><strong>Curated entity exposure</strong> &mdash; deciding exactly which devices the model can see.</li>
+        <li><strong>A make-or-break prompt</strong> &mdash; handling ambiguity, refusing to editorialize, never emitting emoji
+          (text-to-speech reads them aloud), staying in a strict response format.</li>
+        <li><strong>Model and quantization selection</strong> &mdash; not just "which model" but which <em>quant</em>, because the
+          wrong one quietly breaks tool-calling.</li>
+        <li><strong>Local-first routing</strong> &mdash; answering simple commands without invoking the LLM at all.</li>
+        <li><strong>Premium speech</strong> &mdash; because the free local options have real gaps.</li>
+        <li><strong>A custom wake word</strong> &mdash; trained, tuned, and running on-device.</li>
+      </ul>
+
+      <p>
+        Each of these is a rabbit hole. Together, they're the months. None of it is the "fun part" of a smart home&mdash;it's
+        infrastructure.
+      </p>
+
+      <h2>Two lessons that surprised us</h2>
+
+      <p>
+        Two findings came up again and again&mdash;in the community guides and in our own testing against real hardware&mdash;and
+        they ended up shaping how we built Dashie Intelligence.
+      </p>
+
+      <h3>1. Context curation is the whole game</h3>
+
+      <p>
+        The instinct is to expose your entire house to the AI so it can do anything. That's exactly backwards. The more entities
+        you hand the model, the slower <em>and</em> dumber it gets&mdash;more tokens to chew through, more chances to pick the wrong
+        device or hallucinate one. The community's rule of thumb lands around a few dozen entities for a reason.
+      </p>
+
+      <p>
+        On weak hardware this isn't a tweak&mdash;it's the difference between working and not. In our own benchmarking, the same
+        warm model on a Raspberry Pi answered a simple question in about 7 seconds with <em>no</em> entity context, and took
+        well over two minutes once the full exposed-entity list was in the prompt. Same model, same machine. The context is what
+        killed it.
+      </p>
+
+      <p>
+        Here's the catch that makes this hard in stock Home Assistant: it has a single "expose to Assist" list. Every agent sees
+        the same set. You can't easily let the fast intent matcher see everything while the LLM sees a tight, relevant subset.
+        That's the exact lever you want&mdash;and it's the one you can't pull.
+      </p>
+
+      <h3>2. The best command is the one that never reaches the AI</h3>
+
+      <p>
+        "Turn off the kitchen lights" does not need a large language model. Routing deterministic commands to Home Assistant's
+        fast, local intent engine&mdash;and only sending genuinely open-ended questions to the LLM&mdash;is described in more than
+        one guide as the single most important setting people skip. It's faster, it's free, it works offline, and it can't
+        hallucinate a device. The LLM should be the last, most-capable stop, not the default.
+      </p>
+
+      <h2>The hardware truth nobody wants to hear</h2>
+
+      <p>
+        We benchmarked this directly. A capable, always-on machine (think an Apple-silicon Mac or a GPU box) running a modern
+        ~20-billion-parameter model is a genuinely good local voice experience: a couple of seconds, correct tool calls, sensible
+        room disambiguation. A Raspberry Pi&mdash;even running HA itself&mdash;is not. It fails on both latency and correctness, and
+        the bigger the model you throw at it, the worse it gets.
+      </p>
+
+      <p>
+        The community's model-selection work points the same direction: roughly a 20B-class mixture-of-experts model is the floor
+        for "reliable," with smaller 7&ndash;8B models acceptable as a functional fallback, and quantization mattering as much as
+        size. There's also a subtle trap&mdash;a model that's been evicted from memory cold-loads on the first request of the day
+        and blows past the voice timeout. "Capable" has to also mean "always on and kept warm."
+      </p>
+
+      <blockquote>
+        The honest summary: local voice AI is excellent when you have the right hardware and the patience to tune it. Both of
+        those are real costs, and most people have neither to spare.
+      </blockquote>
+
+      <h2>What Dashie Intelligence sets out to do</h2>
+
+      <p>
+        Our thesis is straightforward: <strong>you shouldn't have to become an expert to get the expert result.</strong>
+        Everything above&mdash;the curation, the prompt, the model and quant choices, the routing, the wake word, the premium
+        speech&mdash;is work we can do once and ship to everyone. Concretely, that means:
+      </p>
+
+      <ul>
+        <li><strong>Adaptive context.</strong> Dashie sends the model only what a given question needs&mdash;the relevant
+          entities and data, not your whole house. Because Dashie brings its own agent, it isn't bound by Home Assistant's single
+          exposure list, so it can give the LLM a curated, accurate subset. That's faster, cheaper, and more accurate.</li>
+        <li><strong>Local-first routing, built in.</strong> Device and music commands answer locally and instantly; only
+          open-ended questions touch the AI. Your home keeps working when the cloud doesn't.</li>
+        <li><strong>Your model or ours.</strong> Use Dashie's cloud models, or point it at your own local LLM. We curate a list of
+          models that actually behave, so you're not guessing about quants. Either way you get Dashie's tuning, tools, and voices.</li>
+        <li><strong>Speech that's genuinely better.</strong> Premium recognition biased to your household's names and teams, and
+          character voices well above the local text-to-speech ceiling&mdash;with a free local option when you want it.</li>
+        <li><strong>Privacy you can see.</strong> Every part of the pipeline is labeled local or cloud, so "local model" never
+          quietly pairs with cloud speech. Go fully local and nothing but optional web lookups leaves your network.</li>
+      </ul>
+
+      <div class="callout">
+        <h4>An honest note on what's shipping</h4>
+        <p>
+          Dashie Intelligence is in limited alpha. Some of the above is live today and some is rolling out&mdash;we'll keep being
+          specific about which is which, here on the blog and in the product. We'd rather under-promise.
+        </p>
+      </div>
+
+      <h2>Credit where it's due</h2>
+
+      <p>
+        None of this would be possible without the community that proved local voice AI <em>could</em> be great&mdash;the people
+        who documented their journeys, published their configs, and figured out the hard parts in public. Dashie's job isn't to
+        replace that work; it's to package it, so the experience those folks spent months reaching is something a family can have
+        on day one. If you're the type who loves the tuning, keep tuning&mdash;and bring your own model to Dashie. If you're not,
+        that's exactly who we're building for.
+      </p>
+
+      <div class="cta-box">
+        <h3>Want to try it?</h3>
+        <p>Dashie Intelligence is in limited alpha, with complimentary starter credits for participants.</p>
+        <a href="/alpha-access">Request alpha access &rarr;</a>
+      </div>
+    </div>
+  </article>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>&copy; 2026 Dashie LLC. All rights reserved.</p>
+    <div class="footer-links">
+      <a href="/privacy-policy.html">Privacy Policy</a>
+      <span class="separator">|</span>
+      <a href="/terms-of-service.html">Terms of Service</a>
+    </div>
+  </footer>
+
+  <!-- Analytics -->
+  <script type="module" src="/js/analytics/website-analytics.js"></script>
+</body>
+</html>

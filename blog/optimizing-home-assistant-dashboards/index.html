@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Optimizing your Home Assistant dashboards - Dashie Blog</title>
+  <link rel="icon" type="image/png" href="../../artwork/Dashie_Logo_Orange_Transparent.png">
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      line-height: 1.7;
+      background: #ffffff;
+      color: #424242;
+      min-height: 100vh;
+    }
+
+    .breadcrumb {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 20px 40px 0 40px;
+    }
+
+    .breadcrumb a { color: #666; text-decoration: none; font-size: 14px; }
+    .breadcrumb a:hover { color: #ffaa00; }
+    .breadcrumb span { color: #999; margin: 0 8px; }
+
+    .article {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 30px 40px 60px 40px;
+    }
+
+    .article-header { margin-bottom: 36px; }
+
+    .article-tag {
+      display: inline-block;
+      background: #18bcf2;
+      color: white;
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      padding: 4px 12px;
+      border-radius: 4px;
+      margin-bottom: 16px;
+    }
+
+    .article h1 {
+      font-size: 2.3em;
+      color: #424242;
+      margin-bottom: 16px;
+      line-height: 1.25;
+    }
+
+    .article-byline {
+      color: #888;
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .article-byline .dot { color: #ccc; }
+
+    .article-content h2 {
+      font-size: 1.5em;
+      color: #424242;
+      margin: 42px 0 18px 0;
+      padding-bottom: 10px;
+      border-bottom: 2px solid #ffaa00;
+    }
+
+    .article-content h3 { font-size: 1.2em; color: #424242; margin: 30px 0 14px 0; }
+
+    .article-content p { margin-bottom: 20px; color: #4a4a4a; }
+
+    .article-content ul, .article-content ol { margin-bottom: 20px; padding-left: 28px; }
+
+    .article-content li { margin-bottom: 10px; color: #4a4a4a; }
+
+    .article-content a { color: #18bcf2; text-decoration: none; }
+    .article-content a:hover { text-decoration: underline; }
+
+    .article-content strong { color: #333; }
+
+    .lead { font-size: 1.18em; color: #555; margin-bottom: 28px; }
+
+    .draft-note {
+      background: #fff3cd;
+      border-left: 4px solid #ffc107;
+      padding: 14px 20px;
+      border-radius: 0 8px 8px 0;
+      margin: 0 0 28px 0;
+      font-size: 0.9em;
+      color: #856404;
+    }
+
+    .callout {
+      background: #e8f7fc;
+      border-left: 4px solid #18bcf2;
+      padding: 18px 22px;
+      border-radius: 0 8px 8px 0;
+      margin: 24px 0;
+    }
+
+    .callout h4 { color: #0d8bc2; margin-bottom: 8px; }
+    .callout p { margin: 0; color: #555; }
+
+    .cta-box {
+      background: #f9f9f9;
+      border: 2px solid #ffaa00;
+      border-radius: 14px;
+      padding: 30px;
+      text-align: center;
+      margin: 44px 0 0 0;
+    }
+
+    .cta-box h3 { font-size: 1.3em; color: #424242; margin-bottom: 10px; }
+    .cta-box p { color: #666; margin-bottom: 20px; }
+
+    .cta-box a {
+      display: inline-block;
+      background: #ffaa00;
+      color: #fff;
+      padding: 13px 30px;
+      border-radius: 8px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+
+    .cta-box a:hover { background: #ffbb22; }
+
+    .footer {
+      max-width: 760px;
+      margin: 50px auto 0;
+      padding: 40px;
+      text-align: center;
+      border-top: 1px solid #e0e0e0;
+      color: #999999;
+    }
+
+    .footer-links { margin-top: 20px; }
+    .footer-links a { color: #666666; text-decoration: none; margin: 0 15px; }
+    .footer-links a:hover { color: #ffaa00; }
+
+    @media (max-width: 768px) {
+      .breadcrumb, .article { padding-left: 20px; padding-right: 20px; }
+      .article h1 { font-size: 1.7em; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Shared Header/Navigation -->
+  <script src="/components/header.js"></script>
+
+  <div class="breadcrumb">
+    <a href="/blog/">Dashie Blog</a>
+    <span>/</span>
+    <a href="#">Optimizing your Home Assistant dashboards</a>
+  </div>
+
+  <article class="article">
+    <header class="article-header">
+      <span class="article-tag">Dashboards</span>
+      <h1>Optimizing your Home Assistant dashboards</h1>
+      <div class="article-byline">
+        <span>John</span><span class="dot">&middot;</span><span>Dashie Developer</span><span class="dot">&middot;</span><span>June 2026</span><span class="dot">&middot;</span><span>7 min read</span>
+      </div>
+    </header>
+
+    <div class="article-content">
+      <div class="draft-note">
+        Draft &mdash; outline + first pass. Expand each section with your own examples and screenshots before publishing.
+      </div>
+
+      <p class="lead">
+        A wall-mounted Home Assistant dashboard is a different animal from the one you poke at on your phone. It's glanceable,
+        always on, and shared by the whole household. The best ones disappear into the wall and just <em>work</em>. Here's what
+        we've learned&mdash;building Dashie and living with these screens every day&mdash;about making them genuinely good.
+      </p>
+
+      <h2>Design for the glance, not the deep dive</h2>
+
+      <p>
+        A kiosk dashboard is read from across the room, in passing. Optimize for the three-second glance: what does someone
+        standing six feet away actually need&mdash;the time, the weather, who's home, what's next on the calendar? Push the
+        long-tail controls a tap deeper rather than cramming everything onto one screen.
+      </p>
+
+      <ul>
+        <li><strong>One job per view.</strong> A "home" overview, a controls view, a calendar view&mdash;not all three fighting
+          for the same pixels.</li>
+        <li><strong>Size for distance.</strong> Bigger type, fewer items, more whitespace than a phone layout.</li>
+        <li><strong>Lead with information, not switches.</strong> Most glances are read-only. Status first, controls second.</li>
+      </ul>
+
+      <h2>Make it fast&mdash;and keep it fast</h2>
+
+      <p>
+        Always-on screens are unforgiving of slow loads and memory creep. A few things that matter more than they should:
+      </p>
+
+      <ul>
+        <li><strong>Watch the card count.</strong> Heavy cards&mdash;live camera feeds, big history graphs, map cards&mdash;are
+          the expensive ones. Put them where they earn their keep, not on every view.</li>
+        <li><strong>Be deliberate about cameras.</strong> Live streams are the single biggest resource draw on a wall tablet.
+          Show them on demand or on a trigger rather than streaming 24/7.</li>
+        <li><strong>Mind long-lived memory.</strong> A tablet that never reboots will surface any leak eventually. A nightly
+          refresh is a cheap insurance policy.</li>
+      </ul>
+
+      <h2>Reduce the maintenance tax</h2>
+
+      <p>
+        The dashboard you have to babysit is the one you stop using. Favor patterns that don't break every time you add a device:
+      </p>
+
+      <ul>
+        <li><strong>Name and area entities well</strong>&mdash;it pays off in both dashboards and voice. (Name the entity
+          <em>"TV"</em> and assign it the area <em>"Family Room,"</em> rather than baking the room into the entity name.)</li>
+        <li><strong>Template once, reuse everywhere</strong> instead of hand-copying cards per room.</li>
+        <li><strong>Decide what's worth surfacing.</strong> Not every sensor deserves a tile. Curate.</li>
+      </ul>
+
+      <h2>Respect the hardware it lives on</h2>
+
+      <p>
+        A dashboard is only as good as the screen it runs on. Wall tablets bring their own concerns&mdash;screen burn-in,
+        batteries cooking on a permanent charger, motion-wake, and locking the thing down so a guest doesn't accidentally exit
+        to the launcher. This is squarely where a purpose-built kiosk app earns its place over a raw browser.
+      </p>
+
+      <div class="callout">
+        <h4>Where Dashie fits</h4>
+        <p>
+          Dashie is built for exactly this: hosting your Home Assistant dashboards on Android with a clean kiosk experience,
+          motion-wake screensaver, battery management, lock mode, and&mdash;if you want it&mdash;voice. See
+          <a href="/dashie-kiosk">Dashie for Home Assistant</a>.
+        </p>
+      </div>
+
+      <h2>Start small, iterate</h2>
+
+      <p>
+        The best dashboards aren't designed in one sitting&mdash;they're tuned over weeks based on what your household actually
+        glances at. Ship a simple version, watch how people use it, and cut what nobody looks at. Subtraction is the most
+        underrated dashboard skill.
+      </p>
+
+      <div class="cta-box">
+        <h3>Host your HA dashboards the easy way</h3>
+        <p>Dashie turns any Android tablet or TV into a clean, purpose-built Home Assistant kiosk &mdash; free.</p>
+        <a href="/get-dashie">Get Dashie &rarr;</a>
+      </div>
+    </div>
+  </article>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>&copy; 2026 Dashie LLC. All rights reserved.</p>
+    <div class="footer-links">
+      <a href="/privacy-policy.html">Privacy Policy</a>
+      <span class="separator">|</span>
+      <a href="/terms-of-service.html">Terms of Service</a>
+    </div>
+  </footer>
+
+  <!-- Analytics -->
+  <script type="module" src="/js/analytics/website-analytics.js"></script>
+</body>
+</html>
