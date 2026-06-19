@@ -264,6 +264,21 @@
       vertical-align: middle;
     }
 
+    .cap-tag {
+      display: inline-block;
+      font-size: 0.62em;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+      padding: 2px 8px;
+      border-radius: 4px;
+      margin-left: 6px;
+      vertical-align: middle;
+    }
+
+    .cap-tag.cloud { background: #ffe9c7; color: #9a6000; }
+    .cap-tag.local { background: #d6f5e0; color: #1c7a3e; }
+
     /* Privacy section */
     .privacy-section {
       max-width: 900px;
@@ -478,14 +493,14 @@
   <section class="hero">
     <div class="hero-badge">&#10022; Dashie Intelligence&trade;</div>
 
-    <h1>Voice that actually understands your home</h1>
+    <h1>Premium voice AI, ready out of the box</h1>
 
     <p class="tagline">
-      Expert-grade voice and AI for your family dashboard &mdash; the tuned result enthusiasts spend months building, out of the box.
+      Capable voice and AI for your whole home &mdash; pre-configured and ready to go, on Dashie's cloud or your own local model.
     </p>
 
     <p class="description">
-      Say "Hey Dashie" and ask anything. Control your smart home, get answers from the web, check the weather and scores, and hear it all back in a voice your family picks. Run it on Dashie's cloud or on your own local model &mdash; your home's data stays yours.
+      Great household voice usually means weeks of wiring up models, tools, voices, and prompts. Dashie ships it tuned and working: say "Hey Dashie" and ask anything &mdash; control your smart home, get real answers from the web, weather, and sports, and hear it back in a voice your family picks. Set up once for every device, with no API keys to manage.
     </p>
 
     <a href="/alpha-access" class="btn-primary-cta">Join the Alpha</a>
@@ -524,108 +539,6 @@
     </div>
   </section>
 
-  <!-- Proof points -->
-  <section class="features-preview">
-    <h2>What you get</h2>
-    <p class="section-subtitle">Everything below works together, on the same "Hey Dashie."</p>
-
-    <div class="feature-list">
-      <div class="feature-item">
-        <div class="feature-icon">
-          <svg viewBox="0 0 24 24"><path d="M18.36 6.64a9 9 0 1 1-12.73 0"/><line x1="12" y1="2" x2="12" y2="12"/></svg>
-        </div>
-        <div class="feature-text">
-          <h3>Local-first resilience</h3>
-          <p>Device control runs locally &mdash; your lights and scenes keep working even when the cloud is down.</p>
-        </div>
-      </div>
-
-      <div class="feature-item">
-        <div class="feature-icon">
-          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-        </div>
-        <div class="feature-text">
-          <h3>Built-in knowledge tools</h3>
-          <p>Web search, weather, sports, places, and your calendar &mdash; ready to go, no API keys to wire up.</p>
-        </div>
-      </div>
-
-      <div class="feature-item">
-        <div class="feature-icon">
-          <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
-        </div>
-        <div class="feature-text">
-          <h3>Accurate by construction</h3>
-          <p>Scores and weather come from real data sources &mdash; deterministic and real-time, not scraped guesses.</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="feature-list-bottom">
-      <div class="feature-item">
-        <div class="feature-icon">
-          <svg viewBox="0 0 24 24"><path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/></svg>
-        </div>
-        <div class="feature-text">
-          <h3>Premium voices &amp; personalities</h3>
-          <p>Character voices your family picks, well above the local text-to-speech ceiling.</p>
-        </div>
-      </div>
-
-      <div class="feature-item">
-        <div class="feature-icon">
-          <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-        </div>
-        <div class="feature-text">
-          <h3>Better speech recognition</h3>
-          <p>Premium recognition biased to your household's names and teams &mdash; multilingual, not English-locked.</p>
-        </div>
-      </div>
-
-      <div class="feature-item">
-        <div class="feature-icon">
-          <svg viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-        </div>
-        <div class="feature-text">
-          <h3>Free &amp; instant for the common case</h3>
-          <p>Device and music commands answer locally, free and sub-second. Only open-ended questions touch paid AI.</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="feature-list-bottom">
-      <div class="feature-item">
-        <div class="feature-icon">
-          <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
-        </div>
-        <div class="feature-text">
-          <h3>One setup, every device</h3>
-          <p>Configure once &mdash; every tablet and satellite in your home adopts it. One login, zero per-device fuss.</p>
-        </div>
-      </div>
-
-      <div class="feature-item">
-        <div class="feature-icon">
-          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
-        </div>
-        <div class="feature-text">
-          <h3>Transparent cost</h3>
-          <p>Simple credits with clear model labels (economical vs. premium) and per-device usage &mdash; no token math.</p>
-        </div>
-      </div>
-
-      <div class="feature-item">
-        <div class="feature-icon">
-          <svg viewBox="0 0 24 24"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2M12 19v4M8 23h8"/></svg>
-        </div>
-        <div class="feature-text">
-          <h3>Smart conversation <span class="roadmap-tag">Coming soon</span></h3>
-          <p>Ask follow-ups without re-saying the wake word, and Dashie ignores background chatter instead of looping.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- Privacy -->
   <section class="privacy-section">
     <h2>You decide what leaves your home</h2>
@@ -655,6 +568,108 @@
 
     <div class="privacy-note">
       When you choose Dashie Intelligence, we show a one-time privacy summary and color-code each component. Pick a local model alongside local speech and voices and <strong>nothing but optional web lookups ever leaves your LAN</strong>.
+    </div>
+  </section>
+
+  <!-- Proof points -->
+  <section class="features-preview">
+    <h2>What you get</h2>
+    <p class="section-subtitle">Everything below works together, on the same "Hey Dashie." Each capability is marked <span class="cap-tag local">Local</span> or <span class="cap-tag cloud">Cloud</span>.</p>
+
+    <div class="feature-list">
+      <div class="feature-item">
+        <div class="feature-icon">
+          <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+        </div>
+        <div class="feature-text">
+          <h3>Fast setup, every device</h3>
+          <p>Configure once &mdash; every tablet and satellite in your home adopts it. One login, zero per-device fuss.</p>
+        </div>
+      </div>
+
+      <div class="feature-item">
+        <div class="feature-icon">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+        </div>
+        <div class="feature-text">
+          <h3>Optimized prompting</h3>
+          <p>AI is only called when needed and with the context it needs. Responses are optimized for a voice-assistant environment.</p>
+        </div>
+      </div>
+
+      <div class="feature-item">
+        <div class="feature-icon">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v12M9 9h4a2 2 0 0 1 0 4H9"/></svg>
+        </div>
+        <div class="feature-text">
+          <h3>Transparent cost</h3>
+          <p>Simple credits with clear model labels and per-device usage, from a single account with no API keys.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="feature-list-bottom">
+      <div class="feature-item">
+        <div class="feature-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2M12 19v4M8 23h8"/></svg>
+        </div>
+        <div class="feature-text">
+          <h3>Better speech recognition <span class="cap-tag cloud">Cloud</span></h3>
+          <p>More capable voice recognition biased to your household's names and sports teams. Powered by Deepgram.</p>
+        </div>
+      </div>
+
+      <div class="feature-item">
+        <div class="feature-icon">
+          <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        </div>
+        <div class="feature-text">
+          <h3>Voices &amp; personalities <span class="cap-tag cloud">Cloud</span></h3>
+          <p>Santa, Pirate, Butler, Drill Sergeant, and more &mdash; character voices your family picks, with customizable personalities, well above the local text-to-speech ceiling. Powered by ElevenLabs.</p>
+        </div>
+      </div>
+
+      <div class="feature-item">
+        <div class="feature-icon">
+          <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <div class="feature-text">
+          <h3>Accurate by construction <span class="cap-tag cloud">Cloud</span></h3>
+          <p>Scores and weather come from real data sources &mdash; deterministic and real-time, not scraped guesses.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="feature-list-bottom">
+      <div class="feature-item">
+        <div class="feature-icon">
+          <svg viewBox="0 0 24 24"><path d="M18.36 6.64a9 9 0 1 1-12.73 0"/><line x1="12" y1="2" x2="12" y2="12"/></svg>
+        </div>
+        <div class="feature-text">
+          <h3>Local-first resilience <span class="cap-tag local">Local</span></h3>
+          <p>Device control runs locally &mdash; your lights and scenes keep working even when the cloud is down.</p>
+        </div>
+      </div>
+
+      <div class="feature-item">
+        <div class="feature-icon">
+          <svg viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+        </div>
+        <div class="feature-text">
+          <h3>Free &amp; instant for the common case <span class="cap-tag local">Local</span></h3>
+          <p>Device and music commands answer locally, free and sub-second. Only open-ended questions touch paid AI.</p>
+        </div>
+      </div>
+
+      <div class="feature-item">
+        <div class="feature-icon">
+          <svg viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+        </div>
+        <div class="feature-text">
+          <h3>Smart conversation <span class="roadmap-tag">Coming soon</span></h3>
+          <p>Ask follow-ups without re-saying the wake word, and Dashie ignores background chatter instead of looping.</p>
+        </div>
+      </div>
     </div>
   </section>
 
