@@ -1,9 +1,9 @@
 {
-  "versionCode": 167,
-  "versionName": "1.0.11",
+  "versionCode": 169,
+  "versionName": "1.0.12",
   "apkUrl": "https://dashieapp.com/downloads/Dashie-sideload-beta.apk",
-  "sha256": "04f3e3c7ae65ec078d11aebd762475e66bd675c8017330d918761a10b5749736",
+  "sha256": "3cad9a4cb7ea3b788cbe77dd056c8c2b77a5ea357e059e33449899d63cffa4b0",
   "notify": false,
-  "title": "What's new in 1.0.11",
-  "description": "• Voice license sharing across the household — one purchased license auto-shares with secondary devices (requires updated Dashie HA integration)\n• Device owner mode for tablets — keeps the motion-wake camera alive even when the screen is off\n• Additional bug fixes and improvements"
+  "title": "What's new in 1.0.12",
+  "description": "• Additional bug fixes and improvements"
 }
