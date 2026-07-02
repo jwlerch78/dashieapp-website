@@ -552,12 +552,9 @@ const headerHTML = `
       </li>
     </ul>
   </div>
-  <!-- Subscribe + Sign In hidden until those flows are ready; uncomment to re-enable
   <div class="nav-bar-right">
-    <a href="https://app.dashieapp.com/subscribe.html?source=marketing" class="btn-login">Subscribe</a>
-    <a href="#" class="btn-signup" onclick="window.dashieHeader.showSigninModal(event)">Sign In</a>
+    <a href="https://app.dashieapp.com/subscribe.html?source=website" class="btn-login">Purchase</a>
   </div>
-  -->
   <button class="hamburger-btn" onclick="window.dashieHeader.toggleMobileMenu()">
     <svg viewBox="0 0 24 24" fill="none">
       <line x1="3" y1="6" x2="21" y2="6"/>
@@ -599,29 +596,11 @@ const headerHTML = `
     <li><a href="/terms-of-service.html" class="mobile-sub-item">Terms of Service</a></li>
     <li><a href="/contact" class="mobile-sub-item ${getActiveClass('/contact')}">Contact Us</a></li>
   </ul>
-  <!-- Subscribe + Sign In hidden until those flows are ready; uncomment to re-enable
   <div class="mobile-menu-buttons">
-    <a href="https://app.dashieapp.com/subscribe.html?source=marketing" class="btn-login">Subscribe</a>
-    <a href="#" class="btn-signup" onclick="window.dashieHeader.showSigninModal(event)">Sign In</a>
+    <a href="https://app.dashieapp.com/subscribe.html?source=website" class="btn-login">Purchase</a>
   </div>
-  -->
 </div>
 
-<!-- Sign-in Modal -->
-<div class="signin-modal-overlay" id="signin-modal-overlay" onclick="window.dashieHeader.hideSigninModal(event)">
-  <div class="signin-modal" onclick="event.stopPropagation()">
-    <div style="text-align: center; margin-bottom: 20px; display: flex; flex-direction: column; align-items: center;">
-      <img src="/artwork/Dashie_Full_Logo_Orange_Transparent.png" alt="Dashie" style="height: 70px; margin-bottom: 10px;">
-      <div style="background: #1a365d; color: white; font-size: 10px; font-weight: 600; padding: 3px 10px; border-radius: 4px;">Beta</div>
-    </div>
-    <p>Dashie is in limited release and your account must be registered through our beta program.</p>
-    <div class="signin-modal-buttons">
-      <a href="/beta-signup" class="btn-primary">Register for Beta</a>
-      <a href="https://app.dashieapp.com/login" id="signin-continue-link" class="btn-secondary">Continue to Sign In</a>
-      <button class="btn-cancel" onclick="window.dashieHeader.hideSigninModal(event)">Cancel</button>
-    </div>
-  </div>
-</div>
 `;
 
 // Inject the header HTML
@@ -643,31 +622,5 @@ window.dashieHeader = {
       overlay.classList.add('active');
       document.body.style.overflow = 'hidden';
     }
-  },
-
-  showSigninModal: function(event) {
-    event.preventDefault();
-    // Close mobile menu if open
-    const mobileMenu = document.getElementById('mobile-menu');
-    if (mobileMenu && mobileMenu.classList.contains('active')) {
-      this.toggleMobileMenu();
-    }
-    // Desktop browsers go to the management console (/console); phones go
-    // straight to the app itself (/login → mobile app experience).
-    var continueLink = document.getElementById('signin-continue-link');
-    if (continueLink) {
-      var isMobile = /Mobi|Android|iPhone|iPod/i.test(navigator.userAgent);
-      continueLink.href = isMobile
-        ? 'https://app.dashieapp.com/login'
-        : 'https://app.dashieapp.com/console';
-    }
-    document.getElementById('signin-modal-overlay').classList.add('active');
-    document.body.style.overflow = 'hidden';
-  },
-
-  hideSigninModal: function(event) {
-    if (event) event.preventDefault();
-    document.getElementById('signin-modal-overlay').classList.remove('active');
-    document.body.style.overflow = '';
   }
 };
