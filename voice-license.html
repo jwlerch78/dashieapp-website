@@ -416,12 +416,12 @@
                  id="deviceIdInput"
                  class="device-id-input"
                  placeholder="XXXXXXXX"
-                 maxlength="8"
+                 maxlength="64"
                  autocomplete="off"
                  spellcheck="false">
         </div>
         <div class="device-id-hint">
-          The easiest way: in Dashie, open the sidebar (swipe from the left edge) and turn on <strong>Voice Commands</strong> — scan the QR code or tap <strong>Purchase</strong> and this field fills in automatically. Or type the 8-character Device ID shown on that same screen.
+          Enter the Device ID shown at the bottom of your Dashie Control Panel — the first 8 characters are all you need. Or, in Dashie's sidebar, turn on <strong>Voice Commands</strong> and scan the QR code to fill this in automatically.
         </div>
       </div>
 
@@ -541,7 +541,9 @@
 
     function validateDeviceId() {
       const deviceId = deviceIdInput.value;
-      const isValid = deviceId.length === 8 && /^[A-Z0-9]+$/.test(deviceId);
+      // Licenses hash against the first 8 chars, so accept an 8-char short ID or a
+      // full stable ID paste — anything >= 8 alphanumeric. The server normalizes.
+      const isValid = deviceId.length >= 8 && /^[A-Z0-9]+$/.test(deviceId);
 
       deviceIdInput.classList.toggle('valid', isValid);
       purchaseBtn.disabled = !isValid;
@@ -551,8 +553,8 @@
     purchaseBtn.addEventListener('click', async function() {
       const deviceId = deviceIdInput.value;
 
-      if (deviceId.length !== 8) {
-        showError('Please enter a valid 8-character Device ID');
+      if (deviceId.length < 8) {
+        showError('Please enter your Device ID (at least 8 characters)');
         return;
       }
 
