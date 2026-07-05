@@ -10,6 +10,11 @@
       "source": "/voice",
       "destination": "/voice-license",
       "permanent": true
+    },
+    {
+      "source": "/add-credits",
+      "destination": "https://app.dashieapp.com/add-credits.html",
+      "permanent": false
     }
   ],
   "headers": [
