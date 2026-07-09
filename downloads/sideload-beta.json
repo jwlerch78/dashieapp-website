@@ -1,9 +1,9 @@
 {
-  "versionCode": 173,
-  "versionName": "1.0.13",
+  "versionCode": 174,
+  "versionName": "1.0.14",
   "apkUrl": "https://dashieapp.com/downloads/Dashie-sideload-beta.apk",
-  "sha256": "c5cfdbd9b1cf8be5bb2895e82e6d46ba023eda0537413f26d206d52c61f99429",
+  "sha256": "4831088d98a1a90be96cb2635450948b8215ac27b1a2938155c744888f4678fa",
   "notify": false,
-  "title": "What's new in 1.0.13",
-  "description": "\u2022 Additional bug fixes and improvements"
+  "title": "What's new in 1.0.14",
+  "description": "\u2022 Improved \"Hey Dashie\" wake word detection\n\u2022 Additional bug fixes and improvements"
 }

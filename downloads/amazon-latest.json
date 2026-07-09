@@ -1,7 +1,7 @@
 {
-  "versionCode": 172,
-  "versionName": "1.0.12",
-  "notify": true,
-  "title": "What's new in 1.0.12",
-  "description": "• Improved Fire TV remote navigation reliability\n• Local HTTPS support for Home Assistant\n• Weather \"Now\" hour now matches your dashboard timezone\n• Account & sign-in reliability improvements\n• Various bug fixes and performance improvements"
+  "versionCode": 174,
+  "versionName": "1.0.14",
+  "notify": false,
+  "title": "What's new in 1.0.14",
+  "description": "• Improved \"Hey Dashie\" wake word detection\n• Additional bug fixes and improvements"
 }
