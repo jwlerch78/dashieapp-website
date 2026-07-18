@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Join the Dashie Intelligence Alpha</title>
+  <title>Join the Dashie Intelligence Beta</title>
   <link rel="icon" type="image/png" href="./artwork/Dashie_Logo_Orange_Transparent.png">
 
   <style>
@@ -300,11 +300,11 @@
 
   <!-- Hero Section -->
   <section class="hero">
-    <h1>Join the Dashie Intelligence Alpha</h1>
+    <h1>Join the Dashie Intelligence Beta</h1>
     <p class="tagline">
       Be among the first families to put Dashie's new voice intelligence to work in your home.
     </p>
-    <div class="alpha-badge">Alpha Program</div>
+    <div class="alpha-badge">Beta Program</div>
     <p class="hero-description">
       We're piloting <strong>Dashie Intelligence</strong> &mdash; plug-and-play AI for Home Assistant. You can route to the cloud or your own local model, built-in tools, and personality voices. We're looking for a small group of users to help us validate it in the real world. Participants get <strong>complimentary starter credits</strong>. <a href="/dashie-intelligence">Learn what Dashie Intelligence does &rarr;</a>
     </p>
@@ -366,7 +366,7 @@
       <div class="form-group">
         <label for="email">Google account email (the one you'll sign in with)</label>
         <input type="email" id="email" name="email" placeholder="you@gmail.com" required>
-        <p class="hint">Use the <strong>exact</strong> Gmail / Google account you'll sign into Dashie with &mdash; we enable alpha access on that specific account, so it has to match the email you log in with.</p>
+        <p class="hint">Use the <strong>exact</strong> Gmail / Google account you'll sign into Dashie with &mdash; we enable beta access on that specific account, so it has to match the email you log in with.</p>
       </div>
 
       <div class="form-group">
@@ -444,12 +444,12 @@
         <textarea id="additional-info" name="additional_info" rows="4" placeholder="(Optional) Share any other thoughts, questions, or details on your use case or interest you'd like."></textarea>
       </div>
 
-      <button type="submit" class="btn-submit">Request Alpha Access</button>
+      <button type="submit" class="btn-submit">Request Beta Access</button>
     </form>
 
     <div id="form-success" style="display: none; text-align: center; padding: 40px;">
       <h3 style="color: #28a745; margin-bottom: 15px;">You're on the list!</h3>
-      <p style="color: #666;">Thanks for volunteering. We review applications in batches and will email you when your account is enabled for the alpha.</p>
+      <p style="color: #666;">Thanks for volunteering. We review applications in batches and will email you when your account is enabled for the beta.</p>
     </div>
   </section>
 
@@ -499,7 +499,7 @@
         } else {
           const result = await response.json();
           if (result.error && result.error.includes('already')) {
-            alert('This email has already applied for the alpha. We\'ll be in touch &mdash; reach out if you need help.');
+            alert('This email has already applied for the beta. We\'ll be in touch &mdash; reach out if you need help.');
           } else {
             alert(result.error || 'There was an error submitting your request. Please try again.');
           }

@@ -538,8 +538,8 @@ const headerHTML = `
           <a href="/dashie-kiosk#home-assistant">Home Assistant Integration</a>
         </div>
       </li>
-      <li><a href="/get-dashie" class="${getActiveClass('/get-dashie')}">Get Dashie <span class="beta-tag">Beta</span></a></li>
-      <li><a href="/dashie-intelligence" class="${getActiveClass('/dashie-intelligence')}">Dashie Intelligence <span class="alpha-tag">Alpha</span></a></li>
+      <li><a href="/get-dashie" class="${getActiveClass('/get-dashie')}">Get Dashie</a></li>
+      <li><a href="/dashie-intelligence" class="${getActiveClass('/dashie-intelligence')}">Dashie Intelligence <span class="alpha-tag">Beta</span></a></li>
       <li><a href="/guides/" class="${getActiveClass('/guides')}">How to Guides</a></li>
       <li><a href="/pricing" class="${getActiveClass('/pricing')}">Pricing</a></li>
       <li class="nav-dropdown">
@@ -588,7 +588,7 @@ const headerHTML = `
     <li><a href="/dashie-kiosk#video-streaming" class="mobile-sub-item">Video Streaming</a></li>
     <li><a href="/dashie-kiosk#battery-management" class="mobile-sub-item">Battery Management</a></li>
     <li><a href="/get-dashie" class="${getActiveClass('/get-dashie')}">Get Dashie</a></li>
-    <li><a href="/dashie-intelligence" class="${getActiveClass('/dashie-intelligence')}">Dashie Intelligence <span class="alpha-tag">Alpha</span></a></li>
+    <li><a href="/dashie-intelligence" class="${getActiveClass('/dashie-intelligence')}">Dashie Intelligence <span class="alpha-tag">Beta</span></a></li>
     <li><a href="/guides/" class="${getActiveClass('/guides')}">How to Guides</a></li>
     <li><a href="/pricing" class="${getActiveClass('/pricing')}">Pricing</a></li>
     <li><a href="#" onclick="event.preventDefault();" class="mobile-menu-label">About</a></li>
