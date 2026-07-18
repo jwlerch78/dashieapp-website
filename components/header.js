@@ -541,7 +541,10 @@ const headerHTML = `
       <li><a href="/get-dashie" class="${getActiveClass('/get-dashie')}">Get Dashie</a></li>
       <li><a href="/dashie-intelligence" class="${getActiveClass('/dashie-intelligence')}">Dashie Intelligence <span class="alpha-tag">Beta</span></a></li>
       <li><a href="/guides/" class="${getActiveClass('/guides')}">How to Guides</a></li>
+      <!-- Pricing tab hidden while pricing is reworked for the open-core model
       <li><a href="/pricing" class="${getActiveClass('/pricing')}">Pricing</a></li>
+      -->
+
       <li class="nav-dropdown">
         <a href="#" onclick="event.preventDefault();">About <span class="nav-caret">&#9662;</span></a>
         <div class="nav-dropdown-menu">
@@ -590,7 +593,10 @@ const headerHTML = `
     <li><a href="/get-dashie" class="${getActiveClass('/get-dashie')}">Get Dashie</a></li>
     <li><a href="/dashie-intelligence" class="${getActiveClass('/dashie-intelligence')}">Dashie Intelligence <span class="alpha-tag">Beta</span></a></li>
     <li><a href="/guides/" class="${getActiveClass('/guides')}">How to Guides</a></li>
+    <!-- Pricing tab hidden while pricing is reworked for the open-core model
     <li><a href="/pricing" class="${getActiveClass('/pricing')}">Pricing</a></li>
+    -->
+
     <li><a href="#" onclick="event.preventDefault();" class="mobile-menu-label">About</a></li>
     <li><a href="/privacy-policy.html" class="mobile-sub-item">Privacy Policy</a></li>
     <li><a href="/terms-of-service.html" class="mobile-sub-item">Terms of Service</a></li>
