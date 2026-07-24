@@ -1,9 +1,9 @@
 {
-  "versionCode": 174,
-  "versionName": "1.0.14",
+  "versionCode": 175,
+  "versionName": "1.0.15",
   "apkUrl": "https://dashieapp.com/downloads/Dashie-sideload-beta.apk",
-  "sha256": "4831088d98a1a90be96cb2635450948b8215ac27b1a2938155c744888f4678fa",
+  "sha256": "3bdd453951103e5aaee60a5598424311e45defec296254360ae69fac0f19fa4f",
   "notify": false,
-  "title": "What's new in 1.0.14",
-  "description": "\u2022 Improved \"Hey Dashie\" wake word detection\n\u2022 Additional bug fixes and improvements"
+  "title": "What's new in 1.0.15",
+  "description": "\u2022 Photos: new Fit/Fill scaling option\n\u2022 Scheduled Sleep now re-sleeps if you wake during the sleep window\n\u2022 Portrait-orientation RTSP camera streams now fill the video card\n\u2022 Improved reliability of Music Assistant connection"
 }
