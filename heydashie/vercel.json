@@ -1,0 +1,35 @@
+{
+  "cleanUrls": true,
+  "redirects": [
+    {
+      "source": "/for-families",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/for-families.html",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/login",
+      "destination": "https://app.dashieapp.com/login",
+      "permanent": true
+    },
+    {
+      "source": "/add-credits",
+      "destination": "https://app.dashieapp.com/add-credits.html",
+      "permanent": false
+    }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        { "key": "X-Content-Type-Options", "value": "nosniff" },
+        { "key": "X-Frame-Options", "value": "DENY" },
+        { "key": "X-XSS-Protection", "value": "1; mode=block" }
+      ]
+    }
+  ]
+}

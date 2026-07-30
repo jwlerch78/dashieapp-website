@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Family Management - Dashie</title>
+  <link rel="icon" type="image/png" href="../../artwork/Dashie_Logo_Orange_Transparent.png">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-padding-top: 80px;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      line-height: 1.6;
+      background: #ffffff;
+      color: #424242;
+      min-height: 100vh;
+    }
+
+    /* Breadcrumb */
+    .breadcrumb {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px 40px 0 40px;
+    }
+
+    .breadcrumb a {
+      color: #ffaa00;
+      text-decoration: none;
+    }
+
+    .breadcrumb a:hover {
+      text-decoration: underline;
+    }
+
+    .breadcrumb span {
+      color: #999;
+      margin: 0 8px;
+    }
+
+    /* Article */
+    .article {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 30px 40px 60px 40px;
+    }
+
+    .article-header {
+      margin-bottom: 30px;
+    }
+
+    .article-tag {
+      display: inline-block;
+      background: #ffaa00;
+      color: white;
+      font-size: 12px;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 4px;
+      margin-bottom: 15px;
+    }
+
+    .article h1 {
+      font-size: 2.2em;
+      color: #424242;
+      margin-bottom: 10px;
+    }
+
+    .article-meta {
+      color: #888;
+      font-size: 14px;
+    }
+
+    /* Article content */
+    .article-content {
+      font-size: 1.05em;
+    }
+
+    .article-content p {
+      margin-bottom: 18px;
+    }
+
+    .article-content a {
+      color: #ffaa00;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .article-content a:hover {
+      text-decoration: underline;
+    }
+
+    .article-content h2 {
+      font-size: 1.6em;
+      color: #424242;
+      margin: 40px 0 14px 0;
+      padding-bottom: 8px;
+      border-bottom: 2px solid #f0f0f0;
+    }
+
+    .article-content h3 {
+      font-size: 1.2em;
+      color: #424242;
+      margin: 24px 0 8px 0;
+    }
+
+    .article-content ul {
+      margin: 0 0 20px 26px;
+      color: #555;
+    }
+
+    .article-content li {
+      margin-bottom: 8px;
+    }
+
+    .article-content strong {
+      color: #424242;
+    }
+
+    /* Setup-step blocks */
+    .setup-step {
+      background: #fafafa;
+      border-left: 4px solid #ffaa00;
+      border-radius: 6px;
+      padding: 16px 22px;
+      margin: 14px 0;
+    }
+
+    .setup-step h3 {
+      margin-top: 0;
+      margin-bottom: 6px;
+    }
+
+    .setup-step p {
+      margin-bottom: 0;
+      color: #555;
+    }
+
+    /* Step with image to the right */
+    .setup-step-row {
+      display: flex;
+      gap: 22px;
+      align-items: flex-start;
+    }
+
+    .setup-step-text {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .setup-step-media {
+      flex: 0 0 320px;
+    }
+
+    .setup-step-media img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+      border: 1px solid #e0e0e0;
+    }
+
+    /* Narrow image variant — for tall portrait crops */
+    .setup-step-media.narrow img {
+      max-width: 200px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* Info callout */
+    .info-callout {
+      background: #f4f7fb;
+      border: 1px solid #d6e2f0;
+      border-radius: 10px;
+      padding: 16px 20px;
+      margin: 18px 0;
+      color: #555;
+      font-size: 0.95em;
+    }
+
+    .info-callout strong {
+      color: #1a365d;
+    }
+
+    /* Footer */
+    .footer {
+      max-width: 800px;
+      margin: 60px auto 0;
+      padding: 40px;
+      text-align: center;
+      border-top: 1px solid #e0e0e0;
+      color: #999999;
+    }
+
+    .footer-links {
+      margin-top: 20px;
+    }
+
+    .footer-links a {
+      color: #666666;
+      text-decoration: none;
+      margin: 0 15px;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover {
+      color: #ffaa00;
+    }
+
+    /* Mobile Responsive */
+    @media (max-width: 768px) {
+      .breadcrumb,
+      .article {
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+
+      .article h1 {
+        font-size: 1.6em;
+      }
+
+      .article-content h2 {
+        font-size: 1.35em;
+      }
+
+      .setup-step {
+        padding: 16px 18px;
+      }
+
+      .setup-step-row {
+        flex-direction: column;
+        gap: 14px;
+      }
+
+      .setup-step-media {
+        flex: 0 0 auto;
+        max-width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Shared Header/Navigation -->
+  <script src="/components/header.js"></script>
+
+  <!-- Breadcrumb -->
+  <div class="breadcrumb">
+    <a href="/guides/">How To Guides</a>
+    <span>/</span>
+    <a href="#">Family Management</a>
+  </div>
+
+  <!-- Article -->
+  <article class="article">
+    <header class="article-header">
+      <span class="article-tag">Dashie</span>
+      <h1>Family Management</h1>
+      <p class="article-meta">Last updated: May 2026</p>
+    </header>
+
+    <div class="article-content">
+
+      <p>
+        The Family list is where you tell Dashie who's in your household. It's
+        the connective tissue that lets calendar events and other
+        family-attributed data know who's who. Each member gets a color, a
+        role, and an identity that flows across every Dashie widget.
+      </p>
+
+      <!-- Adding members -->
+      <h2 id="adding">Adding family members</h2>
+
+      <div class="setup-step">
+        <div class="setup-step-row">
+          <div class="setup-step-text">
+            <p>
+              Open the Family screen in the
+              <a href="https://app.dashieapp.com">Dashie console</a> (or on the
+              TV: Settings &rsaquo; Family) and add each person in your
+              household. The basics for each member are <strong>name</strong>,
+              <strong>role</strong> (Parent or Child), and a
+              <strong>color</strong> that will follow that person around the
+              dashboard.
+            </p>
+            <p>
+              You can also set the household's <strong>Family Name</strong> and
+              <strong>Zip Code</strong> at the top of the Family screen
+              &mdash; the family name shows in the dashboard header and the
+              zip drives the weather widget.
+            </p>
+          </div>
+          <div class="setup-step-media narrow">
+            <img src="/website-assets/guide-getting-started-family.png"
+                 alt="Family Members list showing color-coded parents and children">
+          </div>
+        </div>
+      </div>
+
+      <!-- Roles -->
+      <h2 id="roles">Roles: Parent vs. Child</h2>
+      <p>
+        Each member is either a <strong>Parent</strong> or a <strong>Child</strong>.
+        The difference shows up in a few places:
+      </p>
+      <ul>
+        <li>
+          Some account- and family-level changes (deleting members, payment,
+          subscription) are reserved for accounts associated with a Parent.
+        </li>
+        <li>
+          The role doesn't restrict who shows up on the calendar &mdash; both
+          parents and children appear in shared schedules.
+        </li>
+      </ul>
+
+      <!-- Colors -->
+      <h2 id="colors">Color assignment</h2>
+      <p>
+        Each member is assigned a distinct color when you add them. That color
+        becomes their visual identity throughout Dashie:
+      </p>
+      <ul>
+        <li>Calendar events from that member's calendar show in their color</li>
+        <!-- Chore + reward bullets hidden until chores & rewards ships
+        <li>Chore assignments use the member's color on the chores widget</li>
+        <li>Reward progress bars use the color when tracking points</li>
+        -->
+      <p>
+        Colors are picked from a built-in palette designed to stay readable
+        against both light and dark themes. You can change a member's color at
+        any time from the Family screen &mdash; the change flows everywhere
+        within a few seconds.
+      </p>
+
+      <!-- Linking Google accounts -->
+      <h2 id="linking-accounts">Linking a member to their Google account</h2>
+      <p>
+        Each family member can optionally be linked to their own Google
+        account. This is what lets Dashie pull <em>their</em> personal
+        calendar into the family view (assigned to them, in their color)
+        without those events being mixed up with someone else's.
+      </p>
+      <p>
+        Linking is optional &mdash; a member without a linked Google account
+        is still a fully functional Dashie family member; they just won't
+        have a personal calendar feed. Many households link the parents and
+        leave younger kids unlinked until they have their own Google account.
+      </p>
+
+      <!-- Identity across features -->
+      <h2 id="identity">How family identity flows across Dashie</h2>
+      <p>
+        Once members exist, they show up across the rest of Dashie:
+      </p>
+
+      <h3>Calendars</h3>
+      <p>
+        When you connect a <a href="/guides/calendar-setup">calendar account</a>,
+        you can attribute each calendar to a specific family member. Their
+        events will then appear in their color and feed into the "upcoming
+        events" view for that person.
+      </p>
+
+      <h3>Future: Chores &amp; Rewards, AI, Locations</h3>
+      <p>
+        Family-aware features coming after the initial beta will use this same
+        identity once enabled: chores &amp; rewards (assigning chores by
+        member, color-coded in the dashboard, points rolling up per person),
+        the AI voice assistant ("when's Jack's next practice?"), and GPS
+        Locations.
+      </p>
+
+      <!-- Editing / removing -->
+      <h2 id="editing">Editing or removing members</h2>
+      <p>
+        Tap any member on the Family screen to edit their name, role, color,
+        or linked Google account. Removing a member detaches their calendars
+        and any other family-attributed data &mdash; the underlying data isn't
+        deleted, but the member's identity is removed from new events going
+        forward.
+      </p>
+
+      <div class="info-callout">
+        <strong>Family management is parent-controlled.</strong>
+        Adding, editing, and removing family members happens from the
+        <a href="https://app.dashieapp.com">Dashie console</a> or the mobile
+        site, which sits behind your Dashie account login. This keeps household
+        structure in the hands of the accountholder, not whoever happens to be
+        standing in front of the TV.
+      </div>
+
+    </div>
+  </article>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>&copy; 2026 Dashie LLC. All rights reserved.</p>
+    <div class="footer-links">
+      <a href="https://dashieapp.com/privacy-policy.html">Privacy Policy</a>
+      <span class="separator">|</span>
+      <a href="https://dashieapp.com/terms-of-service.html">Terms of Service</a>
+    </div>
+  </footer>
+
+  <!-- Analytics -->
+  <script type="module" src="/js/analytics/website-analytics.js"></script>
+</body>
+</html>

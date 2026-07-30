@@ -1,0 +1,903 @@
+<!DOCTYPE html>
+<!--
+  ⚠️ PLACEHOLDER LANDING PAGE — REDESIGN PENDING
+
+  This is the old dashieapp.com/for-families page, ported verbatim so
+  heydashie.com has a homepage on day one. It is NOT the intended positioning.
+
+  The redesign should lead with the **Fire TV / Google TV** experience — Dashie
+  on the big screen — and should NOT be built around chores, GPS/location
+  tracking, or the other family-app features this page currently foregrounds.
+  Treat all copy, imagery, and section order below as provisional.
+-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashie — the family dashboard for your TV</title>
+  <link rel="icon" type="image/png" href="./artwork/Dashie_Logo_Orange_Transparent.png">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-padding-top: 80px;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      line-height: 1.6;
+      background: #ffffff;
+      color: #424242;
+      min-height: 100vh;
+    }
+
+    /* Hero Section */
+    .hero {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 60px 40px 40px 40px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: linear-gradient(135deg, #ffaa00 0%, #ee7700 100%);
+      color: white;
+      padding: 8px 20px;
+      border-radius: 20px;
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 30px;
+    }
+
+    .hero h1 {
+      font-size: 2.6em;
+      color: #424242;
+      margin-bottom: 20px;
+      line-height: 1.2;
+    }
+
+    .hero .tagline {
+      font-size: 1.4em;
+      color: #666;
+      margin-bottom: 20px;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .hero .description {
+      font-size: 1.1em;
+      color: #555;
+      max-width: 650px;
+      margin: 0 auto 30px auto;
+      line-height: 1.7;
+    }
+
+    /* Features preview */
+    .features-preview {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 40px;
+      background: #fafafa;
+    }
+
+    .features-preview h2 {
+      text-align: center;
+      font-size: 2em;
+      margin-bottom: 40px;
+      color: #424242;
+    }
+
+    .feature-list {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+    }
+
+    .feature-list-bottom {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+      margin-top: 30px;
+    }
+
+    .feature-list-bottom.centered-two {
+      grid-template-columns: repeat(2, 1fr);
+      max-width: 66%;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .feature-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 15px;
+    }
+
+    .feature-icon {
+      width: 40px;
+      height: 40px;
+      background: #ffaa00;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .feature-icon svg {
+      width: 24px;
+      height: 24px;
+      stroke: white;
+      stroke-width: 2;
+      fill: none;
+    }
+
+    .feature-icon.fill-icon svg {
+      fill: white;
+      stroke: none;
+    }
+
+    .feature-icon.coming-soon {
+      background: #1a365d;
+    }
+
+    .feature-text h3 {
+      font-size: 1.1em;
+      color: #424242;
+      margin-bottom: 5px;
+    }
+
+    .feature-text p {
+      font-size: 0.95em;
+      color: #666;
+    }
+
+    .feature-text .coming-soon-tag {
+      display: inline-block;
+      background: #1a365d;
+      color: #ffffff;
+      font-size: 0.7em;
+      font-weight: 600;
+      letter-spacing: 0.3px;
+      text-transform: uppercase;
+      padding: 2px 8px;
+      border-radius: 4px;
+      margin-left: 8px;
+      vertical-align: middle;
+    }
+
+    /* Download Section */
+    .download-section {
+      max-width: 700px;
+      margin: 0 auto;
+      padding: 40px 40px 60px 40px;
+      text-align: center;
+    }
+
+    .download-box {
+      background: #f9f9f9;
+      border: 2px solid #ffaa00;
+      border-radius: 16px;
+      padding: 40px;
+    }
+
+    .download-box h2 {
+      font-size: 1.8em;
+      color: #424242;
+      margin-bottom: 15px;
+    }
+
+    .download-box p {
+      color: #666;
+      margin-bottom: 25px;
+    }
+
+    .btn-download {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: #ffaa00;
+      color: #ffffff;
+      padding: 16px 40px;
+      border: none;
+      border-radius: 8px;
+      font-size: 1.1em;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+      text-decoration: none;
+    }
+
+    .btn-download:hover {
+      background: #ffbb22;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(255, 170, 0, 0.4);
+    }
+
+    /* ===== Feature Deep-Dive Sections ===== */
+    .feature-deep-dives {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 60px 40px 40px;
+    }
+
+    .feature-deep-dives > h2 {
+      text-align: center;
+      font-size: 2em;
+      margin-bottom: 16px;
+      color: #424242;
+    }
+
+    .feature-deep-dives > p.section-subtitle {
+      text-align: center;
+      color: #666;
+      font-size: 1.1em;
+      margin-bottom: 50px;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .feature-deep-dive {
+      border: 1px solid #e8e8e8;
+      border-radius: 12px;
+      margin-bottom: 20px;
+      overflow: hidden;
+      transition: box-shadow 0.2s;
+    }
+
+    .feature-deep-dive:hover {
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+    }
+
+    .feature-deep-dive-header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 20px 28px;
+      cursor: pointer;
+      user-select: none;
+      background: #fafafa;
+      transition: background 0.2s;
+    }
+
+    .feature-deep-dive-header:hover {
+      background: #f3f3f3;
+    }
+
+    .feature-deep-dive-header .dd-icon {
+      width: 44px;
+      height: 44px;
+      background: #ffaa00;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .feature-deep-dive-header .dd-icon svg {
+      width: 24px;
+      height: 24px;
+      stroke: white;
+      stroke-width: 2;
+      fill: none;
+    }
+
+    .feature-deep-dive-header .dd-icon.coming-soon {
+      background: #1a365d;
+    }
+
+    .feature-deep-dive-header .dd-title {
+      flex: 1;
+    }
+
+    .feature-deep-dive-header .dd-title h3 {
+      font-size: 1.2em;
+      color: #424242;
+      margin-bottom: 2px;
+    }
+
+    .feature-deep-dive-header .dd-title p {
+      font-size: 0.9em;
+      color: #888;
+      margin: 0;
+    }
+
+    .feature-deep-dive-header .dd-chevron {
+      width: 24px;
+      height: 24px;
+      transition: transform 0.3s;
+      flex-shrink: 0;
+    }
+
+    .feature-deep-dive-header .dd-chevron svg {
+      width: 24px;
+      height: 24px;
+      stroke: #aaa;
+      stroke-width: 2;
+      fill: none;
+    }
+
+    .feature-deep-dive.open .dd-chevron {
+      transform: rotate(180deg);
+    }
+
+    .feature-deep-dive-body {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease;
+    }
+
+    .feature-deep-dive.open .feature-deep-dive-body {
+      max-height: 1000px;
+    }
+
+    .feature-deep-dive-content {
+      display: flex;
+      gap: 36px;
+      padding: 28px;
+      align-items: center;
+    }
+
+    .feature-deep-dive-content.reverse {
+      flex-direction: row-reverse;
+    }
+
+    .dd-image {
+      flex: 0 0 340px;
+      max-width: 340px;
+    }
+
+    .dd-image img {
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .dd-image .screenshot-placeholder {
+      width: 100%;
+      aspect-ratio: 16 / 10;
+      background: linear-gradient(135deg, #f0f0f0, #e0e0e0);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #bbb;
+      font-size: 0.85em;
+      font-style: italic;
+    }
+
+    .dd-copy {
+      flex: 1;
+    }
+
+    .dd-copy h4 {
+      font-size: 1.15em;
+      color: #424242;
+      margin-bottom: 12px;
+    }
+
+    .dd-copy p {
+      color: #555;
+      font-size: 0.95em;
+      line-height: 1.7;
+      margin-bottom: 12px;
+    }
+
+    .dd-copy ul {
+      color: #555;
+      font-size: 0.95em;
+      line-height: 1.8;
+      padding-left: 20px;
+      margin-bottom: 12px;
+    }
+
+    .dd-copy .guide-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: #ffaa00;
+      font-size: 0.9em;
+      font-weight: 500;
+      text-decoration: none;
+      margin-top: 4px;
+    }
+
+    .dd-copy .guide-link:hover {
+      text-decoration: underline;
+    }
+
+    .dd-copy .coming-soon-tag {
+      display: inline-block;
+      background: #1a365d;
+      color: #ffffff;
+      font-size: 0.7em;
+      font-weight: 600;
+      letter-spacing: 0.3px;
+      text-transform: uppercase;
+      padding: 2px 8px;
+      border-radius: 4px;
+      margin-left: 8px;
+      vertical-align: middle;
+    }
+
+    /* Bottom CTA */
+    .bottom-cta {
+      max-width: 700px;
+      margin: 20px auto 0;
+      padding: 0 40px 60px;
+      text-align: center;
+    }
+
+    .bottom-cta .btn-download {
+      margin-top: 10px;
+    }
+
+    /* Footer */
+    .footer {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 40px;
+      text-align: center;
+      border-top: 1px solid #e0e0e0;
+      color: #999999;
+    }
+
+    .footer-links {
+      margin-top: 20px;
+    }
+
+    .footer-links a {
+      color: #666666;
+      text-decoration: none;
+      margin: 0 15px;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover {
+      color: #ffaa00;
+    }
+
+    /* Mobile Responsive */
+    @media (max-width: 768px) {
+      .hero {
+        padding: 40px 20px 30px 20px;
+      }
+
+      .hero h1 {
+        font-size: 2em;
+      }
+
+      .hero .tagline {
+        font-size: 1.1em;
+      }
+
+      .hero .description {
+        font-size: 1em;
+      }
+
+      .features-preview {
+        padding: 40px 20px;
+      }
+
+      .feature-list,
+      .feature-list-bottom {
+        grid-template-columns: 1fr;
+      }
+
+      .feature-list-bottom.centered-two {
+        max-width: 100%;
+      }
+
+      .download-section {
+        padding: 40px 20px 40px 20px;
+      }
+
+      .download-box {
+        padding: 30px 20px;
+      }
+
+      .feature-deep-dives {
+        padding: 40px 20px 20px;
+      }
+
+      .feature-deep-dive-content,
+      .feature-deep-dive-content.reverse {
+        flex-direction: column;
+      }
+
+      .dd-image {
+        flex: none;
+        max-width: 100%;
+      }
+
+      .feature-deep-dive-header {
+        padding: 16px 20px;
+      }
+
+      .feature-deep-dive-content {
+        padding: 20px;
+      }
+
+      .bottom-cta {
+        padding: 0 20px 40px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Shared Header/Navigation -->
+  <script src="/components/header.js"></script>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <h1>Family Smarter</h1>
+
+    <div class="hero-badge">
+      For Families
+    </div>
+
+    <p class="tagline">
+      Bring everyone's schedule, photos, and family life together onto one shared screen.
+    </p>
+
+    <p class="description">
+      Dashie turns any Android tablet or Smart TV into a shared family dashboard &mdash; calendars,
+      photos, weather, and a glanceable view of what's happening today. Designed for the screen
+      everyone in the house can see, not the one in your pocket.
+    </p>
+  </section>
+
+  <!-- Features at-a-glance -->
+  <section class="features-preview">
+    <h2>What's Included</h2>
+    <div class="feature-list">
+      <!-- Row 1 -->
+      <div class="feature-item">
+        <div class="feature-icon">
+          <svg viewBox="0 0 24 24">
+            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+            <line x1="16" y1="2" x2="16" y2="6"/>
+            <line x1="8" y1="2" x2="8" y2="6"/>
+            <line x1="3" y1="10" x2="21" y2="10"/>
+          </svg>
+        </div>
+        <div class="feature-text">
+          <h3>Family Calendar</h3>
+          <p>Google, Microsoft, and Apple calendars in one shared view, color-coded by family member</p>
+        </div>
+      </div>
+
+      <div class="feature-item">
+        <div class="feature-icon">
+          <svg viewBox="0 0 24 24">
+            <rect x="3" y="3" width="18" height="18" rx="2"/>
+            <circle cx="8.5" cy="8.5" r="1.5"/>
+            <polyline points="21 15 16 10 5 21"/>
+          </svg>
+        </div>
+        <div class="feature-text">
+          <h3>Family Photos</h3>
+          <p>Upload up to 500 MB of family photos to rotate through the dashboard with date and location</p>
+        </div>
+      </div>
+
+      <div class="feature-item">
+        <div class="feature-icon">
+          <svg viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="5"/>
+            <line x1="12" y1="1" x2="12" y2="3"/>
+            <line x1="12" y1="21" x2="12" y2="23"/>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+            <line x1="1" y1="12" x2="3" y2="12"/>
+            <line x1="21" y1="12" x2="23" y2="12"/>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+          </svg>
+        </div>
+        <div class="feature-text">
+          <h3>Weather</h3>
+          <p>Current conditions and hourly forecast for your location, right on the dashboard</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="feature-list-bottom">
+      <!-- Row 2 -->
+      <div class="feature-item">
+        <div class="feature-icon">
+          <svg viewBox="0 0 24 24">
+            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+            <circle cx="9" cy="7" r="4"/>
+            <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+            <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+          </svg>
+        </div>
+        <div class="feature-text">
+          <h3>Family Management</h3>
+          <p>Add family members with assigned colors and identities that flow across every Dashie widget</p>
+        </div>
+      </div>
+
+      <div class="feature-item">
+        <div class="feature-icon">
+          <svg viewBox="0 0 24 24">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+          </svg>
+        </div>
+        <div class="feature-text">
+          <h3>Sleep / Wake</h3>
+          <p>Schedule when the dashboard turns off at night and wakes back up in the morning</p>
+        </div>
+      </div>
+
+      <div class="feature-item">
+        <div class="feature-icon coming-soon">
+          <svg viewBox="0 0 24 24">
+            <polyline points="9 11 12 14 22 4"/>
+            <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/>
+          </svg>
+        </div>
+        <div class="feature-text">
+          <h3>Chores &amp; Rewards <span class="coming-soon-tag">Coming Soon</span></h3>
+          <p>Assign chores to family members, award points, and configure rewards</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="feature-list-bottom centered-two">
+      <!-- Row 3 (centered) -->
+      <div class="feature-item">
+        <div class="feature-icon coming-soon">
+          <svg viewBox="0 0 24 24">
+            <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/>
+            <path d="M19 10v2a7 7 0 0 1-14 0v-2M12 19v4M8 23h8"/>
+          </svg>
+        </div>
+        <div class="feature-text">
+          <h3>AI Voice Assistant <span class="coming-soon-tag">Coming Soon</span></h3>
+          <p>Ask "When's Jack's next practice?" and get a natural-language answer from your dashboard</p>
+        </div>
+      </div>
+
+      <div class="feature-item">
+        <div class="feature-icon coming-soon">
+          <svg viewBox="0 0 24 24">
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+            <circle cx="12" cy="10" r="3"/>
+          </svg>
+        </div>
+        <div class="feature-text">
+          <h3>Location Sharing <span class="coming-soon-tag">Coming Soon</span></h3>
+          <p>Real-time GPS sharing across family members with arrival and departure notifications</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Primary CTA -->
+  <section class="download-section">
+    <div class="download-box">
+      <h2>Get Started</h2>
+      <p>Ready to bring your family dashboard to life? Download Dashie and get going.</p>
+      <a href="/get-dashie" class="btn-download">
+        Get Dashie
+      </a>
+
+      <div class="tutorial-links" style="margin-top: 20px; text-align: center;">
+        <p style="color: #666; margin-bottom: 10px; font-size: 14px;">Getting Started Guides:</p>
+        <a href="/guides/dashie-early-access" style="color: #ffaa00; margin: 0 12px; font-size: 14px;">Getting Started with Dashie</a>
+        <span style="color: #ccc;">|</span>
+        <a href="/guides/smart-tv-setup" style="color: #ffaa00; margin: 0 12px; font-size: 14px;">Smart TV Setup</a>
+        <span style="color: #ccc;">|</span>
+        <a href="/guides/calendar-setup" style="color: #ffaa00; margin: 0 12px; font-size: 14px;">Calendar Setup</a>
+        <span style="color: #ccc;">|</span>
+        <a href="/guides/family-management" style="color: #ffaa00; margin: 0 12px; font-size: 14px;">Family Management</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Feature Deep-Dives — hidden until screenshots are ready.
+       Remove the surrounding <template> tags to re-enable. -->
+  <template>
+  <section class="feature-deep-dives">
+    <h2>A Closer Look</h2>
+    <p class="section-subtitle">Tap a feature to learn more about what Dashie brings to your family screen.</p>
+
+    <!-- 1. Family Calendar -->
+    <div class="feature-deep-dive open" id="calendar">
+      <div class="feature-deep-dive-header" onclick="toggleDeepDive(this)">
+        <div class="dd-icon">
+          <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        </div>
+        <div class="dd-title">
+          <h3>Family Calendar</h3>
+          <p>Google, Microsoft, and Apple calendars, color-coded per family member</p>
+        </div>
+        <div class="dd-chevron"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
+      </div>
+      <div class="feature-deep-dive-body">
+        <div class="feature-deep-dive-content">
+          <div class="dd-image">
+            <div class="screenshot-placeholder">Calendar widget screenshot</div>
+          </div>
+          <div class="dd-copy">
+            <h4>Everyone's schedule, in one place</h4>
+            <p>Connect any combination of Google, Microsoft (Outlook / Microsoft 365), and Apple iCloud calendars. Assign specific calendars to specific family members so events show up in their color and feed into per-person summaries.</p>
+            <p>Day, week, and month views; hide events you don't want on the family screen; filter by keyword. Calendars are added from the Dashie console or mobile site &mdash; not the TV &mdash; so the source of truth stays with the accountholder.</p>
+            <a href="/guides/calendar-setup" class="guide-link">Calendar setup guide &rarr;</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2. Family Photos -->
+    <div class="feature-deep-dive open" id="photos">
+      <div class="feature-deep-dive-header" onclick="toggleDeepDive(this)">
+        <div class="dd-icon">
+          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+        </div>
+        <div class="dd-title">
+          <h3>Family Photos</h3>
+          <p>Upload your memories and let them rotate through the dashboard</p>
+        </div>
+        <div class="dd-chevron"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
+      </div>
+      <div class="feature-deep-dive-body">
+        <div class="feature-deep-dive-content reverse">
+          <div class="dd-image">
+            <div class="screenshot-placeholder">Photos widget screenshot</div>
+          </div>
+          <div class="dd-copy">
+            <h4>The memories you already love, on display</h4>
+            <p>Upload up to 500 MB of family photos to the Dashie cloud and they'll cycle through the dashboard's photos widget. Each photo is shown with its date and location by default &mdash; great for nostalgia and great for the kids to learn family geography.</p>
+            <p>Photos sync to every Dashie device on your account so the same memories show up on the kitchen tablet, the living-room TV, and any other screen running Dashie.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3. Family Management -->
+    <div class="feature-deep-dive open" id="family-management">
+      <div class="feature-deep-dive-header" onclick="toggleDeepDive(this)">
+        <div class="dd-icon">
+          <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <div class="dd-title">
+          <h3>Family Management</h3>
+          <p>Color-coded family identities that flow across every widget</p>
+        </div>
+        <div class="dd-chevron"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
+      </div>
+      <div class="feature-deep-dive-body">
+        <div class="feature-deep-dive-content">
+          <div class="dd-image">
+            <div class="screenshot-placeholder">Family members list screenshot</div>
+          </div>
+          <div class="dd-copy">
+            <h4>Who's who, at a glance</h4>
+            <p>Add the people in your household and assign each a color. That color becomes their identity throughout Dashie: calendar events in their color, attribution in shared summaries, and (soon) chore assignments and reward tracking.</p>
+            <p>Members can optionally be linked to their own Google account so their personal calendar pulls into the family view as theirs &mdash; without getting mixed up with anyone else's events.</p>
+            <a href="/guides/family-management" class="guide-link">Family management guide &rarr;</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4. Sleep / Wake -->
+    <div class="feature-deep-dive open" id="sleep-wake">
+      <div class="feature-deep-dive-header" onclick="toggleDeepDive(this)">
+        <div class="dd-icon">
+          <svg viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </div>
+        <div class="dd-title">
+          <h3>Sleep / Wake</h3>
+          <p>Automatic dashboard schedule so the screen sleeps with you</p>
+        </div>
+        <div class="dd-chevron"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
+      </div>
+      <div class="feature-deep-dive-body">
+        <div class="feature-deep-dive-content reverse">
+          <div class="dd-image">
+            <div class="screenshot-placeholder">Sleep / wake schedule screenshot</div>
+          </div>
+          <div class="dd-copy">
+            <h4>Always on, but never always-on</h4>
+            <p>Set the hours you want the dashboard active and Dashie handles the rest: dimming and turning the screen off at bedtime, waking back up in the morning. The schedule is per-device so the kitchen tablet and the bedroom display can keep their own hours.</p>
+            <p>For tablets that live on the charger 24/7, sleep/wake also helps preserve the screen and reduce battery wear.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 5. What's coming next -->
+    <div class="feature-deep-dive open" id="coming-soon">
+      <div class="feature-deep-dive-header" onclick="toggleDeepDive(this)">
+        <div class="dd-icon coming-soon">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        </div>
+        <div class="dd-title">
+          <h3>What's coming next <span class="coming-soon-tag">Coming Soon</span></h3>
+          <p>Chores &amp; Rewards, AI voice, and Location Sharing on the roadmap</p>
+        </div>
+        <div class="dd-chevron"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
+      </div>
+      <div class="feature-deep-dive-body">
+        <div class="feature-deep-dive-content">
+          <div class="dd-image">
+            <div class="screenshot-placeholder">Roadmap preview</div>
+          </div>
+          <div class="dd-copy">
+            <h4>Where Dashie is heading after the initial beta</h4>
+            <ul>
+              <li><strong>Chores &amp; Rewards</strong> &mdash; create chores assigned to family members or open to anyone, award points, and configure rewards to keep everyone motivated.</li>
+              <li><strong>AI Voice Assistant</strong> &mdash; ask family-aware questions ("When's Jack's next practice?") and get conversational answers powered by Dashie's understanding of your family schedule.</li>
+              <li><strong>Location Sharing</strong> &mdash; real-time GPS sharing across family members with arrival and departure notifications shown on the dashboard.</li>
+              <li><strong>iOS app</strong> &mdash; native iPad support to complement the existing Android coverage.</li>
+              <li><strong>Additional themes</strong> &mdash; more visual personality to match the season or the room.</li>
+            </ul>
+            <p>Got something you want next? <a href="https://dashieapp.com/contact" class="guide-link">Tell us &rarr;</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  </template>
+
+  <!-- Bottom CTA -->
+  <section class="bottom-cta">
+    <p style="color: #666; font-size: 1.1em; margin-bottom: 10px;">Ready to bring everyone together?</p>
+    <a href="/get-dashie" class="btn-download">
+      Get Dashie
+    </a>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>&copy; 2026 Dashie LLC. All rights reserved.</p>
+    <div class="footer-links">
+      <a href="https://dashieapp.com/privacy-policy.html">Privacy Policy</a>
+      <span class="separator">|</span>
+      <a href="https://dashieapp.com/terms-of-service.html">Terms of Service</a>
+    </div>
+  </footer>
+
+  <!-- Deep-dive toggle script -->
+  <script>
+    function toggleDeepDive(headerEl) {
+      const section = headerEl.closest('.feature-deep-dive');
+      section.classList.toggle('open');
+    }
+
+    function openDeepDiveFromHash(hash) {
+      if (!hash) return;
+      const target = document.querySelector(hash);
+      if (target && target.classList.contains('feature-deep-dive')) {
+        target.classList.add('open');
+        setTimeout(() => target.scrollIntoView({ behavior: 'smooth', block: 'start' }), 100);
+      }
+    }
+
+    openDeepDiveFromHash(window.location.hash);
+    window.addEventListener('hashchange', () => openDeepDiveFromHash(window.location.hash));
+  </script>
+
+  <!-- Analytics -->
+  <script type="module" src="/js/analytics/website-analytics.js"></script>
+</body>
+</html>
