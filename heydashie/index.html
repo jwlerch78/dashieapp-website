@@ -99,6 +99,11 @@
       border-radius: 14px;
       overflow: hidden;
       box-shadow: 0 16px 50px rgba(0, 0, 0, 0.16);
+      background: #000;
+    }
+
+    .hero-shot-still {
+      display: block;
       text-decoration: none;
     }
 
@@ -110,6 +115,10 @@
       background: #000;
     }
 
+    .hero-shot-inner [hidden] {
+      display: none;
+    }
+
     .hero-shot-play {
       position: absolute;
       top: 50%;
@@ -118,23 +127,26 @@
       width: 76px;
       height: 76px;
       border-radius: 50%;
-      background: rgba(255, 170, 0, 0.94);
+      background: rgba(255, 170, 0, 0.45);
+      border: 2px solid rgba(255, 255, 255, 0.75);
+      -webkit-backdrop-filter: blur(2px);
+      backdrop-filter: blur(2px);
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow: 0 6px 24px rgba(0, 0, 0, 0.35);
+      box-shadow: 0 4px 18px rgba(0, 0, 0, 0.22);
       transition: all 0.2s;
     }
 
-    .hero-shot-inner:hover .hero-shot-play {
-      background: #ffaa00;
+    .hero-shot-still:hover .hero-shot-play {
+      background: rgba(255, 170, 0, 0.8);
       transform: translate(-50%, -50%) scale(1.08);
     }
 
     .hero-shot-play svg {
       width: 30px;
       height: 30px;
-      fill: #ffffff;
+      fill: rgba(255, 255, 255, 0.95);
       margin-left: 4px;
     }
 
@@ -641,35 +653,47 @@
     </p>
 
     <div class="hero-shot">
-      <a class="hero-shot-inner" id="demo-trigger" href="/website-assets/dashie-firetv-demo.mp4">
-        <img src="/website-assets/dashie-living-room.png"
-             alt="Dashie family dashboard on a screen in a living room">
-        <span class="hero-shot-play" aria-hidden="true">
-          <svg viewBox="0 0 24 24"><polygon points="6 4 20 12 6 20 6 4"/></svg>
-        </span>
-        <span class="hero-shot-label">Watch Dashie on Fire TV &mdash; 20 seconds</span>
-      </a>
+      <div class="hero-shot-inner">
+        <a class="hero-shot-still" id="demo-trigger" href="/website-assets/dashie-firetv-demo.mp4">
+          <img src="/website-assets/dashie-living-room.png"
+               alt="Dashie family dashboard on a screen in a living room">
+          <span class="hero-shot-play" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><polygon points="6 4 20 12 6 20 6 4"/></svg>
+          </span>
+          <span class="hero-shot-label">Watch Dashie on Fire TV &mdash; 20 seconds</span>
+        </a>
+        <video id="demo-video" class="hero-demo-video" preload="none" playsinline controls hidden>
+          <source src="/website-assets/dashie-firetv-demo.mp4" type="video/mp4">
+        </video>
+      </div>
     </div>
   </section>
 
   <script>
-    // Swap the still for the real video in place. The anchor's href is the mp4,
-    // so if this never runs the click still opens the video.
+    // Show the video in place of the still, and put the still back when the
+    // clip ends so the hero returns to its resting state. The trigger is a real
+    // <a href> to the mp4, so if this script never runs the click still opens
+    // the video rather than doing nothing.
     (function () {
-      var trigger = document.getElementById('demo-trigger');
-      if (!trigger) return;
-      trigger.addEventListener('click', function (e) {
+      var still = document.getElementById('demo-trigger');
+      var video = document.getElementById('demo-video');
+      if (!still || !video) return;
+
+      function showStill() {
+        video.pause();
+        video.currentTime = 0;
+        video.hidden = true;
+        still.hidden = false;
+      }
+
+      still.addEventListener('click', function (e) {
         e.preventDefault();
-        var video = document.createElement('video');
-        video.src = trigger.getAttribute('href');
-        video.poster = '/website-assets/dashie-firetv-demo-poster.jpg';
-        video.controls = true;
-        video.autoplay = true;
-        video.playsInline = true;
-        video.setAttribute('preload', 'auto');
-        trigger.parentNode.replaceChild(video, trigger);
-        video.className = 'hero-demo-video';
+        still.hidden = true;
+        video.hidden = false;
+        video.play();
       });
+
+      video.addEventListener('ended', showStill);
     })();
   </script>
 
