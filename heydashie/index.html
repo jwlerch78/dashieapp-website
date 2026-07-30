@@ -127,26 +127,27 @@
       width: 76px;
       height: 76px;
       border-radius: 50%;
-      background: rgba(255, 170, 0, 0.45);
-      border: 2px solid rgba(255, 255, 255, 0.75);
-      -webkit-backdrop-filter: blur(2px);
-      backdrop-filter: blur(2px);
+      background: rgba(255, 170, 0, 0.22);
+      border: 2px solid rgba(255, 255, 255, 0.6);
+      -webkit-backdrop-filter: blur(3px);
+      backdrop-filter: blur(3px);
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow: 0 4px 18px rgba(0, 0, 0, 0.22);
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.18);
       transition: all 0.2s;
     }
 
     .hero-shot-still:hover .hero-shot-play {
-      background: rgba(255, 170, 0, 0.8);
+      background: rgba(255, 170, 0, 0.62);
+      border-color: rgba(255, 255, 255, 0.9);
       transform: translate(-50%, -50%) scale(1.08);
     }
 
     .hero-shot-play svg {
       width: 30px;
       height: 30px;
-      fill: rgba(255, 255, 255, 0.95);
+      fill: rgba(255, 255, 255, 0.9);
       margin-left: 4px;
     }
 
@@ -655,8 +656,8 @@
     <div class="hero-shot">
       <div class="hero-shot-inner">
         <a class="hero-shot-still" id="demo-trigger" href="/website-assets/dashie-firetv-demo.mp4">
-          <img src="/website-assets/dashie-living-room.png"
-               alt="Dashie family dashboard on a screen in a living room">
+          <img src="/website-assets/dashie-firetv-hero.jpg"
+               alt="Dashie showing the family calendar, weather, and photos on a TV in a living room">
           <span class="hero-shot-play" aria-hidden="true">
             <svg viewBox="0 0 24 24"><polygon points="6 4 20 12 6 20 6 4"/></svg>
           </span>
@@ -679,9 +680,14 @@
       var video = document.getElementById('demo-video');
       if (!still || !video) return;
 
+      // The clip opens with a ~0.6s fade up from black. The still is the frame
+      // it settles on, so playback starts there — otherwise clicking play cuts
+      // the bright still to black and fades back to the same shot, which reads
+      // as a stutter rather than a transition.
+      var START_AT = 0.6;
+
       function showStill() {
         video.pause();
-        video.currentTime = 0;
         video.hidden = true;
         still.hidden = false;
       }
@@ -690,7 +696,13 @@
         e.preventDefault();
         still.hidden = true;
         video.hidden = false;
+        try { video.currentTime = START_AT; } catch (err) { /* set on loadedmetadata below */ }
         video.play();
+      });
+
+      // Safari won't accept currentTime before metadata is known.
+      video.addEventListener('loadedmetadata', function () {
+        if (!video.hidden && video.currentTime < START_AT) video.currentTime = START_AT;
       });
 
       video.addEventListener('ended', showStill);
