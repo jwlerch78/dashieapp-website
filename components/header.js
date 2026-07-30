@@ -1,9 +1,15 @@
 /**
- * Shared header/navigation component for all public website pages
+ * Header/navigation for dashieapp.com — "Dashie for Home Assistant" (free edition).
  * Includes hamburger menu for mobile with proper touch handling
  *
  * Usage: Include <script src="/components/header.js"></script> in your page
  * The header will be injected at the script location
+ *
+ * ⚠️ AUDIENCE BOUNDARY — this nav must never expose a paid surface.
+ * No pricing link, no purchase/subscribe button, and no cross-link to
+ * heydashie.com (the paid family product). An r/HomeAssistant visitor should
+ * be able to browse this entire site without encountering a paywall.
+ * The family-facing counterpart lives at heydashie/components/header.js.
  */
 
 // Determine the current page for active state
@@ -524,9 +530,8 @@ const headerHTML = `
       <a href="/"><img src="/artwork/Dashie_Full_Logo_Orange_Transparent.png" alt="Dashie" class="logo"></a>
     </div>
     <ul>
-      <li><a href="/for-families" class="${getActiveClass('/for-families')}">For Families</a></li>
       <li class="nav-dropdown">
-        <a href="/dashie-kiosk" class="${getActiveClass('/dashie-kiosk')}">For Home Assistant</a>
+        <a href="/dashie-kiosk" class="${getActiveClass('/dashie-kiosk')}">Features</a>
         <div class="nav-dropdown-menu">
           <a href="/dashie-kiosk">Overview</a>
           <a href="/dashie-kiosk#screensaver">Screensaver & Photos</a>
@@ -538,12 +543,9 @@ const headerHTML = `
           <a href="/dashie-kiosk#home-assistant">Home Assistant Integration</a>
         </div>
       </li>
-      <li><a href="/get-dashie" class="${getActiveClass('/get-dashie')}">Get Dashie</a></li>
-      <li><a href="/dashie-intelligence" class="${getActiveClass('/dashie-intelligence')}">Dashie Intelligence <span class="alpha-tag">Beta</span></a></li>
+      <li><a href="/dashie-kiosk-download" class="${getActiveClass('/dashie-kiosk-download')}">Download</a></li>
       <li><a href="/guides/" class="${getActiveClass('/guides')}">How to Guides</a></li>
-      <!-- Pricing tab hidden while pricing is reworked for the open-core model
-      <li><a href="/pricing" class="${getActiveClass('/pricing')}">Pricing</a></li>
-      -->
+      <li><a href="/blog/" class="${getActiveClass('/blog')}">Blog</a></li>
 
       <li class="nav-dropdown">
         <a href="#" onclick="event.preventDefault();">About <span class="nav-caret">&#9662;</span></a>
@@ -556,7 +558,7 @@ const headerHTML = `
     </ul>
   </div>
   <div class="nav-bar-right">
-    <a href="https://app.dashieapp.com/subscribe.html?source=website" class="btn-login">Purchase</a>
+    <a href="/dashie-kiosk-download" class="btn-login">Download</a>
   </div>
   <button class="hamburger-btn" onclick="window.dashieHeader.toggleMobileMenu()">
     <svg viewBox="0 0 24 24" fill="none">
@@ -582,20 +584,16 @@ const headerHTML = `
     </button>
   </div>
   <ul>
-    <li><a href="/for-families" class="${getActiveClass('/for-families')}">For Families</a></li>
-    <li><a href="/dashie-kiosk" class="${getActiveClass('/dashie-kiosk')}">For Home Assistant</a></li>
+    <li><a href="/dashie-kiosk" class="${getActiveClass('/dashie-kiosk')}">Features</a></li>
     <li><a href="/dashie-kiosk#screensaver" class="mobile-sub-item">Screensaver & Photos</a></li>
     <li><a href="/dashie-kiosk#voice-control" class="mobile-sub-item">Voice Control</a></li>
     <li><a href="/dashie-kiosk#lock-mode" class="mobile-sub-item">Lock Mode</a></li>
     <li><a href="/dashie-kiosk#music-player" class="mobile-sub-item">Music Player</a></li>
     <li><a href="/dashie-kiosk#video-streaming" class="mobile-sub-item">Video Streaming</a></li>
     <li><a href="/dashie-kiosk#battery-management" class="mobile-sub-item">Battery Management</a></li>
-    <li><a href="/get-dashie" class="${getActiveClass('/get-dashie')}">Get Dashie</a></li>
-    <li><a href="/dashie-intelligence" class="${getActiveClass('/dashie-intelligence')}">Dashie Intelligence <span class="alpha-tag">Beta</span></a></li>
+    <li><a href="/dashie-kiosk-download" class="${getActiveClass('/dashie-kiosk-download')}">Download</a></li>
     <li><a href="/guides/" class="${getActiveClass('/guides')}">How to Guides</a></li>
-    <!-- Pricing tab hidden while pricing is reworked for the open-core model
-    <li><a href="/pricing" class="${getActiveClass('/pricing')}">Pricing</a></li>
-    -->
+    <li><a href="/blog/" class="${getActiveClass('/blog')}">Blog</a></li>
 
     <li><a href="#" onclick="event.preventDefault();" class="mobile-menu-label">About</a></li>
     <li><a href="/privacy-policy.html" class="mobile-sub-item">Privacy Policy</a></li>
@@ -603,7 +601,7 @@ const headerHTML = `
     <li><a href="/contact" class="mobile-sub-item ${getActiveClass('/contact')}">Contact Us</a></li>
   </ul>
   <div class="mobile-menu-buttons">
-    <a href="https://app.dashieapp.com/subscribe.html?source=website" class="btn-login">Purchase</a>
+    <a href="/dashie-kiosk-download" class="btn-login">Download</a>
   </div>
 </div>
 
