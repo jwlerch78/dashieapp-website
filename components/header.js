@@ -43,14 +43,38 @@ const headerHTML = `
     gap: 0;
   }
 
+  /* Logo + edition badge. The badge is load-bearing: "Dashie" alone reads the
+     same here as it does on heydashie.com, so the wordmark has to say which
+     product this is. */
   .logo-container {
     display: flex;
-    align-items: center;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
     padding-right: 20px;
+    gap: 2px;
   }
 
   .logo {
     height: 50px;
+    width: auto;
+  }
+
+  .logo-edition {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.4px;
+    text-transform: uppercase;
+    color: #18bcf2;
+    white-space: nowrap;
+    padding-left: 2px;
+  }
+
+  .logo-edition img {
+    height: 11px;
     width: auto;
   }
 
@@ -506,6 +530,15 @@ const headerHTML = `
       height: 40px;
     }
 
+    .logo-edition {
+      font-size: 9px;
+      letter-spacing: 0.3px;
+    }
+
+    .logo-edition img {
+      height: 10px;
+    }
+
     /* Hide desktop nav on mobile */
     .nav-bar ul,
     .nav-bar-right {
@@ -527,7 +560,11 @@ const headerHTML = `
 <nav class="nav-bar">
   <div class="nav-bar-left">
     <div class="logo-container">
-      <a href="/"><img src="/artwork/Dashie_Full_Logo_Orange_Transparent.png" alt="Dashie" class="logo"></a>
+      <a href="/"><img src="/artwork/Dashie_Full_Logo_Orange_Transparent.png" alt="Dashie for Home Assistant" class="logo"></a>
+      <span class="logo-edition">
+        <img src="/artwork/icon-homeassistant-blue.svg" alt="">
+        for Home Assistant
+      </span>
     </div>
     <ul>
       <li class="nav-dropdown">
