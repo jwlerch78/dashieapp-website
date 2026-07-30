@@ -84,6 +84,85 @@
       line-height: 1.7;
     }
 
+    /* Hero shot — doubles as the play surface for the Fire TV demo.
+       It is an <a> to the .mp4 so that with no JS the link still opens the
+       video rather than doing nothing. */
+    .hero-shot {
+      max-width: 860px;
+      margin: 10px auto 0;
+      padding: 0 40px;
+    }
+
+    .hero-shot-inner {
+      position: relative;
+      display: block;
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 16px 50px rgba(0, 0, 0, 0.16);
+      text-decoration: none;
+    }
+
+    .hero-shot-inner img,
+    .hero-shot-inner video {
+      width: 100%;
+      height: auto;
+      display: block;
+      background: #000;
+    }
+
+    .hero-shot-play {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 76px;
+      height: 76px;
+      border-radius: 50%;
+      background: rgba(255, 170, 0, 0.94);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 6px 24px rgba(0, 0, 0, 0.35);
+      transition: all 0.2s;
+    }
+
+    .hero-shot-inner:hover .hero-shot-play {
+      background: #ffaa00;
+      transform: translate(-50%, -50%) scale(1.08);
+    }
+
+    .hero-shot-play svg {
+      width: 30px;
+      height: 30px;
+      fill: #ffffff;
+      margin-left: 4px;
+    }
+
+    .hero-shot-label {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      padding: 26px 20px 14px;
+      background: linear-gradient(to top, rgba(0,0,0,0.72), rgba(0,0,0,0));
+      color: #ffffff;
+      font-size: 14px;
+      font-weight: 600;
+      text-align: center;
+      letter-spacing: 0.2px;
+    }
+
+    /* The <video> that replaces the still on click — same frame as the still
+       so the swap does not jump. */
+    .hero-demo-video {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 14px;
+      background: #000;
+      box-shadow: 0 16px 50px rgba(0, 0, 0, 0.16);
+    }
+
     /* Features preview */
     .features-preview {
       max-width: 900px;
@@ -556,11 +635,43 @@
     </p>
 
     <p class="description">
-      Dashie turns any Android tablet or Smart TV into a shared family dashboard &mdash; calendars,
-      photos, weather, and a glanceable view of what's happening today. Designed for the screen
-      everyone in the house can see, not the one in your pocket.
+      Dashie turns your Fire TV, Google TV, or any Android tablet into a shared family dashboard
+      &mdash; calendars, photos, weather, and a glanceable view of what's happening today. Designed
+      for the screen everyone in the house can see, not the one in your pocket.
     </p>
+
+    <div class="hero-shot">
+      <a class="hero-shot-inner" id="demo-trigger" href="/website-assets/dashie-firetv-demo.mp4">
+        <img src="/website-assets/dashie-living-room.png"
+             alt="Dashie family dashboard on a screen in a living room">
+        <span class="hero-shot-play" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><polygon points="6 4 20 12 6 20 6 4"/></svg>
+        </span>
+        <span class="hero-shot-label">Watch Dashie on Fire TV &mdash; 20 seconds</span>
+      </a>
+    </div>
   </section>
+
+  <script>
+    // Swap the still for the real video in place. The anchor's href is the mp4,
+    // so if this never runs the click still opens the video.
+    (function () {
+      var trigger = document.getElementById('demo-trigger');
+      if (!trigger) return;
+      trigger.addEventListener('click', function (e) {
+        e.preventDefault();
+        var video = document.createElement('video');
+        video.src = trigger.getAttribute('href');
+        video.poster = '/website-assets/dashie-firetv-demo-poster.jpg';
+        video.controls = true;
+        video.autoplay = true;
+        video.playsInline = true;
+        video.setAttribute('preload', 'auto');
+        trigger.parentNode.replaceChild(video, trigger);
+        video.className = 'hero-demo-video';
+      });
+    })();
+  </script>
 
   <!-- Features at-a-glance -->
   <section class="features-preview">
@@ -858,14 +969,6 @@
     </div>
   </section>
   </template>
-
-  <!-- Bottom CTA -->
-  <section class="bottom-cta">
-    <p style="color: #666; font-size: 1.1em; margin-bottom: 10px;">Ready to bring everyone together?</p>
-    <a href="/get-dashie" class="btn-download">
-      Get Dashie
-    </a>
-  </section>
 
   <!-- Footer -->
   <footer class="footer">
