@@ -7,14 +7,121 @@
       "permanent": true
     },
     {
-      "source": "/voice",
-      "destination": "/voice-license",
-      "permanent": true
-    },
-    {
       "source": "/add-credits",
       "destination": "https://app.dashieapp.com/add-credits.html",
       "permanent": false
+    },
+
+    {
+      "source": "/for-families",
+      "destination": "https://heydashie.com/",
+      "permanent": true
+    },
+    {
+      "source": "/for-families.html",
+      "destination": "https://heydashie.com/",
+      "permanent": true
+    },
+    {
+      "source": "/pricing",
+      "destination": "https://heydashie.com/pricing",
+      "permanent": true
+    },
+    {
+      "source": "/pricing.html",
+      "destination": "https://heydashie.com/pricing",
+      "permanent": true
+    },
+    {
+      "source": "/get-dashie",
+      "destination": "https://heydashie.com/get-dashie",
+      "permanent": true
+    },
+    {
+      "source": "/get-dashie.html",
+      "destination": "https://heydashie.com/get-dashie",
+      "permanent": true
+    },
+    {
+      "source": "/beta-signup",
+      "destination": "https://heydashie.com/beta-signup",
+      "permanent": true
+    },
+    {
+      "source": "/beta-signup.html",
+      "destination": "https://heydashie.com/beta-signup",
+      "permanent": true
+    },
+    {
+      "source": "/guides/calendar-setup",
+      "destination": "https://heydashie.com/guides/calendar-setup",
+      "permanent": true
+    },
+    {
+      "source": "/guides/chores-rewards-setup",
+      "destination": "https://heydashie.com/guides/chores-rewards-setup",
+      "permanent": true
+    },
+    {
+      "source": "/guides/dashie-early-access",
+      "destination": "https://heydashie.com/guides/dashie-early-access",
+      "permanent": true
+    },
+    {
+      "source": "/guides/family-management",
+      "destination": "https://heydashie.com/guides/family-management",
+      "permanent": true
+    },
+    {
+      "source": "/guides/smart-tv-setup",
+      "destination": "https://heydashie.com/guides/smart-tv-setup",
+      "permanent": true
+    },
+    {
+      "source": "/guides/tv-remote-guide",
+      "destination": "https://heydashie.com/guides/tv-remote-guide",
+      "permanent": true
+    },
+
+    {
+      "source": "/voice",
+      "destination": "/dashie-kiosk#voice-control",
+      "permanent": true
+    },
+    {
+      "source": "/voice-license",
+      "destination": "/dashie-kiosk#voice-control",
+      "permanent": true
+    },
+    {
+      "source": "/voice-license.html",
+      "destination": "/dashie-kiosk#voice-control",
+      "permanent": true
+    },
+    {
+      "source": "/voice-license-success",
+      "destination": "/dashie-kiosk#voice-control",
+      "permanent": true
+    },
+    {
+      "source": "/voice-license-success.html",
+      "destination": "/dashie-kiosk#voice-control",
+      "permanent": true
+    },
+    {
+      "source": "/dashie-intelligence",
+      "destination": "/dashie-kiosk#voice-control",
+      "permanent": true
+    },
+    {
+      "source": "/dashie-intelligence.html",
+      "destination": "/dashie-kiosk#voice-control",
+      "permanent": true
+    },
+    {
+      "source": "/guides/dashie-intelligence-setup",
+      "destination": "/guides/dashie-voice-setup",
+      "permanent": true
     }
   ],
   "headers": [
