@@ -80,6 +80,99 @@
       text-align: center;
     }
 
+    /* Install channels (Play / Amazon / sideload) */
+    .channels-section {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 0 40px 10px 40px;
+    }
+
+    .channels-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px;
+    }
+
+    .channel-card {
+      background: #f9f9f9;
+      border: 2px solid #e0e0e0;
+      border-radius: 16px;
+      padding: 32px 28px;
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+    }
+
+    .channel-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 56px;
+      margin-bottom: 16px;
+    }
+
+    .channel-icon a {
+      display: inline-flex;
+      align-items: center;
+    }
+
+    .store-badge {
+      height: 56px;
+      width: auto;
+      max-width: 100%;
+    }
+
+    .apk-icon {
+      height: 52px;
+      width: auto;
+    }
+
+    .channel-card h2 {
+      font-size: 1.25em;
+      color: #424242;
+      margin-bottom: 10px;
+    }
+
+    .channel-card p {
+      color: #666;
+      font-size: 0.95em;
+      margin-bottom: 16px;
+      flex-grow: 1;
+    }
+
+    .channel-card .btn-channel {
+      display: block;
+      text-align: center;
+      background: #ffaa00;
+      color: #ffffff;
+      padding: 12px 20px;
+      border-radius: 8px;
+      font-size: 0.95em;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+
+    .channel-card .btn-channel:hover {
+      background: #ffbb22;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(255, 170, 0, 0.4);
+    }
+
+    .channel-card .btn-channel.beta {
+      background: #1a365d;
+    }
+
+    .channel-card .btn-channel.beta:hover {
+      background: #2a4670;
+      box-shadow: 0 6px 16px rgba(26, 54, 93, 0.4);
+    }
+
+    .channel-card .prior-version {
+      margin-top: 12px;
+      font-size: 0.85em;
+    }
+
     .download-box {
       background: #f9f9f9;
       border: 2px solid #ffaa00;
@@ -256,31 +349,73 @@
     </div>
 
     <p class="tagline">
-      A free alternative to Fully Kiosk for hosting your Home Assistant dashboards on Android devices.
+      A free alternative to Fully Kiosk for hosting your Home Assistant dashboards on Android tablets.
     </p>
   </section>
 
-  <!-- Download Section -->
+  <!-- Install Channels -->
+  <section class="channels-section">
+    <div class="channels-grid">
+
+      <!-- Google Play -->
+      <div class="channel-card">
+        <div class="channel-icon">
+          <a href="https://play.google.com/store/apps/details?id=com.dashieapp.Dashie" target="_blank" rel="noopener">
+            <img class="store-badge" src="./artwork/badge-google-play.png" alt="Get it on Google Play">
+          </a>
+        </div>
+        <h2>Google Play</h2>
+        <p>
+          The easiest way to install on most Android tablets. Updates arrive automatically.
+        </p>
+        <a href="https://play.google.com/store/apps/details?id=com.dashieapp.Dashie"
+           class="btn-channel" target="_blank" rel="noopener">Download (v1.0.14)</a>
+      </div>
+
+      <!-- Amazon Appstore -->
+      <div class="channel-card">
+        <div class="channel-icon">
+          <a href="https://www.amazon.com/gp/mas/dl/android?p=com.dashieapp.Dashie" target="_blank" rel="noopener">
+            <img class="store-badge" src="./artwork/badge-amazon-appstore.png" alt="Available at Amazon Appstore">
+          </a>
+        </div>
+        <h2>Amazon Appstore</h2>
+        <p>
+          For Amazon Fire tablets &mdash; the cheapest way to get a Home Assistant panel on the wall.
+        </p>
+        <a href="https://www.amazon.com/gp/mas/dl/android?p=com.dashieapp.Dashie"
+           class="btn-channel" target="_blank" rel="noopener">Download (v1.0.14)</a>
+      </div>
+
+      <!-- Direct APK -->
+      <div class="channel-card">
+        <div class="channel-icon">
+          <a href="/downloads/dashie-kiosk.apk?v=2.24.18B">
+            <img class="apk-icon" src="./artwork/icon-download.svg" alt="">
+          </a>
+        </div>
+        <h2>Sideload (Direct APK)</h2>
+        <p>
+          Install the APK directly &mdash; for kiosk hardware or tablets without a supported app store.
+        </p>
+        <a href="/downloads/dashie-kiosk.apk?v=2.24.18B" class="btn-channel beta">Download APK (v2.24.18B)</a>
+        <p class="prior-version">
+          <a href="/downloads/dashie-kiosk-2.24.17B.apk">Prior version (v2.24.17B)</a>
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Getting Started -->
   <section class="download-section">
     <div class="download-box">
       <h2>Get Started</h2>
       <p>
         Thanks for using Dashie for Home Assistant! Please enable the toggles in the Beta section of the settings menu to share helpful information that will improve the product.
       </p>
-      <a href="/downloads/dashie-kiosk.apk?v=2.24.18B" class="btn-download">
-        <svg viewBox="0 0 24 24">
-          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
-          <polyline points="7 10 12 15 17 10"/>
-          <line x1="12" y1="15" x2="12" y2="3"/>
-        </svg>
-        <span class="btn-text">Download APK<br><i class="version-text">v2.24.18B</i></span>
-      </a>
 
-      <p class="prior-version">
-        <a href="/downloads/dashie-kiosk-2.24.17B.apk">Download prior version (v2.24.17B)</a>
-      </p>
-
-      <div class="tutorial-links">
+      <div class="tutorial-links" style="margin-top:0; padding-top:0; border-top:none;">
         <p>Getting Started Guides:</p>
         <a href="/guides/dashie-kiosk-features">Features Overview</a>
         <span class="separator">|</span>
