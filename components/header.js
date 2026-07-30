@@ -580,6 +580,7 @@ const headerHTML = `
           <a href="/dashie-kiosk#home-assistant">Home Assistant Integration</a>
         </div>
       </li>
+      <li><a href="/voice-ai" class="${getActiveClass('/voice-ai')}">Voice &amp; AI</a></li>
       <li><a href="/dashie-kiosk-download" class="${getActiveClass('/dashie-kiosk-download')}">Download</a></li>
       <li><a href="/guides/" class="${getActiveClass('/guides')}">How to Guides</a></li>
       <li><a href="/blog/" class="${getActiveClass('/blog')}">Blog</a></li>
@@ -628,6 +629,7 @@ const headerHTML = `
     <li><a href="/dashie-kiosk#music-player" class="mobile-sub-item">Music Player</a></li>
     <li><a href="/dashie-kiosk#video-streaming" class="mobile-sub-item">Video Streaming</a></li>
     <li><a href="/dashie-kiosk#battery-management" class="mobile-sub-item">Battery Management</a></li>
+    <li><a href="/voice-ai" class="${getActiveClass('/voice-ai')}">Voice &amp; AI</a></li>
     <li><a href="/dashie-kiosk-download" class="${getActiveClass('/dashie-kiosk-download')}">Download</a></li>
     <li><a href="/guides/" class="${getActiveClass('/guides')}">How to Guides</a></li>
     <li><a href="/blog/" class="${getActiveClass('/blog')}">Blog</a></li>

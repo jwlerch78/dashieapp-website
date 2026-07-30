@@ -85,37 +85,37 @@
 
     {
       "source": "/voice",
-      "destination": "/dashie-kiosk#voice-control",
+      "destination": "/voice-ai",
       "permanent": true
     },
     {
       "source": "/voice-license",
-      "destination": "/dashie-kiosk#voice-control",
+      "destination": "/voice-ai",
       "permanent": true
     },
     {
       "source": "/voice-license.html",
-      "destination": "/dashie-kiosk#voice-control",
+      "destination": "/voice-ai",
       "permanent": true
     },
     {
       "source": "/voice-license-success",
-      "destination": "/dashie-kiosk#voice-control",
+      "destination": "/voice-ai",
       "permanent": true
     },
     {
       "source": "/voice-license-success.html",
-      "destination": "/dashie-kiosk#voice-control",
+      "destination": "/voice-ai",
       "permanent": true
     },
     {
       "source": "/dashie-intelligence",
-      "destination": "/dashie-kiosk#voice-control",
+      "destination": "/voice-ai",
       "permanent": true
     },
     {
       "source": "/dashie-intelligence.html",
-      "destination": "/dashie-kiosk#voice-control",
+      "destination": "/voice-ai",
       "permanent": true
     },
     {
