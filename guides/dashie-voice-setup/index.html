@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Setting Up Dashie Intelligence on Home Assistant - Dashie</title>
+  <title>Setting Up Dashie Voice on Home Assistant - Dashie</title>
   <link rel="icon" type="image/png" href="../../artwork/Dashie_Logo_Orange_Transparent.png">
 
   <style>
@@ -323,20 +323,20 @@
   <div class="breadcrumb">
     <a href="/guides/">How To Guides</a>
     <span>/</span>
-    <a href="#">Dashie Intelligence Setup</a>
+    <a href="#">Dashie Voice Setup</a>
   </div>
 
   <!-- Article -->
   <article class="article">
     <header class="article-header">
-      <span class="article-tag">Dashie Intelligence</span>
-      <h1>Setting Up Dashie Intelligence on Home Assistant</h1>
+      <span class="article-tag">Dashie Voice</span>
+      <h1>Setting Up Dashie Voice on Home Assistant</h1>
       <p class="article-meta">Last updated: June 2026</p>
     </header>
 
     <div class="article-content">
       <p>
-        <strong>Dashie Intelligence</strong> brings premium voice and AI to your Dashie tablets and Home Assistant
+        <strong>Dashie Voice</strong> brings premium voice and AI to your Dashie tablets and Home Assistant
         voice satellites &mdash; with the brain running in Dashie's cloud or on your own local model. This guide walks you
         through installing the two Home Assistant pieces you need, signing in, and configuring everything from the
         <strong>Dashie Console</strong>.
@@ -345,7 +345,7 @@
       <div class="info-box tip">
         <h4>Beta program</h4>
         <p>
-          Dashie Intelligence is currently in a limited beta. Your Dashie account must be enabled for the beta before
+          Dashie Voice is currently in a limited beta. Your Dashie account must be enabled for the beta before
           the Voice &amp; AI controls appear in the Console. <a href="/alpha-access">Request beta access here</a>.
         </p>
       </div>
@@ -363,13 +363,13 @@
 
       <h2>The pieces, and what each does</h2>
       <p>
-        Dashie Intelligence on Home Assistant uses two components that work together:
+        Dashie Voice on Home Assistant uses two components that work together:
       </p>
       <ul>
         <li><strong>The Dashie Console add-on</strong> &mdash; runs inside Home Assistant, signs in to your Dashie account,
           and is your control panel. It's the login and credential hub for the whole household.</li>
         <li><strong>The Dashie integration</strong> &mdash; the runtime gateway. It lets your tablets and satellites reach
-          Dashie Intelligence over your existing Home Assistant URL (on your LAN <em>or</em> remotely), and provides the
+          Dashie Voice over your existing Home Assistant URL (on your LAN <em>or</em> remotely), and provides the
           voice entities for HA satellites.</li>
       </ul>
 
@@ -427,7 +427,7 @@
       <h2>Part 2: Install the Dashie integration</h2>
 
       <p>
-        The integration is what lets your tablets and satellites actually <em>use</em> Dashie Intelligence. The easiest way
+        The integration is what lets your tablets and satellites actually <em>use</em> Dashie Voice. The easiest way
         to install it is through HACS.
       </p>
 
@@ -468,7 +468,7 @@
         <p>
           The add-on holds your login and credits; the integration is reachable over your Home Assistant URL, so it works
           on your LAN and through remote access (Nabu Casa / reverse proxy) with no extra setup. You need both for
-          Dashie Intelligence to reach your devices.
+          Dashie Voice to reach your devices.
         </p>
       </div>
 
@@ -481,13 +481,13 @@
       <ul>
         <li><strong>Home Assistant</strong> &mdash; routes voice through a Home Assistant Assist pipeline you select. HA handles
           speech, the agent, and the response. Free, no Dashie credits used.</li>
-        <li><strong>Dashie Intelligence</strong> &mdash; Dashie orchestrates the whole thing. This is what unlocks premium speech
+        <li><strong>Dashie Voice</strong> &mdash; Dashie orchestrates the whole thing. This is what unlocks premium speech
           recognition, AI models (cloud or local), built-in tools, and personality voices.</li>
       </ul>
 
       <p>
-        Select <strong>Dashie Intelligence</strong>. You'll see a one-time privacy summary &mdash; read it, then continue.
-        Choosing Dashie Intelligence reveals three groups: <strong>AI Model</strong>, <strong>Voice</strong>, and
+        Select <strong>Dashie Voice</strong>. You'll see a one-time privacy summary &mdash; read it, then continue.
+        Choosing Dashie Voice reveals three groups: <strong>AI Model</strong>, <strong>Voice</strong>, and
         <strong>Tools</strong>.
       </p>
 
@@ -603,7 +603,7 @@
 
       <p>
         Household sharing lets <em>anonymous</em> Dashie tablets (no Dashie login) and HA voice satellites on your network use
-        Dashie Intelligence through <em>your</em> account &mdash; one login powering a whole house of devices.
+        Dashie Voice through <em>your</em> account &mdash; one login powering a whole house of devices.
       </p>
 
       <div class="step">
@@ -620,7 +620,7 @@
           <h4>Enable Household Dashie Cloud Sharing</h4>
           <p>
             Toggle <strong>Household sharing</strong> on. It's off by default. Once on, kiosk tablets and satellites in your
-            home can use Dashie Intelligence without their own login.
+            home can use Dashie Voice without their own login.
           </p>
         </div>
       </div>
@@ -628,7 +628,7 @@
       <div class="info-box important">
         <h4>Sharing uses your credits</h4>
         <p>
-          Every device that uses Dashie Intelligence through household sharing draws on <strong>your</strong> account's credit
+          Every device that uses Dashie Voice through household sharing draws on <strong>your</strong> account's credit
           balance. That's the point &mdash; one account funds the household &mdash; but it's why the toggle is off by default and
           shows a disclaimer.
         </p>
@@ -665,7 +665,7 @@
         <li>Make sure you're signed in to the right Dashie account in the add-on.</li>
       </ul>
 
-      <h3>A kiosk tablet can't use Dashie Intelligence</h3>
+      <h3>A kiosk tablet can't use Dashie Voice</h3>
       <ul>
         <li>Confirm the add-on is signed in and <strong>household sharing</strong> is on.</li>
         <li>Confirm the Dashie integration is installed and Home Assistant has been restarted.</li>
