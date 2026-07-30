@@ -49,10 +49,9 @@ const headerHTML = `
   .logo-container {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
     justify-content: center;
     padding-right: 20px;
-    gap: 2px;
   }
 
   .logo {
@@ -60,22 +59,30 @@ const headerHTML = `
     width: auto;
   }
 
+  /* Scaled-down twin of the hero's .hero-badge pill.
+     The logo PNG carries ~139px of transparent padding at its base (~10px once
+     scaled to height:50px), so the pill is pulled up by that much to sit against
+     the wordmark instead of floating below the file's empty edge. */
   .logo-edition {
     display: inline-flex;
     align-items: center;
     gap: 5px;
+    background: linear-gradient(135deg, #18bcf2 0%, #0d8bc2 100%);
+    color: #ffffff;
     font-size: 10px;
     font-weight: 700;
     letter-spacing: 0.4px;
     text-transform: uppercase;
-    color: #18bcf2;
     white-space: nowrap;
-    padding-left: 2px;
+    padding: 3px 12px;
+    border-radius: 20px;
+    margin-top: -10px;
   }
 
   .logo-edition img {
-    height: 11px;
+    height: 10px;
     width: auto;
+    filter: brightness(0) invert(1);
   }
 
   .nav-bar ul {
@@ -533,10 +540,12 @@ const headerHTML = `
     .logo-edition {
       font-size: 9px;
       letter-spacing: 0.3px;
+      padding: 2px 10px;
+      margin-top: -8px;
     }
 
     .logo-edition img {
-      height: 10px;
+      height: 9px;
     }
 
     /* Hide desktop nav on mobile */
