@@ -93,23 +93,23 @@
     },
     {
       "source": "/voice-license",
-      "destination": "/voice-ai",
-      "permanent": true
+      "destination": "https://app.dashieapp.com/voice-license.html",
+      "permanent": false
     },
     {
       "source": "/voice-license.html",
-      "destination": "/voice-ai",
-      "permanent": true
+      "destination": "https://app.dashieapp.com/voice-license.html",
+      "permanent": false
     },
     {
       "source": "/voice-license-success",
-      "destination": "/voice-ai",
-      "permanent": true
+      "destination": "https://app.dashieapp.com/voice-license-success.html",
+      "permanent": false
     },
     {
       "source": "/voice-license-success.html",
-      "destination": "/voice-ai",
-      "permanent": true
+      "destination": "https://app.dashieapp.com/voice-license-success.html",
+      "permanent": false
     },
     {
       "source": "/dashie-intelligence",
