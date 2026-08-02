@@ -1,9 +1,9 @@
 {
-  "versionCode": 175,
-  "versionName": "1.0.15",
+  "versionCode": 176,
+  "versionName": "1.0.16",
   "apkUrl": "https://dashieapp.com/downloads/Dashie-sideload-beta.apk",
-  "sha256": "3bdd453951103e5aaee60a5598424311e45defec296254360ae69fac0f19fa4f",
+  "sha256": "e6be964bc4dbaf60e8dd11edabb9ca580f2af4e3db06786ab7b31437f5079888",
   "notify": false,
-  "title": "What's new in 1.0.15",
-  "description": "\u2022 Photos: new Fit/Fill scaling option\n\u2022 Scheduled Sleep now re-sleeps if you wake during the sleep window\n\u2022 Portrait-orientation RTSP camera streams now fill the video card\n\u2022 Improved reliability of Music Assistant connection"
+  "title": "What's new in 1.0.16",
+  "description": "Bug fixes."
 }
