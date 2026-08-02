@@ -80,6 +80,26 @@
       text-align: center;
     }
 
+    /* Beta callout — ported from heydashie.com/get-dashie */
+    .beta-callout {
+      max-width: 1000px;
+      margin: 10px auto 20px;
+      padding: 0 40px;
+    }
+
+    .beta-callout-inner {
+      background: #f4f7fb;
+      border: 1px solid #d6e2f0;
+      border-radius: 12px;
+      padding: 24px 28px;
+      text-align: center;
+      color: #555;
+    }
+
+    .beta-callout-inner strong {
+      color: #1a365d;
+    }
+
     /* Install channels (Play / Amazon / sideload) */
     .channels-section {
       max-width: 1000px;
@@ -322,6 +342,11 @@
         padding: 0 20px 40px 20px;
       }
 
+      .beta-callout {
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+
       .download-box {
         padding: 30px 20px;
       }
@@ -351,6 +376,15 @@
     <p class="tagline">
       A free alternative to Fully Kiosk for hosting your Home Assistant dashboards on Android tablets.
     </p>
+  </section>
+
+  <!-- Beta Callout (above downloads) — matches heydashie.com/get-dashie -->
+  <section class="beta-callout">
+    <div class="beta-callout-inner">
+      <strong>Want early access to new features?</strong>
+      The sideload APK is Dashie's beta track &mdash; it gets updates before the
+      app stores. Grab it below for earlier access to new features!
+    </div>
   </section>
 
   <!-- Install Channels -->
@@ -397,9 +431,10 @@
         </div>
         <h2>Sideload (Direct APK)</h2>
         <p>
-          Install the APK directly &mdash; for kiosk hardware or tablets without a supported app store.
+          Install the APK directly &mdash; for kiosk hardware or devices without
+          a supported app store.
         </p>
-        <a href="/downloads/Dashie-sideload-beta.apk" class="btn-channel beta">Download APK (v1.0.15)</a>
+        <a href="/downloads/Dashie-sideload-beta.apk" class="btn-channel beta">Download Beta Release (v1.0.15)</a>
       </div>
 
     </div>
