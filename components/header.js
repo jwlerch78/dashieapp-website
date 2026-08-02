@@ -15,10 +15,17 @@
 // Determine the current page for active state
 const currentPath = window.location.pathname;
 
+// Match on whole path SEGMENTS, not raw string prefix. A bare startsWith made
+// /dashie-kiosk match /dashie-kiosk-download, so Features and Download both lit
+// up on the download page. Sub-pages must still match (/guides -> /guides/x),
+// so this accepts the path itself or anything below it — never a longer sibling.
 function getActiveClass(path) {
-  if (path === '/' && (currentPath === '/' || currentPath === '/index.html')) return 'active';
-  if (path !== '/' && currentPath.startsWith(path)) return 'active';
-  return '';
+  if (path === '/') {
+    return (currentPath === '/' || currentPath === '/index.html') ? 'active' : '';
+  }
+  const here = currentPath.replace(/\.html$/, '').replace(/\/+$/, '') || '/';
+  const target = path.replace(/\/+$/, '');
+  return (here === target || here.startsWith(target + '/')) ? 'active' : '';
 }
 
 const headerHTML = `
