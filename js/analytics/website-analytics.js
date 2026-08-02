@@ -99,7 +99,7 @@ async function trackDownload(fileName, filePath) {
 // Auto-attach download tracking to APK links
 function attachDownloadTracking() {
   // Find all download links (APK files)
-  const downloadLinks = document.querySelectorAll('a[href$=".apk"]');
+  const downloadLinks = document.querySelectorAll('a[href*=".apk"]');
 
   downloadLinks.forEach(link => {
     link.addEventListener('click', (event) => {
