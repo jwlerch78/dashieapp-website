@@ -25,6 +25,35 @@
   <meta name="twitter:description" content="A free alternative to Fully Kiosk for hosting Home Assistant dashboards on Android tablets — screensaver, motion wake, &quot;Hey Dashie&quot; voice, cameras, and Music Assistant. No account, no subscription.">
   <meta name="twitter:image" content="https://dashieapp.com/website-assets/og-image.png">
 
+  <!-- Structured data. The sameAs link to heydashie.com is deliberate and
+       machine-only: it tells search engines the two Dashie sites are one
+       organization so family-intent queries route to heydashie.com and
+       HA-intent queries route here. It is NOT a visible cross-link — the
+       audience boundary in components/header.js still applies to the nav. -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://dashieapp.com/#org",
+        "name": "Dashie",
+        "legalName": "Dashie LLC",
+        "url": "https://dashieapp.com/",
+        "logo": "https://dashieapp.com/artwork/Dashie_Logo_Orange_Transparent.png",
+        "sameAs": ["https://heydashie.com/"]
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://dashieapp.com/#website",
+        "name": "Dashie for Home Assistant",
+        "url": "https://dashieapp.com/",
+        "publisher": { "@id": "https://dashieapp.com/#org" }
+      }
+    ]
+  }
+  </script>
+
   <style>
     * {
       margin: 0;
