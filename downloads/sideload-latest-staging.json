@@ -1,9 +1,7 @@
 {
-  "versionCode": 143,
-  "versionName": "1.0.4",
+  "versionCode": 177,
+  "versionName": "1.0.17",
   "apkUrl": "https://dashieapp.com/downloads/Dashie-sideload-staging.apk",
-  "sha256": "46668d0a8d7db7a14f263a1dcfe98d5c09f75f7f1402b00dce5d37f6aa82ee65",
-  "notify": true,
-  "title": "What's new in 1.0.4",
-  "description": "• 'Check for Updates' from Settings no longer pops the banner — the Control Center card is the only surface (the user is already in the UI)\n• Automatic poll banner behavior unchanged"
+  "sha256": "b95dd3be40f79ca580a09da43903eee43ad51daab505140a01e3b2ae4f0affe6",
+  "notify": false
 }

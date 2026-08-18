@@ -1,9 +1,7 @@
 {
-  "versionCode": 176,
-  "versionName": "1.0.16",
+  "versionCode": 177,
+  "versionName": "1.0.17",
   "apkUrl": "https://dashieapp.com/downloads/Dashie-sideload-beta.apk",
-  "sha256": "e6be964bc4dbaf60e8dd11edabb9ca580f2af4e3db06786ab7b31437f5079888",
-  "notify": false,
-  "title": "What's new in 1.0.16",
-  "description": "Bug fixes."
+  "sha256": "f3b41ffe24c491b7bec15a604a4ba8c623702fdb9757761685ec6fbc638a705f",
+  "notify": false
 }
