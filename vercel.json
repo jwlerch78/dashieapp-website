@@ -1,178 +1,55 @@
 {
   "cleanUrls": true,
   "redirects": [
-    {
-      "source": "/login",
-      "destination": "https://app.dashieapp.com/login",
-      "permanent": true
-    },
-    {
-      "source": "/add-credits",
-      "destination": "https://app.dashieapp.com/add-credits.html",
-      "permanent": false
-    },
-    {
-      "source": "/for-families",
-      "destination": "https://heydashie.com/",
-      "permanent": true
-    },
-    {
-      "source": "/for-families.html",
-      "destination": "https://heydashie.com/",
-      "permanent": true
-    },
-    {
-      "source": "/pricing",
-      "destination": "https://heydashie.com/pricing",
-      "permanent": true
-    },
-    {
-      "source": "/pricing.html",
-      "destination": "https://heydashie.com/pricing",
-      "permanent": true
-    },
-    {
-      "source": "/get-dashie",
-      "destination": "https://heydashie.com/get-dashie",
-      "permanent": true
-    },
-    {
-      "source": "/get-dashie.html",
-      "destination": "https://heydashie.com/get-dashie",
-      "permanent": true
-    },
-    {
-      "source": "/beta-signup",
-      "destination": "https://heydashie.com/beta-signup",
-      "permanent": true
-    },
-    {
-      "source": "/beta-signup.html",
-      "destination": "https://heydashie.com/beta-signup",
-      "permanent": true
-    },
-    {
-      "source": "/guides/calendar-setup",
-      "destination": "https://heydashie.com/guides/calendar-setup",
-      "permanent": true
-    },
-    {
-      "source": "/guides/chores-rewards-setup",
-      "destination": "https://heydashie.com/guides/chores-rewards-setup",
-      "permanent": true
-    },
-    {
-      "source": "/guides/dashie-early-access",
-      "destination": "https://heydashie.com/guides/dashie-early-access",
-      "permanent": true
-    },
-    {
-      "source": "/guides/family-management",
-      "destination": "https://heydashie.com/guides/family-management",
-      "permanent": true
-    },
-    {
-      "source": "/guides/smart-tv-setup",
-      "destination": "https://heydashie.com/guides/smart-tv-setup",
-      "permanent": true
-    },
-    {
-      "source": "/guides/tv-remote-guide",
-      "destination": "https://heydashie.com/guides/tv-remote-guide",
-      "permanent": true
-    },
-    {
-      "source": "/heydashie/:path*",
-      "destination": "https://heydashie.com/:path*",
-      "permanent": true
-    },
-    {
-      "source": "/voice",
-      "destination": "/voice-ai",
-      "permanent": true
-    },
-    {
-      "source": "/voice-license",
-      "destination": "/voice-ai",
-      "permanent": false
-    },
-    {
-      "source": "/voice-license.html",
-      "destination": "/voice-ai",
-      "permanent": false
-    },
-    {
-      "source": "/voice-license-success",
-      "destination": "/voice-ai",
-      "permanent": false
-    },
-    {
-      "source": "/voice-license-success.html",
-      "destination": "/voice-ai",
-      "permanent": false
-    },
-    {
-      "source": "/dashie-intelligence",
-      "destination": "/voice-ai",
-      "permanent": true
-    },
-    {
-      "source": "/dashie-intelligence.html",
-      "destination": "/voice-ai",
-      "permanent": true
-    },
-    {
-      "source": "/guides/dashie-intelligence-setup",
-      "destination": "/guides/dashie-voice-setup",
-      "permanent": true
-    }
+    { "source": "/login", "destination": "https://app.dashieapp.com/login", "permanent": false },
+    { "source": "/add-credits", "destination": "https://app.dashieapp.com/add-credits.html", "permanent": false },
+
+    { "source": "/for-families", "destination": "https://dashieapp.com/", "permanent": false },
+    { "source": "/for-families.html", "destination": "https://dashieapp.com/", "permanent": false },
+    { "source": "/pricing", "destination": "https://dashieapp.com/pricing", "permanent": false },
+    { "source": "/pricing.html", "destination": "https://dashieapp.com/pricing", "permanent": false },
+    { "source": "/get-dashie", "destination": "https://dashieapp.com/get-dashie", "permanent": false },
+    { "source": "/get-dashie.html", "destination": "https://dashieapp.com/get-dashie", "permanent": false },
+    { "source": "/beta-signup", "destination": "https://dashieapp.com/beta-signup", "permanent": false },
+    { "source": "/beta-signup.html", "destination": "https://dashieapp.com/beta-signup", "permanent": false },
+    { "source": "/guides/calendar-setup", "destination": "https://dashieapp.com/guides/calendar-setup", "permanent": false },
+    { "source": "/guides/chores-rewards-setup", "destination": "https://dashieapp.com/guides/chores-rewards-setup", "permanent": false },
+    { "source": "/guides/dashie-early-access", "destination": "https://dashieapp.com/guides/dashie-early-access", "permanent": false },
+    { "source": "/guides/family-management", "destination": "https://dashieapp.com/guides/family-management", "permanent": false },
+    { "source": "/guides/smart-tv-setup", "destination": "https://dashieapp.com/guides/smart-tv-setup", "permanent": false },
+    { "source": "/guides/tv-remote-guide", "destination": "https://dashieapp.com/guides/tv-remote-guide", "permanent": false },
+
+    { "source": "/voice", "destination": "/voice-ai", "permanent": true },
+    { "source": "/voice-license", "destination": "/voice-ai", "permanent": true },
+    { "source": "/voice-license.html", "destination": "/voice-ai", "permanent": true },
+    { "source": "/voice-license-success", "destination": "/voice-ai", "permanent": true },
+    { "source": "/voice-license-success.html", "destination": "/voice-ai", "permanent": true },
+    { "source": "/dashie-intelligence", "destination": "/voice-ai", "permanent": true },
+    { "source": "/dashie-intelligence.html", "destination": "/voice-ai", "permanent": true },
+    { "source": "/guides/dashie-intelligence-setup", "destination": "/guides/dashie-voice-setup", "permanent": true }
   ],
   "headers": [
     {
       "source": "/(.*)",
       "headers": [
-        {
-          "key": "X-Content-Type-Options",
-          "value": "nosniff"
-        },
-        {
-          "key": "X-Frame-Options",
-          "value": "DENY"
-        },
-        {
-          "key": "X-XSS-Protection",
-          "value": "1; mode=block"
-        }
+        { "key": "X-Content-Type-Options", "value": "nosniff" },
+        { "key": "X-Frame-Options", "value": "DENY" },
+        { "key": "X-XSS-Protection", "value": "1; mode=block" }
       ]
     },
     {
       "source": "/wake-word-models/(.*)",
       "headers": [
-        {
-          "key": "Access-Control-Allow-Origin",
-          "value": "*"
-        },
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=3600"
-        }
+        { "key": "Access-Control-Allow-Origin", "value": "*" },
+        { "key": "Cache-Control", "value": "public, max-age=3600" }
       ]
     },
     {
       "source": "/wake-word-models/manifest.json",
       "headers": [
-        {
-          "key": "Content-Type",
-          "value": "application/json"
-        },
-        {
-          "key": "Access-Control-Allow-Origin",
-          "value": "*"
-        },
-        {
-          "key": "Cache-Control",
-          "value": "no-cache, max-age=0"
-        }
+        { "key": "Content-Type", "value": "application/json" },
+        { "key": "Access-Control-Allow-Origin", "value": "*" },
+        { "key": "Cache-Control", "value": "no-cache, max-age=0" }
       ]
     }
   ]
