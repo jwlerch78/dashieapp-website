@@ -1,5 +1,5 @@
 /**
- * Header/navigation for dashieapp.com — "Dashie for Home Assistant" (free edition).
+ * Header/navigation for heydashie.com — "Dashie for Home Assistant" (free edition).
  * Includes hamburger menu for mobile with proper touch handling
  *
  * Usage: Include <script src="/components/header.js"></script> in your page
@@ -7,9 +7,15 @@
  *
  * ⚠️ AUDIENCE BOUNDARY — this nav must never expose a paid surface.
  * No pricing link, no purchase/subscribe button, and no cross-link to
- * heydashie.com (the paid family product). An r/HomeAssistant visitor should
+ * dashieapp.com (the paid family product). An r/HomeAssistant visitor should
  * be able to browse this entire site without encountering a paywall.
  * The family-facing counterpart lives at heydashie/components/header.js.
+ *
+ * ⚠️ 2026-08-18 domain swap: this repo now serves **heydashie.com** (Dashie for
+ * Home Assistant); the family site moved to dashieapp.com. The repo NAMES did
+ * not change — only the domain each one is bound to in Vercel. So
+ * `dashieapp-website` serves heydashie.com. See the runbook in dashieapp_staging:
+ * .reference/build-plans/20260818_DOMAIN_SWAP_CUTOVER_RUNBOOK.md
  */
 
 // Determine the current page for active state
@@ -51,7 +57,7 @@ const headerHTML = `
   }
 
   /* Logo + edition badge. The badge is load-bearing: "Dashie" alone reads the
-     same here as it does on heydashie.com, so the wordmark has to say which
+     same here as it does on dashieapp.com, so the wordmark has to say which
      product this is. */
   .logo-container {
     display: flex;
