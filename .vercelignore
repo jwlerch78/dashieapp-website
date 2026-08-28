@@ -1,0 +1,6 @@
+# Internal planning/draft documents live in this repo but must never deploy.
+# 2026-08-28: ha-forum-post-draft.md was serving 200 on heydashie.com — an old
+# marketing draft quoting a $12 voice unlock and a Fully Kiosk price comparison,
+# contradicting the shipped 1.1.0 announcement. Keep docs out of the deploy.
+*.md
+build-plans/
