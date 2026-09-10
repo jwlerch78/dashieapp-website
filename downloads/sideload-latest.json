@@ -1,7 +1,9 @@
 {
-  "versionCode": 192,
-  "versionName": "1.1.0",
+  "versionCode": 219,
+  "versionName": "1.1.1",
   "apkUrl": "https://dashieapp.com/downloads/Dashie-sideload.apk",
-  "sha256": "1734f2014d7fe6ebfd653316bd6895da6b1956b667fb98e92b0cd0ffb6bfa406",
-  "notify": false
+  "sha256": "dc53c84ea5a824f85e4989b7ece63433f0420da97d802683f6b9b501339f07b4",
+  "notify": false,
+  "title": "What's new in 1.1.1",
+  "description": "New dashboard themes\nVarious bug fixes"
 }
