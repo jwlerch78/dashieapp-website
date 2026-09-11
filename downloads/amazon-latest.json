@@ -1,7 +1,7 @@
 {
-  "versionCode": 174,
-  "versionName": "1.0.14",
+  "versionCode": 221,
+  "versionName": "1.1.1",
   "notify": false,
-  "title": "What's new in 1.0.14",
-  "description": "• Improved \"Hey Dashie\" wake word detection\n• Additional bug fixes and improvements"
+  "title": "What's new in 1.1.1",
+  "description": "• New dashboard themes\n• Various bug fixes"
 }
