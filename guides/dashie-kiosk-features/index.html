@@ -794,13 +794,23 @@
 
       <h3 id="device-owner">Setting Up Device Owner</h3>
       <p>
-        For the best kiosk experience, you can set Dashie as the <strong>device owner</strong> using ADB. This is optional but provides two key benefits:
+        For the best kiosk experience, you can set Dashie as the <strong>device owner</strong> using ADB. This is optional but provides three key benefits:
       </p>
       <ul>
         <li><strong>Silent screen pinning</strong> — Eliminates the "App is pinned" notification toast that normally appears when you enable Lock App mode</li>
         <li><strong>Remote device reboot</strong> — Enables the <code>rebootDevice</code> API command to reboot the tablet without requiring root access</li>
         <li><strong>Reliable camera motion detection with the screen off</strong> — On aggressive devices (e.g. Honor/MagicOS) that revoke camera access or kill the app while the screen is off, device owner status keeps Dashie's camera/motion service resident</li>
       </ul>
+
+      <div class="info-box warning">
+        <h4>Not possible on Amazon Fire tablets and Fire TV</h4>
+        <p>
+          Android allows only one owner per device, and Fire OS claims that slot for itself: every Fire device ships with
+          Amazon's own Parental Controls app already set as the profile owner. However, on Fire tablets, Lock App uses
+          immersive mode rather than screen pinning, so there is no "App is pinned" toast to eliminate and Device Owner
+          isn't critical.
+        </p>
+      </div>
 
       <h4>Requirements</h4>
       <ul>
