@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Launch Apps with the Dashie API - Dashie</title>
+  <link rel="icon" type="image/png" href="../../artwork/Dashie_Logo_Orange_Transparent.png">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      line-height: 1.6;
+      background: #ffffff;
+      color: #424242;
+      min-height: 100vh;
+    }
+
+    /* Breadcrumb */
+    .breadcrumb {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px 40px 0 40px;
+    }
+
+    .breadcrumb a {
+      color: #666;
+      text-decoration: none;
+      font-size: 14px;
+    }
+
+    .breadcrumb a:hover {
+      color: #ffaa00;
+    }
+
+    .breadcrumb span {
+      color: #999;
+      margin: 0 8px;
+    }
+
+    /* Article */
+    .article {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 30px 40px 60px 40px;
+    }
+
+    .article-header {
+      margin-bottom: 40px;
+    }
+
+    .article-tag {
+      display: inline-block;
+      background: #18bcf2;
+      color: white;
+      font-size: 12px;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 4px;
+      margin-bottom: 15px;
+    }
+
+    .article h1 {
+      font-size: 2.2em;
+      color: #424242;
+      margin-bottom: 15px;
+      line-height: 1.3;
+    }
+
+    .article-meta {
+      color: #888;
+      font-size: 14px;
+    }
+
+    .article-content h2 {
+      font-size: 1.5em;
+      color: #424242;
+      margin: 40px 0 20px 0;
+      padding-bottom: 10px;
+      border-bottom: 2px solid #ffaa00;
+    }
+
+    .article-content h3 {
+      font-size: 1.2em;
+      color: #424242;
+      margin: 30px 0 15px 0;
+    }
+
+    .article-content h4 {
+      font-size: 1.05em;
+      color: #424242;
+      margin: 20px 0 10px 0;
+    }
+
+    .article-content p {
+      margin-bottom: 20px;
+      color: #555;
+    }
+
+    .article-content ul,
+    .article-content ol {
+      margin-bottom: 20px;
+      padding-left: 30px;
+    }
+
+    .article-content li {
+      margin-bottom: 10px;
+      color: #555;
+    }
+
+    .article-content a {
+      color: #ffaa00;
+      text-decoration: none;
+    }
+
+    .article-content a:hover {
+      text-decoration: underline;
+    }
+
+    /* Inline code */
+    code {
+      background: #f4f4f4;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Fira Mono', 'Droid Sans Mono', monospace;
+      font-size: 0.9em;
+      color: #d63384;
+    }
+
+    /* Code blocks */
+    .code-block {
+      background: #1e1e1e;
+      border-radius: 8px;
+      padding: 20px;
+      margin: 20px 0;
+      overflow-x: auto;
+    }
+
+    .code-block code {
+      background: transparent;
+      color: #d4d4d4;
+      padding: 0;
+      font-size: 0.85em;
+      line-height: 1.6;
+      display: block;
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+
+    .code-block .comment {
+      color: #6a9955;
+    }
+
+    /* Info boxes */
+    .info-box {
+      padding: 20px;
+      border-radius: 8px;
+      margin: 20px 0;
+    }
+
+    .info-box.warning {
+      background: #fff3cd;
+      border-left: 4px solid #ffc107;
+    }
+
+    .info-box.tip {
+      background: #d1ecf1;
+      border-left: 4px solid #17a2b8;
+    }
+
+    .info-box.important {
+      background: #f8d7da;
+      border-left: 4px solid #dc3545;
+    }
+
+    .info-box h4 {
+      margin-bottom: 10px;
+      color: #424242;
+    }
+
+    .info-box p {
+      margin: 0;
+      color: #555;
+    }
+
+    /* Settings table */
+    .settings-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+    }
+
+    .settings-table th,
+    .settings-table td {
+      padding: 12px 15px;
+      text-align: left;
+      border-bottom: 1px solid #e0e0e0;
+    }
+
+    .settings-table th {
+      background: #f9f9f9;
+      font-weight: 600;
+      color: #424242;
+    }
+
+    .settings-table td {
+      color: #555;
+    }
+
+    .settings-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    /* Table of contents */
+    .toc {
+      background: #f9f9f9;
+      border-radius: 12px;
+      padding: 25px;
+      margin: 30px 0;
+    }
+
+    .toc h3,
+    .toc-content h3 {
+      margin-top: 0;
+      margin-bottom: 15px;
+      color: #424242;
+    }
+
+    .toc ul,
+    .toc-content ul {
+      margin: 0;
+      padding-left: 25px;
+    }
+
+    .toc li {
+      margin-bottom: 8px;
+    }
+
+    .toc a {
+      color: #555;
+      text-decoration: none;
+    }
+
+    .toc a:hover {
+      color: #ffaa00;
+    }
+
+    /* Step list */
+    .step-list {
+      counter-reset: step-counter;
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .step-list li {
+      counter-increment: step-counter;
+      position: relative;
+      padding-left: 50px;
+      margin-bottom: 25px;
+    }
+
+    .step-list li::before {
+      content: counter(step-counter);
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 32px;
+      height: 32px;
+      background: #ffaa00;
+      color: white;
+      font-weight: 600;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+    }
+
+    .step-list li strong {
+      color: #424242;
+    }
+
+    /* Footer */
+    .footer {
+      max-width: 800px;
+      margin: 60px auto 0;
+      padding: 40px;
+      text-align: center;
+      border-top: 1px solid #e0e0e0;
+      color: #999999;
+    }
+
+    .footer-links {
+      margin-top: 20px;
+    }
+
+    .footer-links a {
+      color: #666666;
+      text-decoration: none;
+      margin: 0 15px;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover {
+      color: #ffaa00;
+    }
+
+    /* Mobile Responsive */
+    @media (max-width: 768px) {
+      .breadcrumb,
+      .article {
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+
+      .article h1 {
+        font-size: 1.6em;
+      }
+
+      .settings-table {
+        font-size: 0.9em;
+      }
+
+      .settings-table th,
+      .settings-table td {
+        padding: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Shared Header/Navigation -->
+  <script src="/components/header.js"></script>
+
+  <!-- Breadcrumb -->
+  <div class="breadcrumb">
+    <a href="/guides/">How To Guides</a>
+    <span>/</span>
+    <a href="#">Launch Apps with the API</a>
+  </div>
+
+  <!-- Article -->
+  <article class="article">
+    <header class="article-header">
+      <span class="article-tag">Dashie</span>
+      <h1>Launch Other Apps on Your Tablet with the Dashie API</h1>
+      <p class="article-meta">Last updated: September 2026</p>
+    </header>
+
+    <div class="article-content">
+      <p>
+        Dashie runs a small HTTP API on your tablet. One of the things it can do is open another
+        app on demand: a camera app when the doorbell rings, a streaming app on movie night, or
+        Settings when you need to change something. This guide takes you from turning the API on
+        to launching your first app, and then back to Dashie.
+      </p>
+
+      <div class="toc">
+        <h3>In This Guide</h3>
+        <ul>
+          <li><a href="#requirements">What You Need</a></li>
+          <li><a href="#enable">Turn On the API</a></li>
+          <li><a href="#find-package">Find the App's Package Name</a></li>
+          <li><a href="#launch">Launch the App</a></li>
+          <li><a href="#return-button">Hide the Return Button</a></li>
+          <li><a href="#return">Return to Dashie</a></li>
+          <li><a href="#home-assistant">Launch Apps from Home Assistant</a></li>
+          <li><a href="#dashboard-buttons">Add App Buttons to Your Dashboard</a></li>
+          <li><a href="#troubleshooting">Troubleshooting</a></li>
+        </ul>
+      </div>
+
+      <h2 id="requirements">What You Need</h2>
+
+      <ul>
+        <li>Dashie installed on an Android tablet, set up with a Home Assistant dashboard or a custom dashboard URL.
+          The API switch lives on the <strong>Dashboard config</strong> page, which only appears once one of those is set.</li>
+        <li>A computer, Home Assistant server, or anything else that can make an HTTP request, on the same network as the tablet</li>
+        <li><code>curl</code> for the examples below (and <code>jq</code> if you want to filter the app list)</li>
+      </ul>
+
+      <h2 id="enable">Turn On the API</h2>
+
+      <p>The API is off until you turn it on.</p>
+
+      <ol class="step-list">
+        <li>Tap the <strong>☰</strong> menu at the bottom of the Dashie sidebar, then tap <strong>Control Center</strong>.</li>
+        <li>Under <strong>Dashboard</strong>, open <strong>Dashboard config</strong>.</li>
+        <li>Scroll to <strong>Device API</strong> and turn on <strong>Enable API</strong>.</li>
+        <li>
+          Two more fields appear once the API is on:
+          <strong>Password</strong> (leave it blank if you don't want one) and <strong>Port</strong> (default <code>2323</code>).
+          Tap <strong>Done</strong>.
+        </li>
+      </ol>
+
+      <p>
+        You'll also need the tablet's IP address. It's printed at the bottom of the Control Center,
+        for example <code>IP: 192.168.1.100</code>. The examples below use that address and the default port.
+      </p>
+
+      <div class="info-box tip">
+        <h4>Using a password?</h4>
+        <p>
+          Add <code>&amp;password=YOUR_PASSWORD</code> to every request. If you left the field blank,
+          leave the parameter out.
+        </p>
+      </div>
+
+      <h2 id="find-package">Find the App's Package Name</h2>
+
+      <p>
+        Android identifies an app by its package name (<code>com.android.chrome</code>), not by the
+        name on its icon. <code>listApps</code> returns every app on the tablet that can be launched, with both:
+      </p>
+
+      <div class="code-block">
+        <code>curl "http://192.168.1.100:2323/?cmd=listApps"</code>
+      </div>
+
+      <div class="code-block">
+        <code>{"status":"OK","count":20,"apps":[
+  {"package":"com.sec.android.app.sbrowser","label":"Browser"},
+  {"package":"com.android.chrome","label":"Chrome"},
+  {"package":"com.android.settings","label":"Settings"},
+  {"package":"com.google.android.youtube","label":"YouTube"},
+  <span class="comment">…</span>
+]}</code>
+      </div>
+
+      <p>With <code>jq</code> you can list them one per line, or look up a single app by name:</p>
+
+      <div class="code-block">
+        <code><span class="comment"># Package and label, one per line</span>
+curl -s "http://192.168.1.100:2323/?cmd=listApps" | jq -r '.apps[] | "\(.package)  \(.label)"'
+
+<span class="comment"># Just the package for an app whose label contains "chrome"</span>
+curl -s "http://192.168.1.100:2323/?cmd=listApps" | jq -r '.apps[] | select(.label | test("chrome"; "i")) | .package'</code>
+      </div>
+
+      <h2 id="launch">Launch the App</h2>
+
+      <p>Pass the package name to <code>startApplication</code>:</p>
+
+      <div class="code-block">
+        <code>curl "http://192.168.1.100:2323/?cmd=startApplication&amp;package=com.android.settings"</code>
+      </div>
+
+      <p>The app opens in front of Dashie, and the API replies:</p>
+
+      <div class="code-block">
+        <code>{"status":"OK","message":"Started application: com.android.settings"}</code>
+      </div>
+      <h3 id="return-button">Hide the Return Button</h3>
+
+      <p>
+        When Dashie opens an app, it shows a small Dashie button in the top-right corner so you can get
+        back. If you don't want it, for example because you'll return with <code>toForeground</code> or
+        a dashboard button, add <code>returnButton=false</code>:
+      </p>
+
+      <div class="code-block">
+        <code>curl "http://192.168.1.100:2323/?cmd=startApplication&amp;package=com.google.android.youtube&amp;returnButton=false"</code>
+      </div>
+
+      <p>
+        Leave the parameter out, or set <code>returnButton=true</code>, to show the button. The value is
+        not case-sensitive, and <code>1</code>/<code>0</code>, <code>yes</code>/<code>no</code> and
+        <code>on</code>/<code>off</code> work too. The same parameter works on the end of the
+        <code>rest_command</code> URL in the Home Assistant section below. Requires Dashie 1.1.4 or later.
+      </p>
+
+      <h2 id="return">Return to Dashie</h2>
+
+      <p>To bring Dashie back to the front, use <code>toForeground</code>:</p>
+
+      <div class="code-block">
+        <code>curl "http://192.168.1.100:2323/?cmd=toForeground"</code>
+      </div>
+
+      <div class="code-block">
+        <code>{"status":"OK","message":"Brought to foreground"}</code>
+      </div>
+
+      <div class="info-box tip">
+        <h4>The small Dashie button</h4>
+        <p>
+          When Dashie opens an app, a small Dashie button appears in the top-right corner. Tap it to
+          come back to Dashie. <code>toForeground</code> clears it too. To launch without it, see
+          <a href="#return-button">Hide the Return Button</a>.
+        </p>
+      </div>
+
+      <h2 id="home-assistant">Launch Apps from Home Assistant</h2>
+
+      <p>
+        A <code>rest_command</code> turns the launch request into a Home Assistant action you can call
+        from scripts, automations and dashboards. Add it to <code>configuration.yaml</code>, with your tablet's IP:
+      </p>
+
+      <div class="code-block">
+        <code><span class="comment"># configuration.yaml</span>
+rest_command:
+  dashie_open_app:
+    url: "http://192.168.1.100:2323/?cmd=startApplication&amp;package={{ package }}"</code>
+      </div>
+
+      <p>
+        If you set an API password, add <code>&amp;password=YOUR_PASSWORD</code> to the end of the URL.
+        If this is the first <code>rest_command</code> in your configuration, restart Home Assistant so it loads.
+        If you already have others, call the <code>rest_command.reload</code> action instead; no restart needed.
+      </p>
+
+      <p>Then call it with the package you want. For example, a script that opens Settings:</p>
+
+      <div class="code-block">
+        <code><span class="comment"># scripts.yaml</span>
+dashie_open_settings:
+  alias: "Dashie: open Settings on the tablet"
+  sequence:
+    - action: rest_command.dashie_open_app
+      data:
+        package: com.android.settings</code>
+      </div>
+
+      <p>
+        The same <code>action</code> block works in an automation. The action's response includes the
+        tablet's reply, so you can check <code>status</code> if you need to:
+      </p>
+
+      <div class="code-block">
+        <code>{"content":{"status":"OK","message":"Started application: com.android.chrome"},"status":200, <span class="comment">…</span>}</code>
+      </div>
+
+      <h3 id="dashboard-buttons">Add App Buttons to Your Dashboard</h3>
+
+      <p>
+        With <code>rest_command.dashie_open_app</code> in place, any button on your dashboard can open an
+        app on the tablet. Each button calls the same action with a different package, so you only set
+        the command up once.
+      </p>
+
+      <h4>In the card editor</h4>
+
+      <ol class="step-list">
+        <li>Open your dashboard, choose <strong>Edit dashboard</strong>, then <strong>Add card</strong> → <strong>Button</strong>.</li>
+        <li>Give it a name and an icon, for example <strong>YouTube</strong> and <code>mdi:youtube</code>.</li>
+        <li>Under <strong>Interactions</strong> → <strong>Tap behavior</strong>, choose <strong>Perform action</strong>, then search for and pick <code>dashie_open_app</code>.</li>
+        <li>In the action's data, enter <code>package: com.google.android.youtube</code>.</li>
+        <li>Save. Tapping the button opens the app on the tablet.</li>
+      </ol>
+
+      <h4>In YAML</h4>
+
+      <p>A single button:</p>
+
+      <div class="code-block">
+        <code>type: button
+name: YouTube
+icon: mdi:youtube
+tap_action:
+  action: perform-action
+  perform_action: rest_command.dashie_open_app
+  data:
+    package: com.google.android.youtube</code>
+      </div>
+
+      <p>A row of app buttons, with one to bring Dashie back:</p>
+
+      <div class="code-block">
+        <code>type: grid
+columns: 4
+square: false
+cards:
+  - type: button
+    name: YouTube
+    icon: mdi:youtube
+    tap_action:
+      action: perform-action
+      perform_action: rest_command.dashie_open_app
+      data:
+        package: com.google.android.youtube
+  - type: button
+    name: Chrome
+    icon: mdi:google-chrome
+    tap_action:
+      action: perform-action
+      perform_action: rest_command.dashie_open_app
+      data:
+        package: com.android.chrome
+  - type: button
+    name: Settings
+    icon: mdi:cog
+    tap_action:
+      action: perform-action
+      perform_action: rest_command.dashie_open_app
+      data:
+        package: com.android.settings
+  - type: button
+    name: Dashie
+    icon: mdi:home
+    tap_action:
+      action: perform-action
+      perform_action: rest_command.dashie_back</code>
+      </div>
+
+      <p>The <strong>Dashie</strong> button needs a second command next to the first one in <code>configuration.yaml</code>:</p>
+
+      <div class="code-block">
+        <code>rest_command:
+  dashie_open_app:
+    url: "http://192.168.1.100:2323/?cmd=startApplication&amp;package={{ package }}"
+  dashie_back:
+    url: "http://192.168.1.100:2323/?cmd=toForeground"</code>
+      </div>
+
+      <div class="info-box tip">
+        <h4>Buttons on the tablet itself</h4>
+        <p>
+          These buttons work from any device showing the dashboard, including the Dashie tablet: the
+          button asks Home Assistant, and Home Assistant calls the tablet. Use the package names from
+          <a href="#find-package"><code>listApps</code></a> for the apps on your tablet.
+        </p>
+      </div>
+
+
+      <h2 id="troubleshooting">Troubleshooting</h2>
+
+      <table class="settings-table">
+        <thead>
+          <tr>
+            <th>What you see</th>
+            <th>What it means</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>{"status":"ERROR","message":"Failed to start application: com.example.app"}</code> (HTTP 400)</td>
+            <td>Nothing launchable with that package name is installed. Check the spelling against <code>listApps</code>.</td>
+          </tr>
+          <tr>
+            <td><code>{"status":"ERROR","message":"Missing 'package' parameter"}</code> (HTTP 400)</td>
+            <td>The request has no <code>package=</code>. In a URL built by a script, check that the variable isn't empty.</td>
+          </tr>
+          <tr>
+            <td><code>{"status":"ERROR","message":"Invalid 'returnButton' value 'maybe' — use true or false"}</code> (HTTP 400)</td>
+            <td>The <code>returnButton</code> value isn't one Dashie recognises. Use <code>true</code> or <code>false</code>.</td>
+          </tr>
+          <tr>
+            <td><code>{"status":"ERROR","message":"Invalid password"}</code> (HTTP 401)</td>
+            <td>A password is set and the request's <code>password=</code> is missing or doesn't match.</td>
+          </tr>
+          <tr>
+            <td><code>curl: (7) Failed to connect to 192.168.1.100 port 2323 … Couldn't connect to server</code></td>
+            <td>The API is off, the port is different from the one you're calling, or the tablet's IP has changed. Check <strong>Dashboard config → Device API</strong> and the IP at the bottom of the Control Center.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>
+        For the full list of API commands, see the <a href="/guides/dashie-kiosk-features#api">Dashie Complete Guide</a>.
+      </p>
+
+      <h2>Need Help?</h2>
+
+      <ul>
+        <li><a href="/guides/dashie-kiosk-features">Dashie Complete Guide</a></li>
+        <li><a href="/guides/home-assistant-integration">Set up Dashie in Home Assistant</a></li>
+        <li><a href="/contact">Contact Support</a></li>
+      </ul>
+    </div>
+  </article>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>&copy; 2026 Dashie LLC. All rights reserved.</p>
+    <div class="footer-links">
+      <a href="/privacy-policy.html">Privacy Policy</a>
+      <span class="separator">|</span>
+      <a href="/terms-of-service.html">Terms of Service</a>
+      <span class="separator">&bull;</span>
+      <a href="https://github.com/jwlerch78/dashie-android-app">Source on GitHub (AGPL-3.0)</a>
+    </div>
+  </footer>
+
+  <!-- Analytics -->
+  <script type="module" src="/js/analytics/website-analytics.js"></script>
+</body>
+</html>
