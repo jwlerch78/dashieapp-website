@@ -1,8 +1,9 @@
 {
-  "versionCode": 251,
-  "versionName": "1.1.4",
+  "versionCode": 277,
+  "versionName": "1.1.5",
   "apkUrl": "https://dashieapp.com/downloads/Dashie-sideload.apk",
-  "sha256": "d15c14dcbe13960699c5ff9072820db3e728480870fca19e882577175e573094",
+  "sha256": "a6606a9db931008997e7dd632ce784f606a7a8820d3f7ea0c1eaebddbfbdd75b",
   "notify": false,
-  "description": "Bug fixes and stability improvements"
+  "title": "Dashie 1.1.5",
+  "description": "\u2022 Bug and stability fixes\n\u2022 New Timer UI\n\u2022 New brightness sensor wake calibration interface"
 }
