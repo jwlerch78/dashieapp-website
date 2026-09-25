@@ -1,9 +1,9 @@
 {
-  "versionCode": 277,
-  "versionName": "1.1.5",
+  "versionCode": 281,
+  "versionName": "1.1.6",
   "apkUrl": "https://dashieapp.com/downloads/Dashie-sideload-beta.apk",
-  "sha256": "fefd8e9cc563a1a249e0c86170bae184e4b3a5ffd501cd904b09d11217104495",
+  "sha256": "9ff003529014e9e6a4a330261381ce59b404c321f010670f4ebbe66ae086f2f6",
   "notify": false,
-  "title": "What's new in 1.1.5",
-  "description": "\u2022 Bug and stability fixes\n\u2022 New Timer UI\n\u2022 New brightness sensor wake calibration interface"
+  "title": "What's new in 1.1.6",
+  "description": "\u2022 Home Assistant: the left sidebar now hides correctly on 2026.6 and newer\n\u2022 Additional bug fixes and improved stability"
 }
