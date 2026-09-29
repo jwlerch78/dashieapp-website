@@ -328,10 +328,51 @@
         <h3>What You'll Need</h3>
         <ul>
           <li>An Android tablet running Android 6.0 or later, or a Fire tablet on Fire OS 7 or newer</li>
+          <li><strong>Android System WebView 61 or newer.</strong> This updates separately from Android
+              itself, so a tablet can be fully up to date and still have a WebView from the year it
+              shipped. <a href="#webview-check">How to check and update it &rarr;</a></li>
           <li>Computer (Windows, Mac, or Linux)</li>
           <li>USB data cable (not a charge-only cable)</li>
           <li>Dashie APK file (download <a href="/downloads/Dashie-sideload.apk">Dashie-sideload.apk</a>)</li>
         </ul>
+      </div>
+
+      <h2 id="webview-check">Before You Start: Check Android System WebView</h2>
+
+      <p>
+        Dashie draws its dashboard using <strong>Android System WebView</strong> &mdash; a component
+        Google updates through the Play Store, separately from your Android version. If it is too
+        old, Dashie installs and opens normally but shows a <strong>black screen</strong> with no
+        error message. This is the most common cause of a black screen on older tablets.
+      </p>
+
+      <div class="info-box tip">
+        <h4>How to check and update it</h4>
+        <ol>
+          <li>Open <strong>Settings &rarr; Apps</strong> and find <strong>Android System WebView</strong>.
+              Its version number is on the details page.</li>
+          <li>If it is below <strong>61</strong>, open the Play Store and search for
+              <strong>Android System WebView</strong>, or go straight to
+              <a href="https://play.google.com/store/apps/details?id=com.google.android.webview"
+                 target="_blank" rel="noopener">its Play Store page</a>.</li>
+          <li>Tap <strong>Update</strong>. If the button says <em>Open</em> instead, tap the
+              three-dot menu first and turn on <em>Enable auto update</em>.</li>
+          <li><strong>Restart the tablet</strong>, then open Dashie again.</li>
+        </ol>
+      </div>
+
+      <div class="info-box">
+        <h4>Tablets without the Play Store</h4>
+        <p>
+          Some tablets ship without Google Play. On those, install Android System WebView manually
+          from APKMirror, choosing a build that matches your tablet &mdash; the right Android
+          version and the right processor type (usually <code>arm64-v8a</code>). Any version from
+          61 upward will work.
+        </p>
+        <p>
+          <strong>On Android 6 and 7 tablets,</strong> the newest WebView available is version 106,
+          which is comfortably above what Dashie needs.
+        </p>
       </div>
 
       <h2>Part 1: Enable Developer Options</h2>
@@ -556,6 +597,11 @@
       <h3>App crashes on launch</h3>
       <ul>
         <li>Ensure your tablet is running Android 6.0 or later, or Fire OS 7 or newer (Fire OS 5 tablets cannot install Dashie)</li>
+        <li><strong>Dashie opens to a black screen that never loads:</strong> this is almost always
+            an out-of-date Android System WebView. See
+            <a href="#webview-check">Check Android System WebView</a> above &mdash; Dashie needs
+            version 61 or newer, and tablets more than a few years old often ship with something
+            far older.</li>
         <li>Try restarting the tablet</li>
       </ul>
 
