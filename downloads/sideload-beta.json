@@ -1,9 +1,9 @@
 {
-  "versionCode": 281,
-  "versionName": "1.1.6",
+  "versionCode": 304,
+  "versionName": "1.1.7",
   "apkUrl": "https://dashieapp.com/downloads/Dashie-sideload-beta.apk",
-  "sha256": "9ff003529014e9e6a4a330261381ce59b404c321f010670f4ebbe66ae086f2f6",
+  "sha256": "086dc5d7feef7599642fa0e04aeadec9af1705f897b9e09bf565b8af12c3cc7d",
   "notify": false,
-  "title": "What's new in 1.1.6",
-  "description": "\u2022 Home Assistant: the left sidebar now hides correctly on 2026.6 and newer\n\u2022 Additional bug fixes and improved stability"
+  "title": "What's new in 1.1.7",
+  "description": "Additional bug fixes and improved stability"
 }
