@@ -3,5 +3,5 @@
   "versionName": "1.1.8g-staging",
   "apkUrl": "https://cwglbtosingboqepsmjk.supabase.co/storage/v1/object/sign/staging-apks/Dashie-staging-vc313.apk?token=eyJraWQiOiIwMmEzZjg3MC0xNDRmLTQwZWItOWI5ZC1kYjEwMmZhMjYzMWUiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJzdGFnaW5nLWFwa3MvRGFzaGllLXN0YWdpbmctdmMzMTMuYXBrIiwic2NvcGUiOiJkb3dubG9hZCIsImlhdCI6MTc5MTA2MzE3NiwiZXhwIjoxODIyNTk5MTc2fQ.ZBBGQO9jB9_iZQJ_d_HIlJS29bYa9J5S8-ffxDHG9Kw",
   "sha256": "89ae33f1715d2b5014247c759d9221d62031cc89801f81c27c6f755504ae77d3",
-  "notify": false
+  "notify": true
 }
