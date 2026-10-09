@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bluetooth for Home Assistant - Dashie</title>
+  <link rel="icon" type="image/png" href="../../artwork/Dashie_Logo_Orange_Transparent.png">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      line-height: 1.6;
+      background: #ffffff;
+      color: #424242;
+      min-height: 100vh;
+    }
+
+    /* Breadcrumb */
+    .breadcrumb {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px 40px 0 40px;
+    }
+
+    .breadcrumb a {
+      color: #666;
+      text-decoration: none;
+      font-size: 14px;
+    }
+
+    .breadcrumb a:hover {
+      color: #ffaa00;
+    }
+
+    .breadcrumb span {
+      color: #999;
+      margin: 0 8px;
+    }
+
+    /* Article */
+    .article {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 30px 40px 60px 40px;
+    }
+
+    .article-header {
+      margin-bottom: 40px;
+    }
+
+    .article-tag {
+      display: inline-block;
+      background: #18bcf2;
+      color: white;
+      font-size: 12px;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 4px;
+      margin-bottom: 15px;
+    }
+
+    .article h1 {
+      font-size: 2.2em;
+      color: #424242;
+      margin-bottom: 15px;
+      line-height: 1.3;
+    }
+
+    .article-meta {
+      color: #888;
+      font-size: 14px;
+    }
+
+    .article-content h2 {
+      font-size: 1.5em;
+      color: #424242;
+      margin: 40px 0 20px 0;
+      padding-bottom: 10px;
+      border-bottom: 2px solid #ffaa00;
+    }
+
+    .article-content h3 {
+      font-size: 1.2em;
+      color: #424242;
+      margin: 30px 0 15px 0;
+    }
+
+    .article-content h4 {
+      font-size: 1.05em;
+      color: #424242;
+      margin: 20px 0 10px 0;
+    }
+
+    .article-content p {
+      margin-bottom: 20px;
+      color: #555;
+    }
+
+    .article-content ul,
+    .article-content ol {
+      margin-bottom: 20px;
+      padding-left: 30px;
+    }
+
+    .article-content li {
+      margin-bottom: 10px;
+      color: #555;
+    }
+
+    .article-content a {
+      color: #ffaa00;
+      text-decoration: none;
+    }
+
+    .article-content a:hover {
+      text-decoration: underline;
+    }
+
+    /* Inline code */
+    code {
+      background: #f4f4f4;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Fira Mono', 'Droid Sans Mono', monospace;
+      font-size: 0.9em;
+      color: #d63384;
+    }
+
+    /* Code blocks */
+    .code-block {
+      background: #1e1e1e;
+      border-radius: 8px;
+      padding: 20px;
+      margin: 20px 0;
+      overflow-x: auto;
+    }
+
+    .code-block code {
+      background: transparent;
+      color: #d4d4d4;
+      padding: 0;
+      font-size: 0.85em;
+      line-height: 1.6;
+      display: block;
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+
+    .code-block .comment {
+      color: #6a9955;
+    }
+
+    /* Info boxes */
+    .info-box {
+      padding: 20px;
+      border-radius: 8px;
+      margin: 20px 0;
+    }
+
+    .info-box.warning {
+      background: #fff3cd;
+      border-left: 4px solid #ffc107;
+    }
+
+    .info-box.tip {
+      background: #d1ecf1;
+      border-left: 4px solid #17a2b8;
+    }
+
+    .info-box.important {
+      background: #f8d7da;
+      border-left: 4px solid #dc3545;
+    }
+
+    .info-box h4 {
+      margin-bottom: 10px;
+      color: #424242;
+    }
+
+    .info-box p {
+      margin: 0;
+      color: #555;
+    }
+
+    /* Settings table */
+    /* Source attribution under a table of someone else's numbers */
+    .source-note {
+      font-size: 0.85rem;
+      color: #777;
+      margin: -8px 0 24px;
+      line-height: 1.6;
+    }
+
+    .settings-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+    }
+
+    .settings-table th,
+    .settings-table td {
+      padding: 12px 15px;
+      text-align: left;
+      border-bottom: 1px solid #e0e0e0;
+    }
+
+    .settings-table th {
+      background: #f9f9f9;
+      font-weight: 600;
+      color: #424242;
+    }
+
+    .settings-table td {
+      color: #555;
+    }
+
+    .settings-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    /* Table of contents */
+    .toc {
+      background: #f9f9f9;
+      border-radius: 12px;
+      padding: 25px;
+      margin: 30px 0;
+    }
+
+    .toc h3,
+    .toc-content h3 {
+      margin-top: 0;
+      margin-bottom: 15px;
+      color: #424242;
+    }
+
+    .toc ul,
+    .toc-content ul {
+      margin: 0;
+      padding-left: 25px;
+    }
+
+    .toc li {
+      margin-bottom: 8px;
+    }
+
+    .toc a {
+      color: #555;
+      text-decoration: none;
+    }
+
+    .toc a:hover {
+      color: #ffaa00;
+    }
+
+    /* Step list */
+    .step-list {
+      counter-reset: step-counter;
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .step-list li {
+      counter-increment: step-counter;
+      position: relative;
+      padding-left: 50px;
+      margin-bottom: 25px;
+    }
+
+    .step-list li::before {
+      content: counter(step-counter);
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 32px;
+      height: 32px;
+      background: #ffaa00;
+      color: white;
+      font-weight: 600;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+    }
+
+    .step-list li strong {
+      color: #424242;
+    }
+
+    /* Footer */
+    .footer {
+      max-width: 800px;
+      margin: 60px auto 0;
+      padding: 40px;
+      text-align: center;
+      border-top: 1px solid #e0e0e0;
+      color: #999999;
+    }
+
+    .footer-links {
+      margin-top: 20px;
+    }
+
+    .footer-links a {
+      color: #666666;
+      text-decoration: none;
+      margin: 0 15px;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover {
+      color: #ffaa00;
+    }
+
+    /* Mobile Responsive */
+    @media (max-width: 768px) {
+      .breadcrumb,
+      .article {
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+      .article h1 {
+        font-size: 1.6em;
+      }
+      .settings-table {
+        font-size: 0.9em;
+      }
+      .settings-table th,
+      .settings-table td {
+        padding: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Shared Header/Navigation -->
+  <script src="/components/header.js"></script>
+
+  <!-- Breadcrumb -->
+  <div class="breadcrumb">
+    <a href="/guides/">How To Guides</a>
+    <span>/</span>
+    <a href="#">Bluetooth for Home Assistant</a>
+  </div>
+
+  <!-- Article -->
+  <article class="article">
+    <header class="article-header">
+      <span class="article-tag">Dashie</span>
+      <h1>Bluetooth for Home Assistant</h1>
+      <p class="article-meta">Last updated: October 2026</p>
+    </header>
+
+    <div class="article-content">
+
+      <p>Dashie can help you put your tablet's Bluetooth to work for your Home Assistant ecosystem to extend your coverage or free up ESP32s.  This guide will show you how to set it up.</p>
+
+      <div class="toc">
+        <h3>In This Guide</h3>
+        <ul>
+          <li><a href="#what">What This Does</a></li>
+          <li><a href="#esp32">How This Compares With an ESP32 Proxy</a></li>
+          <li><a href="#requirements">What You Need</a></li>
+          <li><a href="#turn-on">Turn It On</a></li>
+          <li><a href="#after-restart">Make It Survive a Restart</a></li>
+          <li><a href="#status">What the Status Means</a></li>
+          <li><a href="#lists">The Two Device Lists</a></li>
+          <li><a href="#screen-off">With the Screen Off</a></li>
+          <li><a href="#troubleshooting">Troubleshooting</a></li>
+        </ul>
+      </div>
+
+      <h2 id="what">What This Does</h2>
+
+      <p>
+        Home Assistant can hear and connect to Bluetooth devices <em>through</em> your tablet. Thermometers,
+        sensors, presence beacons, and SwitchBots can be picked up by the tablet and controlled the same way it
+        would through any other Bluetooth proxy. Connecting is a separate switch you turn on
+        (<strong>Let HA connect to devices</strong>), and the tablet handles <strong>three connections at a time</strong>.
+        Devices that connect briefly and drop off again, which is most of them, take turns in those three slots,
+        so three is not a limit of three devices.
+      </p>
+
+      <div class="info-box warning">
+        <h4>Devices that need Bluetooth pairing aren't supported yet</h4>
+        <p>
+          Some Bluetooth devices — <strong>most Bluetooth locks</strong>, in particular — will only talk to
+          something they have been paired with first. Dashie can't do that pairing <em>yet</em>, so for now plan on a
+          <a href="#esp32">dedicated proxy</a> for those. Devices that don't need pairing, such as sensors, beacons and
+          SwitchBot buttons, are fine.
+        </p>
+      </div>
+
+      <h2 id="esp32">How This Compares With an ESP32 Proxy</h2>
+
+      <p>
+        If you already run an <a href="https://esphome.io/components/bluetooth_proxy/" target="_blank" rel="noopener">ESPHome
+        Bluetooth proxy</a> on an ESP32, you may be wondering where this fits. The honest answer: Dashie's Bluetooth is a
+        bonus on hardware you already mounted on the wall. A dedicated proxy still may be the better tool depending on your use case.
+      </p>
+
+      <table class="settings-table">
+        <thead>
+          <tr><th></th><th>Your Dashie tablet</th><th>A dedicated ESP32 proxy</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Extra hardware</strong></td>
+            <td>None — it's the tablet that's already on the wall</td>
+            <td>A board to buy and flash</td>
+          </tr>
+          <tr>
+            <td><strong>Where it reaches</strong></td>
+            <td>The room the tablet is in</td>
+            <td>Anywhere you can put one, and cheap enough to put several around the house</td>
+          </tr>
+          <tr>
+            <td><strong>Connections at once</strong></td>
+            <td>Three</td>
+            <td>Three by default on an ESP32, and configurable higher — ESPHome allows up to nine and recommends
+                staying at five or below</td>
+          </tr>
+          <tr>
+            <td><strong>Devices that need pairing</strong></td>
+            <td>Currently not supported</td>
+            <td>Supported</td>
+          </tr>
+          <tr>
+            <td><strong>Older Bluetooth (non-BLE) devices</strong></td>
+            <td>No</td>
+            <td>No — Bluetooth proxies are Bluetooth Low Energy only</td>
+          </tr>
+          <tr>
+            <td><strong>Doing anything else</strong></td>
+            <td>Yes — it's also your dashboard, and the screen being off changes what it hears
+                (see <a href="#screen-off">With the Screen Off</a>)</td>
+            <td>No — it does this one job, all the time</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p class="source-note">
+        ESP32 figures above are from ESPHome's
+        <a href="https://esphome.io/components/bluetooth_proxy/" target="_blank" rel="noopener">Bluetooth Proxy
+        documentation</a>, read 9 October 2026. Slot counts vary by chip and ESPHome version, so check your own board.
+      </p>
+
+
+      <h2 id="requirements">What You Need</h2>
+
+      <ul>
+        <li>
+          <strong>Dashie 1.1.8 or later</strong> on the tablet. There is no Bluetooth support at all in earlier
+          versions.
+        </li>
+        <li>
+          The Dashie Home Assistant integration, <strong>version 1.6.0 or later</strong>. </li>
+        <li>
+          For <strong>connecting</strong> to devices, and not just hearing them, <strong>Home Assistant 2025.8 or
+          later</strong>. On older versions the tablet still listens, but Home Assistant won't offer it for
+          connections.
+        </li>
+        <li>
+          <strong>The tablet's Device API switched on. </strong>The integration hands the
+          tablet its webhook through that API, and without it the tablet has nowhere to send what it hears.
+          If you haven't turned it on, the
+          <a href="/guides/home-assistant-integration">Home Assistant setup guide</a> covers it.
+        </li>
+      </ul>
+
+      <h2 id="turn-on">Turn It On</h2>
+
+      <ol class="step-list">
+        <li>
+          On the tablet, open the <strong>Control Center</strong> and tap
+          <strong>Connections &amp; Battery</strong>. On a device without a battery, such as a streaming stick,
+          the card is called <strong>Connections</strong>.
+        </li>
+        <li>Tap <strong>Bluetooth for Home Assistant</strong>.</li>
+        <li>Turn the switch on.</li>
+        <li>
+          Android asks for <strong>location</strong>: <em>"Allow Dashie to access this device's location?"</em>
+          Choose <strong>While using the app</strong>. Bluetooth scanning counts as location access on Android,
+          which is why it asks.
+        </li>
+        <li>
+          <strong>On Android 12 and newer, a second prompt follows</strong> — <em>"…find, connect to, and
+          determine the relative position of nearby devices?"</em> Choose <strong>Allow</strong>.
+        </li>
+        <li>
+          The status settles on <strong>Connected to HA</strong>, usually within about 15 seconds.
+        </li>
+        <li>
+          <strong>If you want Home Assistant to connect to devices, turn that on too.</strong> Tap
+          <strong>Let HA connect to devices</strong> &mdash; it starts <strong>off</strong>, and listening works
+          without it. With it on, Home Assistant can reach devices <em>through</em> this tablet, three at a time.
+        </li>
+        <li>
+          <strong>Make it survive a restart.</strong> If the page shows a row called <strong>Allow it to work
+          after a restart</strong>, tap it now and choose <strong>Allow all the time</strong> &mdash; it changes to
+          <strong>Works after restart: On</strong> and you're done. If that row isn't there, what applies depends on
+          your Android version: see <a href="#after-restart">Make It Survive a Restart</a> just below.
+        </li>
+      </ol>
+
+      <div class="info-box tip">
+        <h4>Two prompts on Android 12+</h4>
+        <p>
+          Two prompts arrive in sequence, not together, and the page reads <strong>Needs permission</strong>
+          until you've answered both. <strong>On Android 11 and older there is no second prompt</strong> — the
+          Nearby devices permission didn't exist, so one prompt is all you'll see.
+        </p>
+      </div>
+
+      <p>
+        If you dismiss a prompt by accident, Android stops asking. The page then offers
+        <strong>Open Android settings to allow it</strong>, which takes you to the right screen to grant it by
+        hand.
+      </p>
+
+      <h2 id="after-restart">Make It Survive a Restart</h2>
+
+      <p>
+        Worth doing now, while you're set up on the tablet, rather than meeting it the first time the
+        power blips. <strong>On Android 14 and newer</strong>, when the tablet restarts on its own — a power cut, a system
+        update, a scheduled reboot — Bluetooth for Home Assistant starts again but cannot listen. It isn't a
+        reduced version of working: the tablet hears nothing at all, screen on or off, so Home Assistant stops
+        seeing devices through it while everything still looks settled.
+      </p>
+
+      <p>What to do depends on what the Bluetooth page shows you.</p>
+
+      <h3>If you see a row called "Allow it to work after a restart"</h3>
+
+      <p>
+        Tap it and choose <strong>Allow all the time</strong> when Android asks about location. The row is then
+        replaced by <strong>Works after restart: On</strong>, and that is all — the tablet starts listening again
+        by itself after a restart, with nobody opening Dashie.
+      </p>
+
+      <h3>If that row isn't there</h3>
+
+      <p>
+        Your tablet is on <strong>Android 13 or older</strong> — most Fire tablets and Fire TV devices are. Nothing
+        to do: a restart is fine on these, and the row doesn't appear because it isn't needed.
+      </p>
+
+
+      <h2 id="status">What the Status Means</h2>
+
+      <p>
+        The page shows one status line:
+      </p>
+
+      <table class="settings-table">
+        <thead>
+          <tr>
+            <th>Status</th>
+            <th>What it means</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>Connected to HA</strong></td><td>Working. The tablet is hearing devices, Home Assistant is receiving them, and Home Assistant can connect to them through the tablet.</td></tr>
+          <tr><td><strong>Listening</strong></td><td>Working, with nothing forwarded yet. Normal right after setup — it clears as soon as a device is heard.</td></tr>
+          <tr><td><strong>Off</strong></td><td>The switch is off.</td></tr>
+          <tr><td><strong>Needs permission</strong></td><td>Location, or Nearby devices on Android 12+, hasn't been granted. See <a href="#turn-on">Turn It On</a>.</td></tr>
+          <tr><td><strong>Turned off in Android</strong></td><td>Bluetooth itself is off on the tablet.</td></tr>
+          <tr><td><strong>Location is off</strong></td><td>Android's location setting is off device-wide. Bluetooth scanning needs it on.</td></tr>
+          <tr><td><strong>Waiting for HA</strong></td><td>Home Assistant hasn't handed the tablet its webhook yet. Check the integration version and that the Device API is on.</td></tr>
+          <tr><td><strong>Not running</strong></td><td>The scanner isn't running. Reopening Dashie restarts it.</td></tr>
+          <tr><td><strong>Open Dashie once</strong></td><td>On Android 14 and newer, the tablet can't listen after restarting by itself. Opening Dashie clears it, and it can be avoided altogether — see <a href="#after-restart">Make It Survive a Restart</a>.</td></tr>
+          <tr><td><strong>No local HA address</strong></td><td>Dashie has no address on your network for Home Assistant to send to.</td></tr>
+          <tr><td><strong>Can't reach HA</strong></td><td>The address is there but the last send failed.</td></tr>
+        </tbody>
+      </table>
+
+      <h2 id="lists">The Two Device Lists</h2>
+
+      <p>The page shows two lists.</p>
+
+      <h3>Bluetooth Devices</h3>
+      <p>
+        Home Assistant's own Bluetooth devices, under the names you gave them in Home Assistant. Each one is
+        marked <strong>This tablet</strong> or <strong>Another receiver</strong>, so you can see which devices
+        this tablet is the one hearing. If you have more than one receiver, Home Assistant picks whichever hears
+        a device best, and that can change.
+      </p>
+
+      <h3>Other devices nearby</h3>
+      <p>
+        Everything else the tablet can hear and Home Assistant doesn't know about — useful for checking whether
+        something is in range at all. This list is a <strong>snapshot, not a live view</strong>: tap
+        <strong>Refresh</strong> to take a new one.
+      </p>
+
+      <h2 id="screen-off">With the Screen Off</h2>
+
+      <p>
+        Listening carries on when the screen is off.  However, to keep the traffic down, the tablet only sends on the devices
+        Home Assistant can actually use.
+      </p>
+
+      <h2 id="troubleshooting">Troubleshooting</h2>
+
+      <table class="settings-table">
+        <thead>
+          <tr>
+            <th>What you see</th>
+            <th>What to do</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Stuck on <strong>Needs permission</strong></td>
+            <td>One of the two prompts hasn't been answered. If Android has stopped asking, use <strong>Open Android settings to allow it</strong> on the page.</td>
+          </tr>
+          <tr>
+            <td><strong>Location is off</strong></td>
+            <td>Turn location on in Android's own settings. Android requires it for Bluetooth scanning even though Dashie isn't using your position.</td>
+          </tr>
+          <tr>
+            <td>Stuck on <strong>Waiting for HA</strong></td>
+            <td>Home Assistant hasn't sent the webhook. Check the integration is new enough, and that the tablet's Device API is on.</td>
+          </tr>
+          <tr>
+            <td><strong>Can't reach HA</strong> or <strong>No local HA address</strong></td>
+            <td>A network problem rather than a Bluetooth one. Check the tablet can reach Home Assistant on your local network.</td>
+          </tr>
+          <tr>
+            <td>Presence stopped updating after a power cut, or the status reads <strong>Open Dashie once</strong></td>
+            <td>On Android 14 and newer the tablet can't listen after restarting by itself. Open Dashie once — see <a href="#after-restart">Make It Survive a Restart</a>.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2>Need Help?</h2>
+
+      <ul>
+        <li><a href="/guides/dashie-kiosk-features">Dashie Complete Guide</a></li>
+        <li><a href="/guides/home-assistant-integration">Set up Dashie in Home Assistant</a></li>
+        <li><a href="/contact">Contact Support</a></li>
+      </ul>
+
+    </div>
+  </article>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>&copy; 2026 Dashie LLC. All rights reserved.</p>
+    <div class="footer-links">
+      <a href="/privacy-policy.html">Privacy Policy</a>
+      <span class="separator">|</span>
+      <a href="/terms-of-service.html">Terms of Service</a>
+      <span class="separator">&bull;</span>
+      <a href="https://github.com/jwlerch78/dashie-android-app">Source on GitHub (AGPL-3.0)</a>
+    </div>
+  </footer>
+
+  <!-- Analytics -->
+  <script type="module" src="/js/analytics/website-analytics.js"></script>
+</body>
+</html>

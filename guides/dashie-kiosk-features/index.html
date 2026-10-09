@@ -687,9 +687,9 @@
         <div class="feature-card">
           <h4>
             <div class="icon"><svg viewBox="0 0 24 24"><rect x="2" y="6" width="16" height="12" rx="2"/><path d="M22 10v4"/><polyline points="11 9 9 12 13 12 11 15"/></svg></div>
-            Power Management
+            Connections &amp; Battery
           </h4>
-          <p>Configure charging thresholds to manage battery health on always-plugged-in tablets. See <a href="#power-management">details below</a>.</p>
+          <p>Charging thresholds for always-plugged-in tablets, MQTT, and <a href="/guides/bluetooth-home-assistant">Bluetooth for Home Assistant</a>. See <a href="#power-management">details below</a>.</p>
         </div>
         <div class="feature-card">
           <h4>
@@ -846,13 +846,17 @@
         </div>
       </div>
 
-      <h3 id="power-management">Power Management</h3>
+      <h3 id="power-management">Connections &amp; Battery</h3>
       <p>
         Tablets mounted as permanent dashboards are typically plugged in 24/7, which can degrade battery health
         over time. Dashie includes built-in power management to address this without requiring Home Assistant
         automations or smart plugs.
       </p>
-      <p>In the Control Center under Power Management, you can:</p>
+      <p>
+        In the Control Center, open <strong>Connections &amp; Battery</strong> — or <strong>Connections</strong>
+        on a device without a battery. The charging settings are there under <strong>Battery Charging</strong>,
+        alongside MQTT and <a href="/guides/bluetooth-home-assistant">Bluetooth for Home Assistant</a>. You can:
+      </p>
       <ul>
         <li><strong>Set a charge limit</strong> — Stop charging when the battery reaches a target level (e.g., 80%)</li>
         <li><strong>Set a resume threshold</strong> — Resume charging when the battery drops below a set level (e.g., 20%)</li>
