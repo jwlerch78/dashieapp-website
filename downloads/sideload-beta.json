@@ -1,9 +1,9 @@
 {
-  "versionCode": 304,
-  "versionName": "1.1.7",
+  "versionCode": 357,
+  "versionName": "1.1.8",
   "apkUrl": "https://dashieapp.com/downloads/Dashie-sideload-beta.apk",
-  "sha256": "086dc5d7feef7599642fa0e04aeadec9af1705f897b9e09bf565b8af12c3cc7d",
+  "sha256": "d0f3d3dc6b21d4d7d00163b522bdc7efd6d264c6bfbff16cbaea7920b4dcef16",
   "notify": false,
-  "title": "What's new in 1.1.7",
-  "description": "Additional bug fixes and improved stability"
+  "title": "What's new in 1.1.8",
+  "description": "\u2022 Dashie Family: New dashboard themes including Halloween, Thanksgiving, Hanukkah, and Christmas\n\u2022 Home Assistant: Bluetooth peripheral support\n\u2022 Additional bug fixes and stability improvement"
 }
