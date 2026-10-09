@@ -1,7 +1,7 @@
 {
-  "versionCode": 304,
-  "versionName": "1.1.7",
+  "versionCode": 357,
+  "versionName": "1.1.8",
   "apkUrl": "https://dashieapp.com/downloads/Dashie-sideload.apk",
-  "sha256": "776aaec0e8b79d0af992ddc4971e361864d641dd897d6094e45e43cc11004e4b",
+  "sha256": "18da72bf5e57130ec36d3a74ffe4b5fe8c17afc7d227e9a944ce043695a91c72",
   "notify": false
 }
