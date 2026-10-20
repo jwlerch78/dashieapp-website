@@ -69,7 +69,7 @@ set -euo pipefail
 DASHIE_PACKAGE="com.dashieapp.Dashie"
 DASHIE_HOME_ACTIVITY="com.dashieapp.Dashie/.MainActivity"
 GOOGLE_TV_HOME="com.google.android.apps.tv.launcherx"
-DASHIE_APK_URL="https://dashieapp.com/downloads/Dashie-sideload-beta.apk"
+DASHIE_APK_URL="https://dashieapp.com/downloads/Dashie-sideload.apk"
 
 # Bloat list — validated safe on the onn Google TV stick. The Google TV Home
 # launcher (com.google.android.apps.tv.launcherx) is intentionally NOT in this
