@@ -1,7 +1,7 @@
 {
-  "versionCode": 340,
-  "versionName": "1.1.8zg-staging",
-  "apkUrl": "https://cwglbtosingboqepsmjk.supabase.co/storage/v1/object/sign/staging-apks/Dashie-staging-vc340.apk?token=eyJraWQiOiIwMmEzZjg3MC0xNDRmLTQwZWItOWI5ZC1kYjEwMmZhMjYzMWUiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJzdGFnaW5nLWFwa3MvRGFzaGllLXN0YWdpbmctdmMzNDAuYXBrIiwic2NvcGUiOiJkb3dubG9hZCIsImlhdCI6MTc5MTM3OTE1MywiZXhwIjoxODIyOTE1MTUzfQ.WEO0Aec8fac-gmDjOXGz-5uetY29c9QpupBKeMlF0f8",
-  "sha256": "abe0be8405704414c87cb1c4b8fa4a3039557d2b4fdcbcb239b9f5c8bd36a36c",
+  "versionCode": 467,
+  "versionName": "1.1.9bx-staging",
+  "apkUrl": "https://cwglbtosingboqepsmjk.supabase.co/storage/v1/object/sign/staging-apks/Dashie-staging-vc467.apk?token=eyJraWQiOiIwMmEzZjg3MC0xNDRmLTQwZWItOWI5ZC1kYjEwMmZhMjYzMWUiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJzdGFnaW5nLWFwa3MvRGFzaGllLXN0YWdpbmctdmM0NjcuYXBrIiwic2NvcGUiOiJkb3dubG9hZCIsImlhdCI6MTc5Mjc4ODEyMywiZXhwIjoxODI0MzI0MTIzfQ.M8m4AARIdbTjOkKW2p5QOrn8CotenafOzsSrknk1DTg",
+  "sha256": "29344f5141c093ee242024f6131a9c0fda56e22af667646fc681fdb20beaf825",
   "notify": true
 }
