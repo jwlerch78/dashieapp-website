@@ -4,6 +4,11 @@
     { "source": "/login", "destination": "https://app.dashieapp.com/login", "permanent": false },
     { "source": "/add-credits", "destination": "https://app.dashieapp.com/add-credits.html", "permanent": false },
 
+    { "source": "/privacy-policy", "destination": "https://dashieapp.com/privacy-policy", "permanent": true },
+    { "source": "/privacy-policy.html", "destination": "https://dashieapp.com/privacy-policy", "permanent": true },
+    { "source": "/terms-of-service", "destination": "https://dashieapp.com/terms-of-service", "permanent": true },
+    { "source": "/terms-of-service.html", "destination": "https://dashieapp.com/terms-of-service", "permanent": true },
+
     { "source": "/for-families", "destination": "https://dashieapp.com/", "permanent": true },
     { "source": "/for-families.html", "destination": "https://dashieapp.com/", "permanent": true },
     { "source": "/pricing", "destination": "https://dashieapp.com/pricing", "permanent": true },
